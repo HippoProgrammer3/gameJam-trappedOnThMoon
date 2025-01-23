@@ -2,7 +2,9 @@ namespace SpriteKind {
     export const Structure = SpriteKind.create()
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    if (Player_character.isHittingTile(CollisionDirection.Bottom)) {
+        Player_character.vy = -50
+    }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 	
@@ -10,15 +12,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-	
-})
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-	
-})
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-	
-})
+let Player_character: Sprite = null
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -143,7 +137,7 @@ scene.setBackgroundImage(img`
     `)
 tiles.setCurrentTilemap(tilemap`Planet part 1`)
 let In_Base = 0
-let Player_character = sprites.create(img`
+Player_character = sprites.create(img`
     ................
     .......11.......
     ......1ff1......
@@ -210,3 +204,12 @@ let Base = sprites.create(img`
     `, SpriteKind.Structure)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 11))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(51, 11))
+Player_character.ay = 15
+controller.moveSprite(Player_character, 50, 0)
+forever(function () {
+    if (controller.down.isPressed()) {
+        Player_character.vy = 50
+    } else {
+    	
+    }
+})
