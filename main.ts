@@ -16,11 +16,13 @@ function Ores () {
     for (let value of tiles.getTilesByType(assets.tile`myTile5`)) {
         tempOreRandomizer = randint(1, 10)
         if (tempOreRandomizer > 5) {
-            tiles.setTileAt(value, assets.tile`transparency16`)
-        } else if (false) {
-        	
+            if (randint(0, 1) == 0) {
+                tiles.setTileAt(value, assets.tile`myTile3`)
+            } else {
+                tiles.setTileAt(value, assets.tile`myTile8`)
+            }
         } else {
-        	
+            tiles.setTileAt(value, assets.tile`myTile3`)
         }
     }
 }
