@@ -12,6 +12,19 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 	
 })
+function Ores () {
+    for (let value of tiles.getTilesByType(assets.tile`myTile5`)) {
+        tempOreRandomizer = randint(1, 10)
+        if (tempOreRandomizer > 5) {
+            tiles.setTileAt(value, assets.tile`transparency16`)
+        } else if (false) {
+        	
+        } else {
+        	
+        }
+    }
+}
+let tempOreRandomizer = 0
 let Player_character: Sprite = null
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
