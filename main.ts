@@ -159,6 +159,7 @@ Player_character = sprites.create(img`
     ....111..111....
     ....fff..fff....
     `, SpriteKind.Player)
+let Gravity = 0.5
 scene.cameraFollowSprite(Player_character)
 let Base = sprites.create(img`
     ............................................................
@@ -204,8 +205,10 @@ let Base = sprites.create(img`
     `, SpriteKind.Structure)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 11))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(51, 11))
-Player_character.ay = 15
 controller.moveSprite(Player_character, 50, 0)
+forever(function () {
+    Player_character.vy += Gravity
+})
 forever(function () {
     if (controller.down.isPressed()) {
         Player_character.vy = 50
