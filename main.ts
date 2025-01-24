@@ -136,7 +136,7 @@ scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     `)
 tiles.setCurrentTilemap(tilemap`Planet part 1`)
-let In_Base = 0
+let In_Base = false
 Player_character = sprites.create(img`
     ................
     .......11.......
