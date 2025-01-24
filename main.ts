@@ -25,6 +25,16 @@ function Ores () {
             tiles.setTileAt(value, assets.tile`myTile3`)
         }
     }
+    for (let value of tiles.getTilesByType(assets.tile`myTile6`)) {
+        tempOreRandomizer = randint(1, 10)
+        if (tempOreRandomizer > 5) {
+            tiles.setTileAt(value, sprites.castle.tilePath5)
+        } else if (false) {
+            tiles.setTileAt(value, assets.tile`myTile3`)
+        } else {
+        	
+        }
+    }
 }
 let tempOreRandomizer = 0
 let Player_character: Sprite = null
@@ -221,6 +231,7 @@ let Base = sprites.create(img`
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 11))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(51, 11))
 controller.moveSprite(Player_character, 50, 0)
+Ores()
 forever(function () {
     Player_character.vy += Gravity
 })
