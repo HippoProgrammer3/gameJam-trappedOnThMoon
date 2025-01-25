@@ -79,6 +79,7 @@ function Mine_downwards () {
         tiles.setTileAt(Player_character.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
         pause(100)
         tiles.setTileAt(Player_character.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
+        tiles.setWallAt(Player_character.getNeighboringLocation(CollisionDirection.Bottom), false)
     }
 }
 let tempOreRandomizer = 0
