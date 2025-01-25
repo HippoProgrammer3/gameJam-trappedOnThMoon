@@ -151,7 +151,7 @@ function gotoBase (goto: boolean) {
             ................................................................................................................................................................
             ................................................................................................................................................................
             `)
-        tiles.placeOnTile(Player_character, tiles.getTileLocation(0, 0))
+        tiles.placeOnTile(Player_character, tiles.getTileLocation(3, 26))
         Player_character.setVelocity(0, 0)
         controller.moveSprite(Player_character, 50, 50)
     } else {
