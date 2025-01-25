@@ -41,6 +41,18 @@ function Ores () {
             tiles.setTileAt(value, assets.tile`Stone`)
         }
     }
+    for (let value of tiles.getTilesByType(assets.tile`myTile7`)) {
+        tempOreRandomizer = randint(1, 200)
+        if (tempOreRandomizer < 6) {
+            tiles.setTileAt(value, assets.tile`Diamonds`)
+        } else if (tempOreRandomizer < 10) {
+            tiles.setTileAt(value, assets.tile`myTile13`)
+        } else if (tempOreRandomizer < 13) {
+            tiles.setTileAt(value, assets.tile`myTile12`)
+        } else {
+            tiles.setTileAt(value, assets.tile`Stone`)
+        }
+    }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Player_character.isHittingTile(CollisionDirection.Bottom)) {
