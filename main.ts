@@ -65,10 +65,22 @@ function Ores () {
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (jump) {
-        Player_character.vy = 0
+    if (Player_character.isHittingTile(CollisionDirection.Bottom)) {
+        Mine_downwards()
     }
 })
+function Mine_downwards () {
+    if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile`)) {
+        pause(100)
+        tiles.setTileAt(Player_character.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
+        pause(100)
+        tiles.setTileAt(Player_character.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
+        pause(100)
+        tiles.setTileAt(Player_character.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
+        pause(100)
+        tiles.setTileAt(Player_character.getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
+    }
+}
 let tempOreRandomizer = 0
 let jump = false
 let Player_character: Sprite = null

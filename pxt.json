@@ -10,7 +10,8 @@
         "arcade-sprite-data": "github:microsoft/arcade-sprite-data#v0.2.1",
         "arcade-character-animations": "github:microsoft/arcade-character-animations#v0.0.2",
         "Timers": "github:microsoft/arcade-timers#v1.1.0",
-        "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2"
+        "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
+        "animation": "*"
     },
     "files": [
         "main.blocks",
