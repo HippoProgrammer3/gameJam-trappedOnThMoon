@@ -1,9 +1,13 @@
 namespace SpriteKind {
     export const Structure = SpriteKind.create()
 }
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+    jump = false
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Player_character.isHittingTile(CollisionDirection.Bottom)) {
         Player_character.vy = -50
+        jump = true
     } else if (Player_character.isHittingTile(CollisionDirection.Top)) {
     	
     } else {
@@ -55,11 +59,12 @@ function Ores () {
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (Player_character.isHittingTile(CollisionDirection.Bottom)) {
-    	
+    if (jump) {
+        Player_character.vy = 0
     }
 })
 let tempOreRandomizer = 0
+let jump = false
 let Player_character: Sprite = null
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -207,8 +212,6 @@ Player_character = sprites.create(img`
     ....111..111....
     ....fff..fff....
     `, SpriteKind.Player)
-let Gravity = 0.8
-scene.cameraFollowSprite(Player_character)
 let Base = sprites.create(img`
     ............................................................
     ............................................................
@@ -251,6 +254,9 @@ let Base = sprites.create(img`
     ............................................................
     ............................................................
     `, SpriteKind.Structure)
+let Gravity = 0.8
+jump = false
+scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 11))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(51, 11))
 controller.moveSprite(Player_character, 50, 0)
