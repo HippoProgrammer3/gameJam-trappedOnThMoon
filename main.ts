@@ -255,6 +255,6 @@ tiles.placeOnTile(Base, tiles.getTileLocation(51, 11))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(51, 11))
 controller.moveSprite(Player_character, 50, 0)
 Ores()
-forever(function () {
+game.onUpdate(function () {
     Player_character.vy += Gravity
 })
