@@ -402,78 +402,143 @@ function Mine (direction_down__1_up__2_left__3_right__4: number) {
     } else if (direction_down__1_up__2_left__3_right__4 == 3) {
         if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile`)) {
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
         }
         if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile0`)) {
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
         }
         if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile1`)) {
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
         }
         if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile2`)) {
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile4`)) {
+                pause(100)
+                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
+                pause(100)
+                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
+                pause(100)
+                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
+                pause(100)
+                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
+                tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile3`)) {
+                pause(100)
+                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
+                pause(100)
+                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
+                pause(100)
+                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
+                pause(100)
+                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
+                tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
+            }
         }
-        if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile4`)) {
+    } else if (direction_down__1_up__2_left__3_right__4 == 4) {
+        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile`)) {
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
         }
-        if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile3`)) {
+        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile0`)) {
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
             pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+        }
+        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile1`)) {
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+        }
+        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile2`)) {
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+        }
+        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile4`)) {
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+        }
+        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile3`)) {
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
+            pause(100)
+            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
+            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
         }
     } else {
     	
     }
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (Player_character.isHittingTile(CollisionDirection.Left)) {
-        Mine(3)
-    }
+    Mine(3)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
     Player_character.setImage(img`
@@ -499,6 +564,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
     tiles.placeOnTile(Player_character, tiles.getTileLocation(7, 3))
     Player_character.setVelocity(0, 0)
     controller.moveSprite(Player_character, 50, 50)
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    Mine(4)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Player_character.isHittingTile(CollisionDirection.Bottom)) {
