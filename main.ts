@@ -20,6 +20,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         gotoBase(true)
     } else if (In_Base) {
         gotoBase(false)
+        Ores()
     } else {
     	
     }
@@ -873,7 +874,24 @@ scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(48, 13))
 let dirt = Inventory.create_item("dirt", assets.image`stoneArt`, "Dug up from the ground")
-let stone = Inventory.create_item("stone", assets.image`stoneArt`, "Dug up from the ground")
+let stone = Inventory.create_item("stone", img`
+    b b b b c c c b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b c c c c b b 
+    b b c c b b b b b b b b b b b b 
+    b b b c c c b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    b b c c b b b b b b b b b b b b 
+    b b b b b b b b b c c c b b b b 
+    b b b b b b b b b b b c c c b b 
+    b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    b b b c c c c b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    `, "Dug up from the ground")
 inventory = Inventory.create_inventory([dirt, stone], 50)
 controller.moveSprite(Player_character, 50, 0)
 Ores()

@@ -6,20 +6,20 @@ namespace myImages {
             case "image1":
             case "stoneArt":return img`
 b b b b b b b b b b b b b b b b 
-b b b b b b c c b b b b b b b b 
-b b b c b b b b b b b d d b b b 
-b b b b b b b b b b b b d d b b 
-b b b d b b b d b b b b b b b b 
-b b b d d b b d b b b b b b b b 
-b b b b b b b b b b b b b b c b 
-b b b b b c c b b b b b b b b b 
-b b d b b b b c c b b b d b b b 
-d d b b c c b b b c b b b b b b 
-b b b b b b b b b b b b d b b b 
-b b b b b b b b b b d d d b b b 
-b b c c b b d d b b b b b b b b 
-b b c b b b b b b b b b b b c b 
-b b b b b b b b b b b b b c c b 
+b b b 1 1 b b b b b b b b b b b 
+b b b 1 1 b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b d d b b b b b 
+b b b b b b b b b d d b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+1 1 b b b b b b b b b d d b b b 
+1 1 b b b b b b b b b d d b b b 
+b b b b b b 1 b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
 b b b b b b b b b b b b b b b b 
 `;
         }
