@@ -12,7 +12,8 @@
         "Timers": "github:microsoft/arcade-timers#v1.1.0",
         "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
         "animation": "*",
-        "Inventory": "github:unsignedarduino/inventory#v1.1.1"
+        "Inventory": "github:unsignedarduino/inventory#v1.1.1",
+        "Custom Keybind Extension": "github:Brohann3214/custom-keybind-extension#ce1cb5acda5cd438592e38da4aaab10b73b46c64"
     },
     "files": [
         "main.blocks",

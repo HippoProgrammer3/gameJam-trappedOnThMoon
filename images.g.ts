@@ -4,22 +4,22 @@ namespace myImages {
     helpers._registerFactory("image", function(name: string) {
         switch(helpers.stringTrim(name)) {
             case "image1":
-            case "stoneArt":return img`
-b b b b b b b b b b b b b b b b 
-b b b 1 1 b b b b b b b b b b b 
-b b b 1 1 b b b b b b b b b b b 
+            case "coal2Art":return img`
 b b b b b b b b b b b b b b b b 
 b b b b b b b b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
-b b b b b b b b b d d b b b b b 
-b b b b b b b b b d d b b b b b 
+b b b d d d b b b b b b b b b b 
+b b b d d d b b b b b b c c b b 
+b b b d d d b b b b b b c c d b 
 b b b b b b b b b b b b b b b b 
 b b b b b b b b b b b b b b b b 
 b b b b b b b b b b b b b b b b 
-1 1 b b b b b b b b b d d b b b 
-1 1 b b b b b b b b b d d b b b 
-b b b b b b 1 b b b b b b b b b 
-b b b b b b b b b b b b b b b b 
+b b b b b b b b b b d d b b b b 
+b b b b b b b b b b d d b b b b 
+b b b c c b b b b b b b b b b b 
+b b b c c b b b b b b b b b b b 
+b b b b b b b b b c c c b b b b 
+b b b b b b b b b c c c b b b b 
+b b b b b b b b b c c c b b b b 
 b b b b b b b b b b b b b b b b 
 `;
         }

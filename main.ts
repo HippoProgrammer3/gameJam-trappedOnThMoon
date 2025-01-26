@@ -555,6 +555,13 @@ function Mine (direction_down__1_up__2_left__3_right__4: number) {
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     Mine(3)
 })
+controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
+    if (!(inInventory)) {
+        activateInventory(true)
+    } else {
+        activateInventory(false)
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
     Player_character.setImage(img`
         . . . . . . f f . . . . . . . . 
@@ -594,11 +601,15 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, oth
         gto_base_said = true
     }
 })
+function activateInventory (goingIn: boolean) {
+	
+}
 let whereToBreakRow = 0
 let whereToBreakCol = 0
 let tempOreRandomizer = 0
 let Type_of_block_being_mined = 0
 let inventory: Inventory.Inventory = null
+let inInventory = false
 let gto_base_said = false
 let jump = false
 let Gravity = 0
@@ -870,11 +881,30 @@ let textSprite = sprites.create(img`
 Gravity = 0.8
 jump = false
 gto_base_said = false
+inInventory = false
 scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(48, 13))
-let dirt = Inventory.create_item("dirt", assets.image`stoneArt`, "Dug up from the ground")
-let stone = Inventory.create_item("stone", img`
+let dirt = Inventory.create_item("Dirt", assets.image`coal2Art`, "Dug up from the ground")
+let coal = Inventory.create_item("Coal", img`
+    b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    b b b b f f f b b b b b b b b b 
+    b b b b f f f b b b b b b b b b 
+    b b b b f f f b b b b b b b b b 
+    b b b b b b b b b b f f f f b b 
+    b b b b b b b b b b f f f f b b 
+    b b b b b b f f b b f f f f b b 
+    b b b b b b f f b b f f f f b b 
+    b b b b b b f f b b f f f f b b 
+    b b b b b b b b b b b b b b b b 
+    b b f f f b b b b b b b b b b b 
+    b b f f f b b b b b f f f f b b 
+    b b b b b b b b b b f f f f b b 
+    b b b b b b b b b b f f f f b b 
+    b b b b b b b b b b b b b b b b 
+    `, "Dug up from the ground")
+let stone = Inventory.create_item("Stone", img`
     b b b b c c c b b b b b b b b b 
     b b b b b b b b b b b b b b b b 
     b b b b b b b b b b b b b b b b 
@@ -892,9 +922,18 @@ let stone = Inventory.create_item("stone", img`
     b b b b b b b b b b b b b b b b 
     b b b b b b b b b b b b b b b b 
     `, "Dug up from the ground")
-inventory = Inventory.create_inventory([dirt, stone], 50)
+inventory = Inventory.create_inventory([dirt, stone, coal], 50)
 controller.moveSprite(Player_character, 50, 0)
 Ores()
+Keybinds.setSimulatorKeymap(
+Keybinds.PlayerNumber.TWO,
+Keybinds.CustomKey.I,
+Keybinds.CustomKey.UP,
+Keybinds.CustomKey.UP,
+Keybinds.CustomKey.UP,
+Keybinds.CustomKey.UP,
+Keybinds.CustomKey.UP
+)
 game.onUpdate(function () {
     Player_character.vy += Gravity
 })
