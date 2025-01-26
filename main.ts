@@ -475,6 +475,31 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         Mine(3)
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
+    Player_character.setImage(img`
+        . . . . . . f f . . . . . . . . 
+        . . . . . f 1 1 f . . . . . . . 
+        . . . . . f 1 1 f . . . . . . . 
+        . . . . . f 1 1 f . . . . . . . 
+        . . . . . f 1 1 f . . . . . . . 
+        . f f f . f 1 1 f . . . . . . . 
+        . f 1 1 f f 1 1 f f f . . . . . 
+        . f 1 1 1 f 1 1 1 1 f f f f . . 
+        . . f 1 1 f 1 1 1 1 1 1 1 f f f 
+        . . . f 1 1 1 1 1 1 1 1 1 1 1 f 
+        . . . f 1 1 1 1 1 1 1 1 1 1 1 f 
+        . . . . f 1 1 1 1 1 1 1 1 1 f . 
+        . . . . f 1 1 1 1 1 1 1 1 1 f . 
+        . . . . . f 1 1 1 1 1 1 1 f . . 
+        . . . . . f 1 1 1 1 1 1 1 f . . 
+        . . . . . . f f f f f f f . . . 
+        `)
+    Gravity = 0
+    tiles.setCurrentTilemap(tilemap`Upgrades`)
+    tiles.placeOnTile(Player_character, tiles.getTileLocation(7, 3))
+    Player_character.setVelocity(0, 0)
+    controller.moveSprite(Player_character, 50, 50)
+})
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Player_character.isHittingTile(CollisionDirection.Bottom)) {
         Mine(1)
