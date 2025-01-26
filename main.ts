@@ -24,6 +24,17 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     	
     }
 })
+function BlockBreak (col: number, row: number) {
+    pause(100)
+    tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile13`)
+    pause(100)
+    tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile14`)
+    pause(100)
+    tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile15`)
+    pause(100)
+    tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile8`)
+    tiles.setWallAt(tiles.getTileLocation(col, row), false)
+}
 function gotoBase (goto: boolean) {
     if (goto) {
         Gravity = 0
@@ -334,204 +345,91 @@ function Ores () {
 function Mine (direction_down__1_up__2_left__3_right__4: number) {
     if (direction_down__1_up__2_left__3_right__4 == 1) {
         if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile0`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile1`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile2`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile4`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile3`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
     } else if (direction_down__1_up__2_left__3_right__4 == 3) {
         if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile0`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile1`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile2`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile4`)) {
-                pause(100)
-                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
-                pause(100)
-                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
-                pause(100)
-                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
-                pause(100)
-                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
-                tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
-            }
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile3`)) {
-                pause(100)
-                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile13`)
-                pause(100)
-                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile14`)
-                pause(100)
-                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile15`)
-                pause(100)
-                tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), assets.tile`myTile8`)
-                tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left), false)
-            }
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
+        }
+        if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile3`)) {
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
     } else if (direction_down__1_up__2_left__3_right__4 == 4) {
         if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile0`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile1`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile2`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile4`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
         if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile3`)) {
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile13`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile14`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile15`)
-            pause(100)
-            tiles.setTileAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), assets.tile`myTile8`)
-            tiles.setWallAt(Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right), false)
+            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            BlockBreak(whereToBreakCol, whereToBreakRow)
         }
     } else {
     	
@@ -579,6 +477,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, oth
         gto_base_said = true
     }
 })
+let whereToBreakRow = 0
+let whereToBreakCol = 0
 let tempOreRandomizer = 0
 let gto_base_said = false
 let jump = false
