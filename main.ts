@@ -348,6 +348,7 @@ function Mine (direction_down__1_up__2_left__3_right__4: number) {
             whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
             whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
             BlockBreak(whereToBreakCol, whereToBreakRow)
+            inventory.change_number(InventoryNumberAttribute.SelectedIndex, 0)
         }
         if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile0`)) {
             whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
@@ -480,6 +481,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, oth
 let whereToBreakRow = 0
 let whereToBreakCol = 0
 let tempOreRandomizer = 0
+let inventory: Inventory.Inventory = null
 let gto_base_said = false
 let jump = false
 let Gravity = 0
@@ -754,6 +756,9 @@ gto_base_said = false
 scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(48, 13))
+let dirt = Inventory.create_item("dirt", assets.image`stoneArt`, "Dug up from the ground")
+let stone = Inventory.create_item("stone", assets.image`stoneArt`, "Dug up from the ground")
+inventory = Inventory.create_inventory([dirt, stone], 50)
 controller.moveSprite(Player_character, 50, 0)
 Ores()
 game.onUpdate(function () {

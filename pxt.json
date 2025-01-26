@@ -11,7 +11,8 @@
         "arcade-character-animations": "github:microsoft/arcade-character-animations#v0.0.2",
         "Timers": "github:microsoft/arcade-timers#v1.1.0",
         "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
-        "animation": "*"
+        "animation": "*",
+        "Inventory": "github:unsignedarduino/inventory#v1.1.1"
     },
     "files": [
         "main.blocks",
@@ -19,7 +20,9 @@
         "README.md",
         "assets.json",
         "tilemap.g.jres",
-        "tilemap.g.ts"
+        "tilemap.g.ts",
+        "images.g.jres",
+        "images.g.ts"
     ],
     "testFiles": [
         "test.ts"
