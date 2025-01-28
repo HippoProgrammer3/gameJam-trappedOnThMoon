@@ -552,7 +552,7 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
     }
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    Mine(3, 1)
+    Mine(3, miningEfficiency)
 })
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     if (!(inInventory)) {
@@ -587,11 +587,11 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
     controller.moveSprite(Player_character, 50, 50)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    Mine(4, 1)
+    Mine(4, miningEfficiency)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Player_character.isHittingTile(CollisionDirection.Bottom)) {
-        Mine(1, 1)
+        Mine(1, miningEfficiency)
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, otherSprite) {
@@ -609,6 +609,7 @@ let tempOreRandomizer = 0
 let previousTilemap = 0
 let Type_of_block_being_mined = 0
 let inventory: Inventory.Inventory = null
+let miningEfficiency = 0
 let inInventory = false
 let gto_base_said = false
 let jump = false
@@ -882,7 +883,7 @@ Gravity = 0.8
 jump = false
 gto_base_said = false
 inInventory = false
-let miningEfficiency = 100
+miningEfficiency = 100
 scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(48, 13))
