@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.12.58/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.3.6","target":"arcade","targetVersion":"1.12.58","repo":"suitablymysterious/gamejam-trappedonthmoon"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.12.58/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.3.7","target":"arcade","targetVersion":"1.12.58","repo":"suitablymysterious/gamejam-trappedonthmoon"}
 // total=1721935 new=17.76% cached=76.83% other=5.41%
 (function (ectx) {
 'use strict';
@@ -497,7 +497,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P71742(s) {
+function _main___P72022(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1319,13 +1319,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P71742.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/Custom Keybind Extension/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P71742.continuations = [ 44,45,46,47 ]
+_main___P72022.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/Custom Keybind Extension/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P72022.continuations = [ 44,45,46,47 ]
 
-function _main___P71742_mk(s) {
+function _main___P72022_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P71742, depth: s.depth + 1,
+        parent: s, fn: _main___P72022, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -5122,14 +5122,14 @@ switch (step) {
   case 0:
 
     s.value___70900 = undefined;
-    s.unnamed1250___U1 = undefined;
-    s.unnamed1251___U2 = undefined;
+    s.unnamed1358___U1 = undefined;
+    s.unnamed1359___U2 = undefined;
     s.value___70928 = undefined;
-    s.unnamed1252___U4 = undefined;
-    s.unnamed1253___U5 = undefined;
+    s.unnamed1360___U4 = undefined;
+    s.unnamed1361___U5 = undefined;
     s.value___70959 = undefined;
-    s.unnamed1254___U7 = undefined;
-    s.unnamed1255___U8 = undefined;
+    s.unnamed1362___U7 = undefined;
+    s.unnamed1363___U8 = undefined;
     s.value___70900 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
@@ -5141,15 +5141,15 @@ switch (step) {
     s.callLocIdx = 212; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
-    s.unnamed1250___U1 = (r0);
-    s.unnamed1251___U2 = (0);
+    s.unnamed1358___U1 = (r0);
+    s.unnamed1359___U2 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed1251___U2;
-    r0 = pxsim_Array__length(s.unnamed1250___U1);
+    s.tmp_0 = r0 = s.unnamed1359___U2;
+    r0 = pxsim_Array__length(s.unnamed1358___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed1250___U1, s.unnamed1251___U2);
+    r0 = pxsim_Array__getAt(s.unnamed1358___U1, s.unnamed1359___U2);
     s.value___70900 = (r0);
     r0 = pxsim.Math_.randomRange(1, 10);
     globals.tempOreRandomizer___70906 = (r0);
@@ -5202,11 +5202,11 @@ switch (step) {
   case 35:
     r0 = s.retval;
   case 5:
-    r0 = (s.unnamed1251___U2 + 1);
-    s.unnamed1251___U2 = (r0);
+    r0 = (s.unnamed1359___U2 + 1);
+    s.unnamed1359___U2 = (r0);
     { step = 1; continue; }
   case 6:
-    s.unnamed1250___U1 = (undefined);
+    s.unnamed1358___U1 = (undefined);
     s.value___70928 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
@@ -5218,15 +5218,15 @@ switch (step) {
     s.callLocIdx = 220; s.pc = 37; return s.tmp_0;
   case 37:
     r0 = s.retval;
-    s.unnamed1252___U4 = (r0);
-    s.unnamed1253___U5 = (0);
+    s.unnamed1360___U4 = (r0);
+    s.unnamed1361___U5 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed1253___U5;
-    r0 = pxsim_Array__length(s.unnamed1252___U4);
+    s.tmp_0 = r0 = s.unnamed1361___U5;
+    r0 = pxsim_Array__length(s.unnamed1360___U4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 14; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed1252___U4, s.unnamed1253___U5);
+    r0 = pxsim_Array__getAt(s.unnamed1360___U4, s.unnamed1361___U5);
     s.value___70928 = (r0);
     r0 = pxsim.Math_.randomRange(1, 200);
     globals.tempOreRandomizer___70906 = (r0);
@@ -5295,11 +5295,11 @@ switch (step) {
   case 11:
   case 12:
   case 13:
-    r0 = (s.unnamed1253___U5 + 1);
-    s.unnamed1253___U5 = (r0);
+    r0 = (s.unnamed1361___U5 + 1);
+    s.unnamed1361___U5 = (r0);
     { step = 7; continue; }
   case 14:
-    s.unnamed1252___U4 = (undefined);
+    s.unnamed1360___U4 = (undefined);
     s.value___70959 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
@@ -5311,15 +5311,15 @@ switch (step) {
     s.callLocIdx = 230; s.pc = 47; return s.tmp_0;
   case 47:
     r0 = s.retval;
-    s.unnamed1254___U7 = (r0);
-    s.unnamed1255___U8 = (0);
+    s.unnamed1362___U7 = (r0);
+    s.unnamed1363___U8 = (0);
   case 15:
-    s.tmp_0 = r0 = s.unnamed1255___U8;
-    r0 = pxsim_Array__length(s.unnamed1254___U7);
+    s.tmp_0 = r0 = s.unnamed1363___U8;
+    r0 = pxsim_Array__length(s.unnamed1362___U7);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 28; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed1254___U7, s.unnamed1255___U8);
+    r0 = pxsim_Array__getAt(s.unnamed1362___U7, s.unnamed1363___U8);
     s.value___70959 = (r0);
     r0 = pxsim.Math_.randomRange(1, 300);
     globals.tempOreRandomizer___70906 = (r0);
@@ -5442,11 +5442,11 @@ switch (step) {
   case 25:
   case 26:
   case 27:
-    r0 = (s.unnamed1255___U8 + 1);
-    s.unnamed1255___U8 = (r0);
+    r0 = (s.unnamed1363___U8 + 1);
+    s.unnamed1363___U8 = (r0);
     { step = 15; continue; }
   case 28:
-    s.unnamed1254___U7 = (undefined);
+    s.unnamed1362___U7 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -5464,14 +5464,14 @@ function Ores__P70898_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   value___70900: undefined,
-  unnamed1250___U1: undefined,
-  unnamed1251___U2: undefined,
+  unnamed1358___U1: undefined,
+  unnamed1359___U2: undefined,
   value___70928: undefined,
-  unnamed1252___U4: undefined,
-  unnamed1253___U5: undefined,
+  unnamed1360___U4: undefined,
+  unnamed1361___U5: undefined,
   value___70959: undefined,
-  unnamed1254___U7: undefined,
-  unnamed1255___U8: undefined,
+  unnamed1362___U7: undefined,
+  unnamed1363___U8: undefined,
 } }
 
 
@@ -55078,5 +55078,5 @@ const sprites_BaseSpriteSayRenderer__C2260_VT = mkVTable({
 
 const breakpoints = setupDebugger(1, ["transparency16___4733","tile13___4750","tile14___4751","tile18___4753","tile11___4752","tile22___4754","tile23___4756","tile24___4757","tile25___4758","tile26___4759","tile7___4739","tile1___4734","tile2___4761","tile3___4735","tile5___4737","tile8___4745","tile9___4740","tile28___4760","tile29___4762","tile30___4763","tile4___4736","tile6___4738","tile12___4741","tile15___4742","tile16___4743","tile17___4744","tile19___4746","tile20___4747","tile21___4748","tile10___4749","tile27___4755","Structure___70599","textSprites___70602","jump___70610","Player_character___70618","Base___70636","In_Base___70641","miningEfficiency___71552","inInventory___71562","Gravity___70860","gto_base_said___71613","textSprite___71637","dirt___71656","coal___71661","stone___71666","inventory___71039","tempOreRandomizer___70906","whereToBreakCol___71018","whereToBreakRow___71026","Type_of_block_being_mined___70679","previousTilemap___70874"])
 
-return _main___P71742
+return _main___P72022
 })
