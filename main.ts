@@ -420,6 +420,9 @@ function Ores () {
         }
     }
 }
+function makeTrees () {
+	
+}
 function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: number) {
     if (direction_down__1_up__2_left__3_right__4 == 1) {
         if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Stone`)) {
