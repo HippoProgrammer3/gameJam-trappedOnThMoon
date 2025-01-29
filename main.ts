@@ -355,6 +355,7 @@ function gotoBase (goto: boolean) {
 function loadTilemap () {
     for (let value of minedLocations) {
         tiles.setTileAt(value, assets.tile`myTile8`)
+        tiles.setWallAt(value, false)
     }
     for (let value of coalLocations) {
         tiles.setTileAt(value, assets.tile`Coal`)
