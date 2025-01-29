@@ -93,6 +93,7 @@ function gotoBase (goto: boolean) {
     if (goto) {
         Gravity = 0
         In_Base = goto
+        saveTilemap()
         tiles.setCurrentTilemap(tilemap`Inside Base`)
         scene.setBackgroundImage(img`
             ................................................................................................................................................................
@@ -224,6 +225,7 @@ function gotoBase (goto: boolean) {
         Gravity = 0.8
         In_Base = goto
         tiles.setCurrentTilemap(tilemap`Planet part 1`)
+        loadTilemap()
         scene.setBackgroundImage(img`
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -348,6 +350,26 @@ function gotoBase (goto: boolean) {
             `)
         tiles.placeOnTile(Player_character, tiles.getTileLocation(48, 13))
         controller.moveSprite(Player_character, 50, 0)
+    }
+}
+function loadTilemap () {
+    for (let value of minedLocations) {
+        tiles.setTileAt(value, assets.tile`myTile8`)
+    }
+    for (let value of coalLocations) {
+        tiles.setTileAt(value, assets.tile`Coal`)
+    }
+    for (let value of ironLocations) {
+        tiles.setTileAt(value, assets.tile`Iron`)
+    }
+    for (let value of copperLocations) {
+        tiles.setTileAt(value, assets.tile`Copper`)
+    }
+    for (let value of dirtLocations) {
+        tiles.setTileAt(value, assets.tile`myTile3`)
+    }
+    for (let value of stoneLocations) {
+        tiles.setTileAt(value, assets.tile`myTile3`)
     }
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -558,6 +580,14 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         Mine(3, miningEfficiency)
     }
 })
+function saveTilemap () {
+    minedLocations = tiles.getTilesByType(assets.tile`myTile8`)
+    coalLocations = tiles.getTilesByType(assets.tile`Coal`)
+    ironLocations = tiles.getTilesByType(assets.tile`Iron`)
+    copperLocations = tiles.getTilesByType(assets.tile`Copper`)
+    dirtLocations = tiles.getTilesByType(assets.tile`myTile3`)
+    stoneLocations = tiles.getTilesByType(assets.tile`Stone`)
+}
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     if (!(inInventory)) {
         activateInventory(true)
@@ -668,6 +698,12 @@ let inventory: Inventory.Inventory = null
 let whereToBreakRow = 0
 let whereToBreakCol = 0
 let tempOreRandomizer = 0
+let stoneLocations: tiles.Location[] = []
+let dirtLocations: tiles.Location[] = []
+let copperLocations: tiles.Location[] = []
+let ironLocations: tiles.Location[] = []
+let coalLocations: tiles.Location[] = []
+let minedLocations: tiles.Location[] = []
 let previousTilemap = 0
 let Type_of_block_being_mined = 0
 let miningEfficiency = 0
