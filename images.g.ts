@@ -41,6 +41,44 @@ b b b b b b b b b b b b b b b b
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `;
+            case "image3":
+            case "stone":return img`
+b b b b c c c b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b c c c c b b 
+b b c c b b b b b b b b b b b b 
+b b b c c c b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b c c b b b b b b b b b b b b 
+b b b b b b b b b c c c b b b b 
+b b b b b b b b b b b c c c b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b c c c c b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+`;
+            case "image4":
+            case "iron":return img`
+b b b b d d d b b b b b b b b b 
+b b b b b d b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b d d d d b b 
+b b d d d d b b b b b d d d b b 
+b b d d d d b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b d d d b b b b b b b b b b b 
+b b b d d b b b b d d d d b b b 
+b b b b b b b b b d d d d d b b 
+b b b b b b b b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+b b b d d d d b b b b b b b b b 
+b b b b d d d b b b b b b b b b 
+b b b b b b b b b b b b b b b b 
+`;
         }
         return null;
     })
