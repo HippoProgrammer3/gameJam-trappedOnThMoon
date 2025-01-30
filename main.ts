@@ -630,9 +630,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function GROWTrees () {
-    for (let index = 0; index < 50; index++) {
+    for (let value of tiles.getTilesByType(assets.tile`myTile26`)) {
         Tree = sprites.create(img`
-            ........................
             ...........66...........
             ..........6776..........
             ..........6776..........
@@ -672,47 +671,32 @@ function GROWTrees () {
             .........feeeef.........
             ........feeefeef........
             ........fefeffef........
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
             `, SpriteKind.Woodythings)
-        Tree_spawn_y = randint(10, 14)
-        Random_tree_spawn = randint(1, 100)
-        if (Tree_spawn_y == 10 && Random_tree_spawn < 51) {
-            Tree_spawn_x = randint(13, 20)
-        } else if (Tree_spawn_y == 10 && Random_tree_spawn < 50) {
-            Tree_spawn_x = randint(97, 100)
-        } else if (Tree_spawn_y == 11 && Random_tree_spawn < 21) {
-            Tree_spawn_x = randint(6, 12)
-        } else if (Tree_spawn_y == 11 && Random_tree_spawn < 41) {
-            Tree_spawn_x = randint(21, 31)
-        } else if (Tree_spawn_y == 12 && Random_tree_spawn < 5) {
-            Tree_spawn_x = 5
-        } else if (Tree_spawn_y == 12 && Random_tree_spawn < 21) {
-            Tree_spawn_x = randint(32, 38)
-        } else if (Tree_spawn_y == 13 && Random_tree_spawn < 26) {
-            Tree_spawn_x = randint(0, 4)
-        } else if (Tree_spawn_y == 13 && Random_tree_spawn < 51) {
-            Tree_spawn_x = randint(44, 60)
-        } else if (Tree_spawn_y == 14) {
-            Tree_spawn_x = randint(61, 65)
-        } else if (Tree_spawn_y == 11 && Random_tree_spawn < 61) {
-            Tree_spawn_x = randint(39, 42)
-        } else if (Tree_spawn_y == 11 && Random_tree_spawn < 81) {
-            Tree_spawn_x = randint(72, 74)
-        } else if (Tree_spawn_y == 11 && Random_tree_spawn < 101) {
-            Tree_spawn_x = randint(92, 96)
-        } else if (Tree_spawn_y == 12 && Random_tree_spawn < 30) {
-            Tree_spawn_x = 43
-        } else if (Tree_spawn_y == 12 && Random_tree_spawn < 41) {
-            Tree_spawn_x = randint(67, 71)
-        } else if (Tree_spawn_y == 12 && Random_tree_spawn < 61) {
-            Tree_spawn_x = randint(75, 80)
-        } else if (Tree_spawn_y == 12 && Random_tree_spawn < 101) {
-            Tree_spawn_x = randint(87, 91)
-        } else if (Tree_spawn_y == 13 && Random_tree_spawn < 76) {
-            Tree_spawn_x = 66
-        } else if (Tree_spawn_y == 13 && Random_tree_spawn < 101) {
-            Tree_spawn_x = randint(81, 86)
-        }
-        tiles.placeOnTile(Tree, tiles.getTileLocation(Tree_spawn_x, Tree_spawn_y - 1))
+        Tree_spawn_x = value.column
+        Tree_spawn_y = value.row
+        tiles.placeOnTile(Tree, tiles.getTileLocation(Tree_spawn_x, Tree_spawn_y))
+        tiles.setTileAt(value, assets.tile`transparency16`)
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -782,9 +766,8 @@ function activateInventory (goingIn: boolean) {
 let stone: Inventory.Item = null
 let coal: Inventory.Item = null
 let dirt: Inventory.Item = null
-let Tree_spawn_x = 0
-let Random_tree_spawn = 0
 let Tree_spawn_y = 0
+let Tree_spawn_x = 0
 let Tree: Sprite = null
 let inventory: Inventory.Inventory = null
 let whereToBreakRow = 0
