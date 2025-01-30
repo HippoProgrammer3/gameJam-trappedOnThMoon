@@ -1,5 +1,5 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.12.58/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.4.7","target":"arcade","targetVersion":"1.12.58","repo":"suitablymysterious/gamejam-trappedonthmoon"}
-// total=1748556 new=18.82% cached=75.82% other=5.36%
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.12.58/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.5.0","target":"arcade","targetVersion":"1.12.58","repo":"suitablymysterious/gamejam-trappedonthmoon"}
+// total=1750929 new=18.92% cached=75.72% other=5.35%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -498,7 +498,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P63710(s) {
+function _main___P128475(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1064,19 +1064,19 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = helpers__registerFactory__P3333_mk(s);
     s.tmp_0.arg0 = "image";
-    s.tmp_0.arg1 = myImages_inline__P24222;
+    s.tmp_0.arg1 = myImages_inline__P96465;
     s.callLocIdx = 85; s.pc = 50; return s.tmp_0;
   case 50:
     r0 = s.retval;
     s.tmp_0 = helpers__registerFactory__P3333_mk(s);
     s.tmp_0.arg0 = "animation";
-    s.tmp_0.arg1 = myImages_inline__P24233;
+    s.tmp_0.arg1 = myImages_inline__P96480;
     s.callLocIdx = 87; s.pc = 51; return s.tmp_0;
   case 51:
     r0 = s.retval;
     s.tmp_0 = helpers__registerFactory__P3333_mk(s);
     s.tmp_0.arg0 = "song";
-    s.tmp_0.arg1 = myImages_inline__P24240;
+    s.tmp_0.arg1 = myImages_inline__P96487;
     s.callLocIdx = 89; s.pc = 52; return s.tmp_0;
   case 52:
     r0 = s.retval;
@@ -1084,209 +1084,266 @@ switch (step) {
     s.callLocIdx = 90; s.pc = 53; return s.tmp_0;
   case 53:
     r0 = s.retval;
-    globals.Structure___62045 = (r0);
+    globals.Structure___127094 = (r0);
     s.tmp_0 = SpriteKind_create__P2480_mk(s);
     s.callLocIdx = 91; s.pc = 54; return s.tmp_0;
   case 54:
     r0 = s.retval;
-    globals.textSprites___62048 = (r0);
+    globals.textSprites___127097 = (r0);
     s.tmp_0 = SpriteKind_create__P2480_mk(s);
     s.callLocIdx = 92; s.pc = 55; return s.tmp_0;
   case 55:
     r0 = s.retval;
-    globals.Woodythings___62051 = (r0);
+    globals.Woodythings___127100 = (r0);
     s.tmp_0 = scene_onHitWall__P2462_mk(s);
     s.tmp_0.arg0 = globals.Player___2481;
-    s.tmp_0.arg1 = inline__P62055;
+    s.tmp_0.arg1 = inline__P127104;
     s.callLocIdx = 93; s.pc = 56; return s.tmp_0;
   case 56:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2197_mk(s);
     s.tmp_0.arg0 = globals.up___2117;
     s.tmp_0.arg1 = 2049;
-    s.tmp_0.arg2 = inline__P62064;
+    s.tmp_0.arg2 = inline__P127113;
     s.callLocIdx = 97; s.pc = 57; return s.tmp_0;
   case 57:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2197_mk(s);
     s.tmp_0.arg0 = globals.B___2115;
     s.tmp_0.arg1 = 2049;
-    s.tmp_0.arg2 = inline__P62087;
+    s.tmp_0.arg2 = inline__P127136;
     s.callLocIdx = 101; s.pc = 58; return s.tmp_0;
   case 58:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2197_mk(s);
     s.tmp_0.arg0 = globals.A___2114;
     s.tmp_0.arg1 = 2049;
-    s.tmp_0.arg2 = inline__P62406;
+    s.tmp_0.arg2 = inline__P127455;
     s.callLocIdx = 226; s.pc = 59; return s.tmp_0;
   case 59:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2197_mk(s);
     s.tmp_0.arg0 = globals.left___2116;
     s.tmp_0.arg1 = 2049;
-    s.tmp_0.arg2 = inline__P63058;
-    s.callLocIdx = 473; s.pc = 60; return s.tmp_0;
+    s.tmp_0.arg2 = inline__P128069;
+    s.callLocIdx = 474; s.pc = 60; return s.tmp_0;
   case 60:
     r0 = s.retval;
     s.tmp_0 = controller_Controller_onButtonEvent__P2154_mk(s);
     s.tmp_0.arg0 = globals.player2___2121;
     s.tmp_0.arg1 = 2;
     s.tmp_0.arg2 = 2049;
-    s.tmp_0.arg3 = inline__P63097;
-    s.callLocIdx = 488; s.pc = 61; return s.tmp_0;
+    s.tmp_0.arg3 = inline__P128108;
+    s.callLocIdx = 489; s.pc = 61; return s.tmp_0;
   case 61:
     r0 = s.retval;
     s.tmp_0 = scene_onOverlapTile__P2461_mk(s);
     s.tmp_0.arg0 = globals.Player___2481;
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "myTile16";
-    s.callLocIdx = 489; s.pc = 63; return s.tmp_1;
+    s.callLocIdx = 490; s.pc = 63; return s.tmp_1;
   case 63:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = inline__P63108;
-    s.callLocIdx = 497; s.pc = 62; return s.tmp_0;
+    s.tmp_0.arg2 = inline__P128119;
+    s.callLocIdx = 498; s.pc = 62; return s.tmp_0;
   case 62:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2197_mk(s);
     s.tmp_0.arg0 = globals.right___2118;
     s.tmp_0.arg1 = 2049;
-    s.tmp_0.arg2 = inline__P63129;
-    s.callLocIdx = 500; s.pc = 64; return s.tmp_0;
+    s.tmp_0.arg2 = inline__P128140;
+    s.callLocIdx = 501; s.pc = 64; return s.tmp_0;
   case 64:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2197_mk(s);
     s.tmp_0.arg0 = globals.down___2119;
     s.tmp_0.arg1 = 2049;
-    s.tmp_0.arg2 = inline__P63172;
-    s.callLocIdx = 512; s.pc = 65; return s.tmp_0;
+    s.tmp_0.arg2 = inline__P128217;
+    s.callLocIdx = 513; s.pc = 65; return s.tmp_0;
   case 65:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P2459_mk(s);
     s.tmp_0.arg0 = globals.Player___2481;
-    s.tmp_0.arg1 = globals.Structure___62045;
-    s.tmp_0.arg2 = inline__P63210;
-    s.callLocIdx = 519; s.pc = 66; return s.tmp_0;
+    s.tmp_0.arg1 = globals.Structure___127094;
+    s.tmp_0.arg2 = inline__P128234;
+    s.callLocIdx = 516; s.pc = 66; return s.tmp_0;
   case 66:
     r0 = s.retval;
-    globals.stone___63196 = (null);
-    globals.coal___63190 = (null);
-    globals.dirt___63184 = (null);
-    globals.Tree_spawn_y___63156 = (0);
-    globals.Tree_spawn_x___63151 = (0);
-    globals.Tree___63144 = (null);
-    globals.inventory___62548 = (null);
-    globals.whereToBreakRow___62535 = (0);
-    globals.whereToBreakCol___62527 = (0);
-    globals.tempOreRandomizer___62415 = (0);
+    globals.Tree_spawn_y___128167 = (0);
+    globals.Tree_spawn_x___128162 = (0);
+    globals.Tree___128155 = (null);
+    globals.inventory___127643 = (null);
+    globals.whereToBreakRow___127584 = (0);
+    globals.whereToBreakCol___127576 = (0);
+    globals.tempOreRandomizer___127464 = (0);
     r0 = pxsim_Array__mk();
-    globals.stoneLocations___62397 = (r0);
+    globals.stoneLocations___127446 = (r0);
     r0 = pxsim_Array__mk();
-    globals.dirtLocations___62389 = (r0);
+    globals.dirtLocations___127438 = (r0);
     r0 = pxsim_Array__mk();
-    globals.copperLocations___62381 = (r0);
+    globals.copperLocations___127430 = (r0);
     r0 = pxsim_Array__mk();
-    globals.ironLocations___62373 = (r0);
+    globals.ironLocations___127422 = (r0);
     r0 = pxsim_Array__mk();
-    globals.coalLocations___62365 = (r0);
+    globals.coalLocations___127414 = (r0);
     r0 = pxsim_Array__mk();
-    globals.minedLocations___62355 = (r0);
-    globals.previousTilemap___62331 = (0);
-    globals.Type_of_block_being_mined___62134 = (0);
-    globals.miningEfficiency___63067 = (0);
-    globals.inInventory___62069 = (false);
-    globals.gto_base_said___63216 = (false);
-    globals.jump___62059 = (false);
-    globals.Gravity___62315 = (0);
-    globals.Player_character___62073 = (null);
-    globals.Base___62091 = (null);
-    globals.In_Base___62096 = (false);
+    globals.minedLocations___127404 = (r0);
+    globals.previousTilemap___127380 = (0);
+    globals.Type_of_block_being_mined___127183 = (0);
+    r0 = pxsim_Array__mk();
+    globals.list___128186 = (r0);
+    globals.iron___128212 = (null);
+    globals.stone___128196 = (null);
+    globals.coal___128204 = (null);
+    globals.dirt___128188 = (null);
+    globals.miningEfficiency___128078 = (0);
+    globals.inInventory___127118 = (false);
+    globals.gto_base_said___128240 = (false);
+    globals.jump___127108 = (false);
+    globals.Gravity___127364 = (0);
+    globals.Player_character___127122 = (null);
+    globals.Base___127140 = (null);
+    globals.In_Base___127145 = (false);
     s.tmp_0 = scene_setBackgroundImage__P2886_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex63248);
+    r0 = pxsim.image.ofBuffer(_hex128273);
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 527; s.pc = 67; return s.tmp_0;
+    s.callLocIdx = 524; s.pc = 67; return s.tmp_0;
   case 67:
     r0 = s.retval;
     s.tmp_0 = tiles_setCurrentTilemap__P2765_mk(s);
     s.tmp_1 = helpers_getTilemapByName__P3336_mk(s);
     s.tmp_1.arg0 = "Planet part 1";
-    s.callLocIdx = 528; s.pc = 69; return s.tmp_1;
+    s.callLocIdx = 525; s.pc = 69; return s.tmp_1;
   case 69:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 529; s.pc = 68; return s.tmp_0;
+    s.callLocIdx = 526; s.pc = 68; return s.tmp_0;
   case 68:
     r0 = s.retval;
-    globals.In_Base___62096 = (false);
+    globals.In_Base___127145 = (false);
     s.tmp_0 = sprites_create__P2276_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex63256);
+    r0 = pxsim.image.ofBuffer(_hex128281);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.Structure___62045;
-    s.callLocIdx = 530; s.pc = 70; return s.tmp_0;
+    s.tmp_0.arg1 = globals.Structure___127094;
+    s.callLocIdx = 527; s.pc = 70; return s.tmp_0;
   case 70:
     r0 = s.retval;
-    globals.Base___62091 = (r0);
+    globals.Base___127140 = (r0);
     s.tmp_0 = sprites_create__P2276_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex63261);
+    r0 = pxsim.image.ofBuffer(_hex128286);
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = globals.Player___2481;
-    s.callLocIdx = 531; s.pc = 71; return s.tmp_0;
+    s.callLocIdx = 528; s.pc = 71; return s.tmp_0;
   case 71:
     r0 = s.retval;
-    globals.Player_character___62073 = (r0);
+    globals.Player_character___127122 = (r0);
     s.tmp_0 = sprites_create__P2276_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex63267);
+    r0 = pxsim.image.ofBuffer(_hex128292);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.textSprites___62048;
-    s.callLocIdx = 532; s.pc = 72; return s.tmp_0;
+    s.tmp_0.arg1 = globals.textSprites___127097;
+    s.callLocIdx = 529; s.pc = 72; return s.tmp_0;
   case 72:
     r0 = s.retval;
-    globals.textSprite___63264 = (r0);
-    globals.Gravity___62315 = (0.8);
-    globals.jump___62059 = (false);
-    globals.gto_base_said___63216 = (false);
-    globals.inInventory___62069 = (false);
-    globals.miningEfficiency___63067 = (100);
-    s.tmp_0 = scene_cameraFollowSprite__P2891_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 533; s.pc = 73; return s.tmp_0;
-  case 73:
-    r0 = s.retval;
-    s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
-    s.tmp_0.arg0 = globals.Base___62091;
-    s.tmp_1 = tiles_getTileLocation__P2768_mk(s);
-    s.tmp_1.arg0 = 51;
-    s.tmp_1.arg1 = 12;
-    s.callLocIdx = 534; s.pc = 75; return s.tmp_1;
-  case 75:
-    r0 = s.retval;
-    s.tmp_0.arg1 = r0;
-    s.callLocIdx = 535; s.pc = 74; return s.tmp_0;
+    globals.textSprite___128289 = (r0);
+    globals.Gravity___127364 = (0.8);
+    globals.jump___127108 = (false);
+    globals.gto_base_said___128240 = (false);
+    globals.inInventory___127118 = (false);
+    globals.miningEfficiency___128078 = (100);
+    s.tmp_0 = Inventory_create_item__P4458_mk(s);
+    s.tmp_0.arg0 = "Dirt";
+    s.tmp_1 = helpers_getImageByName__P3337_mk(s);
+    s.tmp_1.arg0 = "coal2Art";
+    s.callLocIdx = 530; s.pc = 74; return s.tmp_1;
   case 74:
     r0 = s.retval;
-    s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
-    s.tmp_1 = tiles_getTileLocation__P2768_mk(s);
-    s.tmp_1.arg0 = 48;
-    s.tmp_1.arg1 = 13;
-    s.callLocIdx = 536; s.pc = 77; return s.tmp_1;
+    s.tmp_0.arg1 = r0;
+    s.tmp_0.arg2 = "Dug up from the ground";
+    s.callLocIdx = 531; s.pc = 73; return s.tmp_0;
+  case 73:
+    r0 = s.retval;
+    globals.dirt___128188 = (r0);
+    s.tmp_0 = Inventory_create_item__P4458_mk(s);
+    s.tmp_0.arg0 = "Coal";
+    r0 = pxsim.image.ofBuffer(_hex128308);
+    s.tmp_0.arg1 = r0;
+    s.tmp_0.arg2 = "Dug up from the ground";
+    s.callLocIdx = 532; s.pc = 75; return s.tmp_0;
+  case 75:
+    r0 = s.retval;
+    globals.coal___128204 = (r0);
+    s.tmp_0 = Inventory_create_item__P4458_mk(s);
+    s.tmp_0.arg0 = "Stone";
+    s.tmp_1 = helpers_getImageByName__P3337_mk(s);
+    s.tmp_1.arg0 = "stone";
+    s.callLocIdx = 533; s.pc = 77; return s.tmp_1;
   case 77:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 537; s.pc = 76; return s.tmp_0;
+    s.tmp_0.arg2 = "Dug up from the ground";
+    s.callLocIdx = 534; s.pc = 76; return s.tmp_0;
   case 76:
     r0 = s.retval;
-    s.tmp_0 = controller_moveSprite__P2168_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
-    s.tmp_0.arg1 = 50;
-    s.tmp_0.arg2 = 0;
-    s.callLocIdx = 538; s.pc = 78; return s.tmp_0;
+    globals.stone___128196 = (r0);
+    s.tmp_0 = Inventory_create_item__P4458_mk(s);
+    s.tmp_0.arg0 = "iron";
+    s.tmp_1 = helpers_getImageByName__P3337_mk(s);
+    s.tmp_1.arg0 = "iron";
+    s.callLocIdx = 535; s.pc = 79; return s.tmp_1;
+  case 79:
+    r0 = s.retval;
+    s.tmp_0.arg1 = r0;
+    s.tmp_0.arg2 = "Dug up from the ground";
+    s.callLocIdx = 536; s.pc = 78; return s.tmp_0;
   case 78:
     r0 = s.retval;
-    s.tmp_0 = Ores__P62407_mk(s);
-    s.callLocIdx = 539; s.pc = 79; return s.tmp_0;
-  case 79:
+    globals.iron___128212 = (r0);
+    r0 = pxsim_Array__mk();
+    s.tmp_0 = r0;
+    r0 = pxsim_Array__push(s.tmp_0, globals.dirt___128188);
+    r0 = pxsim_Array__push(s.tmp_0, globals.stone___128196);
+    r0 = pxsim_Array__push(s.tmp_0, globals.coal___128204);
+    globals.list___128186 = (s.tmp_0);
+    s.tmp_0 = scene_cameraFollowSprite__P2891_mk(s);
+    s.tmp_0.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 537; s.pc = 80; return s.tmp_0;
+  case 80:
+    r0 = s.retval;
+    s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
+    s.tmp_0.arg0 = globals.Base___127140;
+    s.tmp_1 = tiles_getTileLocation__P2768_mk(s);
+    s.tmp_1.arg0 = 51;
+    s.tmp_1.arg1 = 12;
+    s.callLocIdx = 538; s.pc = 82; return s.tmp_1;
+  case 82:
+    r0 = s.retval;
+    s.tmp_0.arg1 = r0;
+    s.callLocIdx = 539; s.pc = 81; return s.tmp_0;
+  case 81:
+    r0 = s.retval;
+    s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
+    s.tmp_0.arg0 = globals.Player_character___127122;
+    s.tmp_1 = tiles_getTileLocation__P2768_mk(s);
+    s.tmp_1.arg0 = 48;
+    s.tmp_1.arg1 = 13;
+    s.callLocIdx = 540; s.pc = 84; return s.tmp_1;
+  case 84:
+    r0 = s.retval;
+    s.tmp_0.arg1 = r0;
+    s.callLocIdx = 541; s.pc = 83; return s.tmp_0;
+  case 83:
+    r0 = s.retval;
+    s.tmp_0 = controller_moveSprite__P2168_mk(s);
+    s.tmp_0.arg0 = globals.Player_character___127122;
+    s.tmp_0.arg1 = 50;
+    s.tmp_0.arg2 = 0;
+    s.callLocIdx = 542; s.pc = 85; return s.tmp_0;
+  case 85:
+    r0 = s.retval;
+    s.tmp_0 = Ores__P127456_mk(s);
+    s.callLocIdx = 543; s.pc = 86; return s.tmp_0;
+  case 86:
     r0 = s.retval;
     s.tmp_0 = Keybinds_setSimulatorKeymap__P4390_mk(s);
     s.tmp_0.arg0 = 2;
@@ -1296,39 +1353,39 @@ switch (step) {
     s.tmp_0.arg4 = 38;
     s.tmp_0.arg5 = 38;
     s.tmp_0.arg6 = 38;
-    s.callLocIdx = 540; s.pc = 80; return s.tmp_0;
-  case 80:
+    s.callLocIdx = 544; s.pc = 87; return s.tmp_0;
+  case 87:
     r0 = s.retval;
-    s.tmp_0 = activateInventory__P63102_mk(s);
+    s.tmp_0 = activateInventory__P128113_mk(s);
     s.tmp_0.arg0 = true;
-    s.callLocIdx = 541; s.pc = 81; return s.tmp_0;
-  case 81:
+    s.callLocIdx = 545; s.pc = 88; return s.tmp_0;
+  case 88:
     r0 = s.retval;
-    s.tmp_0 = activateInventory__P63102_mk(s);
+    s.tmp_0 = activateInventory__P128113_mk(s);
     s.tmp_0.arg0 = false;
-    s.callLocIdx = 542; s.pc = 82; return s.tmp_0;
-  case 82:
+    s.callLocIdx = 546; s.pc = 89; return s.tmp_0;
+  case 89:
     r0 = s.retval;
-    s.tmp_0 = GROWTrees__P63136_mk(s);
-    s.callLocIdx = 543; s.pc = 83; return s.tmp_0;
-  case 83:
+    s.tmp_0 = GROWTrees__P128147_mk(s);
+    s.callLocIdx = 547; s.pc = 90; return s.tmp_0;
+  case 90:
     r0 = s.retval;
     s.tmp_0 = game_onUpdate__P3024_mk(s);
-    s.tmp_0.arg0 = inline__P63299;
-    s.callLocIdx = 546; s.pc = 84; return s.tmp_0;
-  case 84:
+    s.tmp_0.arg0 = inline__P128345;
+    s.callLocIdx = 550; s.pc = 91; return s.tmp_0;
+  case 91:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-_main___P63710.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/Custom Keybind Extension/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P63710.continuations = [ 44,45,46,47 ]
+_main___P128475.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/Custom Keybind Extension/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P128475.continuations = [ 44,45,46,47 ]
 
-function _main___P63710_mk(s) {
+function _main___P128475_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P63710, depth: s.depth + 1,
+        parent: s, fn: _main___P128475, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -1391,10 +1448,11 @@ const _hex24871 = pxsim.BufferMethods.createBufferFromHex("87041000100000006fbbb
 const _hex24876 = pxsim.BufferMethods.createBufferFromHex("87041000100000006fbbbbfbbbbbbbfbf9bf1bb1bfbbfbbf99bf1ffffbbfbfbb69f9bbfbbbfbfbbb99f91bbfbfbbbfbf69b6ffbbfbffbbbff969bbbfbfbbbbbb69fffbfbbfbbbbb169bbbffbfbbffbbbb9bbbfbfbbfbbfbf69ff1bfbfbbfbbbff9bffbbbbffbbbbb99fbbbfbbbbbbfbbf9bfffbbbfbbbfbbf969fbfb1fbbfb1b9fb6bbbbbbbbbbff")
 const _hex24881 = pxsim.BufferMethods.createBufferFromHex("8704100010000000eeeeddedeeeeeeeeebeeeeeeeeeeeeeeeebbbbbbdeddedeeeeeeeeeeeeeeeeeeeeeeeeddddeeeeeebbeeeeeeeebebbebeeeeeeeeeeeeeeeeeebbbbebeeeeeeeeeeeeeeeededdedeeedeeeeeeeeeeeeeeeebbbbbbebeeeeeeeeeeeeeeeeeeeebbeeeeeededdddedeeeeeeeeeeeeeeeeeebeebeeeeeeeebbbbeeeeeeeeeeeeeeee")
 const _hex24886 = pxsim.BufferMethods.createBufferFromHex("8704100010000000aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa4aaaaaaaaaaaaaaaaaa4aaaaaaaaaaaaaaa4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-const _hex63248 = pxsim.BufferMethods.createBufferFromHex("8704a00078000000ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333")
-const _hex63256 = pxsim.BufferMethods.createBufferFromHex("8704600060000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f0ffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000008f8888880f000000000000000000000000000000000000000000000000000000000000000000000000000000000000f088888888f8000000000000000000000000000000000000000000000000000000000000000000000000000000000000f088888888f8000000000000000000000000000000000000000000000000000000000000000000000000000000000000f088888888f80000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffff88888888f8ffffffffffffffffffffff0000000000000000000000000000000000000000000000000000001f111111f188888888f811111111111111111111f10000000000000000000000000000000000000000000000000000001f111111f188888888f811111111111111111111f10000000000000000000000000000000000000000000000000000001f111111f188888888f811111111111111111111f10000000000000000000000000000000000000000000000000000001f111111118f8888881f11111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111f1ffffff111111111111ffffff1f11f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111f1111111f111f10000000000000000000000000000000000000000000000000000001f111111111111111111111111111f111111111ff10000000000000000000000000000000000000000000000000000001f111111111111111111111111f11122128818f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f11122128818f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f11122128818f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f11111111111f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f111aa1a1412f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f111aa1a1111f1f10000000000000000000000000000000000000000000000000000001f1111111111f1ffffffff1111f111aa1a1517f1f10000000000000000000000000000000000000000000000000000001f11111111f18f88888888ff11111f111111111ff10000000000000000000000000000000000000000000000000000001f111111118f8888888888881f11f1111111f111f10000000000000000000000000000000000000000000000000000001f111111f188888888888888f81111ffffff1f11f10000000000000000000000000000000000000000000000000000001f1111118f88888888888888881f111111111111f10000000000000000000000000000000000000000000000000000001f1111f1888888888888888888f8111111111111f10000000000000000000000000000000000000000000000000000001f1111f1888888888888888888f8111111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f1111f1888888888888888888f8111111111111f10000000000000000000000000000000000000000000000000000001f1111f1888888888888888888f8111111111111f10000000000000000000000000000000000000000000000000000001f1111118f88888888888888881f111111111111f10000000000000000000000000000000000000000000000000000001f111111f188888888888888f811111111111111f10000000000000000000000000000000000000000000000000000001f111111118f8888888888881f11111111111111f10000000000000000000000000000000000000000000000000000001f11111111f18f88888888ff1111111111111111f10000000000000000000000000000000000000000000000000000001f1111111111f1ffffffff111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111f1ffffffffffffffffffffffff0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000f0ffffffff11111111111111f1ddddddddddddddddddddddfd00000000000000000000000000000000000000000000f08f88888888ff111111111111f1ddddddddddddddddddddddfd000000000000000000000000000000000000000000008f8888888888881f1111111111f1ddddddddddddddddddddddfd000000000000000000000000000000000000000000f088888888888888f81111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000008f88888888888888881f11111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000f0888888888888888888f811111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000f0888888888888888888f811111111f1ffffffffffffffffffffffff00000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f11ffffff1f11111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111f11111f11111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111f11111f11111111111111111111f10000000000000000000000000000000000000000f0888888888888888888f811111faa1a1f11111111111111111111f10000000000000000000000000000000000000000f0888888888888888888f811111faa1a1f11111111111111111111f10000000000000000000000000000000000000000008f88888888888888881f11111faa1a1f111111f1ffffff111111f1000000000000000000000000000000000000000000f088888888888888f81111111f11111f1111f18f888888ff1111f1000000000000000000000000000000000000000000008f8888888888881f1111111f22111f11118f88888888881f11f100000000000000000000000000000000000000000000f08f88888888ff111111111f22111f11118f88888888881f11f10000000000000000000000000000000000000000000000f0ffffffff11111111111f11111f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f11111111111f61161f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f11111111111f61161f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f11111111111f11111f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f1111111111ffffff1f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f11111111111111111111f1888888888888f811f1000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff888888888888f8ffff0000000000000000000000000000000000000000000000000000000000000000000000000000008f88888888880f00000000000000000000000000000000000000000000000000000000000000000000000000000000008f88888888880f0000000000000000000000000000000000000000000000000000000000000000000000000000000000f08f888888ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000f0ffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex63261 = pxsim.BufferMethods.createBufferFromHex("8704100014000000000000000000000000000000000000000000000000000000000000001111f10000000000000000101111f10000000000000000100100000000f10000001001101111111111f1000000f11f1011ff1f1111f1000010ffff11112f1f000000000010ffff11119f1f000000000000f11f1011ff1f1111f10000001001101111111111f10000000000100100000000f10000000000101111f10000000000000000001111f10000000000000000000000000000000000000000000000000000000000")
-const _hex63267 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex128273 = pxsim.BufferMethods.createBufferFromHex("8704a00078000000ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333")
+const _hex128281 = pxsim.BufferMethods.createBufferFromHex("8704600060000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f0ffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000008f8888880f000000000000000000000000000000000000000000000000000000000000000000000000000000000000f088888888f8000000000000000000000000000000000000000000000000000000000000000000000000000000000000f088888888f8000000000000000000000000000000000000000000000000000000000000000000000000000000000000f088888888f80000000000000000000000000000000000000000000000000000000000000000000000000000ffffffffff88888888f8ffffffffffffffffffffff0000000000000000000000000000000000000000000000000000001f111111f188888888f811111111111111111111f10000000000000000000000000000000000000000000000000000001f111111f188888888f811111111111111111111f10000000000000000000000000000000000000000000000000000001f111111f188888888f811111111111111111111f10000000000000000000000000000000000000000000000000000001f111111118f8888881f11111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111f1ffffff111111111111ffffff1f11f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111f1111111f111f10000000000000000000000000000000000000000000000000000001f111111111111111111111111111f111111111ff10000000000000000000000000000000000000000000000000000001f111111111111111111111111f11122128818f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f11122128818f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f11122128818f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f11111111111f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f111aa1a1412f1f10000000000000000000000000000000000000000000000000000001f111111111111111111111111f111aa1a1111f1f10000000000000000000000000000000000000000000000000000001f1111111111f1ffffffff1111f111aa1a1517f1f10000000000000000000000000000000000000000000000000000001f11111111f18f88888888ff11111f111111111ff10000000000000000000000000000000000000000000000000000001f111111118f8888888888881f11f1111111f111f10000000000000000000000000000000000000000000000000000001f111111f188888888888888f81111ffffff1f11f10000000000000000000000000000000000000000000000000000001f1111118f88888888888888881f111111111111f10000000000000000000000000000000000000000000000000000001f1111f1888888888888888888f8111111111111f10000000000000000000000000000000000000000000000000000001f1111f1888888888888888888f8111111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f11118f888888888888888888881f1111111111f10000000000000000000000000000000000000000000000000000001f1111f1888888888888888888f8111111111111f10000000000000000000000000000000000000000000000000000001f1111f1888888888888888888f8111111111111f10000000000000000000000000000000000000000000000000000001f1111118f88888888888888881f111111111111f10000000000000000000000000000000000000000000000000000001f111111f188888888888888f811111111111111f10000000000000000000000000000000000000000000000000000001f111111118f8888888888881f11111111111111f10000000000000000000000000000000000000000000000000000001f11111111f18f88888888ff1111111111111111f10000000000000000000000000000000000000000000000000000001f1111111111f1ffffffff111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111111111111111111111111111f10000000000000000000000000000000000000000000000000000001f11111111111111f1ffffffffffffffffffffffff0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000000000001f11111111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000000000f0ffffffff11111111111111f1ddddddddddddddddddddddfd00000000000000000000000000000000000000000000f08f88888888ff111111111111f1ddddddddddddddddddddddfd000000000000000000000000000000000000000000008f8888888888881f1111111111f1ddddddddddddddddddddddfd000000000000000000000000000000000000000000f088888888888888f81111111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000008f88888888888888881f11111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000f0888888888888888888f811111111f1ddddddddddddddddddddddfd0000000000000000000000000000000000000000f0888888888888888888f811111111f1ffffffffffffffffffffffff00000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111111111111111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f11ffffff1f11111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111f11111f11111111111111111111f100000000000000000000000000000000000000008f888888888888888888881f111f11111f11111111111111111111f10000000000000000000000000000000000000000f0888888888888888888f811111faa1a1f11111111111111111111f10000000000000000000000000000000000000000f0888888888888888888f811111faa1a1f11111111111111111111f10000000000000000000000000000000000000000008f88888888888888881f11111faa1a1f111111f1ffffff111111f1000000000000000000000000000000000000000000f088888888888888f81111111f11111f1111f18f888888ff1111f1000000000000000000000000000000000000000000008f8888888888881f1111111f22111f11118f88888888881f11f100000000000000000000000000000000000000000000f08f88888888ff111111111f22111f11118f88888888881f11f10000000000000000000000000000000000000000000000f0ffffffff11111111111f11111f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f11111111111f61161f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f11111111111f61161f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f11111111111f11111f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f1111111111ffffff1f11f1888888888888f811f10000000000000000000000000000000000000000000000000000001f11111111111111111111f1888888888888f811f1000000000000000000000000000000000000000000000000000000ffffffffffffffffffffffff888888888888f8ffff0000000000000000000000000000000000000000000000000000000000000000000000000000008f88888888880f00000000000000000000000000000000000000000000000000000000000000000000000000000000008f88888888880f0000000000000000000000000000000000000000000000000000000000000000000000000000000000f08f888888ff00000000000000000000000000000000000000000000000000000000000000000000000000000000000000f0ffffff000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex128286 = pxsim.BufferMethods.createBufferFromHex("8704100014000000000000000000000000000000000000000000000000000000000000001111f10000000000000000101111f10000000000000000100100000000f10000001001101111111111f1000000f11f1011ff1f1111f1000010ffff11112f1f000000000010ffff11119f1f000000000000f11f1011ff1f1111f10000001001101111111111f10000000000100100000000f10000000000101111f10000000000000000001111f10000000000000000000000000000000000000000000000000000000000")
+const _hex128292 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex128308 = pxsim.BufferMethods.createBufferFromHex("8704100010000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbfbbfbbbbbbbbbbbbfbbfbbbbffbfbbbbfbbfbbbbffbfbbbbbbbbbbbbffbffbffbbbbbbbbbbbbfbffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbfbffffbbffbfbbbbfbffffbbffbfbbbbfbffffbbffbfbbbbfbffffbbffbfbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
 
 
 
@@ -2582,7 +2640,7 @@ function myTiles_inline__P24975_mk(s) {
 
 
 
-function myImages_inline__P24222(s) {
+function myImages_inline__P96465(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2598,8 +2656,8 @@ switch (step) {
     }
     s.tmp_1 = helpers_stringTrim__P123_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.callLocIdx = 84; s.pc = 7; return s.tmp_1;
-  case 7:
+    s.callLocIdx = 84; s.pc = 11; return s.tmp_1;
+  case 11:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_pxtcore.switch_eq("image1", s.tmp_0);
@@ -2610,41 +2668,59 @@ switch (step) {
     if (r0) { step = 3; continue; }
     r0 = pxsim_pxtcore.switch_eq("invisible", s.tmp_0);
     if (r0) { step = 4; continue; }
+    r0 = pxsim_pxtcore.switch_eq("image3", s.tmp_0);
+    if (r0) { step = 5; continue; }
+    r0 = pxsim_pxtcore.switch_eq("stone", s.tmp_0);
+    if (r0) { step = 6; continue; }
+    r0 = pxsim_pxtcore.switch_eq("image4", s.tmp_0);
+    if (r0) { step = 7; continue; }
+    r0 = pxsim_pxtcore.switch_eq("iron", s.tmp_0);
+    if (r0) { step = 8; continue; }
     r0 = s.tmp_0;
-    { step = 5; continue; }
+    { step = 9; continue; }
   case 1:
   case 2:
-    r0 = pxsim.image.ofBuffer(_hex24228);
-    { step = 6; continue; }
+    r0 = pxsim.image.ofBuffer(_hex96471);
+    { step = 10; continue; }
   case 3:
   case 4:
-    r0 = pxsim.image.ofBuffer(_hex24230);
-    { step = 6; continue; }
+    r0 = pxsim.image.ofBuffer(_hex96473);
+    { step = 10; continue; }
   case 5:
-    r0 = null;
   case 6:
+    r0 = pxsim.image.ofBuffer(_hex96475);
+    { step = 10; continue; }
+  case 7:
+  case 8:
+    r0 = pxsim.image.ofBuffer(_hex96477);
+    { step = 10; continue; }
+  case 9:
+    r0 = null;
+  case 10:
     return leave(s, r0)
   default: oops()
 } } }
-myImages_inline__P24222.info = {"start":97,"length":1301,"line":3,"column":38,"endLine":45,"endColumn":5,"fileName":"images.g.ts","functionName":"inline","argumentNames":["name"]}
+myImages_inline__P96465.info = {"start":97,"length":2490,"line":3,"column":38,"endLine":83,"endColumn":5,"fileName":"images.g.ts","functionName":"inline","argumentNames":["name"]}
 
-function myImages_inline__P24222_mk(s) {
+function myImages_inline__P96465_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: myImages_inline__P24222, depth: s.depth + 1,
+        parent: s, fn: myImages_inline__P96465, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   arg0: undefined,
 } }
 
-const _hex24228 = pxsim.BufferMethods.createBufferFromHex("8704100010000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddbdbbbbccbbbbbbddbdbbbbccbbbbbbddbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccbcbbbbbbbbddbbccbcbbbbbbbbddbbccbcbbcbbcbbbbbbbbbbbbcbbcbbbbbbbbbbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbb")
-const _hex24230 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex96471 = pxsim.BufferMethods.createBufferFromHex("8704100010000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddbdbbbbccbbbbbbddbdbbbbccbbbbbbddbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccbcbbbbbbbbddbbccbcbbbbbbbbddbbccbcbbcbbcbbbbbbbbbbbbcbbcbbbbbbbbbbbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbb")
+const _hex96473 = pxsim.BufferMethods.createBufferFromHex("87041000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex96475 = pxsim.BufferMethods.createBufferFromHex("8704100010000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbcbbbbbbbbbbccbbbcbbcbbbbcbbcbbbbbbbcbbbbcbbcbbbbbbbcbbbbcbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbcbbbbbcbbbbbbbbbcbbbbbcbbcbbbbbbcbbbbbbbbcbbbbbbcbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
+const _hex96477 = pxsim.BufferMethods.createBufferFromHex("8704100010000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddbbbdbbbbbbbbbbddbbddbbdbbbbdbbddbbddbbdbbdddbbddbbbbbbdbbdbdbbbbbbbbbbdbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbdbbdbbbbbbdbbbbbdbbdbbbbbbdbbdbbdbbdbbbbbbdbbdbbdbbdbbbbbbdbbdbbbbbdbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
 
 
 
 
-function myImages_inline__P24233(s) {
+function myImages_inline__P96480(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2667,12 +2743,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-myImages_inline__P24233.info = {"start":1443,"length":105,"line":47,"column":42,"endLine":52,"endColumn":5,"fileName":"images.g.ts","functionName":"inline","argumentNames":["name"]}
+myImages_inline__P96480.info = {"start":2632,"length":105,"line":85,"column":42,"endLine":90,"endColumn":5,"fileName":"images.g.ts","functionName":"inline","argumentNames":["name"]}
 
-function myImages_inline__P24233_mk(s) {
+function myImages_inline__P96480_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: myImages_inline__P24233, depth: s.depth + 1,
+        parent: s, fn: myImages_inline__P96480, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -2682,7 +2758,7 @@ function myImages_inline__P24233_mk(s) {
 
 
 
-function myImages_inline__P24240(s) {
+function myImages_inline__P96487(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2705,12 +2781,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-myImages_inline__P24240.info = {"start":1588,"length":105,"line":54,"column":37,"endLine":59,"endColumn":5,"fileName":"images.g.ts","functionName":"inline","argumentNames":["name"]}
+myImages_inline__P96487.info = {"start":2777,"length":105,"line":92,"column":37,"endLine":97,"endColumn":5,"fileName":"images.g.ts","functionName":"inline","argumentNames":["name"]}
 
-function myImages_inline__P24240_mk(s) {
+function myImages_inline__P96487_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: myImages_inline__P24240, depth: s.depth + 1,
+        parent: s, fn: myImages_inline__P96487, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -2720,7 +2796,7 @@ function myImages_inline__P24240_mk(s) {
 
 
 
-function inline__P62055(s) {
+function inline__P127104(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2735,17 +2811,17 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    globals.jump___62059 = (false);
+    globals.jump___127108 = (false);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-inline__P62055.info = {"start":211,"length":48,"line":5,"column":35,"endLine":7,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","location"]}
+inline__P127104.info = {"start":211,"length":48,"line":5,"column":35,"endLine":7,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","location"]}
 
-function inline__P62055_mk(s) {
+function inline__P127104_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P62055, depth: s.depth + 1,
+        parent: s, fn: inline__P127104, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   arg0: undefined,
   arg1: undefined,
@@ -2755,7 +2831,7 @@ function inline__P62055_mk(s) {
 
 
 
-function inline__P62064(s) {
+function inline__P127113(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2765,7 +2841,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = pxsim_numops_toBoolDecr(globals.inInventory___62069);
+    r0 = pxsim_numops_toBoolDecr(globals.inInventory___127118);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -2775,7 +2851,7 @@ switch (step) {
     { step = 2; continue; }
   case 1:
     s.tmp_2 = Sprite_isHittingTile__P2422_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
+    s.tmp_2.arg0 = globals.Player_character___127122;
     s.tmp_2.arg1 = 3;
     s.callLocIdx = 94; s.pc = 7; return s.tmp_2;
   case 7:
@@ -2786,16 +2862,16 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 3; continue; }
     s.tmp_4 = Sprite_vy__P2362_mk(s);
-    s.tmp_4.arg0 = globals.Player_character___62073;
+    s.tmp_4.arg0 = globals.Player_character___127122;
     s.tmp_4.arg1 = -50;
     s.callLocIdx = 95; s.pc = 8; return s.tmp_4;
   case 8:
     r0 = s.retval;
-    globals.jump___62059 = (true);
+    globals.jump___127108 = (true);
     { step = 6; continue; }
   case 3:
     s.tmp_1 = Sprite_isHittingTile__P2422_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 1;
     s.callLocIdx = 96; s.pc = 9; return s.tmp_1;
   case 9:
@@ -2810,12 +2886,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P62064.info = {"start":314,"length":260,"line":8,"column":53,"endLine":17,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P127113.info = {"start":314,"length":260,"line":8,"column":53,"endLine":17,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P62064_mk(s) {
+function inline__P127113_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P62064, depth: s.depth + 1,
+        parent: s, fn: inline__P127113, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2828,7 +2904,7 @@ function inline__P62064_mk(s) {
 
 
 
-function inline__P62087(s) {
+function inline__P127136(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2839,24 +2915,24 @@ switch (step) {
   case 0:
 
     s.tmp_1 = Sprite_overlapsWith__P2421_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
-    s.tmp_1.arg1 = globals.Base___62091;
+    s.tmp_1.arg0 = globals.Player_character___127122;
+    s.tmp_1.arg1 = globals.Base___127140;
     s.callLocIdx = 98; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    s.tmp_2 = gotoBase__P62094_mk(s);
+    s.tmp_2 = gotoBase__P127143_mk(s);
     s.tmp_2.arg0 = true;
     s.callLocIdx = 99; s.pc = 6; return s.tmp_2;
   case 6:
     r0 = s.retval;
     { step = 4; continue; }
   case 1:
-    r0 = pxsim_numops_toBoolDecr(globals.In_Base___62096);
+    r0 = pxsim_numops_toBoolDecr(globals.In_Base___127145);
     if (!r0) { step = 2; continue; }
-    s.tmp_0 = gotoBase__P62094_mk(s);
+    s.tmp_0 = gotoBase__P127143_mk(s);
     s.tmp_0.arg0 = false;
     s.callLocIdx = 100; s.pc = 7; return s.tmp_0;
   case 7:
@@ -2868,12 +2944,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P62087.info = {"start":628,"length":160,"line":18,"column":52,"endLine":26,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P127136.info = {"start":628,"length":160,"line":18,"column":52,"endLine":26,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P62087_mk(s) {
+function inline__P127136_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P62087, depth: s.depth + 1,
+        parent: s, fn: inline__P127136, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2884,7 +2960,7 @@ function inline__P62087_mk(s) {
 
 
 
-function inline__P62406(s) {
+function inline__P127455(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2898,12 +2974,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P62406.info = {"start":46794,"length":17,"line":376,"column":52,"endLine":378,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P127455.info = {"start":46794,"length":17,"line":376,"column":52,"endLine":378,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P62406_mk(s) {
+function inline__P127455_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P62406, depth: s.depth + 1,
+        parent: s, fn: inline__P127455, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
 } }
 
@@ -2911,7 +2987,7 @@ function inline__P62406_mk(s) {
 
 
 
-function inline__P63058(s) {
+function inline__P128069(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2921,21 +2997,21 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = pxsim_numops_toBoolDecr(globals.inInventory___62069);
+    r0 = pxsim_numops_toBoolDecr(globals.inInventory___127118);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
+    s.tmp_0.arg0 = globals.inventory___127643;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = -1;
-    s.callLocIdx = 471; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 472; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     { step = 2; continue; }
   case 1:
-    s.tmp_0 = Mine__P62516_mk(s);
+    s.tmp_0 = Mine__P127565_mk(s);
     s.tmp_0.arg0 = 3;
-    s.tmp_0.arg1 = globals.miningEfficiency___63067;
-    s.callLocIdx = 472; s.pc = 4; return s.tmp_0;
+    s.tmp_0.arg1 = globals.miningEfficiency___128078;
+    s.callLocIdx = 473; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
   case 2:
@@ -2943,12 +3019,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P63058.info = {"start":59907,"length":167,"line":577,"column":55,"endLine":583,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P128069.info = {"start":58957,"length":167,"line":578,"column":55,"endLine":584,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P63058_mk(s) {
+function inline__P128069_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P63058, depth: s.depth + 1,
+        parent: s, fn: inline__P128069, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -2957,7 +3033,7 @@ function inline__P63058_mk(s) {
 
 
 
-function inline__P63097(s) {
+function inline__P128108(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -2967,22 +3043,22 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = pxsim_numops_toBoolDecr(globals.inInventory___62069);
+    r0 = pxsim_numops_toBoolDecr(globals.inInventory___127118);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
-    s.tmp_2 = activateInventory__P63102_mk(s);
+    s.tmp_2 = activateInventory__P128113_mk(s);
     s.tmp_2.arg0 = true;
-    s.callLocIdx = 486; s.pc = 3; return s.tmp_2;
+    s.callLocIdx = 487; s.pc = 3; return s.tmp_2;
   case 3:
     r0 = s.retval;
     { step = 2; continue; }
   case 1:
-    s.tmp_0 = activateInventory__P63102_mk(s);
+    s.tmp_0 = activateInventory__P128113_mk(s);
     s.tmp_0.arg0 = false;
-    s.callLocIdx = 487; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 488; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
   case 2:
@@ -2990,12 +3066,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P63097.info = {"start":60562,"length":125,"line":592,"column":85,"endLine":598,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P128108.info = {"start":59612,"length":125,"line":593,"column":85,"endLine":599,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P63097_mk(s) {
+function inline__P128108_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P63097, depth: s.depth + 1,
+        parent: s, fn: inline__P128108, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -3006,7 +3082,7 @@ function inline__P63097_mk(s) {
 
 
 
-function inline__P63108(s) {
+function inline__P128119(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -3022,59 +3098,59 @@ switch (step) {
       s.lambdaArgs = null;
     }
     s.tmp_0 = Sprite_setImage__P2392_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
-    r0 = pxsim.image.ofBuffer(_hex63114);
+    s.tmp_0.arg0 = globals.Player_character___127122;
+    r0 = pxsim.image.ofBuffer(_hex128125);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 490; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 491; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    globals.Gravity___62315 = (0);
+    globals.Gravity___127364 = (0);
     s.tmp_0 = tiles_setCurrentTilemap__P2765_mk(s);
     s.tmp_1 = helpers_getTilemapByName__P3336_mk(s);
     s.tmp_1.arg0 = "Upgrades";
-    s.callLocIdx = 491; s.pc = 3; return s.tmp_1;
+    s.callLocIdx = 492; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 492; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 493; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_1 = tiles_getTileLocation__P2768_mk(s);
     s.tmp_1.arg0 = 7;
     s.tmp_1.arg1 = 3;
-    s.callLocIdx = 493; s.pc = 5; return s.tmp_1;
+    s.callLocIdx = 494; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 494; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 495; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = Sprite_setVelocity__P2411_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 495; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 496; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2168_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_0.arg1 = 50;
     s.tmp_0.arg2 = 50;
-    s.callLocIdx = 496; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 497; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-inline__P63108.info = {"start":60751,"length":956,"line":599,"column":62,"endLine":623,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","location"]}
+inline__P128119.info = {"start":59801,"length":956,"line":600,"column":62,"endLine":624,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","location"]}
 
-function inline__P63108_mk(s) {
+function inline__P128119_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P63108, depth: s.depth + 1,
+        parent: s, fn: inline__P128119, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -3082,12 +3158,12 @@ function inline__P63108_mk(s) {
   arg1: undefined,
 } }
 
-const _hex63114 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000f0ff000000000000f0110f0000000000f011f10f00000000001f11f10f00f0ffffff1f11f10f1f111111111111f11f111111111111f1f0ffff1f111111f10000001f111111f1000000ff111111f1000000f0111111f1000000f0111111f1000000f01f11f10f000000001ff10f0000000000ff0f0000")
+const _hex128125 = pxsim.BufferMethods.createBufferFromHex("870410001000000000000000000000000000f0ff000000000000f0110f0000000000f011f10f00000000001f11f10f00f0ffffff1f11f10f1f111111111111f11f111111111111f1f0ffff1f111111f10000001f111111f1000000ff111111f1000000f0111111f1000000f0111111f1000000f01f11f10f000000001ff10f0000000000ff0f0000")
 
 
 
 
-function inline__P63129(s) {
+function inline__P128140(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -3097,21 +3173,21 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = pxsim_numops_toBoolDecr(globals.inInventory___62069);
+    r0 = pxsim_numops_toBoolDecr(globals.inInventory___127118);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
+    s.tmp_0.arg0 = globals.inventory___127643;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = 1;
-    s.callLocIdx = 498; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 499; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     { step = 2; continue; }
   case 1:
-    s.tmp_0 = Mine__P62516_mk(s);
+    s.tmp_0 = Mine__P127565_mk(s);
     s.tmp_0.arg0 = 4;
-    s.tmp_0.arg1 = globals.miningEfficiency___63067;
-    s.callLocIdx = 499; s.pc = 4; return s.tmp_0;
+    s.tmp_0.arg1 = globals.miningEfficiency___128078;
+    s.callLocIdx = 500; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
   case 2:
@@ -3119,12 +3195,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P63129.info = {"start":61765,"length":166,"line":624,"column":56,"endLine":630,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P128140.info = {"start":60815,"length":166,"line":625,"column":56,"endLine":631,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P63129_mk(s) {
+function inline__P128140_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P63129, depth: s.depth + 1,
+        parent: s, fn: inline__P128140, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -3133,7 +3209,7 @@ function inline__P63129_mk(s) {
 
 
 
-function inline__P63172(s) {
+function inline__P128217(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -3143,7 +3219,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = pxsim_numops_toBoolDecr(globals.inInventory___62069);
+    r0 = pxsim_numops_toBoolDecr(globals.inInventory___127118);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -3153,9 +3229,9 @@ switch (step) {
     { step = 2; continue; }
   case 1:
     s.tmp_2 = Sprite_isHittingTile__P2422_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
+    s.tmp_2.arg0 = globals.Player_character___127122;
     s.tmp_2.arg1 = 3;
-    s.callLocIdx = 510; s.pc = 5; return s.tmp_2;
+    s.callLocIdx = 511; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
   case 2:
@@ -3163,10 +3239,10 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_3);
     if (!r0) { step = 3; continue; }
-    s.tmp_4 = Mine__P62516_mk(s);
+    s.tmp_4 = Mine__P127565_mk(s);
     s.tmp_4.arg0 = 1;
-    s.tmp_4.arg1 = globals.miningEfficiency___63067;
-    s.callLocIdx = 511; s.pc = 6; return s.tmp_4;
+    s.tmp_4.arg1 = globals.miningEfficiency___128078;
+    s.callLocIdx = 512; s.pc = 6; return s.tmp_4;
   case 6:
     r0 = s.retval;
   case 3:
@@ -3175,12 +3251,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-inline__P63172.info = {"start":64595,"length":142,"line":701,"column":55,"endLine":705,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P128217.info = {"start":63920,"length":142,"line":715,"column":55,"endLine":719,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P63172_mk(s) {
+function inline__P128217_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P63172, depth: s.depth + 1,
+        parent: s, fn: inline__P128217, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -3193,7 +3269,7 @@ function inline__P63172_mk(s) {
 
 
 
-function inline__P63210(s) {
+function inline__P128234(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -3208,7 +3284,7 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_numops_toBoolDecr(globals.gto_base_said___63216);
+    r0 = pxsim_numops_toBoolDecr(globals.gto_base_said___128240);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -3217,22 +3293,22 @@ switch (step) {
     s.tmp_2 = game_splash__P2966_mk(s);
     s.tmp_2.arg0 = "Press B to enter base";
     s.tmp_2.arg1 = undefined;
-    s.callLocIdx = 518; s.pc = 3; return s.tmp_2;
+    s.callLocIdx = 515; s.pc = 3; return s.tmp_2;
   case 3:
     r0 = s.retval;
-    globals.gto_base_said___63216 = (true);
+    globals.gto_base_said___128240 = (true);
   case 1:
   case 2:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-inline__P63210.info = {"start":66469,"length":142,"line":746,"column":59,"endLine":751,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
+inline__P128234.info = {"start":64209,"length":142,"line":723,"column":59,"endLine":728,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":["sprite","otherSprite"]}
 
-function inline__P63210_mk(s) {
+function inline__P128234_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P63210, depth: s.depth + 1,
+        parent: s, fn: inline__P128234, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -3245,7 +3321,7 @@ function inline__P63210_mk(s) {
 
 
 
-function inline__P63299(s) {
+function inline__P128345(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -3256,29 +3332,29 @@ switch (step) {
   case 0:
 
     s.tmp_0 = Sprite_vy__P2362_mk(s);
-    s.tmp_1 = r0 = globals.Player_character___62073;
+    s.tmp_1 = r0 = globals.Player_character___127122;
     s.tmp_0.arg0 = r0;
     s.tmp_3 = Sprite_vy__P2361_mk(s);
     s.tmp_3.arg0 = s.tmp_1;
-    s.callLocIdx = 544; s.pc = 2; return s.tmp_3;
+    s.callLocIdx = 548; s.pc = 2; return s.tmp_3;
   case 2:
     r0 = s.retval;
     s.tmp_2 = r0;
-    r0 = (s.tmp_2 + globals.Gravity___62315);
+    r0 = (s.tmp_2 + globals.Gravity___127364);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 545; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 549; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-inline__P63299.info = {"start":99218,"length":50,"line":1076,"column":14,"endLine":1078,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
+inline__P128345.info = {"start":97972,"length":50,"line":1077,"column":14,"endLine":1079,"endColumn":1,"fileName":"main.ts","functionName":"inline","argumentNames":[]}
 
-function inline__P63299_mk(s) {
+function inline__P128345_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: inline__P63299, depth: s.depth + 1,
+        parent: s, fn: inline__P128345, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -4761,7 +4837,7 @@ function control_EventHandler_register_inline__P9404_mk(s) {
 
 
 
-function GROWTrees__P63136(s) {
+function GROWTrees__P128147(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -4771,90 +4847,90 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.value___63138 = undefined;
-    s.unnamed3798___U1 = undefined;
-    s.unnamed3799___U2 = undefined;
-    s.value___63138 = (undefined);
+    s.value___128149 = undefined;
+    s.unnamed8158___U1 = undefined;
+    s.unnamed8159___U2 = undefined;
+    s.value___128149 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "myTile26";
-    s.callLocIdx = 501; s.pc = 4; return s.tmp_1;
+    s.callLocIdx = 502; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 502; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 503; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.unnamed3798___U1 = (r0);
-    s.unnamed3799___U2 = (0);
+    s.unnamed8158___U1 = (r0);
+    s.unnamed8159___U2 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed3799___U2;
-    r0 = pxsim_Array__length(s.unnamed3798___U1);
+    s.tmp_0 = r0 = s.unnamed8159___U2;
+    r0 = pxsim_Array__length(s.unnamed8158___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3798___U1, s.unnamed3799___U2);
-    s.value___63138 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8158___U1, s.unnamed8159___U2);
+    s.value___128149 = (r0);
     s.tmp_2 = sprites_create__P2276_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex63148);
+    r0 = pxsim.image.ofBuffer(_hex128159);
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = globals.Woodythings___62051;
-    s.callLocIdx = 503; s.pc = 5; return s.tmp_2;
+    s.tmp_2.arg1 = globals.Woodythings___127100;
+    s.callLocIdx = 504; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
-    globals.Tree___63144 = (r0);
-    r0 = s.value___63138.fields["_col"];
-    globals.Tree_spawn_x___63151 = (r0);
-    r0 = s.value___63138.fields["_row"];
-    globals.Tree_spawn_y___63156 = (r0);
+    globals.Tree___128155 = (r0);
+    r0 = s.value___128149.fields["_col"];
+    globals.Tree_spawn_x___128162 = (r0);
+    r0 = s.value___128149.fields["_row"];
+    globals.Tree_spawn_y___128167 = (r0);
     s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
-    s.tmp_0.arg0 = globals.Tree___63144;
+    s.tmp_0.arg0 = globals.Tree___128155;
     s.tmp_1 = tiles_getTileLocation__P2768_mk(s);
-    s.tmp_1.arg0 = globals.Tree_spawn_x___63151;
-    s.tmp_1.arg1 = globals.Tree_spawn_y___63156;
-    s.callLocIdx = 506; s.pc = 7; return s.tmp_1;
+    s.tmp_1.arg0 = globals.Tree_spawn_x___128162;
+    s.tmp_1.arg1 = globals.Tree_spawn_y___128167;
+    s.callLocIdx = 507; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 507; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 508; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_0.arg0 = s.value___63138;
+    s.tmp_0.arg0 = s.value___128149;
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "transparency16";
-    s.callLocIdx = 508; s.pc = 9; return s.tmp_1;
+    s.callLocIdx = 509; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 509; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 510; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    r0 = (s.unnamed3799___U2 + 1);
-    s.unnamed3799___U2 = (r0);
+    r0 = (s.unnamed8159___U2 + 1);
+    s.unnamed8159___U2 = (r0);
     { step = 1; continue; }
   case 2:
-    s.unnamed3798___U1 = (undefined);
+    s.unnamed8158___U1 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-GROWTrees__P63136.info = {"start":61933,"length":2606,"line":631,"column":0,"endLine":700,"endColumn":1,"fileName":"main.ts","functionName":"GROWTrees","argumentNames":[]}
+GROWTrees__P128147.info = {"start":60983,"length":2606,"line":632,"column":0,"endLine":701,"endColumn":1,"fileName":"main.ts","functionName":"GROWTrees","argumentNames":[]}
 
-function GROWTrees__P63136_mk(s) {
+function GROWTrees__P128147_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: GROWTrees__P63136, depth: s.depth + 1,
+        parent: s, fn: GROWTrees__P128147, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
-  value___63138: undefined,
-  unnamed3798___U1: undefined,
-  unnamed3799___U2: undefined,
+  value___128149: undefined,
+  unnamed8158___U1: undefined,
+  unnamed8159___U2: undefined,
 } }
 
-const _hex63148 = pxsim.BufferMethods.createBufferFromHex("870418003c00000000000000000000000000000088008008000000000000000000000000000000000000000000000000008808808688780800000000000000000000000000000000000000000000000080878668868677880000000000000000000000000000000000000000000000007867866688786787000000000000000000000000000000000000000080088888776777886888768700000000000000000000000000000000000000006888666877767788668878870800000000000000000000000000000000000086666886787777676688887768860000000000000000000000000000000000606786888866687766866888677788000000000000000000000000000000000078678766888678777788668876878800f00f0000000000000000000000000080767667868888767767688668776667f8ef0e0000000000000000000000006076777766886688687786888888887687e8ee0f0000000000000000000000007677777777688688767767668888787788eeee0e0000000000000000000000007677777767888868777766868868777786eefe0f0000000000000000000000006076777766868888887687688888776766e8ee0f0000000000000000000000000080767687668888767777688688686766f8ef0e000000000000000000000000000078678788888678777786667877778800f00f00000000000000000000000000006067866688666877668888886777880000000000000000000000000000000000008666688678777767866886776886000000000000000000000000000000000000006888886877766766886676878800000000000000000000000000000000000000800880887667778888887687000000000000000000000000000000000000000000000000807766886678678700000000000000000000000000000000000000000000000000786886688677880000000000000000000000000000000000000000000000000080888680887808000000000000000000000000000000000000000000000000000000880000880000000000000000000000000000000000")
+const _hex128159 = pxsim.BufferMethods.createBufferFromHex("870418003c00000000000000000000000000000088008008000000000000000000000000000000000000000000000000008808808688780800000000000000000000000000000000000000000000000080878668868677880000000000000000000000000000000000000000000000007867866688786787000000000000000000000000000000000000000080088888776777886888768700000000000000000000000000000000000000006888666877767788668878870800000000000000000000000000000000000086666886787777676688887768860000000000000000000000000000000000606786888866687766866888677788000000000000000000000000000000000078678766888678777788668876878800f00f0000000000000000000000000080767667868888767767688668776667f8ef0e0000000000000000000000006076777766886688687786888888887687e8ee0f0000000000000000000000007677777777688688767767668888787788eeee0e0000000000000000000000007677777767888868777766868868777786eefe0f0000000000000000000000006076777766868888887687688888776766e8ee0f0000000000000000000000000080767687668888767777688688686766f8ef0e000000000000000000000000000078678788888678777786667877778800f00f00000000000000000000000000006067866688666877668888886777880000000000000000000000000000000000008666688678777767866886776886000000000000000000000000000000000000006888886877766766886676878800000000000000000000000000000000000000800880887667778888887687000000000000000000000000000000000000000000000000807766886678678700000000000000000000000000000000000000000000000000786886688677880000000000000000000000000000000000000000000000000080888680887808000000000000000000000000000000000000000000000000000000880000880000000000000000000000000000000000")
 
 
 
@@ -6584,7 +6660,7 @@ function keymap_setPlayerKeys__P3395_mk(s) {
 
 
 
-function Ores__P62407(s) {
+function Ores__P127456(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -6594,16 +6670,16 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.value___62409 = undefined;
-    s.unnamed3792___U1 = undefined;
-    s.unnamed3793___U2 = undefined;
-    s.value___62437 = undefined;
-    s.unnamed3794___U4 = undefined;
-    s.unnamed3795___U5 = undefined;
-    s.value___62468 = undefined;
-    s.unnamed3796___U7 = undefined;
-    s.unnamed3797___U8 = undefined;
-    s.value___62409 = (undefined);
+    s.value___127458 = undefined;
+    s.unnamed8152___U1 = undefined;
+    s.unnamed8153___U2 = undefined;
+    s.value___127486 = undefined;
+    s.unnamed8154___U4 = undefined;
+    s.unnamed8155___U5 = undefined;
+    s.value___127517 = undefined;
+    s.unnamed8156___U7 = undefined;
+    s.unnamed8157___U8 = undefined;
+    s.value___127458 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "myTile5";
@@ -6614,19 +6690,19 @@ switch (step) {
     s.callLocIdx = 228; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
-    s.unnamed3792___U1 = (r0);
-    s.unnamed3793___U2 = (0);
+    s.unnamed8152___U1 = (r0);
+    s.unnamed8153___U2 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed3793___U2;
-    r0 = pxsim_Array__length(s.unnamed3792___U1);
+    s.tmp_0 = r0 = s.unnamed8153___U2;
+    r0 = pxsim_Array__length(s.unnamed8152___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3792___U1, s.unnamed3793___U2);
-    s.value___62409 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8152___U1, s.unnamed8153___U2);
+    s.value___127458 = (r0);
     r0 = pxsim.Math_.randomRange(1, 10);
-    globals.tempOreRandomizer___62415 = (r0);
-    r0 = (globals.tempOreRandomizer___62415 > 5);
+    globals.tempOreRandomizer___127464 = (r0);
+    r0 = (globals.tempOreRandomizer___127464 > 5);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
@@ -6637,7 +6713,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 2; continue; }
     s.tmp_3 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_3.arg0 = s.value___62409;
+    s.tmp_3.arg0 = s.value___127458;
     s.tmp_4 = helpers_getTileByName__P3339_mk(s);
     s.tmp_4.arg0 = "Stone";
     s.callLocIdx = 229; s.pc = 32; return s.tmp_4;
@@ -6650,7 +6726,7 @@ switch (step) {
     { step = 3; continue; }
   case 2:
     s.tmp_0 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_0.arg0 = s.value___62409;
+    s.tmp_0.arg0 = s.value___127458;
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "Stone";
     s.callLocIdx = 231; s.pc = 34; return s.tmp_1;
@@ -6664,7 +6740,7 @@ switch (step) {
     { step = 5; continue; }
   case 4:
     s.tmp_0 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_0.arg0 = s.value___62409;
+    s.tmp_0.arg0 = s.value___127458;
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "myTile3";
     s.callLocIdx = 233; s.pc = 36; return s.tmp_1;
@@ -6675,12 +6751,12 @@ switch (step) {
   case 35:
     r0 = s.retval;
   case 5:
-    r0 = (s.unnamed3793___U2 + 1);
-    s.unnamed3793___U2 = (r0);
+    r0 = (s.unnamed8153___U2 + 1);
+    s.unnamed8153___U2 = (r0);
     { step = 1; continue; }
   case 6:
-    s.unnamed3792___U1 = (undefined);
-    s.value___62437 = (undefined);
+    s.unnamed8152___U1 = (undefined);
+    s.value___127486 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "myTile6";
@@ -6691,24 +6767,24 @@ switch (step) {
     s.callLocIdx = 236; s.pc = 37; return s.tmp_0;
   case 37:
     r0 = s.retval;
-    s.unnamed3794___U4 = (r0);
-    s.unnamed3795___U5 = (0);
+    s.unnamed8154___U4 = (r0);
+    s.unnamed8155___U5 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed3795___U5;
-    r0 = pxsim_Array__length(s.unnamed3794___U4);
+    s.tmp_0 = r0 = s.unnamed8155___U5;
+    r0 = pxsim_Array__length(s.unnamed8154___U4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 14; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3794___U4, s.unnamed3795___U5);
-    s.value___62437 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8154___U4, s.unnamed8155___U5);
+    s.value___127486 = (r0);
     r0 = pxsim.Math_.randomRange(1, 200);
-    globals.tempOreRandomizer___62415 = (r0);
-    r0 = (globals.tempOreRandomizer___62415 < 6);
+    globals.tempOreRandomizer___127464 = (r0);
+    r0 = (globals.tempOreRandomizer___127464 < 6);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62437;
+    s.tmp_1.arg0 = s.value___127486;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "Coal";
     s.callLocIdx = 237; s.pc = 40; return s.tmp_2;
@@ -6720,12 +6796,12 @@ switch (step) {
     r0 = s.retval;
     { step = 13; continue; }
   case 8:
-    r0 = (globals.tempOreRandomizer___62415 < 10);
+    r0 = (globals.tempOreRandomizer___127464 < 10);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62437;
+    s.tmp_1.arg0 = s.value___127486;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "Copper";
     s.callLocIdx = 239; s.pc = 42; return s.tmp_2;
@@ -6737,12 +6813,12 @@ switch (step) {
     r0 = s.retval;
     { step = 12; continue; }
   case 9:
-    r0 = (globals.tempOreRandomizer___62415 < 13);
+    r0 = (globals.tempOreRandomizer___127464 < 13);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62437;
+    s.tmp_1.arg0 = s.value___127486;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "Iron";
     s.callLocIdx = 241; s.pc = 44; return s.tmp_2;
@@ -6755,7 +6831,7 @@ switch (step) {
     { step = 11; continue; }
   case 10:
     s.tmp_0 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_0.arg0 = s.value___62437;
+    s.tmp_0.arg0 = s.value___127486;
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "Stone";
     s.callLocIdx = 243; s.pc = 46; return s.tmp_1;
@@ -6768,12 +6844,12 @@ switch (step) {
   case 11:
   case 12:
   case 13:
-    r0 = (s.unnamed3795___U5 + 1);
-    s.unnamed3795___U5 = (r0);
+    r0 = (s.unnamed8155___U5 + 1);
+    s.unnamed8155___U5 = (r0);
     { step = 7; continue; }
   case 14:
-    s.unnamed3794___U4 = (undefined);
-    s.value___62468 = (undefined);
+    s.unnamed8154___U4 = (undefined);
+    s.value___127517 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "myTile7";
@@ -6784,24 +6860,24 @@ switch (step) {
     s.callLocIdx = 246; s.pc = 47; return s.tmp_0;
   case 47:
     r0 = s.retval;
-    s.unnamed3796___U7 = (r0);
-    s.unnamed3797___U8 = (0);
+    s.unnamed8156___U7 = (r0);
+    s.unnamed8157___U8 = (0);
   case 15:
-    s.tmp_0 = r0 = s.unnamed3797___U8;
-    r0 = pxsim_Array__length(s.unnamed3796___U7);
+    s.tmp_0 = r0 = s.unnamed8157___U8;
+    r0 = pxsim_Array__length(s.unnamed8156___U7);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 28; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3796___U7, s.unnamed3797___U8);
-    s.value___62468 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8156___U7, s.unnamed8157___U8);
+    s.value___127517 = (r0);
     r0 = pxsim.Math_.randomRange(1, 300);
-    globals.tempOreRandomizer___62415 = (r0);
-    r0 = (globals.tempOreRandomizer___62415 < 6);
+    globals.tempOreRandomizer___127464 = (r0);
+    r0 = (globals.tempOreRandomizer___127464 < 6);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 16; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62468;
+    s.tmp_1.arg0 = s.value___127517;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "Coal";
     s.callLocIdx = 247; s.pc = 50; return s.tmp_2;
@@ -6813,12 +6889,12 @@ switch (step) {
     r0 = s.retval;
     { step = 27; continue; }
   case 16:
-    r0 = (globals.tempOreRandomizer___62415 < 10);
+    r0 = (globals.tempOreRandomizer___127464 < 10);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 17; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62468;
+    s.tmp_1.arg0 = s.value___127517;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "Copper";
     s.callLocIdx = 249; s.pc = 52; return s.tmp_2;
@@ -6830,12 +6906,12 @@ switch (step) {
     r0 = s.retval;
     { step = 26; continue; }
   case 17:
-    r0 = (globals.tempOreRandomizer___62415 < 13);
+    r0 = (globals.tempOreRandomizer___127464 < 13);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 18; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62468;
+    s.tmp_1.arg0 = s.value___127517;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "Iron";
     s.callLocIdx = 251; s.pc = 54; return s.tmp_2;
@@ -6847,12 +6923,12 @@ switch (step) {
     r0 = s.retval;
     { step = 25; continue; }
   case 18:
-    r0 = (globals.tempOreRandomizer___62415 < 16);
+    r0 = (globals.tempOreRandomizer___127464 < 16);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 19; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62468;
+    s.tmp_1.arg0 = s.value___127517;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "Diamonds";
     s.callLocIdx = 253; s.pc = 56; return s.tmp_2;
@@ -6864,12 +6940,12 @@ switch (step) {
     r0 = s.retval;
     { step = 24; continue; }
   case 19:
-    r0 = (globals.tempOreRandomizer___62415 < 19);
+    r0 = (globals.tempOreRandomizer___127464 < 19);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 20; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62468;
+    s.tmp_1.arg0 = s.value___127517;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile13";
     s.callLocIdx = 255; s.pc = 58; return s.tmp_2;
@@ -6881,12 +6957,12 @@ switch (step) {
     r0 = s.retval;
     { step = 23; continue; }
   case 20:
-    r0 = (globals.tempOreRandomizer___62415 < 21);
+    r0 = (globals.tempOreRandomizer___127464 < 21);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 21; continue; }
     s.tmp_1 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_1.arg0 = s.value___62468;
+    s.tmp_1.arg0 = s.value___127517;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile12";
     s.callLocIdx = 257; s.pc = 60; return s.tmp_2;
@@ -6899,7 +6975,7 @@ switch (step) {
     { step = 22; continue; }
   case 21:
     s.tmp_0 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_0.arg0 = s.value___62468;
+    s.tmp_0.arg0 = s.value___127517;
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "Stone";
     s.callLocIdx = 259; s.pc = 62; return s.tmp_1;
@@ -6915,36 +6991,36 @@ switch (step) {
   case 25:
   case 26:
   case 27:
-    r0 = (s.unnamed3797___U8 + 1);
-    s.unnamed3797___U8 = (r0);
+    r0 = (s.unnamed8157___U8 + 1);
+    s.unnamed8157___U8 = (r0);
     { step = 15; continue; }
   case 28:
-    s.unnamed3796___U7 = (undefined);
+    s.unnamed8156___U7 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-Ores__P62407.info = {"start":46813,"length":1740,"line":379,"column":0,"endLine":422,"endColumn":1,"fileName":"main.ts","functionName":"Ores","argumentNames":[]}
+Ores__P127456.info = {"start":46813,"length":1740,"line":379,"column":0,"endLine":422,"endColumn":1,"fileName":"main.ts","functionName":"Ores","argumentNames":[]}
 
-function Ores__P62407_mk(s) {
+function Ores__P127456_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Ores__P62407, depth: s.depth + 1,
+        parent: s, fn: Ores__P127456, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
   tmp_4: undefined,
-  value___62409: undefined,
-  unnamed3792___U1: undefined,
-  unnamed3793___U2: undefined,
-  value___62437: undefined,
-  unnamed3794___U4: undefined,
-  unnamed3795___U5: undefined,
-  value___62468: undefined,
-  unnamed3796___U7: undefined,
-  unnamed3797___U8: undefined,
+  value___127458: undefined,
+  unnamed8152___U1: undefined,
+  unnamed8153___U2: undefined,
+  value___127486: undefined,
+  unnamed8154___U4: undefined,
+  unnamed8155___U5: undefined,
+  value___127517: undefined,
+  unnamed8156___U7: undefined,
+  unnamed8157___U8: undefined,
 } }
 
 
@@ -7972,6 +8048,284 @@ function Sprite_x__P2355_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   arg0: undefined,
+} }
+
+
+
+
+
+function helpers_getImageByName__P3337(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    s.tmp_0 = helpers__getFactoryInstance__P3334_mk(s);
+    s.tmp_0.arg0 = "image";
+    s.tmp_0.arg1 = s.arg0;
+    s.callLocIdx = 1400; s.pc = 1; return s.tmp_0;
+  case 1:
+    r0 = s.retval;
+    return leave(s, r0)
+  default: oops()
+} } }
+helpers_getImageByName__P3337.info = {"start":2881,"length":103,"line":87,"column":4,"endLine":89,"endColumn":5,"fileName":"pxt_modules/game/assetTemplates.ts","functionName":"getImageByName","argumentNames":["name"]}
+
+function helpers_getImageByName__P3337_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: helpers_getImageByName__P3337, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function helpers__getFactoryInstance__P3334(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    s.factory___13850 = undefined;
+    s.unnamed120___U1 = undefined;
+    s.unnamed121___U2 = undefined;
+    s.data___13857 = undefined;
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = pxsim_numops_toBoolDecr(globals.factories___5786);
+    if (!r0) { step = 7; continue; }
+    s.factory___13850 = (undefined);
+    s.unnamed120___U1 = (globals.factories___5786);
+    s.unnamed121___U2 = (0);
+  case 1:
+    s.tmp_0 = r0 = s.unnamed121___U2;
+    r0 = pxsim_Array__length(s.unnamed120___U1);
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0 < s.tmp_1);
+    if (!r0) { step = 6; continue; }
+    r0 = pxsim_Array__getAt(s.unnamed120___U1, s.unnamed121___U2);
+    s.factory___13850 = (r0);
+    s.tmp_4 = if_kind_1_mk(s);
+    s.tmp_4.arg0 = s.factory___13850;
+    if (!s.tmp_4.arg0.vtable.iface) {
+      s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "kind");
+    } else {
+      s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["kind"];
+      if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["kind"]; }
+      else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
+     else { s.callLocIdx = 1397; s.pc = 10; return s.tmp_4; }
+    }
+  case 10:
+    r0 = s.retval;
+    s.tmp_3 = r0;
+    r0 = (s.tmp_3 === s.arg0);
+    s.tmp_2 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_2);
+    if (!r0) { step = 4; continue; }
+    s.tmp_5 = if_factory_2_mk(s);
+    s.tmp_5.arg0 = s.factory___13850;
+    s.tmp_5.arg1 = s.arg1;
+    if (!s.tmp_5.arg0.vtable.iface) {
+      setupLambda(s.tmp_5, pxsim_pxtrt.mapGetByString(s.tmp_5.arg0, "factory"), 2);
+      s.callLocIdx = 1398; s.pc = 11; return s.tmp_5;
+    } else {
+      s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["factory"];
+      if (s.tmp_5.fn == null) { setupLambda(s.tmp_5, s.tmp_5.arg0.fields["factory"], 2); s.callLocIdx = 1398; s.pc = 11; return s.tmp_5; }
+      else if (s.tmp_5.fn.isGetter) { s.tmp_5.stage2Call = true; s.callLocIdx = 1398; s.pc = 11; return s.tmp_5;; }
+     else { s.callLocIdx = 1398; s.pc = 11; return s.tmp_5; }
+    }
+  case 11:
+    r0 = s.retval;
+    s.data___13857 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.data___13857);
+    if (!r0) { step = 2; continue; }
+    r0 = s.data___13857;
+    { step = 9; continue; }
+  case 2:
+  case 3:
+  case 4:
+  case 5:
+    r0 = (s.unnamed121___U2 + 1);
+    s.unnamed121___U2 = (r0);
+    { step = 1; continue; }
+  case 6:
+    s.unnamed120___U1 = (undefined);
+  case 7:
+  case 8:
+    r0 = null;
+  case 9:
+    return leave(s, r0)
+  default: oops()
+} } }
+helpers__getFactoryInstance__P3334.info = {"start":2226,"length":348,"line":66,"column":4,"endLine":76,"endColumn":5,"fileName":"pxt_modules/game/assetTemplates.ts","functionName":"_getFactoryInstance","argumentNames":["kind","name"]}
+
+function helpers__getFactoryInstance__P3334_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: helpers__getFactoryInstance__P3334, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  factory___13850: undefined,
+  unnamed120___U1: undefined,
+  unnamed121___U2: undefined,
+  data___13857: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function assets_image__P3328(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.lambdaArgs = null;
+    }
+    r0 = null;
+    return leave(s, r0)
+  default: oops()
+} } }
+assets_image__P3328.info = {"start":931,"length":71,"line":26,"column":4,"endLine":26,"endColumn":75,"fileName":"pxt_modules/game/assetTemplates.ts","functionName":"image","argumentNames":["lits","args"]}
+
+function assets_image__P3328_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: assets_image__P3328, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
+
+
+
+function Inventory_create_item__P4458(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.lambdaArgs = null;
+    }
+    r0 = pxsim_pxtcore_mkClassInstance(Inventory_Item__C4448_VT);
+    s.tmp_0 = r0;
+    s.tmp_1 = Inventory_Item_constructor__P4453_mk(s);
+    s.tmp_1.arg0 = s.tmp_0;
+    s.tmp_1.arg1 = s.arg0;
+    s.tmp_1.arg2 = s.arg1;
+    s.tmp_1.arg3 = s.arg2;
+    s.callLocIdx = 1419; s.pc = 1; return s.tmp_1;
+  case 1:
+    r0 = s.retval;
+    r0 = s.tmp_0;
+    return leave(s, r0)
+  default: oops()
+} } }
+Inventory_create_item__P4458.info = {"start":4269,"length":141,"line":151,"column":4,"endLine":153,"endColumn":5,"fileName":"pxt_modules/Inventory/inventory.ts","functionName":"create_item","argumentNames":["name","image","description"]}
+
+function Inventory_create_item__P4458_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: Inventory_create_item__P4458, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+} }
+
+
+
+
+
+function Inventory_Item_constructor__P4453(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.arg1 = (s.lambdaArgs[1]);
+      s.arg2 = (s.lambdaArgs[2]);
+      s.arg3 = (s.lambdaArgs[3]);
+      s.lambdaArgs = null;
+    }
+    r0 = s.arg0;
+    if (!checkSubtype(r0, Inventory_Item__C4448_VT)) failedCast(r0);
+    s.tmp_0 = r0 = s.arg0;
+    r0 = pxsim_String_.mkEmpty();
+    s.tmp_1 = r0;
+    r0 = (s.tmp_0).fields["tooltip"] = (s.tmp_1);
+    r0 = (s.arg0).fields["name"] = (s.arg1);
+    r0 = (s.arg0).fields["image"] = (s.arg2);
+    r0 = (s.arg0).fields["description"] = (s.arg3);
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+Inventory_Item_constructor__P4453.info = {"start":1638,"length":185,"line":68,"column":8,"endLine":72,"endColumn":9,"fileName":"pxt_modules/Inventory/inventory.ts","functionName":"inline","argumentNames":["this","name","image","description"]}
+
+function Inventory_Item_constructor__P4453_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: Inventory_Item_constructor__P4453, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  arg0: undefined,
+  arg1: undefined,
+  arg2: undefined,
+  arg3: undefined,
 } }
 
 
@@ -20855,115 +21209,6 @@ function helpers_getTilemapByName__P3336_mk(s) {
 
 
 
-function helpers__getFactoryInstance__P3334(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    s.factory___13850 = undefined;
-    s.unnamed120___U1 = undefined;
-    s.unnamed121___U2 = undefined;
-    s.data___13857 = undefined;
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.arg1 = (s.lambdaArgs[1]);
-      s.lambdaArgs = null;
-    }
-    r0 = pxsim_numops_toBoolDecr(globals.factories___5786);
-    if (!r0) { step = 7; continue; }
-    s.factory___13850 = (undefined);
-    s.unnamed120___U1 = (globals.factories___5786);
-    s.unnamed121___U2 = (0);
-  case 1:
-    s.tmp_0 = r0 = s.unnamed121___U2;
-    r0 = pxsim_Array__length(s.unnamed120___U1);
-    s.tmp_1 = r0;
-    r0 = (s.tmp_0 < s.tmp_1);
-    if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed120___U1, s.unnamed121___U2);
-    s.factory___13850 = (r0);
-    s.tmp_4 = if_kind_1_mk(s);
-    s.tmp_4.arg0 = s.factory___13850;
-    if (!s.tmp_4.arg0.vtable.iface) {
-      s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "kind");
-    } else {
-      s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["kind"];
-      if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["kind"]; }
-      else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1397; s.pc = 10; return s.tmp_4; }
-    }
-  case 10:
-    r0 = s.retval;
-    s.tmp_3 = r0;
-    r0 = (s.tmp_3 === s.arg0);
-    s.tmp_2 = r0;
-    r0 = pxsim_numops_toBoolDecr(s.tmp_2);
-    if (!r0) { step = 4; continue; }
-    s.tmp_5 = if_factory_2_mk(s);
-    s.tmp_5.arg0 = s.factory___13850;
-    s.tmp_5.arg1 = s.arg1;
-    if (!s.tmp_5.arg0.vtable.iface) {
-      setupLambda(s.tmp_5, pxsim_pxtrt.mapGetByString(s.tmp_5.arg0, "factory"), 2);
-      s.callLocIdx = 1398; s.pc = 11; return s.tmp_5;
-    } else {
-      s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["factory"];
-      if (s.tmp_5.fn == null) { setupLambda(s.tmp_5, s.tmp_5.arg0.fields["factory"], 2); s.callLocIdx = 1398; s.pc = 11; return s.tmp_5; }
-      else if (s.tmp_5.fn.isGetter) { s.tmp_5.stage2Call = true; s.callLocIdx = 1398; s.pc = 11; return s.tmp_5;; }
-     else { s.callLocIdx = 1398; s.pc = 11; return s.tmp_5; }
-    }
-  case 11:
-    r0 = s.retval;
-    s.data___13857 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.data___13857);
-    if (!r0) { step = 2; continue; }
-    r0 = s.data___13857;
-    { step = 9; continue; }
-  case 2:
-  case 3:
-  case 4:
-  case 5:
-    r0 = (s.unnamed121___U2 + 1);
-    s.unnamed121___U2 = (r0);
-    { step = 1; continue; }
-  case 6:
-    s.unnamed120___U1 = (undefined);
-  case 7:
-  case 8:
-    r0 = null;
-  case 9:
-    return leave(s, r0)
-  default: oops()
-} } }
-helpers__getFactoryInstance__P3334.info = {"start":2226,"length":348,"line":66,"column":4,"endLine":76,"endColumn":5,"fileName":"pxt_modules/game/assetTemplates.ts","functionName":"_getFactoryInstance","argumentNames":["kind","name"]}
-
-function helpers__getFactoryInstance__P3334_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: helpers__getFactoryInstance__P3334, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  tmp_2: undefined,
-  tmp_3: undefined,
-  tmp_4: undefined,
-  tmp_5: undefined,
-  factory___13850: undefined,
-  unnamed120___U1: undefined,
-  unnamed121___U2: undefined,
-  data___13857: undefined,
-  arg0: undefined,
-  arg1: undefined,
-} }
-
-
-
-
-
 function tilemap__P3322(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
@@ -23559,7 +23804,7 @@ function scene_TileOverlapHandler_constructor__P2820_mk(s) {
 
 
 
-function activateInventory__P63102(s) {
+function activateInventory__P128113(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -23576,49 +23821,49 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.arg0);
     if (!r0) { step = 1; continue; }
     s.tmp_0 = controller_moveSprite__P2168_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 520; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 517; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.tmp_0 = createInventory__P63182_mk(s);
-    s.callLocIdx = 521; s.pc = 4; return s.tmp_0;
+    s.tmp_0 = createInventory__P128227_mk(s);
+    s.callLocIdx = 518; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = Sprite_setStayInScreen__P2418_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
+    s.tmp_0.arg0 = globals.inventory___127643;
     s.tmp_0.arg1 = true;
-    s.callLocIdx = 522; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 519; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
+    s.tmp_0.arg0 = globals.inventory___127643;
     s.tmp_1 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 523; s.pc = 7; return s.tmp_1;
+    s.tmp_1.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 520; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 524; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 521; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
-    globals.inInventory___62069 = (true);
+    globals.inInventory___127118 = (true);
     { step = 2; continue; }
   case 1:
     s.tmp_0 = sprites_destroy__P2278_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
+    s.tmp_0.arg0 = globals.inventory___127643;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 525; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 522; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    globals.inInventory___62069 = (false);
+    globals.inInventory___127118 = (false);
     s.tmp_0 = controller_moveSprite__P2168_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_0.arg1 = 50;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 526; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 523; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
   case 2:
@@ -23626,12 +23871,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-activateInventory__P63102.info = {"start":66613,"length":425,"line":752,"column":0,"endLine":764,"endColumn":1,"fileName":"main.ts","functionName":"activateInventory","argumentNames":["goingIn"]}
+activateInventory__P128113.info = {"start":64353,"length":425,"line":729,"column":0,"endLine":741,"endColumn":1,"fileName":"main.ts","functionName":"activateInventory","argumentNames":["goingIn"]}
 
-function activateInventory__P63102_mk(s) {
+function activateInventory__P128113_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: activateInventory__P63102, depth: s.depth + 1,
+        parent: s, fn: activateInventory__P128113, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -25068,7 +25313,7 @@ function Sprite_setStayInScreen__P2418_mk(s) {
 
 
 
-function createInventory__P63182(s) {
+function createInventory__P128227(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -25078,66 +25323,27 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.tmp_0 = Inventory_create_item__P4458_mk(s);
-    s.tmp_0.arg0 = "Dirt";
-    s.tmp_1 = helpers_getImageByName__P3337_mk(s);
-    s.tmp_1.arg0 = "coal2Art";
-    s.callLocIdx = 513; s.pc = 2; return s.tmp_1;
-  case 2:
-    r0 = s.retval;
-    s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = "Dug up from the ground";
+    s.tmp_0 = Inventory_create_inventory__P4496_mk(s);
+    s.tmp_0.arg0 = globals.list___128186;
+    s.tmp_0.arg1 = 999;
     s.callLocIdx = 514; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    globals.dirt___63184 = (r0);
-    s.tmp_0 = Inventory_create_item__P4458_mk(s);
-    s.tmp_0.arg0 = "Coal";
-    r0 = pxsim.image.ofBuffer(_hex63194);
-    s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = "Dug up from the ground";
-    s.callLocIdx = 515; s.pc = 3; return s.tmp_0;
-  case 3:
-    r0 = s.retval;
-    globals.coal___63190 = (r0);
-    s.tmp_0 = Inventory_create_item__P4458_mk(s);
-    s.tmp_0.arg0 = "Stone";
-    r0 = pxsim.image.ofBuffer(_hex63200);
-    s.tmp_0.arg1 = r0;
-    s.tmp_0.arg2 = "Dug up from the ground";
-    s.callLocIdx = 516; s.pc = 4; return s.tmp_0;
-  case 4:
-    r0 = s.retval;
-    globals.stone___63196 = (r0);
-    r0 = pxsim_Array__mk();
-    s.tmp_0 = r0;
-    r0 = pxsim_Array__push(s.tmp_0, globals.dirt___63184);
-    r0 = pxsim_Array__push(s.tmp_0, globals.stone___63196);
-    r0 = pxsim_Array__push(s.tmp_0, globals.coal___63190);
-    s.tmp_1 = Inventory_create_inventory__P4496_mk(s);
-    s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = 50;
-    s.callLocIdx = 517; s.pc = 5; return s.tmp_1;
-  case 5:
-    r0 = s.retval;
-    globals.inventory___62548 = (r0);
+    globals.inventory___127643 = (r0);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-createInventory__P63182.info = {"start":64739,"length":1670,"line":706,"column":0,"endLine":745,"endColumn":1,"fileName":"main.ts","functionName":"createInventory","argumentNames":[]}
+createInventory__P128227.info = {"start":64064,"length":85,"line":720,"column":0,"endLine":722,"endColumn":1,"fileName":"main.ts","functionName":"createInventory","argumentNames":[]}
 
-function createInventory__P63182_mk(s) {
+function createInventory__P128227_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: createInventory__P63182, depth: s.depth + 1,
+        parent: s, fn: createInventory__P128227, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
-  tmp_1: undefined,
 } }
 
-const _hex63194 = pxsim.BufferMethods.createBufferFromHex("8704100010000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbfbbfbbbbbbbbbbbbfbbfbbbbffbfbbbbfbbfbbbbffbfbbbbbbbbbbbbffbffbffbbbbbbbbbbbbfbffbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbfbffffbbffbfbbbbfbffffbbffbfbbbbfbffffbbffbfbbbbfbffffbbffbfbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
-const _hex63200 = pxsim.BufferMethods.createBufferFromHex("8704100010000000bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbcbbbbbbbbbbccbbbcbbcbbbbcbbcbbbbbbbcbbbbcbbcbbbbbbbcbbbbcbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbcbbbbbcbbbbbbbbbcbbbbbcbbcbbbbbbcbbbbbbbbcbbbbbbcbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
 
 
 
@@ -25866,175 +26072,6 @@ function scene_screenWidth__P2882_mk(s) {
 
 
 
-function helpers_getImageByName__P3337(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.lambdaArgs = null;
-    }
-    s.tmp_0 = helpers__getFactoryInstance__P3334_mk(s);
-    s.tmp_0.arg0 = "image";
-    s.tmp_0.arg1 = s.arg0;
-    s.callLocIdx = 1400; s.pc = 1; return s.tmp_0;
-  case 1:
-    r0 = s.retval;
-    return leave(s, r0)
-  default: oops()
-} } }
-helpers_getImageByName__P3337.info = {"start":2881,"length":103,"line":87,"column":4,"endLine":89,"endColumn":5,"fileName":"pxt_modules/game/assetTemplates.ts","functionName":"getImageByName","argumentNames":["name"]}
-
-function helpers_getImageByName__P3337_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: helpers_getImageByName__P3337, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  arg0: undefined,
-} }
-
-
-
-
-
-function assets_image__P3328(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.arg1 = (s.lambdaArgs[1]);
-      s.lambdaArgs = null;
-    }
-    r0 = null;
-    return leave(s, r0)
-  default: oops()
-} } }
-assets_image__P3328.info = {"start":931,"length":71,"line":26,"column":4,"endLine":26,"endColumn":75,"fileName":"pxt_modules/game/assetTemplates.ts","functionName":"image","argumentNames":["lits","args"]}
-
-function assets_image__P3328_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: assets_image__P3328, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  arg0: undefined,
-  arg1: undefined,
-} }
-
-
-
-
-
-function Inventory_create_item__P4458(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.arg1 = (s.lambdaArgs[1]);
-      s.arg2 = (s.lambdaArgs[2]);
-      s.lambdaArgs = null;
-    }
-    r0 = pxsim_pxtcore_mkClassInstance(Inventory_Item__C4448_VT);
-    s.tmp_0 = r0;
-    s.tmp_1 = Inventory_Item_constructor__P4453_mk(s);
-    s.tmp_1.arg0 = s.tmp_0;
-    s.tmp_1.arg1 = s.arg0;
-    s.tmp_1.arg2 = s.arg1;
-    s.tmp_1.arg3 = s.arg2;
-    s.callLocIdx = 1419; s.pc = 1; return s.tmp_1;
-  case 1:
-    r0 = s.retval;
-    r0 = s.tmp_0;
-    return leave(s, r0)
-  default: oops()
-} } }
-Inventory_create_item__P4458.info = {"start":4269,"length":141,"line":151,"column":4,"endLine":153,"endColumn":5,"fileName":"pxt_modules/Inventory/inventory.ts","functionName":"create_item","argumentNames":["name","image","description"]}
-
-function Inventory_create_item__P4458_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: Inventory_create_item__P4458, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  arg0: undefined,
-  arg1: undefined,
-  arg2: undefined,
-} }
-
-
-
-
-
-function Inventory_Item_constructor__P4453(s) {
-let r0 = s.r0, step = s.pc;
-s.pc = -1;
-
-
-while (true) {
-if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
-switch (step) {
-  case 0:
-
-    if (s.lambdaArgs) {
-      s.arg0 = (s.lambdaArgs[0]);
-      s.arg1 = (s.lambdaArgs[1]);
-      s.arg2 = (s.lambdaArgs[2]);
-      s.arg3 = (s.lambdaArgs[3]);
-      s.lambdaArgs = null;
-    }
-    r0 = s.arg0;
-    if (!checkSubtype(r0, Inventory_Item__C4448_VT)) failedCast(r0);
-    s.tmp_0 = r0 = s.arg0;
-    r0 = pxsim_String_.mkEmpty();
-    s.tmp_1 = r0;
-    r0 = (s.tmp_0).fields["tooltip"] = (s.tmp_1);
-    r0 = (s.arg0).fields["name"] = (s.arg1);
-    r0 = (s.arg0).fields["image"] = (s.arg2);
-    r0 = (s.arg0).fields["description"] = (s.arg3);
-    r0 = undefined;
-    return leave(s, r0)
-  default: oops()
-} } }
-Inventory_Item_constructor__P4453.info = {"start":1638,"length":185,"line":68,"column":8,"endLine":72,"endColumn":9,"fileName":"pxt_modules/Inventory/inventory.ts","functionName":"inline","argumentNames":["this","name","image","description"]}
-
-function Inventory_Item_constructor__P4453_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: Inventory_Item_constructor__P4453, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  arg0: undefined,
-  arg1: undefined,
-  arg2: undefined,
-  arg3: undefined,
-} }
-
-
-
-
-
 function controller_Controller_onButtonEvent__P2154(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
@@ -26090,7 +26127,7 @@ function controller_Controller_onButtonEvent__P2154_mk(s) {
 
 
 
-function Mine__P62516(s) {
+function Mine__P127565(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -26110,7 +26147,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 15; continue; }
     s.tmp_2 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
+    s.tmp_2.arg0 = globals.Player_character___127122;
     s.tmp_2.arg1 = 3;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "Stone";
@@ -26126,7 +26163,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_5 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_6 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_6.arg0 = globals.Player_character___62073;
+    s.tmp_6.arg0 = globals.Player_character___127122;
     s.callLocIdx = 263; s.pc = 52; return s.tmp_6;
   case 52:
     r0 = s.retval;
@@ -26137,10 +26174,10 @@ switch (step) {
     r0 = s.retval;
     s.tmp_4 = r0;
     r0 = s.tmp_4.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
+    s.tmp_2.arg0 = globals.Player_character___127122;
     s.callLocIdx = 266; s.pc = 54; return s.tmp_2;
   case 54:
     r0 = s.retval;
@@ -26151,26 +26188,24 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 0;
     s.tmp_0.arg3 = s.arg1;
     s.callLocIdx = 269; s.pc = 55; return s.tmp_0;
   case 55:
     r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 1;
     s.callLocIdx = 270; s.pc = 56; return s.tmp_0;
   case 56:
     r0 = s.retval;
   case 1:
   case 2:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 3;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile";
@@ -26186,7 +26221,7 @@ switch (step) {
     if (!r0) { step = 3; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
+    s.tmp_5.arg0 = globals.Player_character___127122;
     s.callLocIdx = 273; s.pc = 60; return s.tmp_5;
   case 60:
     r0 = s.retval;
@@ -26197,10 +26232,10 @@ switch (step) {
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
+    s.tmp_2.arg0 = globals.Player_character___127122;
     s.callLocIdx = 276; s.pc = 62; return s.tmp_2;
   case 62:
     r0 = s.retval;
@@ -26211,27 +26246,25 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 0;
     s.tmp_0.arg3 = s.arg1;
     s.callLocIdx = 279; s.pc = 63; return s.tmp_0;
   case 63:
     r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
+    globals.Type_of_block_being_mined___127183 = (0);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
     s.callLocIdx = 280; s.pc = 64; return s.tmp_0;
   case 64:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (0);
   case 3:
   case 4:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 3;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile0";
@@ -26247,7 +26280,7 @@ switch (step) {
     if (!r0) { step = 5; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
+    s.tmp_5.arg0 = globals.Player_character___127122;
     s.callLocIdx = 283; s.pc = 68; return s.tmp_5;
   case 68:
     r0 = s.retval;
@@ -26258,10 +26291,10 @@ switch (step) {
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
+    s.tmp_2.arg0 = globals.Player_character___127122;
     s.callLocIdx = 286; s.pc = 70; return s.tmp_2;
   case 70:
     r0 = s.retval;
@@ -26272,267 +26305,264 @@ switch (step) {
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 1;
     s.tmp_0.arg3 = s.arg1;
     s.callLocIdx = 289; s.pc = 71; return s.tmp_0;
   case 71:
     r0 = s.retval;
     s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
+    s.tmp_0.arg0 = globals.inventory___127643;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = 0;
     s.callLocIdx = 290; s.pc = 72; return s.tmp_0;
   case 72:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (1);
+    globals.Type_of_block_being_mined___127183 = (1);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 291; s.pc = 73; return s.tmp_0;
+  case 73:
+    r0 = s.retval;
   case 5:
   case 6:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 3;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile1";
-    s.callLocIdx = 291; s.pc = 74; return s.tmp_2;
-  case 74:
+    s.callLocIdx = 292; s.pc = 75; return s.tmp_2;
+  case 75:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 292; s.pc = 73; return s.tmp_1;
-  case 73:
+    s.callLocIdx = 293; s.pc = 74; return s.tmp_1;
+  case 74:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 293; s.pc = 76; return s.tmp_5;
-  case 76:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 294; s.pc = 77; return s.tmp_5;
+  case 77:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 3;
-    s.callLocIdx = 294; s.pc = 75; return s.tmp_4;
-  case 75:
+    s.callLocIdx = 295; s.pc = 76; return s.tmp_4;
+  case 76:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 296; s.pc = 78; return s.tmp_2;
-  case 78:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 297; s.pc = 79; return s.tmp_2;
+  case 79:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 3;
-    s.callLocIdx = 297; s.pc = 77; return s.tmp_1;
-  case 77:
+    s.callLocIdx = 298; s.pc = 78; return s.tmp_1;
+  case 78:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 2;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 299; s.pc = 79; return s.tmp_0;
-  case 79:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 300; s.pc = 80; return s.tmp_0;
   case 80:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (2);
+    globals.Type_of_block_being_mined___127183 = (2);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 301; s.pc = 81; return s.tmp_0;
+  case 81:
+    r0 = s.retval;
   case 7:
   case 8:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 3;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile2";
-    s.callLocIdx = 301; s.pc = 82; return s.tmp_2;
-  case 82:
+    s.callLocIdx = 302; s.pc = 83; return s.tmp_2;
+  case 83:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 302; s.pc = 81; return s.tmp_1;
-  case 81:
+    s.callLocIdx = 303; s.pc = 82; return s.tmp_1;
+  case 82:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 303; s.pc = 84; return s.tmp_5;
-  case 84:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 304; s.pc = 85; return s.tmp_5;
+  case 85:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 3;
-    s.callLocIdx = 304; s.pc = 83; return s.tmp_4;
-  case 83:
+    s.callLocIdx = 305; s.pc = 84; return s.tmp_4;
+  case 84:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 306; s.pc = 86; return s.tmp_2;
-  case 86:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 307; s.pc = 87; return s.tmp_2;
+  case 87:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 3;
-    s.callLocIdx = 307; s.pc = 85; return s.tmp_1;
-  case 85:
+    s.callLocIdx = 308; s.pc = 86; return s.tmp_1;
+  case 86:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 3;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 309; s.pc = 87; return s.tmp_0;
-  case 87:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 310; s.pc = 88; return s.tmp_0;
   case 88:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (3);
+    globals.Type_of_block_being_mined___127183 = (3);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 311; s.pc = 89; return s.tmp_0;
+  case 89:
+    r0 = s.retval;
   case 9:
   case 10:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 3;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile4";
-    s.callLocIdx = 311; s.pc = 90; return s.tmp_2;
-  case 90:
+    s.callLocIdx = 312; s.pc = 91; return s.tmp_2;
+  case 91:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 312; s.pc = 89; return s.tmp_1;
-  case 89:
+    s.callLocIdx = 313; s.pc = 90; return s.tmp_1;
+  case 90:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 313; s.pc = 92; return s.tmp_5;
-  case 92:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 314; s.pc = 93; return s.tmp_5;
+  case 93:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 3;
-    s.callLocIdx = 314; s.pc = 91; return s.tmp_4;
-  case 91:
+    s.callLocIdx = 315; s.pc = 92; return s.tmp_4;
+  case 92:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 316; s.pc = 94; return s.tmp_2;
-  case 94:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 317; s.pc = 95; return s.tmp_2;
+  case 95:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 3;
-    s.callLocIdx = 317; s.pc = 93; return s.tmp_1;
-  case 93:
+    s.callLocIdx = 318; s.pc = 94; return s.tmp_1;
+  case 94:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 4;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 319; s.pc = 95; return s.tmp_0;
-  case 95:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 320; s.pc = 96; return s.tmp_0;
   case 96:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (4);
+    globals.Type_of_block_being_mined___127183 = (4);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 321; s.pc = 97; return s.tmp_0;
+  case 97:
+    r0 = s.retval;
   case 11:
   case 12:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 3;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile3";
-    s.callLocIdx = 321; s.pc = 98; return s.tmp_2;
-  case 98:
+    s.callLocIdx = 322; s.pc = 99; return s.tmp_2;
+  case 99:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 322; s.pc = 97; return s.tmp_1;
-  case 97:
+    s.callLocIdx = 323; s.pc = 98; return s.tmp_1;
+  case 98:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 323; s.pc = 100; return s.tmp_5;
-  case 100:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 324; s.pc = 101; return s.tmp_5;
+  case 101:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 3;
-    s.callLocIdx = 324; s.pc = 99; return s.tmp_4;
-  case 99:
+    s.callLocIdx = 325; s.pc = 100; return s.tmp_4;
+  case 100:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 326; s.pc = 102; return s.tmp_2;
-  case 102:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 327; s.pc = 103; return s.tmp_2;
+  case 103:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 3;
-    s.callLocIdx = 327; s.pc = 101; return s.tmp_1;
-  case 101:
+    s.callLocIdx = 328; s.pc = 102; return s.tmp_1;
+  case 102:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 5;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 329; s.pc = 103; return s.tmp_0;
-  case 103:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 330; s.pc = 104; return s.tmp_0;
   case 104:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (5);
+    globals.Type_of_block_being_mined___127183 = (5);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 331; s.pc = 105; return s.tmp_0;
+  case 105:
+    r0 = s.retval;
   case 13:
   case 14:
     { step = 48; continue; }
@@ -26542,430 +26572,416 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 30; continue; }
     s.tmp_2 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
+    s.tmp_2.arg0 = globals.Player_character___127122;
     s.tmp_2.arg1 = 0;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "Stone";
-    s.callLocIdx = 331; s.pc = 106; return s.tmp_3;
-  case 106:
+    s.callLocIdx = 332; s.pc = 107; return s.tmp_3;
+  case 107:
     r0 = s.retval;
     s.tmp_2.arg2 = r0;
-    s.callLocIdx = 332; s.pc = 105; return s.tmp_2;
-  case 105:
+    s.callLocIdx = 333; s.pc = 106; return s.tmp_2;
+  case 106:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 16; continue; }
     s.tmp_5 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_6 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_6.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 333; s.pc = 108; return s.tmp_6;
-  case 108:
+    s.tmp_6.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 334; s.pc = 109; return s.tmp_6;
+  case 109:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
     s.tmp_5.arg1 = 0;
-    s.callLocIdx = 334; s.pc = 107; return s.tmp_5;
-  case 107:
+    s.callLocIdx = 335; s.pc = 108; return s.tmp_5;
+  case 108:
     r0 = s.retval;
     s.tmp_4 = r0;
     r0 = s.tmp_4.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 336; s.pc = 110; return s.tmp_2;
-  case 110:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 337; s.pc = 111; return s.tmp_2;
+  case 111:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 0;
-    s.callLocIdx = 337; s.pc = 109; return s.tmp_1;
-  case 109:
+    s.callLocIdx = 338; s.pc = 110; return s.tmp_1;
+  case 110:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 6;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 339; s.pc = 111; return s.tmp_0;
-  case 111:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 340; s.pc = 112; return s.tmp_0;
   case 112:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (6);
+    globals.Type_of_block_being_mined___127183 = (6);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 1;
+    s.callLocIdx = 341; s.pc = 113; return s.tmp_0;
+  case 113:
+    r0 = s.retval;
   case 16:
   case 17:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 0;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile";
-    s.callLocIdx = 341; s.pc = 114; return s.tmp_2;
-  case 114:
+    s.callLocIdx = 342; s.pc = 115; return s.tmp_2;
+  case 115:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 342; s.pc = 113; return s.tmp_1;
-  case 113:
+    s.callLocIdx = 343; s.pc = 114; return s.tmp_1;
+  case 114:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 18; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 343; s.pc = 116; return s.tmp_5;
-  case 116:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 344; s.pc = 117; return s.tmp_5;
+  case 117:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 0;
-    s.callLocIdx = 344; s.pc = 115; return s.tmp_4;
-  case 115:
+    s.callLocIdx = 345; s.pc = 116; return s.tmp_4;
+  case 116:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 346; s.pc = 118; return s.tmp_2;
-  case 118:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 347; s.pc = 119; return s.tmp_2;
+  case 119:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 0;
-    s.callLocIdx = 347; s.pc = 117; return s.tmp_1;
-  case 117:
+    s.callLocIdx = 348; s.pc = 118; return s.tmp_1;
+  case 118:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 0;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 349; s.pc = 119; return s.tmp_0;
-  case 119:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 350; s.pc = 120; return s.tmp_0;
   case 120:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (0);
+    globals.Type_of_block_being_mined___127183 = (0);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 1;
+    s.callLocIdx = 351; s.pc = 121; return s.tmp_0;
+  case 121:
+    r0 = s.retval;
   case 18:
   case 19:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 0;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile0";
-    s.callLocIdx = 351; s.pc = 122; return s.tmp_2;
-  case 122:
+    s.callLocIdx = 352; s.pc = 123; return s.tmp_2;
+  case 123:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 352; s.pc = 121; return s.tmp_1;
-  case 121:
+    s.callLocIdx = 353; s.pc = 122; return s.tmp_1;
+  case 122:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 20; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 353; s.pc = 124; return s.tmp_5;
-  case 124:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 354; s.pc = 125; return s.tmp_5;
+  case 125:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 0;
-    s.callLocIdx = 354; s.pc = 123; return s.tmp_4;
-  case 123:
+    s.callLocIdx = 355; s.pc = 124; return s.tmp_4;
+  case 124:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 356; s.pc = 126; return s.tmp_2;
-  case 126:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 357; s.pc = 127; return s.tmp_2;
+  case 127:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 0;
-    s.callLocIdx = 357; s.pc = 125; return s.tmp_1;
-  case 125:
+    s.callLocIdx = 358; s.pc = 126; return s.tmp_1;
+  case 126:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 1;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 359; s.pc = 127; return s.tmp_0;
-  case 127:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 360; s.pc = 128; return s.tmp_0;
   case 128:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (1);
+    globals.Type_of_block_being_mined___127183 = (1);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 1;
+    s.callLocIdx = 361; s.pc = 129; return s.tmp_0;
+  case 129:
+    r0 = s.retval;
   case 20:
   case 21:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 0;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile1";
-    s.callLocIdx = 361; s.pc = 130; return s.tmp_2;
-  case 130:
+    s.callLocIdx = 362; s.pc = 131; return s.tmp_2;
+  case 131:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 362; s.pc = 129; return s.tmp_1;
-  case 129:
+    s.callLocIdx = 363; s.pc = 130; return s.tmp_1;
+  case 130:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 22; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 363; s.pc = 132; return s.tmp_5;
-  case 132:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 364; s.pc = 133; return s.tmp_5;
+  case 133:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 0;
-    s.callLocIdx = 364; s.pc = 131; return s.tmp_4;
-  case 131:
+    s.callLocIdx = 365; s.pc = 132; return s.tmp_4;
+  case 132:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 366; s.pc = 134; return s.tmp_2;
-  case 134:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 367; s.pc = 135; return s.tmp_2;
+  case 135:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 0;
-    s.callLocIdx = 367; s.pc = 133; return s.tmp_1;
-  case 133:
+    s.callLocIdx = 368; s.pc = 134; return s.tmp_1;
+  case 134:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 2;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 369; s.pc = 135; return s.tmp_0;
-  case 135:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 370; s.pc = 136; return s.tmp_0;
   case 136:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (2);
+    globals.Type_of_block_being_mined___127183 = (2);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 1;
+    s.callLocIdx = 371; s.pc = 137; return s.tmp_0;
+  case 137:
+    r0 = s.retval;
   case 22:
   case 23:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 0;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile2";
-    s.callLocIdx = 371; s.pc = 138; return s.tmp_2;
-  case 138:
+    s.callLocIdx = 372; s.pc = 139; return s.tmp_2;
+  case 139:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 372; s.pc = 137; return s.tmp_1;
-  case 137:
+    s.callLocIdx = 373; s.pc = 138; return s.tmp_1;
+  case 138:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 24; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 373; s.pc = 140; return s.tmp_5;
-  case 140:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 374; s.pc = 141; return s.tmp_5;
+  case 141:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 0;
-    s.callLocIdx = 374; s.pc = 139; return s.tmp_4;
-  case 139:
+    s.callLocIdx = 375; s.pc = 140; return s.tmp_4;
+  case 140:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 376; s.pc = 142; return s.tmp_2;
-  case 142:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 377; s.pc = 143; return s.tmp_2;
+  case 143:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 0;
-    s.callLocIdx = 377; s.pc = 141; return s.tmp_1;
-  case 141:
+    s.callLocIdx = 378; s.pc = 142; return s.tmp_1;
+  case 142:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 3;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 379; s.pc = 143; return s.tmp_0;
-  case 143:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 380; s.pc = 144; return s.tmp_0;
   case 144:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (3);
+    globals.Type_of_block_being_mined___127183 = (3);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 1;
+    s.callLocIdx = 381; s.pc = 145; return s.tmp_0;
+  case 145:
+    r0 = s.retval;
   case 24:
   case 25:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 3;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile4";
-    s.callLocIdx = 381; s.pc = 146; return s.tmp_2;
-  case 146:
+    s.callLocIdx = 382; s.pc = 147; return s.tmp_2;
+  case 147:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 382; s.pc = 145; return s.tmp_1;
-  case 145:
+    s.callLocIdx = 383; s.pc = 146; return s.tmp_1;
+  case 146:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 26; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 383; s.pc = 148; return s.tmp_5;
-  case 148:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 384; s.pc = 149; return s.tmp_5;
+  case 149:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 3;
-    s.callLocIdx = 384; s.pc = 147; return s.tmp_4;
-  case 147:
+    s.callLocIdx = 385; s.pc = 148; return s.tmp_4;
+  case 148:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 386; s.pc = 150; return s.tmp_2;
-  case 150:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 387; s.pc = 151; return s.tmp_2;
+  case 151:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 3;
-    s.callLocIdx = 387; s.pc = 149; return s.tmp_1;
-  case 149:
+    s.callLocIdx = 388; s.pc = 150; return s.tmp_1;
+  case 150:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 4;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 389; s.pc = 151; return s.tmp_0;
-  case 151:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 390; s.pc = 152; return s.tmp_0;
   case 152:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (4);
+    globals.Type_of_block_being_mined___127183 = (4);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 1;
+    s.callLocIdx = 391; s.pc = 153; return s.tmp_0;
+  case 153:
+    r0 = s.retval;
   case 26:
   case 27:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 0;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile3";
-    s.callLocIdx = 391; s.pc = 154; return s.tmp_2;
-  case 154:
+    s.callLocIdx = 392; s.pc = 155; return s.tmp_2;
+  case 155:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 392; s.pc = 153; return s.tmp_1;
-  case 153:
+    s.callLocIdx = 393; s.pc = 154; return s.tmp_1;
+  case 154:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 28; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 393; s.pc = 156; return s.tmp_5;
-  case 156:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 394; s.pc = 157; return s.tmp_5;
+  case 157:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 0;
-    s.callLocIdx = 394; s.pc = 155; return s.tmp_4;
-  case 155:
+    s.callLocIdx = 395; s.pc = 156; return s.tmp_4;
+  case 156:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 396; s.pc = 158; return s.tmp_2;
-  case 158:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 397; s.pc = 159; return s.tmp_2;
+  case 159:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 0;
-    s.callLocIdx = 397; s.pc = 157; return s.tmp_1;
-  case 157:
+    s.callLocIdx = 398; s.pc = 158; return s.tmp_1;
+  case 158:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 5;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 399; s.pc = 159; return s.tmp_0;
-  case 159:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 400; s.pc = 160; return s.tmp_0;
   case 160:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (5);
+    globals.Type_of_block_being_mined___127183 = (5);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 1;
+    s.callLocIdx = 401; s.pc = 161; return s.tmp_0;
+  case 161:
+    r0 = s.retval;
   case 28:
   case 29:
     { step = 47; continue; }
@@ -26975,430 +26991,416 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 45; continue; }
     s.tmp_2 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
+    s.tmp_2.arg0 = globals.Player_character___127122;
     s.tmp_2.arg1 = 2;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "Stone";
-    s.callLocIdx = 401; s.pc = 162; return s.tmp_3;
-  case 162:
+    s.callLocIdx = 402; s.pc = 163; return s.tmp_3;
+  case 163:
     r0 = s.retval;
     s.tmp_2.arg2 = r0;
-    s.callLocIdx = 402; s.pc = 161; return s.tmp_2;
-  case 161:
+    s.callLocIdx = 403; s.pc = 162; return s.tmp_2;
+  case 162:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 31; continue; }
     s.tmp_5 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_6 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_6.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 403; s.pc = 164; return s.tmp_6;
-  case 164:
+    s.tmp_6.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 404; s.pc = 165; return s.tmp_6;
+  case 165:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
     s.tmp_5.arg1 = 2;
-    s.callLocIdx = 404; s.pc = 163; return s.tmp_5;
-  case 163:
+    s.callLocIdx = 405; s.pc = 164; return s.tmp_5;
+  case 164:
     r0 = s.retval;
     s.tmp_4 = r0;
     r0 = s.tmp_4.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 406; s.pc = 166; return s.tmp_2;
-  case 166:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 407; s.pc = 167; return s.tmp_2;
+  case 167:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 407; s.pc = 165; return s.tmp_1;
-  case 165:
+    s.callLocIdx = 408; s.pc = 166; return s.tmp_1;
+  case 166:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 1;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 409; s.pc = 167; return s.tmp_0;
-  case 167:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 410; s.pc = 168; return s.tmp_0;
   case 168:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (6);
+    globals.Type_of_block_being_mined___127183 = (6);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 411; s.pc = 169; return s.tmp_0;
+  case 169:
+    r0 = s.retval;
   case 31:
   case 32:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 2;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile";
-    s.callLocIdx = 411; s.pc = 170; return s.tmp_2;
-  case 170:
+    s.callLocIdx = 412; s.pc = 171; return s.tmp_2;
+  case 171:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 412; s.pc = 169; return s.tmp_1;
-  case 169:
+    s.callLocIdx = 413; s.pc = 170; return s.tmp_1;
+  case 170:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 33; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 413; s.pc = 172; return s.tmp_5;
-  case 172:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 414; s.pc = 173; return s.tmp_5;
+  case 173:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 2;
-    s.callLocIdx = 414; s.pc = 171; return s.tmp_4;
-  case 171:
+    s.callLocIdx = 415; s.pc = 172; return s.tmp_4;
+  case 172:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 416; s.pc = 174; return s.tmp_2;
-  case 174:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 417; s.pc = 175; return s.tmp_2;
+  case 175:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 417; s.pc = 173; return s.tmp_1;
-  case 173:
+    s.callLocIdx = 418; s.pc = 174; return s.tmp_1;
+  case 174:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 0;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 419; s.pc = 175; return s.tmp_0;
-  case 175:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 420; s.pc = 176; return s.tmp_0;
   case 176:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (0);
+    globals.Type_of_block_being_mined___127183 = (0);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 421; s.pc = 177; return s.tmp_0;
+  case 177:
+    r0 = s.retval;
   case 33:
   case 34:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 2;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile0";
-    s.callLocIdx = 421; s.pc = 178; return s.tmp_2;
-  case 178:
+    s.callLocIdx = 422; s.pc = 179; return s.tmp_2;
+  case 179:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 422; s.pc = 177; return s.tmp_1;
-  case 177:
+    s.callLocIdx = 423; s.pc = 178; return s.tmp_1;
+  case 178:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 35; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 423; s.pc = 180; return s.tmp_5;
-  case 180:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 424; s.pc = 181; return s.tmp_5;
+  case 181:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 2;
-    s.callLocIdx = 424; s.pc = 179; return s.tmp_4;
-  case 179:
+    s.callLocIdx = 425; s.pc = 180; return s.tmp_4;
+  case 180:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 426; s.pc = 182; return s.tmp_2;
-  case 182:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 427; s.pc = 183; return s.tmp_2;
+  case 183:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 427; s.pc = 181; return s.tmp_1;
-  case 181:
+    s.callLocIdx = 428; s.pc = 182; return s.tmp_1;
+  case 182:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 1;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 429; s.pc = 183; return s.tmp_0;
-  case 183:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 430; s.pc = 184; return s.tmp_0;
   case 184:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (1);
+    globals.Type_of_block_being_mined___127183 = (1);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 431; s.pc = 185; return s.tmp_0;
+  case 185:
+    r0 = s.retval;
   case 35:
   case 36:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 2;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile1";
-    s.callLocIdx = 431; s.pc = 186; return s.tmp_2;
-  case 186:
+    s.callLocIdx = 432; s.pc = 187; return s.tmp_2;
+  case 187:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 432; s.pc = 185; return s.tmp_1;
-  case 185:
+    s.callLocIdx = 433; s.pc = 186; return s.tmp_1;
+  case 186:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 37; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 433; s.pc = 188; return s.tmp_5;
-  case 188:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 434; s.pc = 189; return s.tmp_5;
+  case 189:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 2;
-    s.callLocIdx = 434; s.pc = 187; return s.tmp_4;
-  case 187:
+    s.callLocIdx = 435; s.pc = 188; return s.tmp_4;
+  case 188:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 436; s.pc = 190; return s.tmp_2;
-  case 190:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 437; s.pc = 191; return s.tmp_2;
+  case 191:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 437; s.pc = 189; return s.tmp_1;
-  case 189:
+    s.callLocIdx = 438; s.pc = 190; return s.tmp_1;
+  case 190:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 2;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 439; s.pc = 191; return s.tmp_0;
-  case 191:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 440; s.pc = 192; return s.tmp_0;
   case 192:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (2);
+    globals.Type_of_block_being_mined___127183 = (2);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 441; s.pc = 193; return s.tmp_0;
+  case 193:
+    r0 = s.retval;
   case 37:
   case 38:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 2;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile2";
-    s.callLocIdx = 441; s.pc = 194; return s.tmp_2;
-  case 194:
+    s.callLocIdx = 442; s.pc = 195; return s.tmp_2;
+  case 195:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 442; s.pc = 193; return s.tmp_1;
-  case 193:
+    s.callLocIdx = 443; s.pc = 194; return s.tmp_1;
+  case 194:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 39; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 443; s.pc = 196; return s.tmp_5;
-  case 196:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 444; s.pc = 197; return s.tmp_5;
+  case 197:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 2;
-    s.callLocIdx = 444; s.pc = 195; return s.tmp_4;
-  case 195:
+    s.callLocIdx = 445; s.pc = 196; return s.tmp_4;
+  case 196:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 446; s.pc = 198; return s.tmp_2;
-  case 198:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 447; s.pc = 199; return s.tmp_2;
+  case 199:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 447; s.pc = 197; return s.tmp_1;
-  case 197:
+    s.callLocIdx = 448; s.pc = 198; return s.tmp_1;
+  case 198:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 0;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 449; s.pc = 199; return s.tmp_0;
-  case 199:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 450; s.pc = 200; return s.tmp_0;
   case 200:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (3);
+    globals.Type_of_block_being_mined___127183 = (3);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 451; s.pc = 201; return s.tmp_0;
+  case 201:
+    r0 = s.retval;
   case 39:
   case 40:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 2;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile4";
-    s.callLocIdx = 451; s.pc = 202; return s.tmp_2;
-  case 202:
+    s.callLocIdx = 452; s.pc = 203; return s.tmp_2;
+  case 203:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 452; s.pc = 201; return s.tmp_1;
-  case 201:
+    s.callLocIdx = 453; s.pc = 202; return s.tmp_1;
+  case 202:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 41; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 453; s.pc = 204; return s.tmp_5;
-  case 204:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 454; s.pc = 205; return s.tmp_5;
+  case 205:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 2;
-    s.callLocIdx = 454; s.pc = 203; return s.tmp_4;
-  case 203:
+    s.callLocIdx = 455; s.pc = 204; return s.tmp_4;
+  case 204:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 456; s.pc = 206; return s.tmp_2;
-  case 206:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 457; s.pc = 207; return s.tmp_2;
+  case 207:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 457; s.pc = 205; return s.tmp_1;
-  case 205:
+    s.callLocIdx = 458; s.pc = 206; return s.tmp_1;
+  case 206:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 4;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 459; s.pc = 207; return s.tmp_0;
-  case 207:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 460; s.pc = 208; return s.tmp_0;
   case 208:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (4);
+    globals.Type_of_block_being_mined___127183 = (4);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 461; s.pc = 209; return s.tmp_0;
+  case 209:
+    r0 = s.retval;
   case 41:
   case 42:
     s.tmp_1 = Sprite_tileKindAt__P2423_mk(s);
-    s.tmp_1.arg0 = globals.Player_character___62073;
+    s.tmp_1.arg0 = globals.Player_character___127122;
     s.tmp_1.arg1 = 2;
     s.tmp_2 = helpers_getTileByName__P3339_mk(s);
     s.tmp_2.arg0 = "myTile3";
-    s.callLocIdx = 461; s.pc = 210; return s.tmp_2;
-  case 210:
+    s.callLocIdx = 462; s.pc = 211; return s.tmp_2;
+  case 211:
     r0 = s.retval;
     s.tmp_1.arg2 = r0;
-    s.callLocIdx = 462; s.pc = 209; return s.tmp_1;
-  case 209:
+    s.callLocIdx = 463; s.pc = 210; return s.tmp_1;
+  case 210:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 43; continue; }
     s.tmp_4 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_5 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_5.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 463; s.pc = 212; return s.tmp_5;
-  case 212:
+    s.tmp_5.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 464; s.pc = 213; return s.tmp_5;
+  case 213:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = 2;
-    s.callLocIdx = 464; s.pc = 211; return s.tmp_4;
-  case 211:
+    s.callLocIdx = 465; s.pc = 212; return s.tmp_4;
+  case 212:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = s.tmp_3.fields["_col"];
-    globals.whereToBreakCol___62527 = (r0);
+    globals.whereToBreakCol___127576 = (r0);
     s.tmp_1 = tiles_Location_getNeighboringLocation__P2709_mk(s);
     s.tmp_2 = Sprite_tilemapLocation__P2425_mk(s);
-    s.tmp_2.arg0 = globals.Player_character___62073;
-    s.callLocIdx = 466; s.pc = 214; return s.tmp_2;
-  case 214:
+    s.tmp_2.arg0 = globals.Player_character___127122;
+    s.callLocIdx = 467; s.pc = 215; return s.tmp_2;
+  case 215:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 467; s.pc = 213; return s.tmp_1;
-  case 213:
+    s.callLocIdx = 468; s.pc = 214; return s.tmp_1;
+  case 214:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = s.tmp_0.fields["_row"];
-    globals.whereToBreakRow___62535 = (r0);
-    s.tmp_0 = BlockBreak__P62099_mk(s);
-    s.tmp_0.arg0 = globals.whereToBreakCol___62527;
-    s.tmp_0.arg1 = globals.whereToBreakRow___62535;
+    globals.whereToBreakRow___127584 = (r0);
+    s.tmp_0 = BlockBreak__P127148_mk(s);
+    s.tmp_0.arg0 = globals.whereToBreakCol___127576;
+    s.tmp_0.arg1 = globals.whereToBreakRow___127584;
     s.tmp_0.arg2 = 1;
     s.tmp_0.arg3 = s.arg1;
-    s.callLocIdx = 469; s.pc = 215; return s.tmp_0;
-  case 215:
-    r0 = s.retval;
-    s.tmp_0 = Inventory_Inventory_change_number__P4487_mk(s);
-    s.tmp_0.arg0 = globals.inventory___62548;
-    s.tmp_0.arg1 = 0;
-    s.tmp_0.arg2 = 0;
     s.callLocIdx = 470; s.pc = 216; return s.tmp_0;
   case 216:
     r0 = s.retval;
-    globals.Type_of_block_being_mined___62134 = (5);
+    globals.Type_of_block_being_mined___127183 = (5);
+    s.tmp_0 = addToInventory__P127596_mk(s);
+    s.tmp_0.arg0 = 0;
+    s.callLocIdx = 471; s.pc = 217; return s.tmp_0;
+  case 217:
+    r0 = s.retval;
   case 43:
   case 44:
   case 45:
@@ -27409,12 +27411,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-Mine__P62516.info = {"start":48554,"length":11297,"line":423,"column":0,"endLine":576,"endColumn":1,"fileName":"main.ts","functionName":"Mine","argumentNames":["direction_down__1_up__2_left__3_right__4","cooldown"]}
+Mine__P127565.info = {"start":48554,"length":10347,"line":423,"column":0,"endLine":577,"endColumn":1,"fileName":"main.ts","functionName":"Mine","argumentNames":["direction_down__1_up__2_left__3_right__4","cooldown"]}
 
-function Mine__P62516_mk(s) {
+function Mine__P127565_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: Mine__P62516, depth: s.depth + 1,
+        parent: s, fn: Mine__P127565, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -27431,7 +27433,71 @@ function Mine__P62516_mk(s) {
 
 
 
-function BlockBreak__P62099(s) {
+function addToInventory__P127596(s) {
+let r0 = s.r0, step = s.pc;
+s.pc = -1;
+
+
+while (true) {
+if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) return null;
+switch (step) {
+  case 0:
+
+    if (s.lambdaArgs) {
+      s.arg0 = (s.lambdaArgs[0]);
+      s.lambdaArgs = null;
+    }
+    r0 = (s.arg0 == 0);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    r0 = pxsim_Array__push(globals.list___128186, globals.dirt___128188);
+    { step = 8; continue; }
+  case 1:
+    r0 = (s.arg0 == 1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 2; continue; }
+    r0 = pxsim_Array__push(globals.list___128186, globals.stone___128196);
+    { step = 7; continue; }
+  case 2:
+    r0 = (s.arg0 == 3);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 3; continue; }
+    r0 = pxsim_Array__push(globals.list___128186, globals.coal___128204);
+    { step = 6; continue; }
+  case 3:
+    r0 = (s.arg0 == 4);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_0);
+    if (!r0) { step = 4; continue; }
+    r0 = pxsim_Array__push(globals.list___128186, globals.iron___128212);
+  case 4:
+  case 5:
+  case 6:
+  case 7:
+  case 8:
+    r0 = undefined;
+    return leave(s, r0)
+  default: oops()
+} } }
+addToInventory__P127596.info = {"start":63590,"length":274,"line":702,"column":0,"endLine":714,"endColumn":1,"fileName":"main.ts","functionName":"addToInventory","argumentNames":["thing"]}
+
+function addToInventory__P127596_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: addToInventory__P127596, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  arg0: undefined,
+} }
+
+
+
+
+
+function BlockBreak__P127148(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -27525,7 +27591,7 @@ switch (step) {
     r0 = s.retval;
     { step = 16; continue; }
   case 1:
-    r0 = (globals.Type_of_block_being_mined___62134 == 1);
+    r0 = (globals.Type_of_block_being_mined___127183 == 1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
@@ -27602,7 +27668,7 @@ switch (step) {
     r0 = s.retval;
     { step = 15; continue; }
   case 2:
-    r0 = (globals.Type_of_block_being_mined___62134 == 2);
+    r0 = (globals.Type_of_block_being_mined___127183 == 2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
@@ -27679,7 +27745,7 @@ switch (step) {
     r0 = s.retval;
     { step = 14; continue; }
   case 3:
-    r0 = (globals.Type_of_block_being_mined___62134 == 3);
+    r0 = (globals.Type_of_block_being_mined___127183 == 3);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 4; continue; }
@@ -27756,7 +27822,7 @@ switch (step) {
     r0 = s.retval;
     { step = 13; continue; }
   case 4:
-    r0 = (globals.Type_of_block_being_mined___62134 == 4);
+    r0 = (globals.Type_of_block_being_mined___127183 == 4);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
@@ -27833,7 +27899,7 @@ switch (step) {
     r0 = s.retval;
     { step = 12; continue; }
   case 5:
-    r0 = (globals.Type_of_block_being_mined___62134 == 5);
+    r0 = (globals.Type_of_block_being_mined___127183 == 5);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
@@ -27910,7 +27976,7 @@ switch (step) {
     r0 = s.retval;
     { step = 11; continue; }
   case 6:
-    r0 = (globals.Type_of_block_being_mined___62134 == 6);
+    r0 = (globals.Type_of_block_being_mined___127183 == 6);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
@@ -28031,12 +28097,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-BlockBreak__P62099.info = {"start":790,"length":3028,"line":27,"column":0,"endLine":91,"endColumn":1,"fileName":"main.ts","functionName":"BlockBreak","argumentNames":["col","row","block","miningSpeed"]}
+BlockBreak__P127148.info = {"start":790,"length":3028,"line":27,"column":0,"endLine":91,"endColumn":1,"fileName":"main.ts","functionName":"BlockBreak","argumentNames":["col","row","block","miningSpeed"]}
 
-function BlockBreak__P62099_mk(s) {
+function BlockBreak__P127148_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: BlockBreak__P62099, depth: s.depth + 1,
+        parent: s, fn: BlockBreak__P127148, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -29075,7 +29141,7 @@ function Inventory_Inventory_selected__P4479_mk(s) {
 
 
 
-function gotoBase__P62094(s) {
+function gotoBase__P127143(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -29091,9 +29157,9 @@ switch (step) {
     }
     r0 = pxsim_numops_toBoolDecr(s.arg0);
     if (!r0) { step = 1; continue; }
-    globals.Gravity___62315 = (0);
-    globals.In_Base___62096 = (s.arg0);
-    s.tmp_0 = saveTilemap__P62320_mk(s);
+    globals.Gravity___127364 = (0);
+    globals.In_Base___127145 = (s.arg0);
+    s.tmp_0 = saveTilemap__P127369_mk(s);
     s.callLocIdx = 198; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
@@ -29108,13 +29174,13 @@ switch (step) {
   case 4:
     r0 = s.retval;
     s.tmp_0 = scene_setBackgroundImage__P2886_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex62326);
+    r0 = pxsim.image.ofBuffer(_hex127375);
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 201; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_1 = tiles_getTileLocation__P2768_mk(s);
     s.tmp_1.arg0 = 3;
     s.tmp_1.arg1 = 26;
@@ -29125,16 +29191,16 @@ switch (step) {
     s.callLocIdx = 203; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    globals.previousTilemap___62331 = (0);
+    globals.previousTilemap___127380 = (0);
     s.tmp_0 = Sprite_setVelocity__P2411_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = 0;
     s.callLocIdx = 204; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2168_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_0.arg1 = 50;
     s.tmp_0.arg2 = 50;
     s.callLocIdx = 205; s.pc = 10; return s.tmp_0;
@@ -29142,8 +29208,8 @@ switch (step) {
     r0 = s.retval;
     { step = 2; continue; }
   case 1:
-    globals.Gravity___62315 = (0.8);
-    globals.In_Base___62096 = (s.arg0);
+    globals.Gravity___127364 = (0.8);
+    globals.In_Base___127145 = (s.arg0);
     s.tmp_0 = tiles_setCurrentTilemap__P2765_mk(s);
     s.tmp_1 = helpers_getTilemapByName__P3336_mk(s);
     s.tmp_1.arg0 = "Planet part 1";
@@ -29154,18 +29220,18 @@ switch (step) {
     s.callLocIdx = 207; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    s.tmp_0 = loadTilemap__P62344_mk(s);
+    s.tmp_0 = loadTilemap__P127393_mk(s);
     s.callLocIdx = 208; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.tmp_0 = scene_setBackgroundImage__P2886_mk(s);
-    r0 = pxsim.image.ofBuffer(_hex62347);
+    r0 = pxsim.image.ofBuffer(_hex127396);
     s.tmp_0.arg0 = r0;
     s.callLocIdx = 209; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tmp_0 = tiles_placeOnTile__P2774_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_1 = tiles_getTileLocation__P2768_mk(s);
     s.tmp_1.arg0 = 48;
     s.tmp_1.arg1 = 13;
@@ -29177,7 +29243,7 @@ switch (step) {
   case 15:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2168_mk(s);
-    s.tmp_0.arg0 = globals.Player_character___62073;
+    s.tmp_0.arg0 = globals.Player_character___127122;
     s.tmp_0.arg1 = 50;
     s.tmp_0.arg2 = 0;
     s.callLocIdx = 212; s.pc = 17; return s.tmp_0;
@@ -29188,25 +29254,25 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-gotoBase__P62094.info = {"start":3819,"length":42271,"line":92,"column":0,"endLine":354,"endColumn":1,"fileName":"main.ts","functionName":"gotoBase","argumentNames":["goto"]}
+gotoBase__P127143.info = {"start":3819,"length":42271,"line":92,"column":0,"endLine":354,"endColumn":1,"fileName":"main.ts","functionName":"gotoBase","argumentNames":["goto"]}
 
-function gotoBase__P62094_mk(s) {
+function gotoBase__P127143_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: gotoBase__P62094, depth: s.depth + 1,
+        parent: s, fn: gotoBase__P127143, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   arg0: undefined,
 } }
 
-const _hex62326 = pxsim.BufferMethods.createBufferFromHex("8704a00078000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
-const _hex62347 = pxsim.BufferMethods.createBufferFromHex("8704a00078000000ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333")
+const _hex127375 = pxsim.BufferMethods.createBufferFromHex("8704a00078000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")
+const _hex127396 = pxsim.BufferMethods.createBufferFromHex("8704a00078000000ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffccbcbbbb3bc3ccbcbbdddddddd33ddd3bdbbdbdddddddddd3333333333333333333333333333333333ffffffffffffffffffff3fffffffcfffffffffccbcbbbbbbc3ccbbbbdddddd3d33dd333dbbd3dddddddddd3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbb33ccbbbbdddddd3d33dd3dddb3dddddddddd3d3333333333333333333333333333333333ffffffffffffffffff3f33fbffffffffffffffcfbcbbbbbbbbbbbb33dddddd3d33dd3dd333dddddddddd3d3333333333333333333333333333333333ffffffffffffffffffff3bb3ffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddd33d3dddddddddd333333333333333333333333333333333333ffffffffffffffffffff3fffffffffffffffffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddddd333333333333333333333333333333333333ffffffffffcfffffffffffffffffffffffccffcfbcbbbbbbbbbb3b33dddddd3d33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffccffcfbcbb3bbcbbbb3b33dddddddd33dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbb3bccbbbbbbd3ddddddddd3dddddddddddddddd3d333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffffcfbcbbc3ccbbbbbbdbdddddddddddddddddddddddddd3d333333333333333333333333333333333333fffffffffffffffffffffffffffcffffffffffcfbcbbc3cbbcbbbbdbdddddddddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffcfcbffffffffffccbcbbc3cbbcbbbbdbdd3dd3dddddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffcffffffffffcffffffffffccccbbc3cbbcbbbbd3dd33b3dddddddddddddddddddd33333333333333333333333333333333333333fffffffffffffffffffffffffffffffffffccfccccbbc3cbbcbbbbd3dd33bbd3dddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3cbbcbbbbdd3dd3bbdbdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccccbbb3ccbb33bbdd3d3dbbdbdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffccccccbb3bccbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffcfcbfffffffffffffffffcffffccccccbc3bbcbb33bbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333fffffffffffffcffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffcffcffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddddddddddddddd33333333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffccccccbcbbbbbbbbbbdd3dbdbb3bdddddd3333dddddddd333d3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbb3bdddd3dd3b3d3dddddd33dd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd3dddbbdbdddddd33dd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbbbbbdd3dbdbbdbdddd333dbbdbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbcbbbbbbb3bbddddd3bbd3ddddd3bdbb3bdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbcfcffffffffffffcfccccccbcc3bbbbbbbbdddd33b3ddddddd3bdbbbbdddddd3dd33d33333333333333333333333333333333ffffffffffffffffffbbfbffffffffffffcfcccccc3cc3bcbbbbbbdddd3dd3dddd3dddb3bbbbdddddd3dd3dd33333333333333333333333333333333ffffffffffffffffffbcfcffffffcfffffcfcccccc3bbcbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bbbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfcccccc3bcbbcbbbbbbdddddddddddd3dddbbbbbbdddddddd33dd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbcbbb33ccbbdddddddddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffffffffffffffffffffffcfccccccbbbbbbc3ccbbd33ddbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333ffffffffffffffcfffffffffffffffffffffccccbcbbbb3bc3ccbcd333bbdddddd3dddbbbbbbdddddddd3ddd33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bcccbbcdbd3bbdddddd3dddbbbbbbdddddddddddd33333333333333333333333333333333ffffffffffffffffffffffcfcbffffcfffffccccbcbbbb3bbccbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333fffffffffffffffffffffffffcffffffffffccccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bbbcbbcdbd3bbdddddd3dddbbbbbbdddddddddd3d33333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbcbbc3b3dbbdddddd3dddbbbbbbdddddddddd3333333333333333333333333333333333ffffffffffffffffffffffffffffffffffffcfccbcbbbb3bcbccbcbb3ddbdddddd3dd3b3bb3bdddddddddd3333333333333333333333333333333333fffffffffffffcffffffffffffffffffffffffccbcbbbb3bcbccbcbbddddddddd3ddd3bdbb3bdddddddddd3333333333333333333333333333333333")
 
 
 
 
-function loadTilemap__P62344(s) {
+function loadTilemap__P127393(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -29216,37 +29282,37 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.value___62354 = undefined;
-    s.unnamed3780___U1 = undefined;
-    s.unnamed3781___U2 = undefined;
-    s.value___62364 = undefined;
-    s.unnamed3782___U4 = undefined;
-    s.unnamed3783___U5 = undefined;
-    s.value___62372 = undefined;
-    s.unnamed3784___U7 = undefined;
-    s.unnamed3785___U8 = undefined;
-    s.value___62380 = undefined;
-    s.unnamed3786___U10 = undefined;
-    s.unnamed3787___U11 = undefined;
-    s.value___62388 = undefined;
-    s.unnamed3788___U13 = undefined;
-    s.unnamed3789___U14 = undefined;
-    s.value___62396 = undefined;
-    s.unnamed3790___U16 = undefined;
-    s.unnamed3791___U17 = undefined;
-    s.value___62354 = (undefined);
-    s.unnamed3780___U1 = (globals.minedLocations___62355);
-    s.unnamed3781___U2 = (0);
+    s.value___127403 = undefined;
+    s.unnamed8140___U1 = undefined;
+    s.unnamed8141___U2 = undefined;
+    s.value___127413 = undefined;
+    s.unnamed8142___U4 = undefined;
+    s.unnamed8143___U5 = undefined;
+    s.value___127421 = undefined;
+    s.unnamed8144___U7 = undefined;
+    s.unnamed8145___U8 = undefined;
+    s.value___127429 = undefined;
+    s.unnamed8146___U10 = undefined;
+    s.unnamed8147___U11 = undefined;
+    s.value___127437 = undefined;
+    s.unnamed8148___U13 = undefined;
+    s.unnamed8149___U14 = undefined;
+    s.value___127445 = undefined;
+    s.unnamed8150___U16 = undefined;
+    s.unnamed8151___U17 = undefined;
+    s.value___127403 = (undefined);
+    s.unnamed8140___U1 = (globals.minedLocations___127404);
+    s.unnamed8141___U2 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed3781___U2;
-    r0 = pxsim_Array__length(s.unnamed3780___U1);
+    s.tmp_0 = r0 = s.unnamed8141___U2;
+    r0 = pxsim_Array__length(s.unnamed8140___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3780___U1, s.unnamed3781___U2);
-    s.value___62354 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8140___U1, s.unnamed8141___U2);
+    s.value___127403 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_2.arg0 = s.value___62354;
+    s.tmp_2.arg0 = s.value___127403;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "myTile8";
     s.callLocIdx = 213; s.pc = 14; return s.tmp_3;
@@ -29257,29 +29323,29 @@ switch (step) {
   case 13:
     r0 = s.retval;
     s.tmp_0 = tiles_setWallAt__P2767_mk(s);
-    s.tmp_0.arg0 = s.value___62354;
+    s.tmp_0.arg0 = s.value___127403;
     s.tmp_0.arg1 = false;
     s.callLocIdx = 215; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
-    r0 = (s.unnamed3781___U2 + 1);
-    s.unnamed3781___U2 = (r0);
+    r0 = (s.unnamed8141___U2 + 1);
+    s.unnamed8141___U2 = (r0);
     { step = 1; continue; }
   case 2:
-    s.unnamed3780___U1 = (undefined);
-    s.value___62364 = (undefined);
-    s.unnamed3782___U4 = (globals.coalLocations___62365);
-    s.unnamed3783___U5 = (0);
+    s.unnamed8140___U1 = (undefined);
+    s.value___127413 = (undefined);
+    s.unnamed8142___U4 = (globals.coalLocations___127414);
+    s.unnamed8143___U5 = (0);
   case 3:
-    s.tmp_0 = r0 = s.unnamed3783___U5;
-    r0 = pxsim_Array__length(s.unnamed3782___U4);
+    s.tmp_0 = r0 = s.unnamed8143___U5;
+    r0 = pxsim_Array__length(s.unnamed8142___U4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3782___U4, s.unnamed3783___U5);
-    s.value___62364 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8142___U4, s.unnamed8143___U5);
+    s.value___127413 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_2.arg0 = s.value___62364;
+    s.tmp_2.arg0 = s.value___127413;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "Coal";
     s.callLocIdx = 216; s.pc = 17; return s.tmp_3;
@@ -29289,24 +29355,24 @@ switch (step) {
     s.callLocIdx = 217; s.pc = 16; return s.tmp_2;
   case 16:
     r0 = s.retval;
-    r0 = (s.unnamed3783___U5 + 1);
-    s.unnamed3783___U5 = (r0);
+    r0 = (s.unnamed8143___U5 + 1);
+    s.unnamed8143___U5 = (r0);
     { step = 3; continue; }
   case 4:
-    s.unnamed3782___U4 = (undefined);
-    s.value___62372 = (undefined);
-    s.unnamed3784___U7 = (globals.ironLocations___62373);
-    s.unnamed3785___U8 = (0);
+    s.unnamed8142___U4 = (undefined);
+    s.value___127421 = (undefined);
+    s.unnamed8144___U7 = (globals.ironLocations___127422);
+    s.unnamed8145___U8 = (0);
   case 5:
-    s.tmp_0 = r0 = s.unnamed3785___U8;
-    r0 = pxsim_Array__length(s.unnamed3784___U7);
+    s.tmp_0 = r0 = s.unnamed8145___U8;
+    r0 = pxsim_Array__length(s.unnamed8144___U7);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3784___U7, s.unnamed3785___U8);
-    s.value___62372 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8144___U7, s.unnamed8145___U8);
+    s.value___127421 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_2.arg0 = s.value___62372;
+    s.tmp_2.arg0 = s.value___127421;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "Iron";
     s.callLocIdx = 218; s.pc = 19; return s.tmp_3;
@@ -29316,24 +29382,24 @@ switch (step) {
     s.callLocIdx = 219; s.pc = 18; return s.tmp_2;
   case 18:
     r0 = s.retval;
-    r0 = (s.unnamed3785___U8 + 1);
-    s.unnamed3785___U8 = (r0);
+    r0 = (s.unnamed8145___U8 + 1);
+    s.unnamed8145___U8 = (r0);
     { step = 5; continue; }
   case 6:
-    s.unnamed3784___U7 = (undefined);
-    s.value___62380 = (undefined);
-    s.unnamed3786___U10 = (globals.copperLocations___62381);
-    s.unnamed3787___U11 = (0);
+    s.unnamed8144___U7 = (undefined);
+    s.value___127429 = (undefined);
+    s.unnamed8146___U10 = (globals.copperLocations___127430);
+    s.unnamed8147___U11 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed3787___U11;
-    r0 = pxsim_Array__length(s.unnamed3786___U10);
+    s.tmp_0 = r0 = s.unnamed8147___U11;
+    r0 = pxsim_Array__length(s.unnamed8146___U10);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3786___U10, s.unnamed3787___U11);
-    s.value___62380 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8146___U10, s.unnamed8147___U11);
+    s.value___127429 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_2.arg0 = s.value___62380;
+    s.tmp_2.arg0 = s.value___127429;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "Copper";
     s.callLocIdx = 220; s.pc = 21; return s.tmp_3;
@@ -29343,24 +29409,24 @@ switch (step) {
     s.callLocIdx = 221; s.pc = 20; return s.tmp_2;
   case 20:
     r0 = s.retval;
-    r0 = (s.unnamed3787___U11 + 1);
-    s.unnamed3787___U11 = (r0);
+    r0 = (s.unnamed8147___U11 + 1);
+    s.unnamed8147___U11 = (r0);
     { step = 7; continue; }
   case 8:
-    s.unnamed3786___U10 = (undefined);
-    s.value___62388 = (undefined);
-    s.unnamed3788___U13 = (globals.dirtLocations___62389);
-    s.unnamed3789___U14 = (0);
+    s.unnamed8146___U10 = (undefined);
+    s.value___127437 = (undefined);
+    s.unnamed8148___U13 = (globals.dirtLocations___127438);
+    s.unnamed8149___U14 = (0);
   case 9:
-    s.tmp_0 = r0 = s.unnamed3789___U14;
-    r0 = pxsim_Array__length(s.unnamed3788___U13);
+    s.tmp_0 = r0 = s.unnamed8149___U14;
+    r0 = pxsim_Array__length(s.unnamed8148___U13);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 10; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3788___U13, s.unnamed3789___U14);
-    s.value___62388 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8148___U13, s.unnamed8149___U14);
+    s.value___127437 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_2.arg0 = s.value___62388;
+    s.tmp_2.arg0 = s.value___127437;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "myTile3";
     s.callLocIdx = 222; s.pc = 23; return s.tmp_3;
@@ -29370,24 +29436,24 @@ switch (step) {
     s.callLocIdx = 223; s.pc = 22; return s.tmp_2;
   case 22:
     r0 = s.retval;
-    r0 = (s.unnamed3789___U14 + 1);
-    s.unnamed3789___U14 = (r0);
+    r0 = (s.unnamed8149___U14 + 1);
+    s.unnamed8149___U14 = (r0);
     { step = 9; continue; }
   case 10:
-    s.unnamed3788___U13 = (undefined);
-    s.value___62396 = (undefined);
-    s.unnamed3790___U16 = (globals.stoneLocations___62397);
-    s.unnamed3791___U17 = (0);
+    s.unnamed8148___U13 = (undefined);
+    s.value___127445 = (undefined);
+    s.unnamed8150___U16 = (globals.stoneLocations___127446);
+    s.unnamed8151___U17 = (0);
   case 11:
-    s.tmp_0 = r0 = s.unnamed3791___U17;
-    r0 = pxsim_Array__length(s.unnamed3790___U16);
+    s.tmp_0 = r0 = s.unnamed8151___U17;
+    r0 = pxsim_Array__length(s.unnamed8150___U16);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3790___U16, s.unnamed3791___U17);
-    s.value___62396 = (r0);
+    r0 = pxsim_Array__getAt(s.unnamed8150___U16, s.unnamed8151___U17);
+    s.value___127445 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
-    s.tmp_2.arg0 = s.value___62396;
+    s.tmp_2.arg0 = s.value___127445;
     s.tmp_3 = helpers_getTileByName__P3339_mk(s);
     s.tmp_3.arg0 = "myTile3";
     s.callLocIdx = 224; s.pc = 25; return s.tmp_3;
@@ -29397,51 +29463,51 @@ switch (step) {
     s.callLocIdx = 225; s.pc = 24; return s.tmp_2;
   case 24:
     r0 = s.retval;
-    r0 = (s.unnamed3791___U17 + 1);
-    s.unnamed3791___U17 = (r0);
+    r0 = (s.unnamed8151___U17 + 1);
+    s.unnamed8151___U17 = (r0);
     { step = 11; continue; }
   case 12:
-    s.unnamed3790___U16 = (undefined);
+    s.unnamed8150___U16 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-loadTilemap__P62344.info = {"start":46091,"length":650,"line":355,"column":0,"endLine":375,"endColumn":1,"fileName":"main.ts","functionName":"loadTilemap","argumentNames":[]}
+loadTilemap__P127393.info = {"start":46091,"length":650,"line":355,"column":0,"endLine":375,"endColumn":1,"fileName":"main.ts","functionName":"loadTilemap","argumentNames":[]}
 
-function loadTilemap__P62344_mk(s) {
+function loadTilemap__P127393_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: loadTilemap__P62344, depth: s.depth + 1,
+        parent: s, fn: loadTilemap__P127393, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
   tmp_2: undefined,
   tmp_3: undefined,
-  value___62354: undefined,
-  unnamed3780___U1: undefined,
-  unnamed3781___U2: undefined,
-  value___62364: undefined,
-  unnamed3782___U4: undefined,
-  unnamed3783___U5: undefined,
-  value___62372: undefined,
-  unnamed3784___U7: undefined,
-  unnamed3785___U8: undefined,
-  value___62380: undefined,
-  unnamed3786___U10: undefined,
-  unnamed3787___U11: undefined,
-  value___62388: undefined,
-  unnamed3788___U13: undefined,
-  unnamed3789___U14: undefined,
-  value___62396: undefined,
-  unnamed3790___U16: undefined,
-  unnamed3791___U17: undefined,
+  value___127403: undefined,
+  unnamed8140___U1: undefined,
+  unnamed8141___U2: undefined,
+  value___127413: undefined,
+  unnamed8142___U4: undefined,
+  unnamed8143___U5: undefined,
+  value___127421: undefined,
+  unnamed8144___U7: undefined,
+  unnamed8145___U8: undefined,
+  value___127429: undefined,
+  unnamed8146___U10: undefined,
+  unnamed8147___U11: undefined,
+  value___127437: undefined,
+  unnamed8148___U13: undefined,
+  unnamed8149___U14: undefined,
+  value___127445: undefined,
+  unnamed8150___U16: undefined,
+  unnamed8151___U17: undefined,
 } }
 
 
 
 
 
-function saveTilemap__P62320(s) {
+function saveTilemap__P127369(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -29454,79 +29520,79 @@ switch (step) {
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "myTile8";
-    s.callLocIdx = 474; s.pc = 2; return s.tmp_1;
+    s.callLocIdx = 475; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 475; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 476; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
-    globals.minedLocations___62355 = (r0);
+    globals.minedLocations___127404 = (r0);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "Coal";
-    s.callLocIdx = 476; s.pc = 4; return s.tmp_1;
+    s.callLocIdx = 477; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 477; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 478; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    globals.coalLocations___62365 = (r0);
+    globals.coalLocations___127414 = (r0);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "Iron";
-    s.callLocIdx = 478; s.pc = 6; return s.tmp_1;
+    s.callLocIdx = 479; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 479; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 480; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
-    globals.ironLocations___62373 = (r0);
+    globals.ironLocations___127422 = (r0);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "Copper";
-    s.callLocIdx = 480; s.pc = 8; return s.tmp_1;
+    s.callLocIdx = 481; s.pc = 8; return s.tmp_1;
   case 8:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 481; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 482; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    globals.copperLocations___62381 = (r0);
+    globals.copperLocations___127430 = (r0);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "myTile3";
-    s.callLocIdx = 482; s.pc = 10; return s.tmp_1;
+    s.callLocIdx = 483; s.pc = 10; return s.tmp_1;
   case 10:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 483; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 484; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
-    globals.dirtLocations___62389 = (r0);
+    globals.dirtLocations___127438 = (r0);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
     s.tmp_1.arg0 = "Stone";
-    s.callLocIdx = 484; s.pc = 12; return s.tmp_1;
+    s.callLocIdx = 485; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 485; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 486; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    globals.stoneLocations___62397 = (r0);
+    globals.stoneLocations___127446 = (r0);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-saveTilemap__P62320.info = {"start":60076,"length":400,"line":584,"column":0,"endLine":591,"endColumn":1,"fileName":"main.ts","functionName":"saveTilemap","argumentNames":[]}
+saveTilemap__P127369.info = {"start":59126,"length":400,"line":585,"column":0,"endLine":592,"endColumn":1,"fileName":"main.ts","functionName":"saveTilemap","argumentNames":[]}
 
-function saveTilemap__P62320_mk(s) {
+function saveTilemap__P127369_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: saveTilemap__P62320, depth: s.depth + 1,
+        parent: s, fn: saveTilemap__P127369, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -52860,6 +52926,35 @@ function tiles_TileMap__C2736_v3_1_mk(s) {
 } }
 
 
+function if_kind_1_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: null, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  arg0: undefined,
+} }
+
+
+function if_factory_2_mk(s) {
+    checkStack(s.depth);
+    return {
+        parent: s, fn: null, depth: s.depth + 1,
+        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
+  tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  arg0: undefined,
+  arg1: undefined,
+} }
+
+
 function PhysicsEngine__C2512_v0_2_mk(s) {
     checkStack(s.depth);
     return {
@@ -53254,35 +53349,6 @@ function PhysicsEngine__C2512_v2_4_mk(s) {
   arg1: undefined,
   arg2: undefined,
   arg3: undefined,
-} }
-
-
-function if_kind_1_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: null, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  tmp_2: undefined,
-  tmp_3: undefined,
-  tmp_4: undefined,
-  arg0: undefined,
-} }
-
-
-function if_factory_2_mk(s) {
-    checkStack(s.depth);
-    return {
-        parent: s, fn: null, depth: s.depth + 1,
-        pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
-  tmp_0: undefined,
-  tmp_1: undefined,
-  tmp_2: undefined,
-  tmp_3: undefined,
-  tmp_4: undefined,
-  arg0: undefined,
-  arg1: undefined,
 } }
 
 
@@ -54811,11 +54877,30 @@ const scene_Camera__C2782_VT = mkVTable({
     "update": scene_Camera_update__P2799,
   },
 });
+const Inventory_Item__C4448_VT = mkVTable({
+  name: "Item",
+  numFields: 4,
+  classNo: 34,
+  lastSubtypeNo: 34,
+  maxBgInstances: null,
+  methods: {
+  },
+  iface: {
+    "name": null,
+    "set/name": null,
+    "image": null,
+    "set/image": null,
+    "description": null,
+    "set/description": null,
+    "tooltip": null,
+    "set/tooltip": null,
+  },
+});
 const PhysicsEngine__C2512_VT = mkVTable({
   name: "PhysicsEngine",
   numFields: 0,
-  classNo: 34,
-  lastSubtypeNo: 35,
+  classNo: 35,
+  lastSubtypeNo: 36,
   maxBgInstances: null,
   methods: {
     "addSprite": PhysicsEngine_addSprite__P2514,
@@ -54835,8 +54920,8 @@ const PhysicsEngine__C2512_VT = mkVTable({
 const sprites_SpriteSet__C2464_VT = mkVTable({
   name: "SpriteSet",
   numFields: 1,
-  classNo: 36,
-  lastSubtypeNo: 36,
+  classNo: 37,
+  lastSubtypeNo: 37,
   maxBgInstances: null,
   methods: {
   },
@@ -54854,8 +54939,8 @@ const sprites_SpriteSet__C2464_VT = mkVTable({
 const scene_Scene__C2844_VT = mkVTable({
   name: "Scene",
   numFields: 25,
-  classNo: 37,
-  lastSubtypeNo: 37,
+  classNo: 38,
+  lastSubtypeNo: 38,
   maxBgInstances: null,
   methods: {
   },
@@ -54920,8 +55005,8 @@ const scene_Scene__C2844_VT = mkVTable({
 const scene_Background__C2670_VT = mkVTable({
   name: "Background",
   numFields: 4,
-  classNo: 38,
-  lastSubtypeNo: 38,
+  classNo: 39,
+  lastSubtypeNo: 39,
   maxBgInstances: null,
   methods: {
   },
@@ -54942,8 +55027,8 @@ const scene_Background__C2670_VT = mkVTable({
 const game_BaseDialog__C2904_VT = mkVTable({
   name: "BaseDialog",
   numFields: 11,
-  classNo: 39,
-  lastSubtypeNo: 40,
+  classNo: 40,
+  lastSubtypeNo: 41,
   maxBgInstances: null,
   methods: {
     "update": game_BaseDialog_update__P2918,
@@ -54991,8 +55076,8 @@ const game_BaseDialog__C2904_VT = mkVTable({
 const game_SplashDialog__C2933_VT = mkVTable({
   name: "SplashDialog",
   numFields: 17,
-  classNo: 40,
-  lastSubtypeNo: 40,
+  classNo: 41,
+  lastSubtypeNo: 41,
   maxBgInstances: null,
   methods: {
     "update": game_BaseDialog_update__P2918,
@@ -55116,8 +55201,8 @@ const particles_ParticleSource__C3152_VT = mkVTable({
 const scene_BackgroundLayer__C2680_VT = mkVTable({
   name: "BackgroundLayer",
   numFields: 6,
-  classNo: 41,
-  lastSubtypeNo: 41,
+  classNo: 42,
+  lastSubtypeNo: 42,
   maxBgInstances: null,
   methods: {
   },
@@ -55140,8 +55225,8 @@ const scene_BackgroundLayer__C2680_VT = mkVTable({
 const ArcadePhysicsEngine__C2528_VT = mkVTable({
   name: "ArcadePhysicsEngine",
   numFields: 6,
-  classNo: 35,
-  lastSubtypeNo: 35,
+  classNo: 36,
+  lastSubtypeNo: 36,
   maxBgInstances: null,
   methods: {
     "addSprite": ArcadePhysicsEngine_addSprite__P2537,
@@ -55186,8 +55271,8 @@ const ArcadePhysicsEngine__C2528_VT = mkVTable({
 const sprites_SpriteMap__C2447_VT = mkVTable({
   name: "SpriteMap",
   numFields: 5,
-  classNo: 42,
-  lastSubtypeNo: 42,
+  classNo: 43,
+  lastSubtypeNo: 43,
   maxBgInstances: null,
   methods: {
   },
@@ -55218,8 +55303,8 @@ const sprites_SpriteMap__C2447_VT = mkVTable({
 const scene_OverlapHandler__C2815_VT = mkVTable({
   name: "OverlapHandler",
   numFields: 3,
-  classNo: 43,
-  lastSubtypeNo: 43,
+  classNo: 44,
+  lastSubtypeNo: 44,
   maxBgInstances: null,
   methods: {
   },
@@ -55235,8 +55320,8 @@ const scene_OverlapHandler__C2815_VT = mkVTable({
 const controller_ControlledSprite__C2131_VT = mkVTable({
   name: "ControlledSprite",
   numFields: 4,
-  classNo: 44,
-  lastSubtypeNo: 44,
+  classNo: 45,
+  lastSubtypeNo: 45,
   maxBgInstances: null,
   methods: {
   },
@@ -55283,8 +55368,8 @@ const scene_Renderable__C2801_VT = mkVTable({
 const game_Hitbox__C2209_VT = mkVTable({
   name: "Hitbox",
   numFields: 6,
-  classNo: 45,
-  lastSubtypeNo: 45,
+  classNo: 46,
+  lastSubtypeNo: 46,
   maxBgInstances: null,
   methods: {
   },
@@ -55314,8 +55399,8 @@ const game_Hitbox__C2209_VT = mkVTable({
 const scene_TileOverlapHandler__C2819_VT = mkVTable({
   name: "TileOverlapHandler",
   numFields: 3,
-  classNo: 46,
-  lastSubtypeNo: 46,
+  classNo: 47,
+  lastSubtypeNo: 47,
   maxBgInstances: null,
   methods: {
   },
@@ -55331,8 +55416,8 @@ const scene_TileOverlapHandler__C2819_VT = mkVTable({
 const effects_ParticleEffect__C3263_VT = mkVTable({
   name: "ParticleEffect",
   numFields: 3,
-  classNo: 47,
-  lastSubtypeNo: 48,
+  classNo: 48,
+  lastSubtypeNo: 49,
   maxBgInstances: null,
   methods: {
   },
@@ -55350,8 +55435,8 @@ const effects_ParticleEffect__C3263_VT = mkVTable({
 const effects_ImageEffect__C3291_VT = mkVTable({
   name: "ImageEffect",
   numFields: 4,
-  classNo: 49,
-  lastSubtypeNo: 49,
+  classNo: 50,
+  lastSubtypeNo: 50,
   maxBgInstances: null,
   methods: {
   },
@@ -55366,25 +55451,6 @@ const effects_ImageEffect__C3291_VT = mkVTable({
     "set/times": null,
     "applyTo": effects_ImageEffect_applyTo__P3293,
     "change": effects_ImageEffect_change__P3294,
-  },
-});
-const Inventory_Item__C4448_VT = mkVTable({
-  name: "Item",
-  numFields: 4,
-  classNo: 50,
-  lastSubtypeNo: 50,
-  maxBgInstances: null,
-  methods: {
-  },
-  iface: {
-    "name": null,
-    "set/name": null,
-    "image": null,
-    "set/image": null,
-    "description": null,
-    "set/description": null,
-    "tooltip": null,
-    "set/tooltip": null,
   },
 });
 const controller_ButtonHandler__C2184_VT = mkVTable({
@@ -55502,8 +55568,8 @@ const scene_systemMenu_MenuOption__C3088_VT = mkVTable({
 const effects_ScreenEffect__C3267_VT = mkVTable({
   name: "ScreenEffect",
   numFields: 5,
-  classNo: 48,
-  lastSubtypeNo: 48,
+  classNo: 49,
+  lastSubtypeNo: 49,
   maxBgInstances: null,
   methods: {
   },
@@ -55819,7 +55885,7 @@ const sprites_BaseSpriteSayRenderer__C2260_VT = mkVTable({
   },
 });
 
-const breakpoints = setupDebugger(1, ["transparency16___24727","tile13___24812","tile14___24817","tile18___24827","tile11___24822","tile22___24832","tile23___24842","tile24___24847","tile25___24852","tile26___24857","tile7___24757","tile1___24732","tile2___24867","tile3___24737","tile5___24747","tile8___24787","tile9___24762","tile32___24887","tile4___24742","tile6___24752","tile12___24767","tile15___24772","tile16___24777","tile17___24782","tile19___24792","tile20___24797","tile21___24802","tile10___24807","tile27___24837","tile28___24862","tile29___24872","tile30___24877","tile31___24882","Structure___62045","textSprites___62048","Woodythings___62051","jump___62059","inInventory___62069","Player_character___62073","Base___62091","In_Base___62096","inventory___62548","miningEfficiency___63067","Gravity___62315","gto_base_said___63216","textSprite___63264","Tree___63144","Tree_spawn_x___63151","Tree_spawn_y___63156","tempOreRandomizer___62415","dirt___63184","coal___63190","stone___63196","whereToBreakCol___62527","whereToBreakRow___62535","Type_of_block_being_mined___62134","previousTilemap___62331","minedLocations___62355","coalLocations___62365","ironLocations___62373","copperLocations___62381","dirtLocations___62389","stoneLocations___62397"])
+const breakpoints = setupDebugger(1, ["transparency16___24727","tile13___24812","tile14___24817","tile18___24827","tile11___24822","tile22___24832","tile23___24842","tile24___24847","tile25___24852","tile26___24857","tile7___24757","tile1___24732","tile2___24867","tile3___24737","tile5___24747","tile8___24787","tile9___24762","tile32___24887","tile4___24742","tile6___24752","tile12___24767","tile15___24772","tile16___24777","tile17___24782","tile19___24792","tile20___24797","tile21___24802","tile10___24807","tile27___24837","tile28___24862","tile29___24872","tile30___24877","tile31___24882","Structure___127094","textSprites___127097","Woodythings___127100","jump___127108","inInventory___127118","Player_character___127122","Base___127140","In_Base___127145","inventory___127643","miningEfficiency___128078","Gravity___127364","gto_base_said___128240","textSprite___128289","dirt___128188","coal___128204","stone___128196","iron___128212","list___128186","Tree___128155","Tree_spawn_x___128162","Tree_spawn_y___128167","tempOreRandomizer___127464","whereToBreakCol___127576","whereToBreakRow___127584","Type_of_block_being_mined___127183","previousTilemap___127380","minedLocations___127404","coalLocations___127414","ironLocations___127422","copperLocations___127430","dirtLocations___127438","stoneLocations___127446"])
 
-return _main___P63710
+return _main___P128475
 })
