@@ -1,4 +1,4 @@
-// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.12.58/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.4.6","target":"arcade","targetVersion":"1.12.58","repo":"suitablymysterious/gamejam-trappedonthmoon"}
+// meta={"simUrl":"https://trg-arcade.userpxt.io/v1.12.58/---simulator","cdnUrl":"https://cdn.makecode.com","version":"1.4.7","target":"arcade","targetVersion":"1.12.58","repo":"suitablymysterious/gamejam-trappedonthmoon"}
 // total=1748556 new=18.82% cached=75.82% other=5.36%
 (function (ectx) {
 'use strict';
@@ -498,7 +498,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P63429(s) {
+function _main___P63710(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1322,13 +1322,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P63429.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/Custom Keybind Extension/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P63429.continuations = [ 44,45,46,47 ]
+_main___P63710.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/Custom Keybind Extension/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P63710.continuations = [ 44,45,46,47 ]
 
-function _main___P63429_mk(s) {
+function _main___P63710_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P63429, depth: s.depth + 1,
+        parent: s, fn: _main___P63710, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -4772,8 +4772,8 @@ switch (step) {
   case 0:
 
     s.value___63138 = undefined;
-    s.unnamed3478___U1 = undefined;
-    s.unnamed3479___U2 = undefined;
+    s.unnamed3798___U1 = undefined;
+    s.unnamed3799___U2 = undefined;
     s.value___63138 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
@@ -4785,15 +4785,15 @@ switch (step) {
     s.callLocIdx = 502; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
-    s.unnamed3478___U1 = (r0);
-    s.unnamed3479___U2 = (0);
+    s.unnamed3798___U1 = (r0);
+    s.unnamed3799___U2 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed3479___U2;
-    r0 = pxsim_Array__length(s.unnamed3478___U1);
+    s.tmp_0 = r0 = s.unnamed3799___U2;
+    r0 = pxsim_Array__length(s.unnamed3798___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3478___U1, s.unnamed3479___U2);
+    r0 = pxsim_Array__getAt(s.unnamed3798___U1, s.unnamed3799___U2);
     s.value___63138 = (r0);
     s.tmp_2 = sprites_create__P2276_mk(s);
     r0 = pxsim.image.ofBuffer(_hex63148);
@@ -4830,11 +4830,11 @@ switch (step) {
     s.callLocIdx = 509; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    r0 = (s.unnamed3479___U2 + 1);
-    s.unnamed3479___U2 = (r0);
+    r0 = (s.unnamed3799___U2 + 1);
+    s.unnamed3799___U2 = (r0);
     { step = 1; continue; }
   case 2:
-    s.unnamed3478___U1 = (undefined);
+    s.unnamed3798___U1 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -4850,8 +4850,8 @@ function GROWTrees__P63136_mk(s) {
   tmp_1: undefined,
   tmp_2: undefined,
   value___63138: undefined,
-  unnamed3478___U1: undefined,
-  unnamed3479___U2: undefined,
+  unnamed3798___U1: undefined,
+  unnamed3799___U2: undefined,
 } }
 
 const _hex63148 = pxsim.BufferMethods.createBufferFromHex("870418003c00000000000000000000000000000088008008000000000000000000000000000000000000000000000000008808808688780800000000000000000000000000000000000000000000000080878668868677880000000000000000000000000000000000000000000000007867866688786787000000000000000000000000000000000000000080088888776777886888768700000000000000000000000000000000000000006888666877767788668878870800000000000000000000000000000000000086666886787777676688887768860000000000000000000000000000000000606786888866687766866888677788000000000000000000000000000000000078678766888678777788668876878800f00f0000000000000000000000000080767667868888767767688668776667f8ef0e0000000000000000000000006076777766886688687786888888887687e8ee0f0000000000000000000000007677777777688688767767668888787788eeee0e0000000000000000000000007677777767888868777766868868777786eefe0f0000000000000000000000006076777766868888887687688888776766e8ee0f0000000000000000000000000080767687668888767777688688686766f8ef0e000000000000000000000000000078678788888678777786667877778800f00f00000000000000000000000000006067866688666877668888886777880000000000000000000000000000000000008666688678777767866886776886000000000000000000000000000000000000006888886877766766886676878800000000000000000000000000000000000000800880887667778888887687000000000000000000000000000000000000000000000000807766886678678700000000000000000000000000000000000000000000000000786886688677880000000000000000000000000000000000000000000000000080888680887808000000000000000000000000000000000000000000000000000000880000880000000000000000000000000000000000")
@@ -6595,14 +6595,14 @@ switch (step) {
   case 0:
 
     s.value___62409 = undefined;
-    s.unnamed3472___U1 = undefined;
-    s.unnamed3473___U2 = undefined;
+    s.unnamed3792___U1 = undefined;
+    s.unnamed3793___U2 = undefined;
     s.value___62437 = undefined;
-    s.unnamed3474___U4 = undefined;
-    s.unnamed3475___U5 = undefined;
+    s.unnamed3794___U4 = undefined;
+    s.unnamed3795___U5 = undefined;
     s.value___62468 = undefined;
-    s.unnamed3476___U7 = undefined;
-    s.unnamed3477___U8 = undefined;
+    s.unnamed3796___U7 = undefined;
+    s.unnamed3797___U8 = undefined;
     s.value___62409 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
@@ -6614,15 +6614,15 @@ switch (step) {
     s.callLocIdx = 228; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
-    s.unnamed3472___U1 = (r0);
-    s.unnamed3473___U2 = (0);
+    s.unnamed3792___U1 = (r0);
+    s.unnamed3793___U2 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed3473___U2;
-    r0 = pxsim_Array__length(s.unnamed3472___U1);
+    s.tmp_0 = r0 = s.unnamed3793___U2;
+    r0 = pxsim_Array__length(s.unnamed3792___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3472___U1, s.unnamed3473___U2);
+    r0 = pxsim_Array__getAt(s.unnamed3792___U1, s.unnamed3793___U2);
     s.value___62409 = (r0);
     r0 = pxsim.Math_.randomRange(1, 10);
     globals.tempOreRandomizer___62415 = (r0);
@@ -6675,11 +6675,11 @@ switch (step) {
   case 35:
     r0 = s.retval;
   case 5:
-    r0 = (s.unnamed3473___U2 + 1);
-    s.unnamed3473___U2 = (r0);
+    r0 = (s.unnamed3793___U2 + 1);
+    s.unnamed3793___U2 = (r0);
     { step = 1; continue; }
   case 6:
-    s.unnamed3472___U1 = (undefined);
+    s.unnamed3792___U1 = (undefined);
     s.value___62437 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
@@ -6691,15 +6691,15 @@ switch (step) {
     s.callLocIdx = 236; s.pc = 37; return s.tmp_0;
   case 37:
     r0 = s.retval;
-    s.unnamed3474___U4 = (r0);
-    s.unnamed3475___U5 = (0);
+    s.unnamed3794___U4 = (r0);
+    s.unnamed3795___U5 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed3475___U5;
-    r0 = pxsim_Array__length(s.unnamed3474___U4);
+    s.tmp_0 = r0 = s.unnamed3795___U5;
+    r0 = pxsim_Array__length(s.unnamed3794___U4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 14; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3474___U4, s.unnamed3475___U5);
+    r0 = pxsim_Array__getAt(s.unnamed3794___U4, s.unnamed3795___U5);
     s.value___62437 = (r0);
     r0 = pxsim.Math_.randomRange(1, 200);
     globals.tempOreRandomizer___62415 = (r0);
@@ -6768,11 +6768,11 @@ switch (step) {
   case 11:
   case 12:
   case 13:
-    r0 = (s.unnamed3475___U5 + 1);
-    s.unnamed3475___U5 = (r0);
+    r0 = (s.unnamed3795___U5 + 1);
+    s.unnamed3795___U5 = (r0);
     { step = 7; continue; }
   case 14:
-    s.unnamed3474___U4 = (undefined);
+    s.unnamed3794___U4 = (undefined);
     s.value___62468 = (undefined);
     s.tmp_0 = tiles_getTilesByType__P2776_mk(s);
     s.tmp_1 = helpers_getTileByName__P3339_mk(s);
@@ -6784,15 +6784,15 @@ switch (step) {
     s.callLocIdx = 246; s.pc = 47; return s.tmp_0;
   case 47:
     r0 = s.retval;
-    s.unnamed3476___U7 = (r0);
-    s.unnamed3477___U8 = (0);
+    s.unnamed3796___U7 = (r0);
+    s.unnamed3797___U8 = (0);
   case 15:
-    s.tmp_0 = r0 = s.unnamed3477___U8;
-    r0 = pxsim_Array__length(s.unnamed3476___U7);
+    s.tmp_0 = r0 = s.unnamed3797___U8;
+    r0 = pxsim_Array__length(s.unnamed3796___U7);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 28; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3476___U7, s.unnamed3477___U8);
+    r0 = pxsim_Array__getAt(s.unnamed3796___U7, s.unnamed3797___U8);
     s.value___62468 = (r0);
     r0 = pxsim.Math_.randomRange(1, 300);
     globals.tempOreRandomizer___62415 = (r0);
@@ -6915,11 +6915,11 @@ switch (step) {
   case 25:
   case 26:
   case 27:
-    r0 = (s.unnamed3477___U8 + 1);
-    s.unnamed3477___U8 = (r0);
+    r0 = (s.unnamed3797___U8 + 1);
+    s.unnamed3797___U8 = (r0);
     { step = 15; continue; }
   case 28:
-    s.unnamed3476___U7 = (undefined);
+    s.unnamed3796___U7 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -6937,14 +6937,14 @@ function Ores__P62407_mk(s) {
   tmp_3: undefined,
   tmp_4: undefined,
   value___62409: undefined,
-  unnamed3472___U1: undefined,
-  unnamed3473___U2: undefined,
+  unnamed3792___U1: undefined,
+  unnamed3793___U2: undefined,
   value___62437: undefined,
-  unnamed3474___U4: undefined,
-  unnamed3475___U5: undefined,
+  unnamed3794___U4: undefined,
+  unnamed3795___U5: undefined,
   value___62468: undefined,
-  unnamed3476___U7: undefined,
-  unnamed3477___U8: undefined,
+  unnamed3796___U7: undefined,
+  unnamed3797___U8: undefined,
 } }
 
 
@@ -29217,33 +29217,33 @@ switch (step) {
   case 0:
 
     s.value___62354 = undefined;
-    s.unnamed3460___U1 = undefined;
-    s.unnamed3461___U2 = undefined;
+    s.unnamed3780___U1 = undefined;
+    s.unnamed3781___U2 = undefined;
     s.value___62364 = undefined;
-    s.unnamed3462___U4 = undefined;
-    s.unnamed3463___U5 = undefined;
+    s.unnamed3782___U4 = undefined;
+    s.unnamed3783___U5 = undefined;
     s.value___62372 = undefined;
-    s.unnamed3464___U7 = undefined;
-    s.unnamed3465___U8 = undefined;
+    s.unnamed3784___U7 = undefined;
+    s.unnamed3785___U8 = undefined;
     s.value___62380 = undefined;
-    s.unnamed3466___U10 = undefined;
-    s.unnamed3467___U11 = undefined;
+    s.unnamed3786___U10 = undefined;
+    s.unnamed3787___U11 = undefined;
     s.value___62388 = undefined;
-    s.unnamed3468___U13 = undefined;
-    s.unnamed3469___U14 = undefined;
+    s.unnamed3788___U13 = undefined;
+    s.unnamed3789___U14 = undefined;
     s.value___62396 = undefined;
-    s.unnamed3470___U16 = undefined;
-    s.unnamed3471___U17 = undefined;
+    s.unnamed3790___U16 = undefined;
+    s.unnamed3791___U17 = undefined;
     s.value___62354 = (undefined);
-    s.unnamed3460___U1 = (globals.minedLocations___62355);
-    s.unnamed3461___U2 = (0);
+    s.unnamed3780___U1 = (globals.minedLocations___62355);
+    s.unnamed3781___U2 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed3461___U2;
-    r0 = pxsim_Array__length(s.unnamed3460___U1);
+    s.tmp_0 = r0 = s.unnamed3781___U2;
+    r0 = pxsim_Array__length(s.unnamed3780___U1);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 2; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3460___U1, s.unnamed3461___U2);
+    r0 = pxsim_Array__getAt(s.unnamed3780___U1, s.unnamed3781___U2);
     s.value___62354 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
     s.tmp_2.arg0 = s.value___62354;
@@ -29262,21 +29262,21 @@ switch (step) {
     s.callLocIdx = 215; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
-    r0 = (s.unnamed3461___U2 + 1);
-    s.unnamed3461___U2 = (r0);
+    r0 = (s.unnamed3781___U2 + 1);
+    s.unnamed3781___U2 = (r0);
     { step = 1; continue; }
   case 2:
-    s.unnamed3460___U1 = (undefined);
+    s.unnamed3780___U1 = (undefined);
     s.value___62364 = (undefined);
-    s.unnamed3462___U4 = (globals.coalLocations___62365);
-    s.unnamed3463___U5 = (0);
+    s.unnamed3782___U4 = (globals.coalLocations___62365);
+    s.unnamed3783___U5 = (0);
   case 3:
-    s.tmp_0 = r0 = s.unnamed3463___U5;
-    r0 = pxsim_Array__length(s.unnamed3462___U4);
+    s.tmp_0 = r0 = s.unnamed3783___U5;
+    r0 = pxsim_Array__length(s.unnamed3782___U4);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 4; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3462___U4, s.unnamed3463___U5);
+    r0 = pxsim_Array__getAt(s.unnamed3782___U4, s.unnamed3783___U5);
     s.value___62364 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
     s.tmp_2.arg0 = s.value___62364;
@@ -29289,21 +29289,21 @@ switch (step) {
     s.callLocIdx = 217; s.pc = 16; return s.tmp_2;
   case 16:
     r0 = s.retval;
-    r0 = (s.unnamed3463___U5 + 1);
-    s.unnamed3463___U5 = (r0);
+    r0 = (s.unnamed3783___U5 + 1);
+    s.unnamed3783___U5 = (r0);
     { step = 3; continue; }
   case 4:
-    s.unnamed3462___U4 = (undefined);
+    s.unnamed3782___U4 = (undefined);
     s.value___62372 = (undefined);
-    s.unnamed3464___U7 = (globals.ironLocations___62373);
-    s.unnamed3465___U8 = (0);
+    s.unnamed3784___U7 = (globals.ironLocations___62373);
+    s.unnamed3785___U8 = (0);
   case 5:
-    s.tmp_0 = r0 = s.unnamed3465___U8;
-    r0 = pxsim_Array__length(s.unnamed3464___U7);
+    s.tmp_0 = r0 = s.unnamed3785___U8;
+    r0 = pxsim_Array__length(s.unnamed3784___U7);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3464___U7, s.unnamed3465___U8);
+    r0 = pxsim_Array__getAt(s.unnamed3784___U7, s.unnamed3785___U8);
     s.value___62372 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
     s.tmp_2.arg0 = s.value___62372;
@@ -29316,21 +29316,21 @@ switch (step) {
     s.callLocIdx = 219; s.pc = 18; return s.tmp_2;
   case 18:
     r0 = s.retval;
-    r0 = (s.unnamed3465___U8 + 1);
-    s.unnamed3465___U8 = (r0);
+    r0 = (s.unnamed3785___U8 + 1);
+    s.unnamed3785___U8 = (r0);
     { step = 5; continue; }
   case 6:
-    s.unnamed3464___U7 = (undefined);
+    s.unnamed3784___U7 = (undefined);
     s.value___62380 = (undefined);
-    s.unnamed3466___U10 = (globals.copperLocations___62381);
-    s.unnamed3467___U11 = (0);
+    s.unnamed3786___U10 = (globals.copperLocations___62381);
+    s.unnamed3787___U11 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed3467___U11;
-    r0 = pxsim_Array__length(s.unnamed3466___U10);
+    s.tmp_0 = r0 = s.unnamed3787___U11;
+    r0 = pxsim_Array__length(s.unnamed3786___U10);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3466___U10, s.unnamed3467___U11);
+    r0 = pxsim_Array__getAt(s.unnamed3786___U10, s.unnamed3787___U11);
     s.value___62380 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
     s.tmp_2.arg0 = s.value___62380;
@@ -29343,21 +29343,21 @@ switch (step) {
     s.callLocIdx = 221; s.pc = 20; return s.tmp_2;
   case 20:
     r0 = s.retval;
-    r0 = (s.unnamed3467___U11 + 1);
-    s.unnamed3467___U11 = (r0);
+    r0 = (s.unnamed3787___U11 + 1);
+    s.unnamed3787___U11 = (r0);
     { step = 7; continue; }
   case 8:
-    s.unnamed3466___U10 = (undefined);
+    s.unnamed3786___U10 = (undefined);
     s.value___62388 = (undefined);
-    s.unnamed3468___U13 = (globals.dirtLocations___62389);
-    s.unnamed3469___U14 = (0);
+    s.unnamed3788___U13 = (globals.dirtLocations___62389);
+    s.unnamed3789___U14 = (0);
   case 9:
-    s.tmp_0 = r0 = s.unnamed3469___U14;
-    r0 = pxsim_Array__length(s.unnamed3468___U13);
+    s.tmp_0 = r0 = s.unnamed3789___U14;
+    r0 = pxsim_Array__length(s.unnamed3788___U13);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 10; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3468___U13, s.unnamed3469___U14);
+    r0 = pxsim_Array__getAt(s.unnamed3788___U13, s.unnamed3789___U14);
     s.value___62388 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
     s.tmp_2.arg0 = s.value___62388;
@@ -29370,21 +29370,21 @@ switch (step) {
     s.callLocIdx = 223; s.pc = 22; return s.tmp_2;
   case 22:
     r0 = s.retval;
-    r0 = (s.unnamed3469___U14 + 1);
-    s.unnamed3469___U14 = (r0);
+    r0 = (s.unnamed3789___U14 + 1);
+    s.unnamed3789___U14 = (r0);
     { step = 9; continue; }
   case 10:
-    s.unnamed3468___U13 = (undefined);
+    s.unnamed3788___U13 = (undefined);
     s.value___62396 = (undefined);
-    s.unnamed3470___U16 = (globals.stoneLocations___62397);
-    s.unnamed3471___U17 = (0);
+    s.unnamed3790___U16 = (globals.stoneLocations___62397);
+    s.unnamed3791___U17 = (0);
   case 11:
-    s.tmp_0 = r0 = s.unnamed3471___U17;
-    r0 = pxsim_Array__length(s.unnamed3470___U16);
+    s.tmp_0 = r0 = s.unnamed3791___U17;
+    r0 = pxsim_Array__length(s.unnamed3790___U16);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed3470___U16, s.unnamed3471___U17);
+    r0 = pxsim_Array__getAt(s.unnamed3790___U16, s.unnamed3791___U17);
     s.value___62396 = (r0);
     s.tmp_2 = tiles_setTileAt__P2766_mk(s);
     s.tmp_2.arg0 = s.value___62396;
@@ -29397,11 +29397,11 @@ switch (step) {
     s.callLocIdx = 225; s.pc = 24; return s.tmp_2;
   case 24:
     r0 = s.retval;
-    r0 = (s.unnamed3471___U17 + 1);
-    s.unnamed3471___U17 = (r0);
+    r0 = (s.unnamed3791___U17 + 1);
+    s.unnamed3791___U17 = (r0);
     { step = 11; continue; }
   case 12:
-    s.unnamed3470___U16 = (undefined);
+    s.unnamed3790___U16 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -29418,23 +29418,23 @@ function loadTilemap__P62344_mk(s) {
   tmp_2: undefined,
   tmp_3: undefined,
   value___62354: undefined,
-  unnamed3460___U1: undefined,
-  unnamed3461___U2: undefined,
+  unnamed3780___U1: undefined,
+  unnamed3781___U2: undefined,
   value___62364: undefined,
-  unnamed3462___U4: undefined,
-  unnamed3463___U5: undefined,
+  unnamed3782___U4: undefined,
+  unnamed3783___U5: undefined,
   value___62372: undefined,
-  unnamed3464___U7: undefined,
-  unnamed3465___U8: undefined,
+  unnamed3784___U7: undefined,
+  unnamed3785___U8: undefined,
   value___62380: undefined,
-  unnamed3466___U10: undefined,
-  unnamed3467___U11: undefined,
+  unnamed3786___U10: undefined,
+  unnamed3787___U11: undefined,
   value___62388: undefined,
-  unnamed3468___U13: undefined,
-  unnamed3469___U14: undefined,
+  unnamed3788___U13: undefined,
+  unnamed3789___U14: undefined,
   value___62396: undefined,
-  unnamed3470___U16: undefined,
-  unnamed3471___U17: undefined,
+  unnamed3790___U16: undefined,
+  unnamed3791___U17: undefined,
 } }
 
 
@@ -55821,5 +55821,5 @@ const sprites_BaseSpriteSayRenderer__C2260_VT = mkVTable({
 
 const breakpoints = setupDebugger(1, ["transparency16___24727","tile13___24812","tile14___24817","tile18___24827","tile11___24822","tile22___24832","tile23___24842","tile24___24847","tile25___24852","tile26___24857","tile7___24757","tile1___24732","tile2___24867","tile3___24737","tile5___24747","tile8___24787","tile9___24762","tile32___24887","tile4___24742","tile6___24752","tile12___24767","tile15___24772","tile16___24777","tile17___24782","tile19___24792","tile20___24797","tile21___24802","tile10___24807","tile27___24837","tile28___24862","tile29___24872","tile30___24877","tile31___24882","Structure___62045","textSprites___62048","Woodythings___62051","jump___62059","inInventory___62069","Player_character___62073","Base___62091","In_Base___62096","inventory___62548","miningEfficiency___63067","Gravity___62315","gto_base_said___63216","textSprite___63264","Tree___63144","Tree_spawn_x___63151","Tree_spawn_y___63156","tempOreRandomizer___62415","dirt___63184","coal___63190","stone___63196","whereToBreakCol___62527","whereToBreakRow___62535","Type_of_block_being_mined___62134","previousTilemap___62331","minedLocations___62355","coalLocations___62365","ironLocations___62373","copperLocations___62381","dirtLocations___62389","stoneLocations___62397"])
 
-return _main___P63429
+return _main___P63710
 })
