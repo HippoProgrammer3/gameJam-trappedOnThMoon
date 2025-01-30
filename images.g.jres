@@ -4,21 +4,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "coal2Art"
     },
-    "image2": {
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "invisible"
-    },
-    "image3": {
-        "data": "hwQQABAAAAC7u7u7u7u7u7u7u7u7u7u7u7u8u7y7u7u7u8y7vLvLu7y7y7u7u8u7vLvLu7u7y7u8u7u7u7vLu7u7u7u7u7u7u7u7u7u7u7u7u7u7y7u7u7vLu7vLu7u7u8u7u8u8u7u7y7u7u7y7u7vLu7u7vLu7u7u7u7u7u7u7u7u7u7u7uw==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "stone"
-    },
-    "image4": {
-        "data": "hwQQABAAAAC7u7u7u7u7u7u7u7u7u7u7u7vdu727u7u7u9273bvbu7273bvdu9u93bvdu7u72729u7u7u7vbvbu7u7u7u7u7u7u7u7u7u7u7u7u72727u7vbu7vbvbu7u9u9u9u9u7u727272727u7vbvbu7vbu7u7u7u7u7u7u7u7u7u7u7uw==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "iron"
-    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
