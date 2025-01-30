@@ -702,15 +702,13 @@ function GROWTrees () {
 }
 function addToInventory (thing: number) {
     if (thing == 0) {
-        list.push(dirt)
+        dirtQuantity += 1
     } else if (thing == 1) {
-        list.push(stone)
+        stoneQuantity += 1
     } else if (thing == 3) {
-        list.push(coal)
+        coalQuantity += 1
     } else if (thing == 4) {
-        list.push(iron)
-    } else {
-    	
+        ironQuantity += 1
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -720,6 +718,10 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function createInventory () {
     inventory = Inventory.create_inventory(list, 999)
+    dirt.set_text(ItemTextAttribute.Tooltip, convertToText(dirtQuantity))
+    coal.set_text(ItemTextAttribute.Tooltip, convertToText(coalQuantity))
+    iron.set_text(ItemTextAttribute.Tooltip, convertToText(ironQuantity))
+    stone.set_text(ItemTextAttribute.Tooltip, convertToText(stoneQuantity))
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, otherSprite) {
     if (!(gto_base_said)) {
@@ -760,6 +762,10 @@ let iron: Inventory.Item = null
 let stone: Inventory.Item = null
 let coal: Inventory.Item = null
 let dirt: Inventory.Item = null
+let coalQuantity = 0
+let dirtQuantity = 0
+let ironQuantity = 0
+let stoneQuantity = 0
 let miningEfficiency = 0
 let inInventory = false
 let gto_base_said = false
@@ -1036,6 +1042,10 @@ gto_base_said = false
 inInventory = false
 miningEfficiency = 100
 let inventoryContents = 0
+stoneQuantity = 0
+ironQuantity = 0
+dirtQuantity = 0
+coalQuantity = 0
 dirt = Inventory.create_item("Dirt", assets.image`coal2Art`, "Dug up from the ground")
 coal = Inventory.create_item("Coal", img`
     b b b b b b b b b b b b b b b b 
@@ -1057,7 +1067,12 @@ coal = Inventory.create_item("Coal", img`
     `, "Dug up from the ground")
 stone = Inventory.create_item("Stone", assets.image`stone`, "Dug up from the ground")
 iron = Inventory.create_item("iron", assets.image`iron`, "Dug up from the ground")
-list = [dirt, stone, coal]
+list = [
+dirt,
+stone,
+coal,
+iron
+]
 scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(48, 13))
