@@ -979,18 +979,34 @@ function activateInventory (goingIn: boolean) {
     }
 }
 function makeTilesSeeable () {
-    for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
+    for (let value of startDirtLocations) {
         if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column - 1, value.row), assets.tile`myTile8`))) {
-        	
+            tiles.setTileAt(value, assets.tile`myTile26`)
         } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column + 1, value.row), assets.tile`myTile8`))) {
         	
         } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row + 1), assets.tile`myTile8`))) {
         	
         } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row - 1), assets.tile`myTile8`))) {
         	
+        } else {
+        	
         }
     }
 }
+function startingSaveTilemap () {
+    startMinedLocations = tiles.getTilesByType(assets.tile`myTile8`)
+    startCoalLocations = tiles.getTilesByType(assets.tile`Coal`)
+    startIronLocations = tiles.getTilesByType(assets.tile`Iron`)
+    startCopperLocations = tiles.getTilesByType(assets.tile`Copper`)
+    startDirtLocations = tiles.getTilesByType(assets.tile`myTile3`)
+    startStoneLocations = tiles.getTilesByType(assets.tile`Stone`)
+}
+let startStoneLocations: tiles.Location[] = []
+let startCopperLocations: tiles.Location[] = []
+let startIronLocations: tiles.Location[] = []
+let startCoalLocations: tiles.Location[] = []
+let startMinedLocations: tiles.Location[] = []
+let startDirtLocations: tiles.Location[] = []
 let Tree_spawn_y = 0
 let Tree_spawn_x = 0
 let Tree: Sprite = null
