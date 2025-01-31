@@ -360,6 +360,8 @@ function BlockBreak (col: number, row: number, block: number, miningSpeed: numbe
     }
     tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile8`)
     tiles.setWallAt(tiles.getTileLocation(col, row), false)
+    brokenBlocks.push(tiles.getTileLocation(col, row))
+    makeTilesSeeable()
 }
 function gotoBase (goto: boolean) {
     if (goto) {
@@ -833,6 +835,7 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
     } else {
     	
     }
+    makeTilesSeeable()
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (inInventory) {
@@ -981,17 +984,17 @@ function activateInventory (goingIn: boolean) {
 }
 function makeTilesSeeable () {
     for (let value of startDirtLocations) {
-        if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column - 1, value.row), assets.tile`myTile8`))) {
-            tiles.setTileAt(value, assets.tile`myTile26`)
-        } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column + 1, value.row), assets.tile`myTile8`))) {
-        	
-        } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row + 1), assets.tile`myTile8`))) {
-        	
-        } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row - 1), assets.tile`myTile8`))) {
-        	
-        } else {
-        	
+        for (let value of brokenBlocks) {
+            if (value == value) {
+                x = false
+            }
         }
+        if (x && !(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column - 1, value.row), assets.tile`myTile8`) || tiles.tileAtLocationEquals(tiles.getTileLocation(value.column + 1, value.row), assets.tile`myTile8`) || (tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row + 1), assets.tile`myTile8`) || tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row - 1), assets.tile`myTile8`)))) {
+            tiles.setTileAt(value, assets.tile`myTile26`)
+        } else {
+            tiles.setTileAt(value, assets.tile`myTile3`)
+        }
+        x = true
     }
 }
 function startingSaveTilemap () {
@@ -1007,6 +1010,7 @@ let startCopperLocations: tiles.Location[] = []
 let startIronLocations: tiles.Location[] = []
 let startCoalLocations: tiles.Location[] = []
 let startMinedLocations: tiles.Location[] = []
+let x = false
 let startDirtLocations: tiles.Location[] = []
 let Tree_spawn_y = 0
 let Tree_spawn_x = 0
@@ -1025,6 +1029,7 @@ let previousTilemap = 0
 let Type_of_block_being_mined = 0
 let Mining_speed_lvl: Sprite = null
 let Upgrade_menu_text: Sprite = null
+let brokenBlocks: tiles.Location[] = []
 let list: Inventory.Item[] = []
 let iron: Inventory.Item = null
 let stone: Inventory.Item = null
@@ -1377,6 +1382,7 @@ stone,
 coal,
 iron
 ]
+brokenBlocks = []
 scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(47, 13))
@@ -1394,6 +1400,7 @@ Keybinds.CustomKey.UP
 activateInventory(true)
 activateInventory(false)
 GROWTrees()
+makeTilesSeeable()
 game.onUpdate(function () {
     Player_character.vy += Gravity
 })
