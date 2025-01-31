@@ -718,6 +718,7 @@ function Ores () {
         } else {
             tiles.setTileAt(value, assets.tile`Stone`)
         }
+        startingSaveTilemap()
     }
 }
 function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: number) {
