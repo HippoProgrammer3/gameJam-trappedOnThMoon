@@ -978,6 +978,19 @@ function activateInventory (goingIn: boolean) {
         controller.moveSprite(Player_character, 50, 0)
     }
 }
+function makeTilesSeeable () {
+    for (let value of tiles.getTilesByType(assets.tile`myTile3`)) {
+        if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column - 1, value.row), assets.tile`myTile8`))) {
+        	
+        } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column + 1, value.row), assets.tile`myTile8`))) {
+        	
+        } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row + 1), assets.tile`myTile8`))) {
+        	
+        } else if (!(tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row - 1), assets.tile`myTile8`))) {
+        	
+        }
+    }
+}
 let Tree_spawn_y = 0
 let Tree_spawn_x = 0
 let Tree: Sprite = null
