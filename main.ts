@@ -863,7 +863,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function GROWTrees () {
-    for (let value of tiles.getTilesByType(assets.tile`myTile26`)) {
+    for (let value of tiles.getTilesByType(assets.tile`myTile25`)) {
         Tree = sprites.create(img`
             ...........66...........
             ..........6776..........
