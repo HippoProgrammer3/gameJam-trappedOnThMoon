@@ -651,7 +651,7 @@ function loadTilemap () {
         tiles.setTileAt(value, assets.tile`myTile3`)
     }
     for (let value of stoneLocations) {
-        tiles.setTileAt(value, assets.tile`myTile3`)
+        tiles.setTileAt(value, assets.tile`Stone`)
     }
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -1390,42 +1390,8 @@ coal = Inventory.create_item("Coal", img`
     b b b b b b b b b b f f f f b b 
     b b b b b b b b b b b b b b b b 
     `, "Dug up from the ground")
-stone = Inventory.create_item("Stone", img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, "Dug up from the ground")
-iron = Inventory.create_item("iron", img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, "Dug up from the ground")
+stone = Inventory.create_item("Stone", assets.tile`Stone`, "Dug up from the ground")
+iron = Inventory.create_item("iron", assets.tile`Iron`, "Dug up from the ground")
 list = [
 dirt,
 stone,
