@@ -497,11 +497,14 @@ function gotoBase (goto: boolean) {
         previousTilemap = 0
         Player_character.setVelocity(0, 0)
         controller.moveSprite(Player_character, 50, 50)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Woodythings)
     } else {
         Gravity = 0.8
         In_Base = goto
         tiles.setCurrentTilemap(tilemap`Planet part 1`)
         loadTilemap()
+        GROWTrees()
+        hideTiles()
         scene.setBackgroundImage(img`
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -626,6 +629,9 @@ function gotoBase (goto: boolean) {
             `)
         tiles.placeOnTile(Player_character, tiles.getTileLocation(52, 13))
         controller.moveSprite(Player_character, 50, 0)
+        for (let value of minedLocations) {
+            showTiles(value.column, value.row)
+        }
     }
 }
 function loadTilemap () {
