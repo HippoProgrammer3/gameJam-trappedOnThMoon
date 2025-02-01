@@ -361,9 +361,9 @@ function BlockBreak (col: number, row: number, block: number, miningSpeed: numbe
     }
     tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile8`)
     tiles.setWallAt(tiles.getTileLocation(col, row), false)
+    showTiles(col, row)
     isMining = false
     brokenBlocks.push(tiles.getTileLocation(col, row))
-    hideTiles()
 }
 function gotoBase (goto: boolean) {
     if (goto) {
@@ -939,6 +939,12 @@ function GROWTrees () {
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
 }
+function showTiles (col: number, row: number) {
+    tileUtil.coverTile(tiles.getTileLocation(col - 1, row), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col + 1, row), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col, row + 1), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col, row - 1), assets.tile`transparency16`)
+}
 function addToInventory (thing: number) {
     if (thing == 0) {
         dirtQuantity += 1
@@ -973,7 +979,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, oth
     }
 })
 function hideTiles () {
-	
+    tileUtil.coverAllTiles(assets.tile`myTile3`, assets.tile`myTile26`)
+    tileUtil.coverAllTiles(assets.tile`Stone`, assets.tile`myTile26`)
+    tileUtil.coverAllTiles(assets.tile`Coal`, assets.tile`myTile26`)
+    tileUtil.coverAllTiles(assets.tile`Copper`, assets.tile`myTile26`)
+    tileUtil.coverAllTiles(assets.tile`Iron`, assets.tile`myTile26`)
 }
 function activateInventory (goingIn: boolean) {
     if (goingIn) {
