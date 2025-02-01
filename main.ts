@@ -283,10 +283,10 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (!(inInventory) && Player_character.isHittingTile(CollisionDirection.Bottom)) {
         Player_character.vy = -50
         jump = true
-        Mine(2, miningEfficiency)
     } else {
     	
     }
+    Mine(2, miningEfficiency)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Player_character.overlapsWith(Base)) {
