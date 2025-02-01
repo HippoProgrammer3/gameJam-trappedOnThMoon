@@ -297,6 +297,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function BlockBreak (col: number, row: number, block: number, miningSpeed: number) {
+    isMining = true
     if (block == 0) {
         pause(miningSpeed)
         tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile13`)
@@ -360,6 +361,7 @@ function BlockBreak (col: number, row: number, block: number, miningSpeed: numbe
     }
     tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile8`)
     tiles.setWallAt(tiles.getTileLocation(col, row), false)
+    isMining = false
     brokenBlocks.push(tiles.getTileLocation(col, row))
     makeTilesSeeable()
 }
@@ -724,118 +726,119 @@ function Ores () {
     }
 }
 function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: number) {
-    if (direction_down__1_up__2_left__3_right__4 == 1) {
-        if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Stone`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-            addToInventory(1)
+    if (!(isMining)) {
+        if (direction_down__1_up__2_left__3_right__4 == 1) {
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Stone`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                addToInventory(1)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                Type_of_block_being_mined = 0
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile0`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                inventory.change_number(InventoryNumberAttribute.SelectedIndex, 0)
+                Type_of_block_being_mined = 1
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile1`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
+                Type_of_block_being_mined = 2
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile3`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                Type_of_block_being_mined = 5
+                addToInventory(0)
+            }
+        } else if (direction_down__1_up__2_left__3_right__4 == 3) {
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Stone`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 6, cooldown)
+                Type_of_block_being_mined = 6
+                addToInventory(1)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                Type_of_block_being_mined = 0
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile0`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 1
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile1`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
+                Type_of_block_being_mined = 2
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile3`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                Type_of_block_being_mined = 5
+                addToInventory(0)
+            }
+        } else if (direction_down__1_up__2_left__3_right__4 == 4) {
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Stone`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 6
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                Type_of_block_being_mined = 0
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile0`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 1
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile1`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
+                Type_of_block_being_mined = 2
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile3`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 5
+                addToInventory(0)
+            }
+        } else {
+        	
         }
-        if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-            Type_of_block_being_mined = 0
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile0`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-            inventory.change_number(InventoryNumberAttribute.SelectedIndex, 0)
-            Type_of_block_being_mined = 1
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile1`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
-            Type_of_block_being_mined = 2
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile3`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-            Type_of_block_being_mined = 5
-            addToInventory(0)
-        }
-    } else if (direction_down__1_up__2_left__3_right__4 == 3) {
-        if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Stone`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 6, cooldown)
-            Type_of_block_being_mined = 6
-            addToInventory(1)
-        }
-        if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-            Type_of_block_being_mined = 0
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile0`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-            Type_of_block_being_mined = 1
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile1`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
-            Type_of_block_being_mined = 2
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile3`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-            Type_of_block_being_mined = 5
-            addToInventory(0)
-        }
-    } else if (direction_down__1_up__2_left__3_right__4 == 4) {
-        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Stone`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-            Type_of_block_being_mined = 6
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-            Type_of_block_being_mined = 0
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile0`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-            Type_of_block_being_mined = 1
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile1`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
-            Type_of_block_being_mined = 2
-            addToInventory(0)
-        }
-        if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile3`)) {
-            whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-            whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-            BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-            Type_of_block_being_mined = 5
-            addToInventory(0)
-        }
-    } else {
-    	
     }
-    makeTilesSeeable()
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (inInventory) {
@@ -989,8 +992,10 @@ function makeTilesSeeable () {
                 x = false
             }
         }
-        if (x && !(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column - 1, value.row), assets.tile`myTile8`) || tiles.tileAtLocationEquals(tiles.getTileLocation(value.column + 1, value.row), assets.tile`myTile8`) || (tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row + 1), assets.tile`myTile8`) || tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row - 1), assets.tile`myTile8`)))) {
+        if (!(x) && !(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column - 1, value.row), assets.tile`myTile8`) || tiles.tileAtLocationEquals(tiles.getTileLocation(value.column + 1, value.row), assets.tile`myTile8`) || (tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row + 1), assets.tile`myTile8`) || tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row - 1), assets.tile`myTile8`)))) {
             tiles.setTileAt(value, assets.tile`myTile26`)
+        } else if (x) {
+            tiles.setTileAt(value, assets.tile`myTile8`)
         } else {
             tiles.setTileAt(value, assets.tile`myTile3`)
         }
@@ -1029,6 +1034,7 @@ let previousTilemap = 0
 let Type_of_block_being_mined = 0
 let Mining_speed_lvl: Sprite = null
 let Upgrade_menu_text: Sprite = null
+let isMining = false
 let brokenBlocks: tiles.Location[] = []
 let list: Inventory.Item[] = []
 let iron: Inventory.Item = null
@@ -1383,6 +1389,7 @@ coal,
 iron
 ]
 brokenBlocks = []
+isMining = false
 scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(47, 13))
