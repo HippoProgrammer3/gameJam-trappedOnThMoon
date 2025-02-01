@@ -954,6 +954,10 @@ function showTiles (col: number, row: number) {
     tileUtil.coverTile(tiles.getTileLocation(col - -1, row - 1), assets.tile`transparency16`)
     tileUtil.coverTile(tiles.getTileLocation(col - -1, row - -1), assets.tile`transparency16`)
     tileUtil.coverTile(tiles.getTileLocation(col - 1, row - -1), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col - 2, row), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col + 2, row), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col, row + 2), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col, row - 2), assets.tile`transparency16`)
 }
 function addToInventory (thing: number) {
     if (thing == 0) {
