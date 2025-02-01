@@ -283,8 +283,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (!(inInventory) && Player_character.isHittingTile(CollisionDirection.Bottom)) {
         Player_character.vy = -50
         jump = true
-    } else if (Player_character.isHittingTile(CollisionDirection.Top)) {
-    	
+        Mine(2, miningEfficiency)
     } else {
     	
     }
@@ -811,7 +810,7 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
                 whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
                 Type_of_block_being_mined = 6
-                addToInventory(0)
+                addToInventory(1)
             }
             if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile`)) {
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
@@ -838,6 +837,42 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
                 whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 5
+                addToInventory(0)
+            }
+        } else if (direction_down__1_up__2_left__3_right__4 == 2) {
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Stone`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                addToInventory(1)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                Type_of_block_being_mined = 0
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile0`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                inventory.change_number(InventoryNumberAttribute.SelectedIndex, 0)
+                Type_of_block_being_mined = 1
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile1`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
+                Type_of_block_being_mined = 2
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile3`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 Type_of_block_being_mined = 5
                 addToInventory(0)
             }
