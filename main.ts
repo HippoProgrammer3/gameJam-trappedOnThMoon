@@ -363,7 +363,7 @@ function BlockBreak (col: number, row: number, block: number, miningSpeed: numbe
     tiles.setWallAt(tiles.getTileLocation(col, row), false)
     isMining = false
     brokenBlocks.push(tiles.getTileLocation(col, row))
-    makeTilesSeeable()
+    hideTiles()
 }
 function gotoBase (goto: boolean) {
     if (goto) {
@@ -972,6 +972,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, oth
         gto_base_said = true
     }
 })
+function hideTiles () {
+	
+}
 function activateInventory (goingIn: boolean) {
     if (goingIn) {
         controller.moveSprite(Player_character, 0, 0)
@@ -985,23 +988,6 @@ function activateInventory (goingIn: boolean) {
         controller.moveSprite(Player_character, 50, 0)
     }
 }
-function makeTilesSeeable () {
-    for (let value of startDirtLocations) {
-        for (let value of brokenBlocks) {
-            if (value == value) {
-                x = false
-            }
-        }
-        if (!(x) && !(tiles.tileAtLocationEquals(tiles.getTileLocation(value.column - 1, value.row), assets.tile`myTile8`) || tiles.tileAtLocationEquals(tiles.getTileLocation(value.column + 1, value.row), assets.tile`myTile8`) || (tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row + 1), assets.tile`myTile8`) || tiles.tileAtLocationEquals(tiles.getTileLocation(value.row, value.row - 1), assets.tile`myTile8`)))) {
-            tiles.setTileAt(value, assets.tile`myTile26`)
-        } else if (x) {
-            tiles.setTileAt(value, assets.tile`myTile8`)
-        } else {
-            tiles.setTileAt(value, assets.tile`myTile3`)
-        }
-        x = true
-    }
-}
 function startingSaveTilemap () {
     startMinedLocations = tiles.getTilesByType(assets.tile`myTile8`)
     startCoalLocations = tiles.getTilesByType(assets.tile`Coal`)
@@ -1011,12 +997,11 @@ function startingSaveTilemap () {
     startStoneLocations = tiles.getTilesByType(assets.tile`Stone`)
 }
 let startStoneLocations: tiles.Location[] = []
+let startDirtLocations: tiles.Location[] = []
 let startCopperLocations: tiles.Location[] = []
 let startIronLocations: tiles.Location[] = []
 let startCoalLocations: tiles.Location[] = []
 let startMinedLocations: tiles.Location[] = []
-let x = false
-let startDirtLocations: tiles.Location[] = []
 let Tree_spawn_y = 0
 let Tree_spawn_x = 0
 let Tree: Sprite = null
@@ -1407,7 +1392,7 @@ Keybinds.CustomKey.UP
 activateInventory(true)
 activateInventory(false)
 GROWTrees()
-makeTilesSeeable()
+hideTiles()
 game.onUpdate(function () {
     Player_character.vy += Gravity
 })
