@@ -283,8 +283,33 @@ function Spawn_menu_upgrades_text () {
     tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 1))
 }
 function enemyBehaviour () {
-    for (let value of spriteutils.getSpritesWithin(SpriteKind.aboveEnemy, 50, Player_character)) {
-    	
+    for (let value of flyingEnemiesArray) {
+        if (value.vx < 0) {
+            animation.runImageAnimation(
+            flyingEnemies,
+            assets.animation`flyingMonsterLeft`,
+            500,
+            false
+            )
+        } else {
+            animation.runImageAnimation(
+            flyingEnemies,
+            assets.animation`flyingMonsterRight`,
+            500,
+            false
+            )
+        }
+        if (spriteutils.distanceBetween(Player_character, value) < 100) {
+            sprites.setDataBoolean(value, "canSeePlayer", true)
+        } else if (spriteutils.distanceBetween(Player_character, value) > 100) {
+            sprites.setDataBoolean(value, "canSeePlayer", false)
+        }
+        if (sprites.readDataBoolean(value, "canSeePlayer")) {
+            enemyShoot(sprites.readDataImage(value, "projectile"), value, Player_character, 50)
+            spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(value, Player_character), 15)
+        } else {
+            value.vx = 15
+        }
     }
 }
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
@@ -956,6 +981,9 @@ function spawnEnemies () {
         500,
         false
         )
+        flyingEnemiesArray.push(flyingEnemies)
+        sprites.setDataBoolean(flyingEnemies, "canSeePlayer", false)
+        sprites.setDataImageValue(flyingEnemies, "projectile", assets.image`projectile`)
     }
 }
 function GROWTrees () {
@@ -1095,6 +1123,10 @@ function activateInventory (goingIn: boolean) {
         controller.moveSprite(Player_character, 50, 0)
     }
 }
+function enemyShoot (projectile: Image, spriteFrom: Sprite, spriteTo: Sprite, speed: number) {
+    shot = sprites.createProjectileFromSprite(projectile, spriteFrom, 0, 0)
+    spriteutils.setVelocityAtAngle(shot, spriteutils.angleFrom(spriteFrom, spriteTo), speed)
+}
 function startingSaveTilemap () {
     startMinedLocations = tiles.getTilesByType(assets.tile`myTile8`)
     startCoalLocations = tiles.getTilesByType(assets.tile`Coal`)
@@ -1109,10 +1141,10 @@ let startCopperLocations: tiles.Location[] = []
 let startIronLocations: tiles.Location[] = []
 let startCoalLocations: tiles.Location[] = []
 let startMinedLocations: tiles.Location[] = []
+let shot: Sprite = null
 let Tree_spawn_y = 0
 let Tree_spawn_x = 0
 let Tree: Sprite = null
-let flyingEnemies: Sprite = null
 let inventory: Inventory.Inventory = null
 let whereToBreakRow = 0
 let whereToBreakCol = 0
@@ -1125,11 +1157,13 @@ let coalLocations: tiles.Location[] = []
 let minedLocations: tiles.Location[] = []
 let previousTilemap = 0
 let Type_of_block_being_mined = 0
+let flyingEnemies: Sprite = null
 let Mining_speed_lvl: Sprite = null
 let Upgrade_menu_text: Sprite = null
 let isMining = false
 let brokenBlocks: tiles.Location[] = []
 let list: Inventory.Item[] = []
+let flyingEnemiesArray: Sprite[] = []
 let iron: Inventory.Item = null
 let stone: Inventory.Item = null
 let coal: Inventory.Item = null
@@ -1441,6 +1475,7 @@ coal = Inventory.create_item("Coal", img`
     `, "Dug up from the ground")
 stone = Inventory.create_item("Stone", assets.tile`Stone`, "Dug up from the ground")
 iron = Inventory.create_item("iron", assets.tile`Iron`, "Dug up from the ground")
+flyingEnemiesArray = []
 list = [
 dirt,
 stone,
