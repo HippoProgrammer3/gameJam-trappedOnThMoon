@@ -1,8 +1,14 @@
+enum ActionKind {
+    Walking,
+    Idle,
+    Jumping
+}
 namespace SpriteKind {
     export const Structure = SpriteKind.create()
     export const textSprites = SpriteKind.create()
     export const Woodythings = SpriteKind.create()
     export const Upgrade_menu = SpriteKind.create()
+    export const aboveEnemy = SpriteKind.create()
 }
 function Spawn_menu_upgrades_text () {
     Upgrade_menu_text = sprites.create(img`
@@ -275,6 +281,11 @@ function Spawn_menu_upgrades_text () {
         ................................................
         `, SpriteKind.Upgrade_menu)
     tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 1))
+}
+function enemyBehaviour () {
+    for (let value of spriteutils.getSpritesWithin(SpriteKind.aboveEnemy, 50, Player_character)) {
+    	
+    }
 }
 scene.onHitWall(SpriteKind.Player, function (sprite, location) {
     jump = false
@@ -910,6 +921,43 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         Mine(4, miningEfficiency)
     }
 })
+function spawnEnemies () {
+    for (let value of tiles.getTilesByType(assets.tile`myTile27`)) {
+        flyingEnemies = sprites.create(img`
+            d.......................
+            dd..........cc..........
+            dbd.........ccc.........
+            bddd....ccc.ccccccc.....
+            dddbd...ccccc555555cc...
+            ddbddd..ccb5555555555c..
+            dbdddbcc.b55555ff15555c.
+            bdddbdccb5555555ff55555c
+            ....ddcb555555555555d55c
+            d...cdb555555555bb55555c
+            dd..ccb555ddd5555b13bbc.
+            ddb.ccd55ddddd555b3335c.
+            dbdd.cdd5ddddddd55b335c.
+            bddbddddddb555bbbd555c..
+            ddbdddddddbb55555bccc...
+            dbdddbddddddcc555bcc....
+            bdddbdddddddddcccbcccc..
+            dddbdddddddd55dbbbc55c..
+            ddbddddddddd555dccc5c...
+            .cbddddbbbbdd5d555cc....
+            ..cbdddbbbbbdd5555......
+            ...cccbbbbbbd5555c......
+            .....cccccccc555c.......
+            .............ccc........
+            `, SpriteKind.aboveEnemy)
+        tiles.placeOnTile(flyingEnemies, value)
+        animation.runImageAnimation(
+        flyingEnemies,
+        assets.animation`flyingMonsterRight`,
+        500,
+        false
+        )
+    }
+}
 function GROWTrees () {
     for (let value of tiles.getTilesByType(assets.tile`myTile25`)) {
         Tree = sprites.create(img`
@@ -1064,6 +1112,7 @@ let startMinedLocations: tiles.Location[] = []
 let Tree_spawn_y = 0
 let Tree_spawn_x = 0
 let Tree: Sprite = null
+let flyingEnemies: Sprite = null
 let inventory: Inventory.Inventory = null
 let whereToBreakRow = 0
 let whereToBreakCol = 0
