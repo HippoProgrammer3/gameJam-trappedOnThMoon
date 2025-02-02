@@ -9,6 +9,7 @@ namespace SpriteKind {
     export const Woodythings = SpriteKind.create()
     export const Upgrade_menu = SpriteKind.create()
     export const aboveEnemy = SpriteKind.create()
+    export const explodingProjectile = SpriteKind.create()
 }
 function Spawn_menu_upgrades_text () {
     Upgrade_menu_text = sprites.create(img`
@@ -1139,9 +1140,13 @@ function activateInventory (goingIn: boolean) {
         controller.moveSprite(Player_character, 50, 0)
     }
 }
+scene.onHitWall(SpriteKind.explodingProjectile, function (sprite, location) {
+    sprite.startEffect(effects.fire)
+})
 function enemyShoot (projectile: Image, spriteFrom: Sprite, spriteTo: Sprite, speed: number) {
     shot = sprites.createProjectileFromSprite(projectile, spriteFrom, 0, 0)
     spriteutils.setVelocityAtAngle(shot, spriteutils.angleFrom(spriteFrom, spriteTo), speed)
+    shot.setKind(SpriteKind.explodingProjectile)
 }
 function startingSaveTilemap () {
     startMinedLocations = tiles.getTilesByType(assets.tile`myTile8`)
