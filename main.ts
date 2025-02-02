@@ -288,15 +288,15 @@ function enemyBehaviour () {
             animation.runImageAnimation(
             flyingEnemies,
             assets.animation`flyingMonsterLeft`,
-            500,
-            false
+            100,
+            true
             )
         } else {
             animation.runImageAnimation(
             flyingEnemies,
             assets.animation`flyingMonsterRight`,
-            500,
-            false
+            100,
+            true
             )
         }
         if (spriteutils.distanceBetween(Player_character, value) < 100) {
@@ -306,7 +306,16 @@ function enemyBehaviour () {
         }
         if (sprites.readDataBoolean(value, "canSeePlayer")) {
             enemyShoot(sprites.readDataImage(value, "projectile"), value, Player_character, 50)
-            spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(value, Player_character), 15)
+            pause(500)
+            if (spriteutils.distanceBetween(Player_character, value) < 50) {
+                value.setVelocity(0, 0)
+            } else {
+                if (value.tilemapLocation().column < 9) {
+                    value.vy = 10
+                } else {
+                    spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(value, Player_character), 15)
+                }
+            }
         } else {
             value.vx = 15
         }
@@ -974,16 +983,23 @@ function spawnEnemies () {
             .....cccccccc555c.......
             .............ccc........
             `, SpriteKind.aboveEnemy)
+        flyingEnemiesStatusBar = statusbars.create(20, 4, StatusBarKind.Health)
+        flyingEnemiesStatusBar.attachToSprite(flyingEnemies)
         tiles.placeOnTile(flyingEnemies, value)
         animation.runImageAnimation(
         flyingEnemies,
         assets.animation`flyingMonsterRight`,
         500,
-        false
+        true
         )
         flyingEnemiesArray.push(flyingEnemies)
         sprites.setDataBoolean(flyingEnemies, "canSeePlayer", false)
         sprites.setDataImageValue(flyingEnemies, "projectile", assets.image`projectile`)
+        sprites.setDataNumber(flyingEnemies, "maxHealth", 50)
+        sprites.setDataNumber(flyingEnemies, "health", 0)
+        sprites.setDataNumber(flyingEnemies, "statusBarWidth", 20)
+        flyingEnemies.setFlag(SpriteFlag.AutoDestroy, false)
+        statusbars.getStatusBarAttachedTo(StatusBarKind.Health, flyingEnemies).value = (sprites.readDataNumber(flyingEnemies, "maxHealth") + sprites.readDataNumber(flyingEnemies, "health")) * sprites.readDataNumber(flyingEnemies, "statusBarWidth")
     }
 }
 function GROWTrees () {
@@ -1145,6 +1161,7 @@ let shot: Sprite = null
 let Tree_spawn_y = 0
 let Tree_spawn_x = 0
 let Tree: Sprite = null
+let flyingEnemiesStatusBar: StatusBarSprite = null
 let inventory: Inventory.Inventory = null
 let whereToBreakRow = 0
 let whereToBreakCol = 0
@@ -1502,6 +1519,10 @@ activateInventory(true)
 activateInventory(false)
 GROWTrees()
 hideTiles()
+spawnEnemies()
 game.onUpdate(function () {
     Player_character.vy += Gravity
+})
+forever(function () {
+    enemyBehaviour()
 })
