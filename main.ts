@@ -1182,6 +1182,96 @@ function showTiles (col: number, row: number) {
     tileUtil.coverTile(tiles.getTileLocation(col, row + 2), assets.tile`transparency16`)
     tileUtil.coverTile(tiles.getTileLocation(col, row - 2), assets.tile`transparency16`)
 }
+function hud (add: boolean) {
+    if (add) {
+        if (!(_1stTimeHud)) {
+            healthStatusBar = statusbars.create(50, 6, StatusBarKind.Health)
+            healthStatusBar.setPosition(41, 110)
+            pumpingHeart = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . f f f f f f . f f f f f f . 
+                . f f 3 3 3 3 f f f 3 3 3 3 f f 
+                . f 3 3 3 3 3 3 f 3 3 3 3 3 3 f 
+                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
+                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
+                . f 3 3 3 3 3 b b b 1 1 1 3 3 f 
+                . f 3 3 3 3 b b b b b 3 3 3 3 f 
+                . f f 3 3 b b b b b b b 3 3 f f 
+                . . f f 3 b b b b b b b 3 f f . 
+                . . . f f b b b b b b b f f . . 
+                . . . . f f b b b b b f f . . . 
+                . . . . . f f b b b f f . . . . 
+                . . . . . . f f b f f . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.Player)
+            animation.runImageAnimation(
+            pumpingHeart,
+            [img`
+                . . . . . . . . . . . . . . . . 
+                . . f f f f f f . f f f f f f . 
+                . f f 3 3 3 3 f f f 3 3 3 3 f f 
+                . f 3 3 3 3 3 3 f 3 3 3 3 3 3 f 
+                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
+                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
+                . f 3 3 3 3 3 b b b 1 1 1 3 3 f 
+                . f 3 3 3 3 b b b b b 3 3 3 3 f 
+                . f f 3 3 b b b b b b b 3 3 f f 
+                . . f f 3 b b b b b b b 3 f f . 
+                . . . f f b b b b b b b f f . . 
+                . . . . f f b b b b b f f . . . 
+                . . . . . f f b b b f f . . . . 
+                . . . . . . f f b f f . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `,img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . f f f f f . f f f f f . . 
+                . . f f 3 3 3 f f f 3 3 3 f . . 
+                . . f 3 3 3 3 3 f 3 3 3 3 3 . . 
+                . . f 3 3 3 3 3 3 3 1 1 3 3 . . 
+                . . f 3 3 3 3 b b b 1 1 3 3 . . 
+                . . f 3 3 3 b b b b 3 3 3 3 . . 
+                . . f f 3 3 b b b b b 3 3 f . . 
+                . . . f f 3 b b b b b 3 f f . . 
+                . . . . . f b b b b f f . . . . 
+                . . . . . . f b b b f . . . . . 
+                . . . . . . f f b f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `,img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . f f f . f f f . . . . 
+                . . . . f 3 3 3 f 3 3 3 f . . . 
+                . . . . f 3 3 3 3 3 1 3 f . . . 
+                . . . . f 3 3 3 3 3 3 3 f . . . 
+                . . . . . f 3 b b b 3 f . . . . 
+                . . . . . f f b b b f f . . . . 
+                . . . . . . f f b f f . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `],
+            500,
+            true
+            )
+            _1stTimeHud = true
+        } else {
+            healthStatusBar.setFlag(SpriteFlag.Invisible, false)
+            pumpingHeart.setFlag(SpriteFlag.Invisible, false)
+        }
+    } else {
+        healthStatusBar.setFlag(SpriteFlag.Invisible, true)
+        pumpingHeart.setFlag(SpriteFlag.Invisible, true)
+    }
+}
 function addToInventory (thing: number) {
     if (thing == 0) {
         dirtQuantity += 1
@@ -1258,6 +1348,8 @@ let startIronLocations: tiles.Location[] = []
 let startCoalLocations: tiles.Location[] = []
 let startMinedLocations: tiles.Location[] = []
 let shot: Sprite = null
+let pumpingHeart: Sprite = null
+let healthStatusBar: StatusBarSprite = null
 let Tree_spawn_y = 0
 let Tree_spawn_x = 0
 let Tree: Sprite = null
@@ -1285,6 +1377,7 @@ let isMining = false
 let brokenBlocks: tiles.Location[] = []
 let list: Inventory.Item[] = []
 let flyingEnemiesArray: Sprite[] = []
+let _1stTimeHud = false
 let iron: Inventory.Item = null
 let stone: Inventory.Item = null
 let coal: Inventory.Item = null
@@ -1602,6 +1695,7 @@ coal = Inventory.create_item("Coal", img`
     `, "Dug up from the ground")
 stone = Inventory.create_item("Stone", assets.tile`Stone`, "Dug up from the ground")
 iron = Inventory.create_item("iron", assets.tile`Iron`, "Dug up from the ground")
+_1stTimeHud = false
 flyingEnemiesArray = []
 list = [
 dirt,
