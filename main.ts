@@ -351,7 +351,7 @@ function enemyBehaviour () {
             enemyShoot(sprites.readDataImage(value, "projectile"), value, Player_character, 50)
             pause(2000)
             if (spriteutils.distanceBetween(Player_character, value) < 50) {
-                value.setVelocity(0, 0)
+                value.setVelocity(0, -10)
             } else {
                 if (value.tilemapLocation().column < 9) {
                     value.vy = 10
@@ -1217,6 +1217,7 @@ function spawnEnemies () {
         sprites.setDataNumber(flyingEnemies, "health", 0)
         sprites.setDataNumber(flyingEnemies, "statusBarWidth", 20)
         flyingEnemies.setFlag(SpriteFlag.AutoDestroy, false)
+        tiles.setTileAt(value, assets.tile`transparency16`)
         statusbars.getStatusBarAttachedTo(StatusBarKind.Health, flyingEnemies).value = (sprites.readDataNumber(flyingEnemies, "maxHealth") + sprites.readDataNumber(flyingEnemies, "health")) * sprites.readDataNumber(flyingEnemies, "statusBarWidth")
     }
 }
@@ -1392,6 +1393,8 @@ function hud (add: boolean) {
             pumpingHeart.setFlag(SpriteFlag.RelativeToCamera, true)
             healthStatusBar.setFlag(SpriteFlag.RelativeToCamera, true)
             energyStatusBar.setFlag(SpriteFlag.RelativeToCamera, true)
+            healthStatusBar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+            energyStatusBar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
         } else {
             healthStatusBar.setFlag(SpriteFlag.Invisible, false)
             pumpingHeart.setFlag(SpriteFlag.Invisible, false)
@@ -1480,6 +1483,19 @@ function enemyShoot (projectile: Image, spriteFrom: Sprite, spriteTo: Sprite, sp
     spriteutils.setVelocityAtAngle(shot, spriteutils.angleFrom(spriteFrom, spriteTo), speed)
     shot.setKind(SpriteKind.explodingProjectile)
 }
+function respawnAtBase () {
+    game.splash("You Died", "Tut tut tut")
+    inventoryContents = 0
+    stoneQuantity = 0
+    ironQuantity = 0
+    dirtQuantity = 0
+    coalQuantity = 0
+    Mining_speed = 500
+    Energy_capacity = 10
+    Energy_recharge_rate = 1000
+    tiles.placeOnTile(Player_character, tiles.getTileLocation(47, 13))
+    healthStatusBar.value = 100
+}
 function startingSaveTilemap () {
     startMinedLocations = tiles.getTilesByType(assets.tile`myTile8`)
     startCoalLocations = tiles.getTilesByType(assets.tile`Coal`)
@@ -1540,6 +1556,7 @@ let coalQuantity = 0
 let dirtQuantity = 0
 let ironQuantity = 0
 let stoneQuantity = 0
+let inventoryContents = 0
 let miningEfficiency = 0
 let inInventory = false
 let gto_base_said = false
@@ -1836,7 +1853,7 @@ jump = false
 gto_base_said = false
 inInventory = false
 miningEfficiency = 100
-let inventoryContents = 0
+inventoryContents = 0
 stoneQuantity = 0
 ironQuantity = 0
 dirtQuantity = 0
@@ -1900,6 +1917,11 @@ game.onUpdate(function () {
     Player_character.vy += Gravity
 })
 forever(function () {
+    if (healthStatusBar.value < 1) {
+        respawnAtBase()
+    }
+})
+forever(function () {
     enemyBehaviour()
 })
 forever(function () {
@@ -1907,7 +1929,7 @@ forever(function () {
         Player_character.startEffect(effects.fire)
         for (let index = 0; index <= 6; index++) {
             pause(50)
-            healthChange(-1)
+            healthChange(randint(-1, -4))
         }
         playerOnFire = false
         effects.clearParticles(Player_character)
