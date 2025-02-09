@@ -564,6 +564,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         Spawn_menu_upgrades_text()
     } else if (In_Base && In_upgrade_menu == 1) {
         I_just_wanted_to_shrink_the_upgrade_menu_section()
+    } else {
+        if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 3) {
+            toolbar.set_number(ToolbarNumberAttribute.SelectedIndex, 1)
+        } else {
+            toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, 1)
+        }
     }
 })
 controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
@@ -2192,6 +2198,7 @@ for (let value14 of tiles.getTilesByType(assets.tile`myTile8`)) {
     showTiles(value14.column, value14.row)
 }
 makeWeaponToolbar(true)
+HUDAmmo()
 game.onUpdate(function () {
     Player_character.vy += Gravity
 })
