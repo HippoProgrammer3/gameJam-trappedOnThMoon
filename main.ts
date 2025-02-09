@@ -1013,7 +1013,6 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
                 whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                inventory.change_number(InventoryNumberAttribute.SelectedIndex, 0)
                 Type_of_block_being_mined = 1
                 addToInventory(0)
             }
@@ -1217,7 +1216,11 @@ function spawnEnemies () {
         sprites.setDataNumber(flyingEnemies, "health", 0)
         sprites.setDataNumber(flyingEnemies, "statusBarWidth", 20)
         flyingEnemies.setFlag(SpriteFlag.AutoDestroy, false)
-        tiles.setTileAt(value, assets.tile`transparency16`)
+        if (value.column < 24) {
+            tiles.setTileAt(value, assets.tile`transparency16`)
+        } else {
+            tiles.setTileAt(value, assets.tile`myTile8`)
+        }
         statusbars.getStatusBarAttachedTo(StatusBarKind.Health, flyingEnemies).value = (sprites.readDataNumber(flyingEnemies, "maxHealth") + sprites.readDataNumber(flyingEnemies, "health")) * sprites.readDataNumber(flyingEnemies, "statusBarWidth")
     }
 }
@@ -1913,6 +1916,9 @@ GROWTrees()
 hideTiles()
 spawnEnemies()
 hud(true)
+for (let value of tiles.getTilesByType(assets.tile`myTile8`)) {
+    showTiles(value.column, value.row)
+}
 game.onUpdate(function () {
     Player_character.vy += Gravity
 })
@@ -1922,7 +1928,10 @@ forever(function () {
     }
 })
 forever(function () {
-    enemyBehaviour()
+    if (energyStatusBar.value < 100) {
+        energyStatusBar.value += 50 / Energy_capacity / 1.75
+        pause(Energy_recharge_rate)
+    }
 })
 forever(function () {
     if (playerOnFire) {
@@ -1936,16 +1945,13 @@ forever(function () {
     }
 })
 forever(function () {
+    enemyBehaviour()
+})
+forever(function () {
     for (let value of sprites.allOfKind(SpriteKind.damageIndicator)) {
         sprites.changeDataNumberBy(value, "timeAlive", 100)
     }
     pause(100)
-})
-forever(function () {
-    if (energyStatusBar.value < 100) {
-        energyStatusBar.value += 50 / Energy_capacity / 1.75
-        pause(Energy_recharge_rate)
-    }
 })
 forever(function () {
     if (healthStatusBar.value < 100) {
