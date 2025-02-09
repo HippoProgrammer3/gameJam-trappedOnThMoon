@@ -327,21 +327,6 @@ function Spawn_menu_upgrades_text () {
 }
 function enemyBehaviour () {
     for (let value of flyingEnemiesArray) {
-        if (value.vx < 0) {
-            animation.runImageAnimation(
-            flyingEnemies,
-            assets.animation`flyingMonsterLeft`,
-            100,
-            true
-            )
-        } else {
-            animation.runImageAnimation(
-            flyingEnemies,
-            assets.animation`flyingMonsterRight`,
-            100,
-            true
-            )
-        }
         if (spriteutils.distanceBetween(Player_character, value) < 100) {
             sprites.setDataBoolean(value, "canSeePlayer", true)
         } else if (spriteutils.distanceBetween(Player_character, value) > 100) {
@@ -1290,6 +1275,18 @@ function spawnEnemies () {
             tiles.setTileAt(value, assets.tile`myTile8`)
         }
         statusbars.getStatusBarAttachedTo(StatusBarKind.Health, flyingEnemies).value = (sprites.readDataNumber(flyingEnemies, "maxHealth") + sprites.readDataNumber(flyingEnemies, "health")) * sprites.readDataNumber(flyingEnemies, "statusBarWidth")
+        characterAnimations.loopFrames(
+        flyingEnemies,
+        assets.animation`flyingMonsterRight`,
+        500,
+        characterAnimations.rule(Predicate.MovingRight)
+        )
+        characterAnimations.loopFrames(
+        flyingEnemies,
+        assets.animation`flyingMonsterLeft`,
+        500,
+        characterAnimations.rule(Predicate.FacingLeft)
+        )
     }
 }
 function GROWTrees () {
@@ -1590,6 +1587,7 @@ let Tree_spawn_y = 0
 let Tree_spawn_x = 0
 let Tree: Sprite = null
 let flyingEnemiesStatusBar: StatusBarSprite = null
+let flyingEnemies: Sprite = null
 let inventory: Inventory.Inventory = null
 let Type_of_block_being_mined = 0
 let whereToBreakRow = 0
@@ -1604,7 +1602,6 @@ let minedLocations: tiles.Location[] = []
 let previousTilemap = 0
 let playerOnFire = false
 let energyStatusBar: StatusBarSprite = null
-let flyingEnemies: Sprite = null
 let Menu_interaction_sprite_3: Sprite = null
 let Menu_interaction_sprite_2: Sprite = null
 let Menu_interaction_sprite_1: Sprite = null
@@ -1639,6 +1636,7 @@ let Player_character: Sprite = null
 let Base: Sprite = null
 let breakingTileSprite: Sprite = null
 let In_Base = false
+stats.turnStats(true)
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff

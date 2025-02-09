@@ -15,7 +15,8 @@
         "Inventory": "github:unsignedarduino/inventory#v1.1.1",
         "Custom Keybind Extension": "github:Brohann3214/custom-keybind-extension#ce1cb5acda5cd438592e38da4aaab10b73b46c64",
         "arcade-tile-util": "github:microsoft/arcade-tile-util#v1.2.0",
-        "arcade-text": "github:microsoft/arcade-text#v1.3.0"
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0",
+        "Stats": "github:UnsignedArduino/Stats#758e35856bd5565e5d0e25c95cccfac79b7fc168"
     },
     "files": [
         "main.blocks",
