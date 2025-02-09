@@ -617,7 +617,7 @@ function Ores () {
         } else if (tempOreRandomizer < 13) {
             tiles.setTileAt(value11, assets.tile`Iron`)
         } else if (tempOreRandomizer < 16) {
-            tiles.setTileAt(value11, img`Diamonds`)
+            tiles.setTileAt(value11, assets.tile`myTile28`)
         } else if (tempOreRandomizer < 19) {
             tiles.setTileAt(value11, assets.tile`myTile13`)
         } else if (tempOreRandomizer < 21) {
