@@ -30,29 +30,26 @@ function nearestEnemy () {
     }
 }
 function enemyBehaviour () {
-    for (let value of flyingEnemiesArray) {
-        if (statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value).value < 5) {
+    for (let value of sprites.allOfKind(SpriteKind.aboveEnemy)) {
+        if (statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value).value < 1) {
+            sprites.destroy(statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value))
             sprites.destroy(value)
-        }
-        if (spriteutils.distanceBetween(Player_character, value) < 100) {
-            sprites.setDataBoolean(value, "canSeePlayer", true)
-        } else if (spriteutils.distanceBetween(Player_character, value) > 100) {
-            sprites.setDataBoolean(value, "canSeePlayer", false)
-        }
-        if (sprites.readDataBoolean(value, "canSeePlayer")) {
-            enemyShoot(sprites.readDataImage(value, "projectile"), value, Player_character, 50)
-            pause(2000)
-            if (spriteutils.distanceBetween(Player_character, value) < 50) {
-                value.setVelocity(0, -10)
-            } else {
-                if (value.tilemapLocation().column < 9) {
-                    value.vy = 10
+        } else {
+            if (spriteutils.distanceBetween(Player_character, value) < 100) {
+                sprites.setDataBoolean(value, "canSeePlayer", true)
+            } else if (spriteutils.distanceBetween(Player_character, value) > 100) {
+                sprites.setDataBoolean(value, "canSeePlayer", false)
+            }
+            if (sprites.readDataBoolean(value, "canSeePlayer")) {
+                enemyShoot(sprites.readDataImage(value, "projectile"), value, Player_character, 50)
+                if (spriteutils.distanceBetween(Player_character, value) < 50) {
+                    value.setVelocity(0, -10)
                 } else {
                     spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(value, Player_character), 15)
                 }
+            } else {
+                value.vx = 15
             }
-        } else {
-            value.vx = 15
         }
     }
 }
@@ -961,7 +958,6 @@ function spawnEnemies () {
         500,
         true
         )
-        flyingEnemiesArray.push(flyingEnemies)
         sprites.setDataBoolean(flyingEnemies, "canSeePlayer", false)
         sprites.setDataImageValue(flyingEnemies, "projectile", assets.image`projectile`)
         sprites.setDataNumber(flyingEnemies, "maxHealth", 50)
@@ -1821,6 +1817,7 @@ function enemyShoot (projectile: Image, spriteFrom: Sprite, spriteTo: Sprite, sp
     shot = sprites.createProjectileFromSprite(projectile, spriteFrom, 0, 0)
     spriteutils.setVelocityAtAngle(shot, spriteutils.angleFrom(spriteFrom, spriteTo), speed)
     shot.setKind(SpriteKind.explodingProjectile)
+    pause(2000)
 }
 function respawnAtBase () {
     game.splash("You Died", "Tut tut tut")
@@ -1910,7 +1907,6 @@ let brokenBlocks: tiles.Location[] = []
 let usingFlamethrower = false
 let canShoot = false
 let list: Inventory.Item[] = []
-let flyingEnemiesArray: Sprite[] = []
 let _1stTimeHud = false
 let flamethrower: Inventory.Item = null
 let airstrike: Inventory.Item = null
@@ -2277,7 +2273,6 @@ flamethrower = Inventory.create_item("Flamethrower", img`
     . . . . . . . . . . . . . . . . 
     `, "Goes Kaboom")
 _1stTimeHud = false
-flyingEnemiesArray = []
 list = [
 dirt,
 stone,
@@ -2392,6 +2387,7 @@ forever(function () {
 forever(function () {
     for (let value of sprites.allOfKind(SpriteKind.aboveEnemy)) {
         if (statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value).value < 1) {
+            sprites.destroy(statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value))
             sprites.destroy(value)
         }
     }
