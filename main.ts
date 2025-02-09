@@ -911,21 +911,6 @@ function HUDAmmo () {
         flamethrowerCooldown.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
     }
 }
-controller.player3.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
-    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
-        toolbar.set_number(ToolbarNumberAttribute.SelectedIndex, 2)
-    } else {
-        toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, -1)
-    }
-    HUDAmmo()
-    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
-        weapon = "gun"
-    } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
-        weapon = "airstrike"
-    } else {
-        weapon = "flamethrower"
-    }
-})
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     shoot(1)
 })
@@ -983,7 +968,7 @@ function spawnEnemies () {
         sprites.setDataNumber(flyingEnemies, "health", 0)
         sprites.setDataNumber(flyingEnemies, "statusBarWidth", 20)
         flyingEnemies.setFlag(SpriteFlag.AutoDestroy, false)
-        if (value12.column < 24) {
+        if (value12.row < 24) {
             tiles.setTileAt(value12, assets.tile`transparency16`)
         } else {
             tiles.setTileAt(value12, assets.tile`myTile8`)
@@ -1027,7 +1012,7 @@ function shoot (direction1up2down3left4right: number) {
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
-                        `, Player_character, 0, 100)
+                        `, Player_character, 0, -100)
                     gunBullet.setKind(SpriteKind.gunBullets)
                 } else if (direction1up2down3left4right == 2) {
                     gunBullet = sprites.createProjectileFromSprite(img`
@@ -1777,10 +1762,19 @@ function createInventory () {
     stone.set_text(ItemTextAttribute.Tooltip, convertToText(stoneQuantity))
     copper.set_text(ItemTextAttribute.Tooltip, convertToText(copperQuantity))
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, otherSprite) {
-    if (!(gto_base_said)) {
-        game.splash("Press B to enter base")
-        gto_base_said = true
+controller.player3.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function () {
+    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
+        toolbar.set_number(ToolbarNumberAttribute.SelectedIndex, 2)
+    } else {
+        toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, -1)
+    }
+    HUDAmmo()
+    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
+        weapon = "gun"
+    } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
+        weapon = "airstrike"
+    } else {
+        weapon = "flamethrower"
     }
 })
 function hideTiles () {
@@ -1795,13 +1789,13 @@ function healthChange (damage: number) {
     if (damage < 0) {
         damageMarker = textsprite.create(convertToText(damage * -1), 0, 2)
         damageMarker.setKind(SpriteKind.damageIndicator)
-        sprites.setDataNumber(damageMarker, "timeAlive", 0)
+        damageMarker.lifespan = 500
         damageMarker.setPosition(randint(11, 51), randint(96, 100))
         damageMarker.setFlag(SpriteFlag.RelativeToCamera, true)
     } else {
         damageMarker = textsprite.create(convertToText(damage), 0, 7)
         damageMarker.setKind(SpriteKind.damageIndicator)
-        sprites.setDataNumber(damageMarker, "timeAlive", 0)
+        damageMarker.lifespan = 500
         damageMarker.setPosition(randint(11, 51), randint(96, 100))
         damageMarker.setFlag(SpriteFlag.RelativeToCamera, true)
     }
@@ -1937,7 +1931,6 @@ let stoneQuantity = 0
 let inventoryContents = 0
 let miningEfficiency = 0
 let inInventory = false
-let gto_base_said = false
 let jump = false
 let Gravity = 0
 let Player_character: Sprite = null
@@ -2229,7 +2222,7 @@ let textSprite = sprites.create(img`
     `, SpriteKind.textSprites)
 Gravity = 0.8
 jump = false
-gto_base_said = false
+let gto_base_said = false
 inInventory = false
 miningEfficiency = 100
 inventoryContents = 0
@@ -2309,7 +2302,7 @@ Keybinds.CustomKey.DOWN,
 Keybinds.CustomKey.LEFT,
 Keybinds.CustomKey.RIGHT,
 Keybinds.CustomKey.I,
-Keybinds.CustomKey.SPACE
+Keybinds.CustomKey.ZERO
 )
 Keybinds.setSimulatorKeymap(
 Keybinds.PlayerNumber.THREE,
@@ -2332,62 +2325,67 @@ for (let value14 of tiles.getTilesByType(assets.tile`myTile8`)) {
 makeWeaponToolbar(true)
 HUDAmmo()
 game.onUpdate(function () {
-    Player_character.vy += Gravity
+    if (toolbar) {
+        if (!(In_Base) || !(inInventory)) {
+            toolbar.update()
+        }
+    }
 })
 game.onUpdate(function () {
-    if (!(In_Base) || !(inInventory)) {
-        toolbar.update()
+    if (Player_character) {
+        Player_character.vy += Gravity
     }
 })
 forever(function () {
-    if (healthStatusBar.value < 1) {
-        respawnAtBase()
-    }
-})
-forever(function () {
-    if (energyStatusBar.value < 100) {
-        energyStatusBar.value += 50 / Energy_capacity / 1.75
-        pause(Energy_recharge_rate)
-    }
-})
-forever(function () {
-    if (playerOnFire) {
-        Player_character.startEffect(effects.fire)
-        for (let index2 = 0; index2 <= 6; index2++) {
-            pause(50)
-            healthChange(randint(-1, -4))
+    if (healthStatusBar) {
+        if (healthStatusBar.value < 1) {
+            respawnAtBase()
         }
-        playerOnFire = false
-        effects.clearParticles(Player_character)
+    }
+})
+forever(function () {
+    if (energyStatusBar && Energy_recharge_rate) {
+        if (energyStatusBar.value < 100) {
+            energyStatusBar.value += 50 / Energy_capacity / 1.75
+            pause(Energy_recharge_rate)
+        }
+    }
+})
+forever(function () {
+    if (Player_character) {
+        if (playerOnFire) {
+            Player_character.startEffect(effects.fire)
+            for (let index2 = 0; index2 <= 6; index2++) {
+                pause(50)
+                healthChange(randint(-1, -4))
+            }
+            playerOnFire = false
+            effects.clearParticles(Player_character)
+        }
     }
 })
 forever(function () {
     enemyBehaviour()
 })
 forever(function () {
-    for (let value15 of sprites.allOfKind(SpriteKind.damageIndicator)) {
-        sprites.changeDataNumberBy(value15, "timeAlive", 100)
-    }
-    pause(100)
-})
-forever(function () {
-    if (healthStatusBar.value < 100) {
-        healthChange(randint(4, 10))
-        pause(1000)
-    }
-})
-forever(function () {
-    for (let value16 of sprites.allOfKind(SpriteKind.damageIndicator)) {
-        if (sprites.readDataNumber(value16, "timeAlive") > 500) {
-            sprites.destroy(value16)
+    if (healthStatusBar) {
+        if (healthStatusBar.value < 100) {
+            healthChange(randint(4, 10))
+            pause(1000)
         }
     }
 })
 forever(function () {
-    if (toolbar && airstrikeCooldown && (gunAmmo && flamethrowerCooldown)) {
-        airstrikeCooldown.value += 5
-        gunAmmo.value += 5
-        flamethrowerCooldown.value += 5
+    if (toolbar) {
+        if (airstrikeCooldown) {
+            airstrikeCooldown.value += 5
+        }
+        if (gunAmmo) {
+            gunAmmo.value += 5
+        }
+        if (flamethrowerCooldown) {
+            flamethrowerCooldown.value += 5
+        }
         pause(500)
     }
 })
