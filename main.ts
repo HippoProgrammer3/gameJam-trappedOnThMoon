@@ -20,8 +20,20 @@ namespace SpriteKind {
 namespace StatusBarKind {
     export const ammo = StatusBarKind.create()
 }
+function nearestEnemy () {
+    nearestLengthAway = 9999999
+    for (let value of sprites.allOfKind(SpriteKind.aboveEnemy)) {
+        if (nearestLengthAway > spriteutils.distanceBetween(Player_character, value)) {
+            nearestLengthAway = spriteutils.distanceBetween(Player_character, value)
+            nearestSprite = value
+        }
+    }
+}
 function enemyBehaviour () {
     for (let value of flyingEnemiesArray) {
+        if (statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value).value < 5) {
+            sprites.destroy(value)
+        }
         if (spriteutils.distanceBetween(Player_character, value) < 100) {
             sprites.setDataBoolean(value, "canSeePlayer", true)
         } else if (spriteutils.distanceBetween(Player_character, value) > 100) {
@@ -65,12 +77,12 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 sprites.onOverlap(SpriteKind.airstrikeMissile, SpriteKind.aboveEnemy, function (sprite, otherSprite) {
-    otherSprite.startEffect(effects.fire, 2000)
+    sprites.destroy(sprite)
     statusbars.getStatusBarAttachedTo(StatusBarKind.Health, otherSprite).value += randint(-80, -120)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.explodingProjectile, function (sprite, otherSprite) {
-    playerOnFire = true
     sprites.destroy(otherSprite)
+    playerOnFire = true
     healthChange(-10)
 })
 function BlockBreak (col: number, row: number, block: number, miningSpeed: number) {
@@ -566,11 +578,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     } else if (In_Base && In_upgrade_menu == 1) {
         I_just_wanted_to_shrink_the_upgrade_menu_section()
     } else {
-        if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 3) {
-            toolbar.set_number(ToolbarNumberAttribute.SelectedIndex, 1)
-        } else {
-            toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, 1)
-        }
+    	
     }
 })
 controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
@@ -867,30 +875,57 @@ function saveTilemap () {
 }
 function HUDAmmo () {
     if (gunAmmo) {
-        sprites.destroy(gunAmmo)
+        gunAmmo.setFlag(SpriteFlag.Invisible, true)
     }
     if (airstrikeCooldown) {
-        sprites.destroy(airstrikeCooldown)
+        airstrikeCooldown.setFlag(SpriteFlag.Invisible, true)
     }
     if (flamethrowerCooldown) {
-        sprites.destroy(flamethrowerCooldown)
+        flamethrowerCooldown.setFlag(SpriteFlag.Invisible, true)
     }
-    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
-        gunAmmo = statusbars.create(4, 20, StatusBarKind.ammo)
+    if (weapon == "gun") {
+        if (gunAmmo) {
+            gunAmmo.setFlag(SpriteFlag.Invisible, false)
+        } else {
+            gunAmmo = statusbars.create(4, 60, StatusBarKind.ammo)
+        }
         gunAmmo.setPosition(145, 91)
         gunAmmo.setColor(4, 2)
-    } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
-        airstrikeCooldown = statusbars.create(4, 20, StatusBarKind.ammo)
+    } else if (weapon == "airstrike") {
+        if (airstrikeCooldown) {
+            airstrikeCooldown.setFlag(SpriteFlag.Invisible, false)
+        } else {
+            airstrikeCooldown = statusbars.create(4, 60, StatusBarKind.ammo)
+        }
         airstrikeCooldown.setPosition(145, 91)
         airstrikeCooldown.setColor(9, 6)
         airstrikeCooldown.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
     } else {
-        flamethrowerCooldown = statusbars.create(4, 20, StatusBarKind.ammo)
+        if (flamethrowerCooldown) {
+            flamethrowerCooldown.setFlag(SpriteFlag.Invisible, false)
+        } else {
+            flamethrowerCooldown = statusbars.create(4, 60, StatusBarKind.ammo)
+        }
         flamethrowerCooldown.setPosition(145, 91)
         flamethrowerCooldown.setColor(5, 4)
         flamethrowerCooldown.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
     }
 }
+controller.player3.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
+    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
+        toolbar.set_number(ToolbarNumberAttribute.SelectedIndex, 2)
+    } else {
+        toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, -1)
+    }
+    HUDAmmo()
+    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
+        weapon = "gun"
+    } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
+        weapon = "airstrike"
+    } else {
+        weapon = "flamethrower"
+    }
+})
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     shoot(1)
 })
@@ -970,7 +1005,7 @@ function spawnEnemies () {
 }
 function shoot (direction1up2down3left4right: number) {
     if (!(inInventory) && !(In_Base)) {
-        if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
+        if (weapon == "gun") {
             if (canShoot && !(gunAmmo.value < 1)) {
                 canShoot = false
                 gunAmmo.value += -10
@@ -992,7 +1027,7 @@ function shoot (direction1up2down3left4right: number) {
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
-                        `, Player_character, 0, -50)
+                        `, Player_character, 0, 100)
                     gunBullet.setKind(SpriteKind.gunBullets)
                 } else if (direction1up2down3left4right == 2) {
                     gunBullet = sprites.createProjectileFromSprite(img`
@@ -1012,7 +1047,7 @@ function shoot (direction1up2down3left4right: number) {
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
-                        `, Player_character, 0, 50)
+                        `, Player_character, 0, 100)
                     gunBullet.setKind(SpriteKind.gunBullets)
                 } else if (direction1up2down3left4right == 3) {
                     gunBullet = sprites.createProjectileFromSprite(img`
@@ -1032,7 +1067,7 @@ function shoot (direction1up2down3left4right: number) {
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
-                        `, Player_character, -50, 0)
+                        `, Player_character, -100, 0)
                     gunBullet.setKind(SpriteKind.gunBullets)
                 } else if (direction1up2down3left4right == 4) {
                     gunBullet = sprites.createProjectileFromSprite(img`
@@ -1052,20 +1087,21 @@ function shoot (direction1up2down3left4right: number) {
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
                         . . . . . . . . . . . . . . . . 
-                        `, Player_character, 50, 0)
+                        `, Player_character, 100, 0)
                     gunBullet.setKind(SpriteKind.gunBullets)
                 }
                 pause(500)
                 canShoot = true
             }
-        } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
+        } else if (weapon == "airstrike") {
             if (airstrikeCooldown.value > 99) {
                 airstrikeFunction()
             }
         } else {
-            if (!(usingFlamethrower) && !(flamethrowerCooldown.value < 1)) {
+            if (!(usingFlamethrower) && !(flamethrowerCooldown.value > 1)) {
                 usingFlamethrower = true
                 flamethrowerCooldown.value += -50
+                nearestEnemy()
                 for (let index = 0; index <= 30; index++) {
                     if (randint(0, 2) == 0) {
                         flame = sprites.createProjectileFromSprite(img`
@@ -1113,19 +1149,19 @@ function shoot (direction1up2down3left4right: number) {
                 }
                 if (direction1up2down3left4right == 1) {
                     for (let value of sprites.allOfKind(SpriteKind.fire)) {
-                        spriteutils.setVelocityAtAngle(value, randint(-10, 10), randint(40, 60))
+                        spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
                     }
                 } else if (direction1up2down3left4right == 2) {
                     for (let value of sprites.allOfKind(SpriteKind.fire)) {
-                        spriteutils.setVelocityAtAngle(value, randint(170, 190), randint(40, 60))
+                        spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
                     }
                 } else if (direction1up2down3left4right == 3) {
                     for (let value of sprites.allOfKind(SpriteKind.fire)) {
-                        spriteutils.setVelocityAtAngle(value, randint(260, 280), randint(40, 60))
+                        spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
                     }
                 } else if (direction1up2down3left4right == 4) {
                     for (let value of sprites.allOfKind(SpriteKind.fire)) {
-                        spriteutils.setVelocityAtAngle(value, randint(80, 100), randint(40, 60))
+                        spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
                     }
                 }
             }
@@ -1147,18 +1183,14 @@ function showTiles (col: number, row: number) {
     tileUtil.coverTile(tiles.getTileLocation(col, row - 2), assets.tile`transparency16`)
 }
 function airstrikeFunction () {
-    nearestLengthAway = 9999999
-    for (let value of sprites.allOfKind(SpriteKind.aboveEnemy)) {
-        if (nearestLengthAway < spriteutils.distanceBetween(Player_character, value)) {
-            nearestLengthAway = spriteutils.distanceBetween(Player_character, value)
-            nearestSprite = value
-        }
-    }
+    nearestEnemy()
     missile = sprites.create(assets.image`gun`, SpriteKind.airstrikeMissile)
     missile.setFlag(SpriteFlag.AutoDestroy, false)
+    missile.lifespan = 5000
     tiles.placeOnTile(missile, Base.tilemapLocation())
-    missile.vy = -100
-    sprites.setDataSprite(missile, "target", nearestSprite)
+    spriteutils.setVelocityAtAngle(missile, spriteutils.angleFrom(missile, nearestSprite), 100)
+    airstrikeCooldown.value += -90
+    transformSprites.changeRotation(missile, spriteutils.angleFrom(missile, nearestSprite))
 }
 function hud (add: boolean) {
     if (add) {
@@ -1791,9 +1823,6 @@ sprites.onOverlap(SpriteKind.aboveEnemy, SpriteKind.gunBullets, function (sprite
     sprites.destroy(otherSprite)
     statusbars.getStatusBarAttachedTo(StatusBarKind.Health, sprite).value += randint(-5, -15)
 })
-scene.onHitWall(SpriteKind.explodingProjectile, function (sprite, location) {
-    sprite.startEffect(effects.fire)
-})
 function enemyShoot (projectile: Image, spriteFrom: Sprite, spriteTo: Sprite, speed: number) {
     shot = sprites.createProjectileFromSprite(projectile, spriteFrom, 0, 0)
     spriteutils.setVelocityAtAngle(shot, spriteutils.angleFrom(spriteFrom, spriteTo), speed)
@@ -1821,6 +1850,21 @@ function startingSaveTilemap () {
     startDirtLocations = tiles.getTilesByType(assets.tile`myTile3`)
     startStoneLocations = tiles.getTilesByType(assets.tile`Stone`)
 }
+controller.player3.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
+    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
+        toolbar.set_number(ToolbarNumberAttribute.SelectedIndex, 0)
+    } else {
+        toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, 1)
+    }
+    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
+        weapon = "gun"
+    } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
+        weapon = "airstrike"
+    } else {
+        weapon = "flamethrower"
+    }
+    HUDAmmo()
+})
 let startStoneLocations: tiles.Location[] = []
 let startDirtLocations: tiles.Location[] = []
 let startCopperLocations: tiles.Location[] = []
@@ -1839,8 +1883,6 @@ let Upgrade_menu_text: Sprite = null
 let pumpingHeart: Sprite = null
 let healthStatusBar: StatusBarSprite = null
 let missile: Sprite = null
-let nearestSprite: Sprite = null
-let nearestLengthAway = 0
 let flame: Sprite = null
 let gunBullet: Sprite = null
 let flyingEnemiesStatusBar: StatusBarSprite = null
@@ -1866,6 +1908,9 @@ let minedLocations: tiles.Location[] = []
 let previousTilemap = 0
 let playerOnFire = false
 let energyStatusBar: StatusBarSprite = null
+let nearestSprite: Sprite = null
+let nearestLengthAway = 0
+let weapon = ""
 let isMining = false
 let brokenBlocks: tiles.Location[] = []
 let usingFlamethrower = false
@@ -2255,6 +2300,7 @@ scene.cameraFollowSprite(Player_character)
 tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
 tiles.placeOnTile(Player_character, tiles.getTileLocation(47, 13))
 controller.moveSprite(Player_character, 50, 0)
+weapon = "gun"
 Ores()
 Keybinds.setSimulatorKeymap(
 Keybinds.PlayerNumber.TWO,
@@ -2264,6 +2310,15 @@ Keybinds.CustomKey.LEFT,
 Keybinds.CustomKey.RIGHT,
 Keybinds.CustomKey.I,
 Keybinds.CustomKey.SPACE
+)
+Keybinds.setSimulatorKeymap(
+Keybinds.PlayerNumber.THREE,
+Keybinds.CustomKey.E,
+Keybinds.CustomKey.Q,
+Keybinds.CustomKey.UP,
+Keybinds.CustomKey.UP,
+Keybinds.CustomKey.UP,
+Keybinds.CustomKey.UP
 )
 activateInventory(true)
 activateInventory(false)
@@ -2329,35 +2384,17 @@ forever(function () {
     }
 })
 forever(function () {
-    if (toolbar) {
-        if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
-            if (airstrikeCooldown.value < 100) {
-                pause(50)
-                flamethrowerCooldown.value += 1
-            }
-        } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 3) {
-            if (!(usingFlamethrower)) {
-                if (flamethrowerCooldown.value < 100) {
-                    flamethrowerCooldown.value += 2
-                    pause(100)
-                }
-            }
-        }
+    if (toolbar && airstrikeCooldown && (gunAmmo && flamethrowerCooldown)) {
+        airstrikeCooldown.value += 5
+        gunAmmo.value += 5
+        flamethrowerCooldown.value += 5
+        pause(500)
     }
 })
 forever(function () {
     for (let value of sprites.allOfKind(SpriteKind.aboveEnemy)) {
         if (statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value).value < 1) {
             sprites.destroy(value)
-        }
-    }
-})
-forever(function () {
-    if (!(sprites.allOfKind(SpriteKind.airstrikeMissile).length == 0)) {
-        for (let value of sprites.allOfKind(SpriteKind.airstrikeMissile)) {
-            if (value.y < -50) {
-                spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(value, sprites.readDataSprite(value, "target")), 100)
-            }
         }
     }
 })

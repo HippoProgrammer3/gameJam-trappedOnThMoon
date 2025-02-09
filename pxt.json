@@ -1,5 +1,5 @@
 {
-    "name": "Game Jam Project - this one",
+    "name": "Game Jam Project - this one - Copy",
     "version": "1.8.0",
     "description": "",
     "dependencies": {
@@ -17,7 +17,8 @@
         "arcade-tile-util": "github:microsoft/arcade-tile-util#v1.2.0",
         "arcade-text": "github:microsoft/arcade-text#v1.3.0",
         "Stats": "github:UnsignedArduino/Stats#758e35856bd5565e5d0e25c95cccfac79b7fc168",
-        "darts": "*"
+        "darts": "*",
+        "pxt-arcade-image-transform": "github:robo-technical-group/pxt-arcade-image-transform#v1.0.9"
     },
     "files": [
         "main.blocks",
