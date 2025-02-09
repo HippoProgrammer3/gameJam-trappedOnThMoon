@@ -14,7 +14,8 @@
         "animation": "*",
         "Inventory": "github:unsignedarduino/inventory#v1.1.1",
         "Custom Keybind Extension": "github:Brohann3214/custom-keybind-extension#ce1cb5acda5cd438592e38da4aaab10b73b46c64",
-        "arcade-tile-util": "github:microsoft/arcade-tile-util#v1.2.0"
+        "arcade-tile-util": "github:microsoft/arcade-tile-util#v1.2.0",
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0"
     },
     "files": [
         "main.blocks",
