@@ -15,6 +15,7 @@ namespace SpriteKind {
     export const damageIndicator = SpriteKind.create()
     export const gunBullets = SpriteKind.create()
     export const airstrikeMissile = SpriteKind.create()
+    export const fire = SpriteKind.create()
 }
 namespace StatusBarKind {
     export const ammo = StatusBarKind.create()
@@ -627,6 +628,10 @@ function Ores () {
         startingSaveTilemap()
     }
 }
+sprites.onOverlap(SpriteKind.fire, SpriteKind.aboveEnemy, function (sprite, otherSprite) {
+    sprites.destroy(sprite)
+    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, otherSprite).value += randint(0, -5)
+})
 function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: number) {
     if (!(isMining) && !(energyStatusBar.value < 5)) {
         if (direction_down__1_up__2_left__3_right__4 == 1) {
@@ -861,6 +866,15 @@ function saveTilemap () {
     stoneLocations = tiles.getTilesByType(assets.tile`Stone`)
 }
 function HUDAmmo () {
+    if (gunAmmo) {
+        sprites.destroy(gunAmmo)
+    }
+    if (airstrikeCooldown) {
+        sprites.destroy(airstrikeCooldown)
+    }
+    if (flamethrowerCooldown) {
+        sprites.destroy(flamethrowerCooldown)
+    }
     if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
         gunAmmo = statusbars.create(4, 20, StatusBarKind.ammo)
         gunAmmo.setPosition(145, 91)
@@ -957,8 +971,9 @@ function spawnEnemies () {
 function shoot (direction1up2down3left4right: number) {
     if (!(inInventory) && !(In_Base)) {
         if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
-            if (canShoot) {
+            if (canShoot && !(gunAmmo.value < 1)) {
                 canShoot = false
+                gunAmmo.value += -10
                 if (direction1up2down3left4right == 1) {
                     gunBullet = sprites.createProjectileFromSprite(img`
                         . . . . . . . . . . . . . . . . 
@@ -1040,20 +1055,79 @@ function shoot (direction1up2down3left4right: number) {
                         `, Player_character, 50, 0)
                     gunBullet.setKind(SpriteKind.gunBullets)
                 }
+                pause(500)
+                canShoot = true
             }
         } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
             if (airstrikeCooldown.value > 99) {
                 airstrikeFunction()
             }
         } else {
-            if (direction1up2down3left4right == 1) {
-            	
-            } else if (direction1up2down3left4right == 2) {
-            	
-            } else if (direction1up2down3left4right == 3) {
-            	
-            } else if (direction1up2down3left4right == 4) {
-            	
+            if (!(usingFlamethrower) && !(flamethrowerCooldown.value < 1)) {
+                usingFlamethrower = true
+                flamethrowerCooldown.value += -50
+                for (let index = 0; index <= 30; index++) {
+                    if (randint(0, 2) == 0) {
+                        flame = sprites.createProjectileFromSprite(img`
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . 4 . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            `, Player_character, 0, 0)
+                        flame.setKind(SpriteKind.fire)
+                        flame.lifespan = 1500
+                    } else {
+                        flame = sprites.createProjectileFromSprite(img`
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . 2 . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . . 
+                            `, Player_character, 0, 0)
+                        flame.setKind(SpriteKind.fire)
+                        flame.lifespan = 1500
+                    }
+                }
+                if (direction1up2down3left4right == 1) {
+                    for (let value of sprites.allOfKind(SpriteKind.fire)) {
+                        spriteutils.setVelocityAtAngle(value, randint(-10, 10), randint(40, 60))
+                    }
+                } else if (direction1up2down3left4right == 2) {
+                    for (let value of sprites.allOfKind(SpriteKind.fire)) {
+                        spriteutils.setVelocityAtAngle(value, randint(170, 190), randint(40, 60))
+                    }
+                } else if (direction1up2down3left4right == 3) {
+                    for (let value of sprites.allOfKind(SpriteKind.fire)) {
+                        spriteutils.setVelocityAtAngle(value, randint(260, 280), randint(40, 60))
+                    }
+                } else if (direction1up2down3left4right == 4) {
+                    for (let value of sprites.allOfKind(SpriteKind.fire)) {
+                        spriteutils.setVelocityAtAngle(value, randint(80, 100), randint(40, 60))
+                    }
+                }
             }
         }
     }
@@ -1082,6 +1156,7 @@ function airstrikeFunction () {
     }
     missile = sprites.create(assets.image`gun`, SpriteKind.airstrikeMissile)
     missile.setFlag(SpriteFlag.AutoDestroy, false)
+    tiles.placeOnTile(missile, Base.tilemapLocation())
     missile.vy = -100
     sprites.setDataSprite(missile, "target", nearestSprite)
 }
@@ -1766,6 +1841,7 @@ let healthStatusBar: StatusBarSprite = null
 let missile: Sprite = null
 let nearestSprite: Sprite = null
 let nearestLengthAway = 0
+let flame: Sprite = null
 let gunBullet: Sprite = null
 let flyingEnemiesStatusBar: StatusBarSprite = null
 let flyingEnemies: Sprite = null
@@ -1792,6 +1868,7 @@ let playerOnFire = false
 let energyStatusBar: StatusBarSprite = null
 let isMining = false
 let brokenBlocks: tiles.Location[] = []
+let usingFlamethrower = false
 let canShoot = false
 let list: Inventory.Item[] = []
 let flyingEnemiesArray: Sprite[] = []
@@ -2171,7 +2248,7 @@ iron,
 copper
 ]
 canShoot = true
-let usingFlamethrower = false
+usingFlamethrower = false
 brokenBlocks = []
 isMining = false
 scene.cameraFollowSprite(Player_character)
