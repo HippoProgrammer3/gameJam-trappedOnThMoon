@@ -9,6 +9,21 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "projectile"
     },
+    "image5": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "flamethrower"
+    },
+    "image4": {
+        "data": "hwQQABAAAAAAAAAA7u7uAAAAAADu7u4AAAAAAO7uDgAAAAAA7u4AAAAAAAvuDgAAAAAAC8zwAAAAAAC7zAAAAAAAAAvMAAAAAAAAC8wAAAAAAAAAzAAAAAAAAADMAAAAAAAAAMwAAAAAAAAAzAAAAAAAAADMAAAAAAAAAMwAAAAAAAAAzAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "rocket"
+    },
+    "image3": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAAAAADwACAAAAAAAA8AIgAiu7u7u08kILK7u7u7X0UAIru7u7tPJAAAAAAADwAiAAAAAADwACAAAAAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "gun"
+    },
     "anim1": {
         "namespace": "myAnimations",
         "id": "anim1",

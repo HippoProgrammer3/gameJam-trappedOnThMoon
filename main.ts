@@ -13,6 +13,1172 @@ namespace SpriteKind {
     export const Interaction_sprite = SpriteKind.create()
     export const other = SpriteKind.create()
     export const damageIndicator = SpriteKind.create()
+    export const gunBullets = SpriteKind.create()
+    export const airstrikeMissile = SpriteKind.create()
+}
+namespace StatusBarKind {
+    export const ammo = StatusBarKind.create()
+}
+function enemyBehaviour () {
+    for (let value of flyingEnemiesArray) {
+        if (spriteutils.distanceBetween(Player_character, value) < 100) {
+            sprites.setDataBoolean(value, "canSeePlayer", true)
+        } else if (spriteutils.distanceBetween(Player_character, value) > 100) {
+            sprites.setDataBoolean(value, "canSeePlayer", false)
+        }
+        if (sprites.readDataBoolean(value, "canSeePlayer")) {
+            enemyShoot(sprites.readDataImage(value, "projectile"), value, Player_character, 50)
+            pause(2000)
+            if (spriteutils.distanceBetween(Player_character, value) < 50) {
+                value.setVelocity(0, -10)
+            } else {
+                if (value.tilemapLocation().column < 9) {
+                    value.vy = 10
+                } else {
+                    spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(value, Player_character), 15)
+                }
+            }
+        } else {
+            value.vx = 15
+        }
+    }
+}
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (!(inInventory) && Player_character.isHittingTile(CollisionDirection.Bottom) && !(energyStatusBar.value < 5)) {
+        Player_character.vy = -50
+        jump = true
+        energyStatusBar.value += 0 - 50 / Energy_capacity
+    } else {
+    	
+    }
+    Mine(2, miningEfficiency)
+})
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+    jump = false
+})
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Player_character.overlapsWith(Base)) {
+        gotoBase(true)
+    } else if (In_Base) {
+        gotoBase(false)
+    }
+})
+sprites.onOverlap(SpriteKind.airstrikeMissile, SpriteKind.aboveEnemy, function (sprite, otherSprite) {
+    otherSprite.startEffect(effects.fire, 2000)
+    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, otherSprite).value += randint(-80, -120)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.explodingProjectile, function (sprite, otherSprite) {
+    playerOnFire = true
+    sprites.destroy(otherSprite)
+    healthChange(-10)
+})
+function BlockBreak (col: number, row: number, block: number, miningSpeed: number) {
+    isMining = true
+    breakingTileSprite.setFlag(SpriteFlag.Invisible, false)
+    energyStatusBar.value += 0 - 50 / Energy_capacity
+    tiles.placeOnTile(breakingTileSprite, tiles.getTileLocation(col, row))
+    breakingTileSprite.setImage(img`
+        . . f . . . . f . . . . f . . . 
+        . . f . . . . f . . . f f . . . 
+        . . f . . . . f . . . f . . . . 
+        . . . . . . f . . . . . . . . . 
+        f f . . . . . . . . . . f f f . 
+        . f f . . . . . . . . . . . f f 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        f f f f . . . . . . . . . f f f 
+        . . . . . . . . . . . . . . . . 
+        . . . f . . . . . . . . . . . . 
+        . . f f . . . . f . . . . . . . 
+        . f f . . f . . . f . . . f . . 
+        . f . . . f . . . f f . . f f . 
+        f . . . . f . . . . f . . . f f 
+        `)
+    pause(miningSpeed)
+    breakingTileSprite.setImage(img`
+        . . f . . . . f . . . . f . . . 
+        . . f . . . . f . . . f f . . . 
+        . . f . . . . f . . . f . . . . 
+        . . . f f . f . . f f . . . . . 
+        f f . . . . f . . f . f f f f . 
+        . f f f . . f . . . f . . . f f 
+        . . . . f . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        f f f f f f . . . . f f f f f f 
+        . . . . . . . . . . . . . . . . 
+        . . . f f f . f . . . . f f . . 
+        . . f f . . f f f . . . . f . . 
+        . f f . . f . . . f . . . f . . 
+        . f . . . f . . . f f . . f f . 
+        f . . . . f . . . . f . . . f f 
+        `)
+    pause(miningSpeed)
+    breakingTileSprite.setImage(img`
+        . . f . . . . f . . . . f . . . 
+        . . f . . . . f . . . f f . . . 
+        . . f . . . . f . . . f . . . . 
+        . . . f f . f . . f f . . . . . 
+        f f . . . . f . . f . f f f f . 
+        . f f f . . f . . . f . f . f f 
+        . . . . f . f f . f f . f . . . 
+        . . . . . f . . . f . . f . . . 
+        . . . . . . f . f . . . . . . . 
+        f f f f f f . f . f f f f f f f 
+        . . . . . . . f . . . . . . . . 
+        . . . f f f . f . f f f f f . . 
+        . . f f . . f f f . . . . f . . 
+        . f f . . f . . . f . . . f . . 
+        . f . . . f . . . f f . . f f . 
+        f . . . . f . . . . f . . . f f 
+        `)
+    pause(miningSpeed)
+    tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile8`)
+    breakingTileSprite.setFlag(SpriteFlag.Invisible, true)
+    tiles.setWallAt(tiles.getTileLocation(col, row), false)
+    showTiles(col, row)
+    isMining = false
+    brokenBlocks.push(tiles.getTileLocation(col, row))
+}
+function gotoBase (goto: boolean) {
+    if (goto) {
+        Gravity = 0
+        In_Base = goto
+        saveTilemap()
+        tiles.setCurrentTilemap(tilemap`Inside Base`)
+        scene.setBackgroundImage(img`
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            ................................................................................................................................................................
+            `)
+        tiles.placeOnTile(Player_character, tiles.getTileLocation(3, 26))
+        previousTilemap = 0
+        Player_character.setVelocity(0, 0)
+        controller.moveSprite(Player_character, 50, 50)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Woodythings)
+        hud(false)
+    } else {
+        Gravity = 0.8
+        In_Base = goto
+        tiles.setCurrentTilemap(tilemap`Planet part 1`)
+        loadTilemap()
+        GROWTrees()
+        hideTiles()
+        scene.setBackgroundImage(img`
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffcffffffffffcffffffffffffffffffffffffffffcffffffffffcffffffffffffffffffffffffffffcffffffffffcffffffffffffffffffffffffffffcffffffffffcffffffffffffffffffffff
+            ffffffffffffffffcbcffffffffffffffffffffcffffffffffffffffcbcffffffffffffffffffffcffffffffffffffffcbcffffffffffffffffffffcffffffffffffffffcbcffffffffffffffffffffc
+            fffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffff
+            fffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcffffffffffff
+            fff3fffffffffffffffffffffbbbfffffffffffffff3fffffffffffffffffffffbbbfffffffffffffff3fffffffffffffffffffffbbbfffffffffffffff3fffffffffffffffffffffbbbffffffffffff
+            ffb3bffffffffffffffffffffcbcffffffffffffffb3bffffffffffffffffffffcbcffffffffffffffb3bffffffffffffffffffffcbcffffffffffffffb3bffffffffffffffffffffcbcffffffffffff
+            f33333ffffffffffffccfffffffffffffffffffff33333ffffffffffffccfffffffffffffffffffff33333ffffffffffffccfffffffffffffffffffff33333ffffffffffffccffffffffffffffffffff
+            ff3b3fffffffffffffccffffffffffffffffffffff3b3fffffffffffffccffffffffffffffffffffff3b3fffffffffffffccffffffffffffffffffffff3b3fffffffffffffccffffffffffffffffffff
+            ffbfbfffffffffffffffffffffffffffffcfffffffbfbfffffffffffffffffffffffffffffcfffffffbfbfffffffffffffffffffffffffffffcfffffffbfbfffffffffffffffffffffffffffffcfffff
+            fffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcffff
+            fffffffffffcffffffffffffffffffffffcffffffffffffffffcffffffffffffffffffffffcffffffffffffffffcffffffffffffffffffffffcffffffffffffffffcffffffffffffffffffffffcfffff
+            ffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffff
+            fffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            fcfffffffffffffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcffffffffffff
+            fffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            ffffffccfffffcffffffffffffffffffffffffffffffffccfffffcffffffffffffffffffffffffffffffffccfffffcffffffffffffffffffffffffffffffffccfffffcffffffffffffffffffffffffff
+            ffffffccfffffffffffffcccccccccccffffffffffffffccfffffffffffffcccccccccccffffffffffffffccfffffffffffffcccccccccccffffffffffffffccfffffffffffffcccccccccccffffffff
+            ffffffffffffffffccccccccccccccccccccffffffffffffffffffffccccccccccccccccccccffffffffffffffffffffccccccccccccccccccccffffffffffffffffffffccccccccccccccccccccffff
+            fffffffffffffccccccccccccccccccccccccccffffffffffffffccccccccccccccccccccccccccffffffffffffffccccccccccccccccccccccccccffffffffffffffccccccccccccccccccccccccccf
+            ccfffffffffcccccccccccccccccccccccccccccccfffffffffcccccccccccccccccccccccccccccccfffffffffcccccccccccccccccccccccccccccccfffffffffccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+            bbbbbbbbbbbbccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccbbbbbbbb
+            bbbbbbbbbbbbbbbbbccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccbbbbbbbbbbbbb
+            bbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbb
+            bbbbbbbbb3333333bbbbbbbbb33cbbbbbbbbbbbbbbbbbbbbb3333333bbbbbbbbb33cbbbbbbbbbbbbbbbbbbbbb3333333bbbbbbbbb33cbbbbbbbbbbbbbbbbbbbbb3333333bbbbbbbbb33cbbbbbbbbbbbb
+            bbbbbbb33cccccbb33bbbbbbbccbbccbbbbbbbbbbbbbbbb33cccccbb33bbbbbbbccbbccbbbbbbbbbbbbbbbb33cccccbb33bbbbbbbccbbccbbbbbbbbbbbbbbbb33cccccbb33bbbbbbbccbbccbbbbbbbbb
+            bbbbbbbcccbbbbbcccbbbbbbbbccccbbbbbbbbbbbbbbbbbcccbbbbbcccbbbbbbbbccccbbbbbbbbbbbbbbbbbcccbbbbbcccbbbbbbbbccccbbbbbbbbbbbbbbbbbcccbbbbbcccbbbbbbbbccccbbbbbbbbbb
+            3bbbbbbbcccccccccbbbbbbbbbbbbbbb333333333bbbbbbbcccccccccbbbbbbbbbbbbbbb333333333bbbbbbbcccccccccbbbbbbbbbbbbbbb333333333bbbbbbbcccccccccbbbbbbbbbbbbbbb33333333
+            333bbbbbbbcccccbbbbbbbbbbbbbbb333ccbbbbb333bbbbbbbcccccbbbbbbbbbbbbbbb333ccbbbbb333bbbbbbbcccccbbbbbbbbbbbbbbb333ccbbbbb333bbbbbbbcccccbbbbbbbbbbbbbbb333ccbbbbb
+            cc3bbbbbbbbbbbbbbbbbbbbbbbbbbb3cccbbbccccc3bbbbbbbbbbbbbbbbbbbbbbbbbbb3cccbbbccccc3bbbbbbbbbbbbbbbbbbbbbbbbbbb3cccbbbccccc3bbbbbbbbbbbbbbbbbbbbbbbbbbb3cccbbbccc
+            cccbbbbbbbbbbbb333bbbbbb3bbbbbcccbbbbbcccccbbbbbbbbbbbb333bbbbbb3bbbbbcccbbbbbcccccbbbbbbbbbbbb333bbbbbb3bbbbbcccbbbbbcccccbbbbbbbbbbbb333bbbbbb3bbbbbcccbbbbbcc
+            cccbbbbbbbbbbbb333bbbbbbbbbbbbcccccccccccccbbbbbbbbbbbb333bbbbbbbbbbbbcccccccccccccbbbbbbbbbbbb333bbbbbbbbbbbbcccccccccccccbbbbbbbbbbbb333bbbbbbbbbbbbcccccccccc
+            cbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccc
+            bbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+            bbb333333bbb33ddddddddddddddddd33bbbbbbbbbb333333bbb33ddddddddddddddddd33bbbbbbbbbb333333bbb33ddddddddddddddddd33bbbbbbbbbb333333bbb33ddddddddddddddddd33bbbbbbb
+            bbb33333ddddddddddddddddddddddddddddd3bbbbb33333ddddddddddddddddddddddddddddd3bbbbb33333ddddddddddddddddddddddddddddd3bbbbb33333ddddddddddddddddddddddddddddd3bb
+            dddddddddddddddddddddddddddddddd33333ddddddddddddddddddddddddddddddddddd33333ddddddddddddddddddddddddddddddddddd33333ddddddddddddddddddddddddddddddddddd33333ddd
+            dddddddddddddd3333333333ddddddd33dddd33ddddddddddddddd3333333333ddddddd33dddd33ddddddddddddddd3333333333ddddddd33dddd33ddddddddddddddd3333333333ddddddd33dddd33d
+            dddddddddddd333ddddddddd33dddddbbbbbbbbddddddddddddd333ddddddddd33dddddbbbbbbbbddddddddddddd333ddddddddd33dddddbbbbbbbbddddddddddddd333ddddddddd33dddddbbbbbbbbd
+            ddddddddddd333d3bbbbbbbbd33dddddbbbbbbddddddddddddd333d3bbbbbbbbd33dddddbbbbbbddddddddddddd333d3bbbbbbbbd33dddddbbbbbbddddddddddddd333d3bbbbbbbbd33dddddbbbbbbdd
+            ddddddddddd33bbbbbbbbbbbb33dddddddddddddddddddddddd33bbbbbbbbbbbb33dddddddddddddddddddddddd33bbbbbbbbbbbb33dddddddddddddddddddddddd33bbbbbbbbbbbb33ddddddddddddd
+            ddddddddddddbbbbbbbbbbbbbbddddddddddddddddddddddddddbbbbbbbbbbbbbbddddddddddddddddddddddddddbbbbbbbbbbbbbbddddddddddddddddddddddddddbbbbbbbbbbbbbbdddddddddddddd
+            ddddddddddddd3bbbbbbbbbb3dddddddddddddddddddddddddddd3bbbbbbbbbb3dddddddddddddddddddddddddddd3bbbbbbbbbb3dddddddddddddddddddddddddddd3bbbbbbbbbb3ddddddddddddddd
+            d333333ddddddddd333333ddddddddddddddddddd333333ddddddddd333333ddddddddddddddddddd333333ddddddddd333333ddddddddddddddddddd333333ddddddddd333333dddddddddddddddddd
+            333333333dddddddddddddddddddddddddddddd3333333333dddddddddddddddddddddddddddddd3333333333dddddddddddddddddddddddddddddd3333333333dddddddddddddddddddddddddddddd3
+            33333333dddddddddddddddddddddddddddddddd33333333dddddddddddddddddddddddddddddddd33333333dddddddddddddddddddddddddddddddd33333333dddddddddddddddddddddddddddddddd
+            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            dddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333d
+            33ddddddddddddddddddddd333dddddddddddd3333ddddddddddddddddddddd333dddddddddddd3333ddddddddddddddddddddd333dddddddddddd3333ddddddddddddddddddddd333dddddddddddd33
+            d333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333dddddddddddddddd
+            ddd33ddddddddddddddd33dddd3bbbbbbbbbbb3dddd33ddddddddddddddd33dddd3bbbbbbbbbbb3dddd33ddddddddddddddd33dddd3bbbbbbbbbbb3dddd33ddddddddddddddd33dddd3bbbbbbbbbbb3d
+            b3dd3ddddddddddddddd3dd3bbbbbbbbbbbbbbbbb3dd3ddddddddddddddd3dd3bbbbbbbbbbbbbbbbb3dd3ddddddddddddddd3dd3bbbbbbbbbbbbbbbbb3dd3ddddddddddddddd3dd3bbbbbbbbbbbbbbbb
+            bb333ddddddddddddddd33bbbbbbbbbbbbbbbbbbbb333ddddddddddddddd33bbbbbbbbbbbbbbbbbbbb333ddddddddddddddd33bbbbbbbbbbbbbbbbbbbb333ddddddddddddddd33bbbbbbbbbbbbbbbbbb
+            bbb3dddddddddddddddd3bbbbbbbbbbbbbbbbbbbbbb3dddddddddddddddd3bbbbbbbbbbbbbbbbbbbbbb3dddddddddddddddd3bbbbbbbbbbbbbbbbbbbbbb3dddddddddddddddd3bbbbbbbbbbbbbbbbbbb
+            b3ddddddddddddddddddd3bbbbbbbbbbbbbbbbbbb3ddddddddddddddddddd3bbbbbbbbbbbbbbbbbbb3ddddddddddddddddddd3bbbbbbbbbbbbbbbbbbb3ddddddddddddddddddd3bbbbbbbbbbbbbbbbbb
+            dddddddddddddddddddddddd3bbbbbbbbbbbbb33dddddddddddddddddddddddd3bbbbbbbbbbbbb33dddddddddddddddddddddddd3bbbbbbbbbbbbb33dddddddddddddddddddddddd3bbbbbbbbbbbbb33
+            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+            dddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddd
+            dddddd333333333333333333333ddddddddddddddddddd333333333333333333333ddddddddddddddddddd333333333333333333333ddddddddddddddddddd333333333333333333333ddddddddddddd
+            dddd3333333333333333ddd3333333dddddddddddddd3333333333333333ddd3333333dddddddddddddd3333333333333333ddd3333333dddddddddddddd3333333333333333ddd3333333dddddddddd
+            dd3333333333333333333dddddd333333ddddddddd3333333333333333333dddddd333333ddddddddd3333333333333333333dddddd333333ddddddddd3333333333333333333dddddd333333ddddddd
+            3333333333333333333333ddddddddddddddd3333333333333333333333333ddddddddddddddd3333333333333333333333333ddddddddddddddd3333333333333333333333333ddddddddddddddd333
+            33333333333333333333333333dddddddd33333333333333333333333333333333dddddddd33333333333333333333333333333333dddddddd33333333333333333333333333333333dddddddd333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+            `)
+        tiles.placeOnTile(Player_character, tiles.getTileLocation(52, 13))
+        controller.moveSprite(Player_character, 50, 0)
+        for (let value2 of minedLocations) {
+            showTiles(value2.column, value2.row)
+        }
+        In_upgrade_menu = 0
+        hud(true)
+        Player_character.setImage(img`
+            ................
+            .......11.......
+            ......1ff1......
+            .....1ffff1.....
+            .....1ffff1.....
+            ......1ff1......
+            .......11.......
+            ...1111111111...
+            ..111111111111..
+            ..11.111111.11..
+            ..11.1ffff1.11..
+            ..11.1f29f1.11..
+            ..11.1ffff1.11..
+            ..ff.111111.ff..
+            .....11..11.....
+            .....11..11.....
+            .....11..11.....
+            .....11..11.....
+            ....111..111....
+            ....fff..fff....
+            `)
+    }
+}
+function loadTilemap () {
+    for (let value3 of minedLocations) {
+        tiles.setTileAt(value3, assets.tile`myTile8`)
+        tiles.setWallAt(value3, false)
+    }
+    for (let value4 of coalLocations) {
+        tiles.setTileAt(value4, assets.tile`Coal`)
+    }
+    for (let value5 of ironLocations) {
+        tiles.setTileAt(value5, assets.tile`Iron`)
+    }
+    for (let value6 of copperLocations) {
+        tiles.setTileAt(value6, assets.tile`Copper`)
+    }
+    for (let value7 of dirtLocations) {
+        tiles.setTileAt(value7, assets.tile`myTile3`)
+    }
+    for (let value8 of stoneLocations) {
+        tiles.setTileAt(value8, assets.tile`Stone`)
+    }
+}
+function makeWeaponToolbar (make: boolean) {
+    if (make) {
+        toolbar = Inventory.create_toolbar([gun, airstrike, flamethrower], 3)
+        toolbar.setPosition(106, 106)
+        toolbar.setFlag(SpriteFlag.RelativeToCamera, true)
+    } else {
+    	
+    }
+}
+function GROWTrees () {
+    for (let value13 of tiles.getTilesByType(assets.tile`myTile25`)) {
+        Tree = sprites.create(img`
+            ...........66...........
+            ..........6776..........
+            ..........6776..........
+            .........877778.........
+            ........86777768........
+            .......6777777776.......
+            ......677677776776......
+            ......866777777668......
+            .....86677677677668.....
+            ....8668866766888668....
+            ....8888668886686888....
+            .....86868868868668.....
+            ....866888668888868.....
+            ....8688886888888888....
+            ....8886688888866888....
+            ....8676888868886768....
+            ...87778868678688776....
+            ..8777767767787767778...
+            .877767777777677776778..
+            .8866777777777777776778.
+            .8667776776767776777688.
+            ..887766768668776667668.
+            ..8688668886688686688668
+            .86688688686866888688888
+            8668868866888866888868..
+            88886686688888868688668.
+            .8688888888888888668868.
+            .8878888868868878868788.
+            .87768776788778777667788
+            877677767787776767776778
+            88877787766777777877788.
+            ..88886786777667768888..
+            .....86887786668868.....
+            ......8886888668888.....
+            .........88ee88.........
+            .........feeeef.........
+            .........feeeef.........
+            ........feeefeef........
+            ........fefeffef........
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            `, SpriteKind.Woodythings)
+        Tree_spawn_x = value13.column
+        Tree_spawn_y = value13.row
+        tiles.placeOnTile(Tree, tiles.getTileLocation(Tree_spawn_x, Tree_spawn_y))
+        tiles.setTileAt(value13, assets.tile`transparency16`)
+    }
+}
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (In_Base && tiles.tileAtLocationEquals(Player_character.tilemapLocation(), assets.tile`myTile16`) && In_upgrade_menu == 0) {
+        Player_character.setImage(img`
+            . . . . . . f f . . . . . . . . 
+            . . . . . f 1 1 f . . . . . . . 
+            . . . . . f 1 1 f . . . . . . . 
+            . . . . . f 1 1 f . . . . . . . 
+            . . . . . f 1 1 f . . . . . . . 
+            . f f f . f 1 1 f . . . . . . . 
+            . f 1 1 f f 1 1 f f f . . . . . 
+            . f 1 1 1 f 1 1 1 1 f f f f . . 
+            . . f 1 1 f 1 1 1 1 1 1 1 f f f 
+            . . . f 1 1 1 1 1 1 1 1 1 1 1 f 
+            . . . f 1 1 1 1 1 1 1 1 1 1 1 f 
+            . . . . f 1 1 1 1 1 1 1 1 1 f . 
+            . . . . f 1 1 1 1 1 1 1 1 1 f . 
+            . . . . . f 1 1 1 1 1 1 1 f . . 
+            . . . . . f 1 1 1 1 1 1 1 f . . 
+            . . . . . . f f f f f f f . . . 
+            `)
+        Gravity = 0
+        tiles.setCurrentTilemap(tilemap`Upgrades`)
+        tiles.placeOnTile(Player_character, tiles.getTileLocation(7, 3))
+        Player_character.setVelocity(0, 0)
+        controller.moveSprite(Player_character, 50, 50)
+        In_upgrade_menu = 1
+        Spawn_menu_upgrades_text()
+    } else if (In_Base && In_upgrade_menu == 1) {
+        I_just_wanted_to_shrink_the_upgrade_menu_section()
+    }
+})
+controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function () {
+    if (!(inInventory)) {
+        activateInventory(true)
+    } else {
+        activateInventory(false)
+    }
+})
+controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function () {
+    shoot(2)
+})
+function Ores () {
+    for (let value9 of tiles.getTilesByType(assets.tile`myTile5`)) {
+        tempOreRandomizer = randint(1, 10)
+        if (tempOreRandomizer > 5) {
+            if (randint(0, 1) == 0) {
+                tiles.setTileAt(value9, assets.tile`Stone`)
+            } else {
+                tiles.setTileAt(value9, assets.tile`Stone`)
+            }
+        } else {
+            tiles.setTileAt(value9, assets.tile`myTile3`)
+        }
+    }
+    for (let value10 of tiles.getTilesByType(assets.tile`myTile6`)) {
+        tempOreRandomizer = randint(1, 200)
+        if (tempOreRandomizer < 6) {
+            tiles.setTileAt(value10, assets.tile`Coal`)
+        } else if (tempOreRandomizer < 10) {
+            tiles.setTileAt(value10, assets.tile`Copper`)
+        } else if (tempOreRandomizer < 13) {
+            tiles.setTileAt(value10, assets.tile`Iron`)
+        } else {
+            tiles.setTileAt(value10, assets.tile`Stone`)
+        }
+    }
+    for (let value11 of tiles.getTilesByType(assets.tile`myTile7`)) {
+        tempOreRandomizer = randint(1, 300)
+        if (tempOreRandomizer < 6) {
+            tiles.setTileAt(value11, assets.tile`Coal`)
+        } else if (tempOreRandomizer < 10) {
+            tiles.setTileAt(value11, assets.tile`Copper`)
+        } else if (tempOreRandomizer < 13) {
+            tiles.setTileAt(value11, assets.tile`Iron`)
+        } else if (tempOreRandomizer < 16) {
+            tiles.setTileAt(value11, img`Diamonds`)
+        } else if (tempOreRandomizer < 19) {
+            tiles.setTileAt(value11, assets.tile`myTile13`)
+        } else if (tempOreRandomizer < 21) {
+            tiles.setTileAt(value11, assets.tile`myTile12`)
+        } else {
+            tiles.setTileAt(value11, assets.tile`Stone`)
+        }
+        startingSaveTilemap()
+    }
+}
+function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: number) {
+    if (!(isMining) && !(energyStatusBar.value < 5)) {
+        if (direction_down__1_up__2_left__3_right__4 == 1) {
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Stone`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                addToInventory(1)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                Type_of_block_being_mined = 0
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile0`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile1`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile3`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Coal`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(3)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Iron`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(4)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(5)
+            }
+        } else if (direction_down__1_up__2_left__3_right__4 == 3) {
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Stone`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 6, cooldown)
+                Type_of_block_being_mined = 6
+                addToInventory(1)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                Type_of_block_being_mined = 0
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile0`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 1
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile1`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
+                Type_of_block_being_mined = 2
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile3`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                Type_of_block_being_mined = 5
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Coal`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(3)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Iron`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(4)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Copper`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(5)
+            }
+        } else if (direction_down__1_up__2_left__3_right__4 == 4) {
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Stone`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 6
+                addToInventory(1)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                Type_of_block_being_mined = 0
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile0`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 1
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile1`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
+                Type_of_block_being_mined = 2
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile3`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 5
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Coal`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(3)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Iron`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(4)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(5)
+            }
+        } else if (direction_down__1_up__2_left__3_right__4 == 2) {
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Stone`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                addToInventory(1)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
+                Type_of_block_being_mined = 0
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile0`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
+                Type_of_block_being_mined = 1
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile1`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
+                Type_of_block_being_mined = 2
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile3`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                Type_of_block_being_mined = 5
+                addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Coal`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(3)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Iron`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(4)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(5)
+            }
+        } else {
+        	
+        }
+    }
+}
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (inInventory) {
+        inventory.change_number(InventoryNumberAttribute.SelectedIndex, -1)
+    } else {
+        Mine(3, miningEfficiency)
+    }
+})
+function saveTilemap () {
+    minedLocations = tiles.getTilesByType(assets.tile`myTile8`)
+    coalLocations = tiles.getTilesByType(assets.tile`Coal`)
+    ironLocations = tiles.getTilesByType(assets.tile`Iron`)
+    copperLocations = tiles.getTilesByType(assets.tile`Copper`)
+    dirtLocations = tiles.getTilesByType(assets.tile`myTile3`)
+    stoneLocations = tiles.getTilesByType(assets.tile`Stone`)
+}
+function HUDAmmo () {
+    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
+        gunAmmo = statusbars.create(4, 20, StatusBarKind.ammo)
+        gunAmmo.setPosition(145, 91)
+        gunAmmo.setColor(4, 2)
+    } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
+        airstrikeCooldown = statusbars.create(4, 20, StatusBarKind.ammo)
+        airstrikeCooldown.setPosition(145, 91)
+        airstrikeCooldown.setColor(9, 6)
+        airstrikeCooldown.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+    } else {
+        flamethrowerCooldown = statusbars.create(4, 20, StatusBarKind.ammo)
+        flamethrowerCooldown.setPosition(145, 91)
+        flamethrowerCooldown.setColor(5, 4)
+        flamethrowerCooldown.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+    }
+}
+controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
+    shoot(1)
+})
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (inInventory) {
+        inventory.change_number(InventoryNumberAttribute.SelectedIndex, 1)
+    } else {
+        Mine(4, miningEfficiency)
+    }
+})
+controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function () {
+    shoot(4)
+})
+function spawnEnemies () {
+    for (let value12 of tiles.getTilesByType(assets.tile`myTile27`)) {
+        flyingEnemies = sprites.create(img`
+            d.......................
+            dd..........cc..........
+            dbd.........ccc.........
+            bddd....ccc.ccccccc.....
+            dddbd...ccccc555555cc...
+            ddbddd..ccb5555555555c..
+            dbdddbcc.b55555ff15555c.
+            bdddbdccb5555555ff55555c
+            ....ddcb555555555555d55c
+            d...cdb555555555bb55555c
+            dd..ccb555ddd5555b13bbc.
+            ddb.ccd55ddddd555b3335c.
+            dbdd.cdd5ddddddd55b335c.
+            bddbddddddb555bbbd555c..
+            ddbdddddddbb55555bccc...
+            dbdddbddddddcc555bcc....
+            bdddbdddddddddcccbcccc..
+            dddbdddddddd55dbbbc55c..
+            ddbddddddddd555dccc5c...
+            .cbddddbbbbdd5d555cc....
+            ..cbdddbbbbbdd5555......
+            ...cccbbbbbbd5555c......
+            .....cccccccc555c.......
+            .............ccc........
+            `, SpriteKind.aboveEnemy)
+        flyingEnemiesStatusBar = statusbars.create(20, 4, StatusBarKind.Health)
+        flyingEnemiesStatusBar.attachToSprite(flyingEnemies)
+        tiles.placeOnTile(flyingEnemies, value12)
+        animation.runImageAnimation(
+        flyingEnemies,
+        assets.animation`flyingMonsterRight`,
+        500,
+        true
+        )
+        flyingEnemiesArray.push(flyingEnemies)
+        sprites.setDataBoolean(flyingEnemies, "canSeePlayer", false)
+        sprites.setDataImageValue(flyingEnemies, "projectile", assets.image`projectile`)
+        sprites.setDataNumber(flyingEnemies, "maxHealth", 50)
+        sprites.setDataNumber(flyingEnemies, "health", 0)
+        sprites.setDataNumber(flyingEnemies, "statusBarWidth", 20)
+        flyingEnemies.setFlag(SpriteFlag.AutoDestroy, false)
+        if (value12.column < 24) {
+            tiles.setTileAt(value12, assets.tile`transparency16`)
+        } else {
+            tiles.setTileAt(value12, assets.tile`myTile8`)
+        }
+        statusbars.getStatusBarAttachedTo(StatusBarKind.Health, flyingEnemies).value = (sprites.readDataNumber(flyingEnemies, "maxHealth") + sprites.readDataNumber(flyingEnemies, "health")) * sprites.readDataNumber(flyingEnemies, "statusBarWidth")
+        characterAnimations.loopFrames(
+        flyingEnemies,
+        assets.animation`flyingMonsterRight`,
+        500,
+        characterAnimations.rule(Predicate.MovingRight)
+        )
+        characterAnimations.loopFrames(
+        flyingEnemies,
+        assets.animation`flyingMonsterLeft`,
+        500,
+        characterAnimations.rule(Predicate.FacingLeft)
+        )
+    }
+}
+function shoot (direction1up2down3left4right: number) {
+    if (!(inInventory) && !(In_Base)) {
+        if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
+            if (canShoot) {
+                canShoot = false
+                if (direction1up2down3left4right == 1) {
+                    gunBullet = sprites.createProjectileFromSprite(img`
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . f f . . . . . . . 
+                        . . . . . . . f f . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        `, Player_character, 0, -50)
+                    gunBullet.setKind(SpriteKind.gunBullets)
+                } else if (direction1up2down3left4right == 2) {
+                    gunBullet = sprites.createProjectileFromSprite(img`
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . f f . . . . . . . 
+                        . . . . . . . f f . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        `, Player_character, 0, 50)
+                    gunBullet.setKind(SpriteKind.gunBullets)
+                } else if (direction1up2down3left4right == 3) {
+                    gunBullet = sprites.createProjectileFromSprite(img`
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . f f . . . . . . . 
+                        . . . . . . . f f . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        `, Player_character, -50, 0)
+                    gunBullet.setKind(SpriteKind.gunBullets)
+                } else if (direction1up2down3left4right == 4) {
+                    gunBullet = sprites.createProjectileFromSprite(img`
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . f f . . . . . . . 
+                        . . . . . . . f f . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        . . . . . . . . . . . . . . . . 
+                        `, Player_character, 50, 0)
+                    gunBullet.setKind(SpriteKind.gunBullets)
+                }
+            }
+        } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
+            if (airstrikeCooldown.value > 99) {
+                airstrikeFunction()
+            }
+        } else {
+            if (direction1up2down3left4right == 1) {
+            	
+            } else if (direction1up2down3left4right == 2) {
+            	
+            } else if (direction1up2down3left4right == 3) {
+            	
+            } else if (direction1up2down3left4right == 4) {
+            	
+            }
+        }
+    }
+}
+function showTiles (col: number, row: number) {
+    tileUtil.coverTile(tiles.getTileLocation(col - 1, row), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col + 1, row), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col, row + 1), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col, row - 1), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col - 1, row - 1), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col - -1, row - 1), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col - -1, row - -1), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col - 1, row - -1), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col - 2, row), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col + 2, row), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col, row + 2), assets.tile`transparency16`)
+    tileUtil.coverTile(tiles.getTileLocation(col, row - 2), assets.tile`transparency16`)
+}
+function airstrikeFunction () {
+    nearestLengthAway = 9999999
+    for (let value of sprites.allOfKind(SpriteKind.aboveEnemy)) {
+        if (nearestLengthAway < spriteutils.distanceBetween(Player_character, value)) {
+            nearestLengthAway = spriteutils.distanceBetween(Player_character, value)
+            nearestSprite = value
+        }
+    }
+    missile = sprites.create(assets.image`gun`, SpriteKind.airstrikeMissile)
+    missile.setFlag(SpriteFlag.AutoDestroy, false)
+    missile.vy = -100
+    sprites.setDataSprite(missile, "target", nearestSprite)
+}
+function hud (add: boolean) {
+    if (add) {
+        if (!(_1stTimeHud)) {
+            healthStatusBar = statusbars.create(50, 6, StatusBarKind.Health)
+            healthStatusBar.setPosition(41, 110)
+            energyStatusBar = statusbars.create(50, 3, StatusBarKind.Energy)
+            energyStatusBar.setColor(9, 8)
+            energyStatusBar.setPosition(41, 105)
+            pumpingHeart = sprites.create(img`
+                . . . . . . . . . . . . . . . . 
+                . . f f f f f f . f f f f f f . 
+                . f f 3 3 3 3 f f f 3 3 3 3 f f 
+                . f 3 3 3 3 3 3 f 3 3 3 3 3 3 f 
+                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
+                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
+                . f 3 3 3 3 3 b b b 1 1 1 3 3 f 
+                . f 3 3 3 3 b b b b b 3 3 3 3 f 
+                . f f 3 3 b b b b b b b 3 3 f f 
+                . . f f 3 b b b b b b b 3 f f . 
+                . . . f f b b b b b b b f f . . 
+                . . . . f f b b b b b f f . . . 
+                . . . . . f f b b b f f . . . . 
+                . . . . . . f f b f f . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, SpriteKind.other)
+            pumpingHeart.setPosition(6, 109)
+            animation.runImageAnimation(
+            pumpingHeart,
+            [img`
+                . . . . . . . . . . . . . . . . 
+                . . f f f f f f . f f f f f f . 
+                . f f 3 3 3 3 f f f 3 3 3 3 f f 
+                . f 3 3 3 3 3 3 f 3 3 3 3 3 3 f 
+                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
+                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
+                . f 3 3 3 3 3 b b b 1 1 1 3 3 f 
+                . f 3 3 3 3 b b b b b 3 3 3 3 f 
+                . f f 3 3 b b b b b b b 3 3 f f 
+                . . f f 3 b b b b b b b 3 f f . 
+                . . . f f b b b b b b b f f . . 
+                . . . . f f b b b b b f f . . . 
+                . . . . . f f b b b f f . . . . 
+                . . . . . . f f b f f . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `,img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . f f f f f . f f f f f . . 
+                . . f f 3 3 3 f f f 3 3 3 f . . 
+                . . f 3 3 3 3 3 f 3 3 3 3 3 . . 
+                . . f 3 3 3 3 3 3 3 1 1 3 3 . . 
+                . . f 3 3 3 3 b b b 1 1 3 3 . . 
+                . . f 3 3 3 b b b b 3 3 3 3 . . 
+                . . f f 3 3 b b b b b 3 3 f . . 
+                . . . f f 3 b b b b b 3 f f . . 
+                . . . . . f b b b b f f . . . . 
+                . . . . . . f b b b f . . . . . 
+                . . . . . . f f b f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `,img`
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . f f f . f f f . . . . 
+                . . . . f 3 3 3 f 3 3 3 f . . . 
+                . . . . f 3 3 3 3 3 1 3 f . . . 
+                . . . . f 3 3 3 3 3 3 3 f . . . 
+                . . . . . f 3 b b b 3 f . . . . 
+                . . . . . f f b b b f f . . . . 
+                . . . . . . f f b f f . . . . . 
+                . . . . . . . f f f . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `],
+            200,
+            true
+            )
+            _1stTimeHud = true
+            pumpingHeart.setFlag(SpriteFlag.RelativeToCamera, true)
+            healthStatusBar.setFlag(SpriteFlag.RelativeToCamera, true)
+            energyStatusBar.setFlag(SpriteFlag.RelativeToCamera, true)
+            healthStatusBar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+            energyStatusBar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
+        } else {
+            healthStatusBar.setFlag(SpriteFlag.Invisible, false)
+            pumpingHeart.setFlag(SpriteFlag.Invisible, false)
+            energyStatusBar.setFlag(SpriteFlag.Invisible, false)
+        }
+    } else {
+        healthStatusBar.setFlag(SpriteFlag.Invisible, true)
+        pumpingHeart.setFlag(SpriteFlag.Invisible, true)
+        energyStatusBar.setFlag(SpriteFlag.Invisible, true)
+    }
 }
 function Spawn_menu_upgrades_text () {
     Upgrade_menu_text = sprites.create(img`
@@ -325,124 +1491,24 @@ function Spawn_menu_upgrades_text () {
         }
     }
 }
-function enemyBehaviour () {
-    for (let value of flyingEnemiesArray) {
-        if (spriteutils.distanceBetween(Player_character, value) < 100) {
-            sprites.setDataBoolean(value, "canSeePlayer", true)
-        } else if (spriteutils.distanceBetween(Player_character, value) > 100) {
-            sprites.setDataBoolean(value, "canSeePlayer", false)
-        }
-        if (sprites.readDataBoolean(value, "canSeePlayer")) {
-            enemyShoot(sprites.readDataImage(value, "projectile"), value, Player_character, 50)
-            pause(2000)
-            if (spriteutils.distanceBetween(Player_character, value) < 50) {
-                value.setVelocity(0, -10)
-            } else {
-                if (value.tilemapLocation().column < 9) {
-                    value.vy = 10
-                } else {
-                    spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(value, Player_character), 15)
-                }
-            }
-        } else {
-            value.vx = 15
-        }
+function addToInventory (thing: number) {
+    if (thing == 0) {
+        dirtQuantity += 1
+    } else if (thing == 1) {
+        stoneQuantity += 1
+    } else if (thing == 3) {
+        coalQuantity += 1
+    } else if (thing == 4) {
+        ironQuantity += 1
+    } else if (thing == 5) {
+        copperQuantity += 1
     }
 }
-scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-    jump = false
-})
-controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!(inInventory) && Player_character.isHittingTile(CollisionDirection.Bottom) && !(energyStatusBar.value < 5)) {
-        Player_character.vy = -50
-        jump = true
-        energyStatusBar.value += 0 - 50 / Energy_capacity
-    } else {
-    	
-    }
-    Mine(2, miningEfficiency)
-})
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (Player_character.overlapsWith(Base)) {
-        gotoBase(true)
-    } else if (In_Base) {
-        gotoBase(false)
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (!(inInventory) && Player_character.isHittingTile(CollisionDirection.Bottom)) {
+        Mine(1, miningEfficiency)
     }
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.explodingProjectile, function (sprite, otherSprite) {
-    playerOnFire = true
-    sprites.destroy(otherSprite)
-    healthChange(-10)
-})
-function BlockBreak (col: number, row: number, block: number, miningSpeed: number) {
-    isMining = true
-    breakingTileSprite.setFlag(SpriteFlag.Invisible, false)
-    energyStatusBar.value += 0 - 50 / Energy_capacity
-    tiles.placeOnTile(breakingTileSprite, tiles.getTileLocation(col, row))
-    breakingTileSprite.setImage(img`
-        . . f . . . . f . . . . f . . . 
-        . . f . . . . f . . . f f . . . 
-        . . f . . . . f . . . f . . . . 
-        . . . . . . f . . . . . . . . . 
-        f f . . . . . . . . . . f f f . 
-        . f f . . . . . . . . . . . f f 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        f f f f . . . . . . . . . f f f 
-        . . . . . . . . . . . . . . . . 
-        . . . f . . . . . . . . . . . . 
-        . . f f . . . . f . . . . . . . 
-        . f f . . f . . . f . . . f . . 
-        . f . . . f . . . f f . . f f . 
-        f . . . . f . . . . f . . . f f 
-        `)
-    pause(miningSpeed)
-    breakingTileSprite.setImage(img`
-        . . f . . . . f . . . . f . . . 
-        . . f . . . . f . . . f f . . . 
-        . . f . . . . f . . . f . . . . 
-        . . . f f . f . . f f . . . . . 
-        f f . . . . f . . f . f f f f . 
-        . f f f . . f . . . f . . . f f 
-        . . . . f . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        f f f f f f . . . . f f f f f f 
-        . . . . . . . . . . . . . . . . 
-        . . . f f f . f . . . . f f . . 
-        . . f f . . f f f . . . . f . . 
-        . f f . . f . . . f . . . f . . 
-        . f . . . f . . . f f . . f f . 
-        f . . . . f . . . . f . . . f f 
-        `)
-    pause(miningSpeed)
-    breakingTileSprite.setImage(img`
-        . . f . . . . f . . . . f . . . 
-        . . f . . . . f . . . f f . . . 
-        . . f . . . . f . . . f . . . . 
-        . . . f f . f . . f f . . . . . 
-        f f . . . . f . . f . f f f f . 
-        . f f f . . f . . . f . f . f f 
-        . . . . f . f f . f f . f . . . 
-        . . . . . f . . . f . . f . . . 
-        . . . . . . f . f . . . . . . . 
-        f f f f f f . f . f f f f f f f 
-        . . . . . . . f . . . . . . . . 
-        . . . f f f . f . f f f f f . . 
-        . . f f . . f f f . . . . f . . 
-        . f f . . f . . . f . . . f . . 
-        . f . . . f . . . f f . . f f . 
-        f . . . . f . . . . f . . . f f 
-        `)
-    pause(miningSpeed)
-    tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`myTile8`)
-    breakingTileSprite.setFlag(SpriteFlag.Invisible, true)
-    tiles.setWallAt(tiles.getTileLocation(col, row), false)
-    showTiles(col, row)
-    isMining = false
-    brokenBlocks.push(tiles.getTileLocation(col, row))
-}
 function I_just_wanted_to_shrink_the_upgrade_menu_section () {
     if (Player_character.overlapsWith(Menu_interaction_sprite_0)) {
         if (Mining_speed == 500) {
@@ -587,910 +1653,8 @@ function I_just_wanted_to_shrink_the_upgrade_menu_section () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Interaction_sprite)
     Spawn_menu_upgrades_text()
 }
-function gotoBase (goto: boolean) {
-    if (goto) {
-        Gravity = 0
-        In_Base = goto
-        saveTilemap()
-        tiles.setCurrentTilemap(tilemap`Inside Base`)
-        scene.setBackgroundImage(img`
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            ................................................................................................................................................................
-            `)
-        tiles.placeOnTile(Player_character, tiles.getTileLocation(3, 26))
-        previousTilemap = 0
-        Player_character.setVelocity(0, 0)
-        controller.moveSprite(Player_character, 50, 50)
-        sprites.destroyAllSpritesOfKind(SpriteKind.Woodythings)
-        hud(false)
-    } else {
-        Gravity = 0.8
-        In_Base = goto
-        tiles.setCurrentTilemap(tilemap`Planet part 1`)
-        loadTilemap()
-        GROWTrees()
-        hideTiles()
-        scene.setBackgroundImage(img`
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffcffffffffffcffffffffffffffffffffffffffffcffffffffffcffffffffffffffffffffffffffffcffffffffffcffffffffffffffffffffffffffffcffffffffffcffffffffffffffffffffff
-            ffffffffffffffffcbcffffffffffffffffffffcffffffffffffffffcbcffffffffffffffffffffcffffffffffffffffcbcffffffffffffffffffffcffffffffffffffffcbcffffffffffffffffffffc
-            fffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffff
-            fffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcffffffffffff
-            fff3fffffffffffffffffffffbbbfffffffffffffff3fffffffffffffffffffffbbbfffffffffffffff3fffffffffffffffffffffbbbfffffffffffffff3fffffffffffffffffffffbbbffffffffffff
-            ffb3bffffffffffffffffffffcbcffffffffffffffb3bffffffffffffffffffffcbcffffffffffffffb3bffffffffffffffffffffcbcffffffffffffffb3bffffffffffffffffffffcbcffffffffffff
-            f33333ffffffffffffccfffffffffffffffffffff33333ffffffffffffccfffffffffffffffffffff33333ffffffffffffccfffffffffffffffffffff33333ffffffffffffccffffffffffffffffffff
-            ff3b3fffffffffffffccffffffffffffffffffffff3b3fffffffffffffccffffffffffffffffffffff3b3fffffffffffffccffffffffffffffffffffff3b3fffffffffffffccffffffffffffffffffff
-            ffbfbfffffffffffffffffffffffffffffcfffffffbfbfffffffffffffffffffffffffffffcfffffffbfbfffffffffffffffffffffffffffffcfffffffbfbfffffffffffffffffffffffffffffcfffff
-            fffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcffff
-            fffffffffffcffffffffffffffffffffffcffffffffffffffffcffffffffffffffffffffffcffffffffffffffffcffffffffffffffffffffffcffffffffffffffffcffffffffffffffffffffffcfffff
-            ffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffffffffffffffcbcfffffffffffffffffffffffffff
-            fffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            fcfffffffffffffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcfffffffffffffcfffffffffffffffffffffffffcffffffffffff
-            fffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffffffffffffffffffffffffffffffffffffffcfffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-            ffffffccfffffcffffffffffffffffffffffffffffffffccfffffcffffffffffffffffffffffffffffffffccfffffcffffffffffffffffffffffffffffffffccfffffcffffffffffffffffffffffffff
-            ffffffccfffffffffffffcccccccccccffffffffffffffccfffffffffffffcccccccccccffffffffffffffccfffffffffffffcccccccccccffffffffffffffccfffffffffffffcccccccccccffffffff
-            ffffffffffffffffccccccccccccccccccccffffffffffffffffffffccccccccccccccccccccffffffffffffffffffffccccccccccccccccccccffffffffffffffffffffccccccccccccccccccccffff
-            fffffffffffffccccccccccccccccccccccccccffffffffffffffccccccccccccccccccccccccccffffffffffffffccccccccccccccccccccccccccffffffffffffffccccccccccccccccccccccccccf
-            ccfffffffffcccccccccccccccccccccccccccccccfffffffffcccccccccccccccccccccccccccccccfffffffffcccccccccccccccccccccccccccccccfffffffffccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-            cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-            bbbbbbbbbbbbccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbccccccccccccccccccccbbbbbbbb
-            bbbbbbbbbbbbbbbbbccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccbbbbbbbbbbbbb
-            bbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbb
-            bbbbbbbbb3333333bbbbbbbbb33cbbbbbbbbbbbbbbbbbbbbb3333333bbbbbbbbb33cbbbbbbbbbbbbbbbbbbbbb3333333bbbbbbbbb33cbbbbbbbbbbbbbbbbbbbbb3333333bbbbbbbbb33cbbbbbbbbbbbb
-            bbbbbbb33cccccbb33bbbbbbbccbbccbbbbbbbbbbbbbbbb33cccccbb33bbbbbbbccbbccbbbbbbbbbbbbbbbb33cccccbb33bbbbbbbccbbccbbbbbbbbbbbbbbbb33cccccbb33bbbbbbbccbbccbbbbbbbbb
-            bbbbbbbcccbbbbbcccbbbbbbbbccccbbbbbbbbbbbbbbbbbcccbbbbbcccbbbbbbbbccccbbbbbbbbbbbbbbbbbcccbbbbbcccbbbbbbbbccccbbbbbbbbbbbbbbbbbcccbbbbbcccbbbbbbbbccccbbbbbbbbbb
-            3bbbbbbbcccccccccbbbbbbbbbbbbbbb333333333bbbbbbbcccccccccbbbbbbbbbbbbbbb333333333bbbbbbbcccccccccbbbbbbbbbbbbbbb333333333bbbbbbbcccccccccbbbbbbbbbbbbbbb33333333
-            333bbbbbbbcccccbbbbbbbbbbbbbbb333ccbbbbb333bbbbbbbcccccbbbbbbbbbbbbbbb333ccbbbbb333bbbbbbbcccccbbbbbbbbbbbbbbb333ccbbbbb333bbbbbbbcccccbbbbbbbbbbbbbbb333ccbbbbb
-            cc3bbbbbbbbbbbbbbbbbbbbbbbbbbb3cccbbbccccc3bbbbbbbbbbbbbbbbbbbbbbbbbbb3cccbbbccccc3bbbbbbbbbbbbbbbbbbbbbbbbbbb3cccbbbccccc3bbbbbbbbbbbbbbbbbbbbbbbbbbb3cccbbbccc
-            cccbbbbbbbbbbbb333bbbbbb3bbbbbcccbbbbbcccccbbbbbbbbbbbb333bbbbbb3bbbbbcccbbbbbcccccbbbbbbbbbbbb333bbbbbb3bbbbbcccbbbbbcccccbbbbbbbbbbbb333bbbbbb3bbbbbcccbbbbbcc
-            cccbbbbbbbbbbbb333bbbbbbbbbbbbcccccccccccccbbbbbbbbbbbb333bbbbbbbbbbbbcccccccccccccbbbbbbbbbbbb333bbbbbbbbbbbbcccccccccccccbbbbbbbbbbbb333bbbbbbbbbbbbcccccccccc
-            cbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccc
-            bbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb3333bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-            bbb333333bbb33ddddddddddddddddd33bbbbbbbbbb333333bbb33ddddddddddddddddd33bbbbbbbbbb333333bbb33ddddddddddddddddd33bbbbbbbbbb333333bbb33ddddddddddddddddd33bbbbbbb
-            bbb33333ddddddddddddddddddddddddddddd3bbbbb33333ddddddddddddddddddddddddddddd3bbbbb33333ddddddddddddddddddddddddddddd3bbbbb33333ddddddddddddddddddddddddddddd3bb
-            dddddddddddddddddddddddddddddddd33333ddddddddddddddddddddddddddddddddddd33333ddddddddddddddddddddddddddddddddddd33333ddddddddddddddddddddddddddddddddddd33333ddd
-            dddddddddddddd3333333333ddddddd33dddd33ddddddddddddddd3333333333ddddddd33dddd33ddddddddddddddd3333333333ddddddd33dddd33ddddddddddddddd3333333333ddddddd33dddd33d
-            dddddddddddd333ddddddddd33dddddbbbbbbbbddddddddddddd333ddddddddd33dddddbbbbbbbbddddddddddddd333ddddddddd33dddddbbbbbbbbddddddddddddd333ddddddddd33dddddbbbbbbbbd
-            ddddddddddd333d3bbbbbbbbd33dddddbbbbbbddddddddddddd333d3bbbbbbbbd33dddddbbbbbbddddddddddddd333d3bbbbbbbbd33dddddbbbbbbddddddddddddd333d3bbbbbbbbd33dddddbbbbbbdd
-            ddddddddddd33bbbbbbbbbbbb33dddddddddddddddddddddddd33bbbbbbbbbbbb33dddddddddddddddddddddddd33bbbbbbbbbbbb33dddddddddddddddddddddddd33bbbbbbbbbbbb33ddddddddddddd
-            ddddddddddddbbbbbbbbbbbbbbddddddddddddddddddddddddddbbbbbbbbbbbbbbddddddddddddddddddddddddddbbbbbbbbbbbbbbddddddddddddddddddddddddddbbbbbbbbbbbbbbdddddddddddddd
-            ddddddddddddd3bbbbbbbbbb3dddddddddddddddddddddddddddd3bbbbbbbbbb3dddddddddddddddddddddddddddd3bbbbbbbbbb3dddddddddddddddddddddddddddd3bbbbbbbbbb3ddddddddddddddd
-            d333333ddddddddd333333ddddddddddddddddddd333333ddddddddd333333ddddddddddddddddddd333333ddddddddd333333ddddddddddddddddddd333333ddddddddd333333dddddddddddddddddd
-            333333333dddddddddddddddddddddddddddddd3333333333dddddddddddddddddddddddddddddd3333333333dddddddddddddddddddddddddddddd3333333333dddddddddddddddddddddddddddddd3
-            33333333dddddddddddddddddddddddddddddddd33333333dddddddddddddddddddddddddddddddd33333333dddddddddddddddddddddddddddddddd33333333dddddddddddddddddddddddddddddddd
-            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            dddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333d
-            33ddddddddddddddddddddd333dddddddddddd3333ddddddddddddddddddddd333dddddddddddd3333ddddddddddddddddddddd333dddddddddddd3333ddddddddddddddddddddd333dddddddddddd33
-            d333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333ddddddddddddddddd333dddddddddddddddd
-            ddd33ddddddddddddddd33dddd3bbbbbbbbbbb3dddd33ddddddddddddddd33dddd3bbbbbbbbbbb3dddd33ddddddddddddddd33dddd3bbbbbbbbbbb3dddd33ddddddddddddddd33dddd3bbbbbbbbbbb3d
-            b3dd3ddddddddddddddd3dd3bbbbbbbbbbbbbbbbb3dd3ddddddddddddddd3dd3bbbbbbbbbbbbbbbbb3dd3ddddddddddddddd3dd3bbbbbbbbbbbbbbbbb3dd3ddddddddddddddd3dd3bbbbbbbbbbbbbbbb
-            bb333ddddddddddddddd33bbbbbbbbbbbbbbbbbbbb333ddddddddddddddd33bbbbbbbbbbbbbbbbbbbb333ddddddddddddddd33bbbbbbbbbbbbbbbbbbbb333ddddddddddddddd33bbbbbbbbbbbbbbbbbb
-            bbb3dddddddddddddddd3bbbbbbbbbbbbbbbbbbbbbb3dddddddddddddddd3bbbbbbbbbbbbbbbbbbbbbb3dddddddddddddddd3bbbbbbbbbbbbbbbbbbbbbb3dddddddddddddddd3bbbbbbbbbbbbbbbbbbb
-            b3ddddddddddddddddddd3bbbbbbbbbbbbbbbbbbb3ddddddddddddddddddd3bbbbbbbbbbbbbbbbbbb3ddddddddddddddddddd3bbbbbbbbbbbbbbbbbbb3ddddddddddddddddddd3bbbbbbbbbbbbbbbbbb
-            dddddddddddddddddddddddd3bbbbbbbbbbbbb33dddddddddddddddddddddddd3bbbbbbbbbbbbb33dddddddddddddddddddddddd3bbbbbbbbbbbbb33dddddddddddddddddddddddd3bbbbbbbbbbbbb33
-            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-            dddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddddddddddddd3333333333333ddddddddddddddddd
-            dddddd333333333333333333333ddddddddddddddddddd333333333333333333333ddddddddddddddddddd333333333333333333333ddddddddddddddddddd333333333333333333333ddddddddddddd
-            dddd3333333333333333ddd3333333dddddddddddddd3333333333333333ddd3333333dddddddddddddd3333333333333333ddd3333333dddddddddddddd3333333333333333ddd3333333dddddddddd
-            dd3333333333333333333dddddd333333ddddddddd3333333333333333333dddddd333333ddddddddd3333333333333333333dddddd333333ddddddddd3333333333333333333dddddd333333ddddddd
-            3333333333333333333333ddddddddddddddd3333333333333333333333333ddddddddddddddd3333333333333333333333333ddddddddddddddd3333333333333333333333333ddddddddddddddd333
-            33333333333333333333333333dddddddd33333333333333333333333333333333dddddddd33333333333333333333333333333333dddddddd33333333333333333333333333333333dddddddd333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-            `)
-        tiles.placeOnTile(Player_character, tiles.getTileLocation(52, 13))
-        controller.moveSprite(Player_character, 50, 0)
-        for (let value of minedLocations) {
-            showTiles(value.column, value.row)
-        }
-        In_upgrade_menu = 0
-        hud(true)
-        Player_character.setImage(img`
-            ................
-            .......11.......
-            ......1ff1......
-            .....1ffff1.....
-            .....1ffff1.....
-            ......1ff1......
-            .......11.......
-            ...1111111111...
-            ..111111111111..
-            ..11.111111.11..
-            ..11.1ffff1.11..
-            ..11.1f29f1.11..
-            ..11.1ffff1.11..
-            ..ff.111111.ff..
-            .....11..11.....
-            .....11..11.....
-            .....11..11.....
-            .....11..11.....
-            ....111..111....
-            ....fff..fff....
-            `)
-    }
-}
-function loadTilemap () {
-    for (let value of minedLocations) {
-        tiles.setTileAt(value, assets.tile`myTile8`)
-        tiles.setWallAt(value, false)
-    }
-    for (let value of coalLocations) {
-        tiles.setTileAt(value, assets.tile`Coal`)
-    }
-    for (let value of ironLocations) {
-        tiles.setTileAt(value, assets.tile`Iron`)
-    }
-    for (let value of copperLocations) {
-        tiles.setTileAt(value, assets.tile`Copper`)
-    }
-    for (let value of dirtLocations) {
-        tiles.setTileAt(value, assets.tile`myTile3`)
-    }
-    for (let value of stoneLocations) {
-        tiles.setTileAt(value, assets.tile`Stone`)
-    }
-}
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (In_Base && tiles.tileAtLocationEquals(Player_character.tilemapLocation(), assets.tile`myTile16`) && In_upgrade_menu == 0) {
-        Player_character.setImage(img`
-            . . . . . . f f . . . . . . . . 
-            . . . . . f 1 1 f . . . . . . . 
-            . . . . . f 1 1 f . . . . . . . 
-            . . . . . f 1 1 f . . . . . . . 
-            . . . . . f 1 1 f . . . . . . . 
-            . f f f . f 1 1 f . . . . . . . 
-            . f 1 1 f f 1 1 f f f . . . . . 
-            . f 1 1 1 f 1 1 1 1 f f f f . . 
-            . . f 1 1 f 1 1 1 1 1 1 1 f f f 
-            . . . f 1 1 1 1 1 1 1 1 1 1 1 f 
-            . . . f 1 1 1 1 1 1 1 1 1 1 1 f 
-            . . . . f 1 1 1 1 1 1 1 1 1 f . 
-            . . . . f 1 1 1 1 1 1 1 1 1 f . 
-            . . . . . f 1 1 1 1 1 1 1 f . . 
-            . . . . . f 1 1 1 1 1 1 1 f . . 
-            . . . . . . f f f f f f f . . . 
-            `)
-        Gravity = 0
-        tiles.setCurrentTilemap(tilemap`Upgrades`)
-        tiles.placeOnTile(Player_character, tiles.getTileLocation(7, 3))
-        Player_character.setVelocity(0, 0)
-        controller.moveSprite(Player_character, 50, 50)
-        In_upgrade_menu = 1
-        Spawn_menu_upgrades_text()
-    } else if (In_Base && In_upgrade_menu == 1) {
-        I_just_wanted_to_shrink_the_upgrade_menu_section()
-    }
-})
-function Ores () {
-    for (let value of tiles.getTilesByType(assets.tile`myTile5`)) {
-        tempOreRandomizer = randint(1, 10)
-        if (tempOreRandomizer > 5) {
-            if (randint(0, 1) == 0) {
-                tiles.setTileAt(value, assets.tile`Stone`)
-            } else {
-                tiles.setTileAt(value, assets.tile`Stone`)
-            }
-        } else {
-            tiles.setTileAt(value, assets.tile`myTile3`)
-        }
-    }
-    for (let value of tiles.getTilesByType(assets.tile`myTile6`)) {
-        tempOreRandomizer = randint(1, 200)
-        if (tempOreRandomizer < 6) {
-            tiles.setTileAt(value, assets.tile`Coal`)
-        } else if (tempOreRandomizer < 10) {
-            tiles.setTileAt(value, assets.tile`Copper`)
-        } else if (tempOreRandomizer < 13) {
-            tiles.setTileAt(value, assets.tile`Iron`)
-        } else {
-            tiles.setTileAt(value, assets.tile`Stone`)
-        }
-    }
-    for (let value of tiles.getTilesByType(assets.tile`myTile7`)) {
-        tempOreRandomizer = randint(1, 300)
-        if (tempOreRandomizer < 6) {
-            tiles.setTileAt(value, assets.tile`Coal`)
-        } else if (tempOreRandomizer < 10) {
-            tiles.setTileAt(value, assets.tile`Copper`)
-        } else if (tempOreRandomizer < 13) {
-            tiles.setTileAt(value, assets.tile`Iron`)
-        } else if (tempOreRandomizer < 16) {
-            tiles.setTileAt(value, assets.tile`Diamonds`)
-        } else if (tempOreRandomizer < 19) {
-            tiles.setTileAt(value, assets.tile`myTile13`)
-        } else if (tempOreRandomizer < 21) {
-            tiles.setTileAt(value, assets.tile`myTile12`)
-        } else {
-            tiles.setTileAt(value, assets.tile`Stone`)
-        }
-        startingSaveTilemap()
-    }
-}
-function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: number) {
-    if (!(isMining) && !(energyStatusBar.value < 5)) {
-        if (direction_down__1_up__2_left__3_right__4 == 1) {
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Stone`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-                addToInventory(1)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-                Type_of_block_being_mined = 0
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile0`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile1`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile3`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Coal`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(3)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Iron`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(4)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(5)
-            }
-        } else if (direction_down__1_up__2_left__3_right__4 == 3) {
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Stone`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 6, cooldown)
-                Type_of_block_being_mined = 6
-                addToInventory(1)
-            }
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-                Type_of_block_being_mined = 0
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile0`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                Type_of_block_being_mined = 1
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile1`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
-                Type_of_block_being_mined = 2
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`myTile3`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                Type_of_block_being_mined = 5
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Coal`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(3)
-            }
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Iron`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(4)
-            }
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Copper`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(5)
-            }
-        } else if (direction_down__1_up__2_left__3_right__4 == 4) {
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Stone`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                Type_of_block_being_mined = 6
-                addToInventory(1)
-            }
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-                Type_of_block_being_mined = 0
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile0`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                Type_of_block_being_mined = 1
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile1`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
-                Type_of_block_being_mined = 2
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`myTile3`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                Type_of_block_being_mined = 5
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Coal`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(3)
-            }
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Iron`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(4)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(5)
-            }
-        } else if (direction_down__1_up__2_left__3_right__4 == 2) {
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Stone`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-                addToInventory(1)
-            }
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
-                Type_of_block_being_mined = 0
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile0`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                Type_of_block_being_mined = 1
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile1`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
-                Type_of_block_being_mined = 2
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`myTile3`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                Type_of_block_being_mined = 5
-                addToInventory(0)
-            }
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Coal`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(3)
-            }
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Iron`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(4)
-            }
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
-                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                addToInventory(5)
-            }
-        } else {
-        	
-        }
-    }
-}
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (inInventory) {
-        inventory.change_number(InventoryNumberAttribute.SelectedIndex, -1)
-    } else {
-        Mine(3, miningEfficiency)
-    }
-})
-function saveTilemap () {
-    minedLocations = tiles.getTilesByType(assets.tile`myTile8`)
-    coalLocations = tiles.getTilesByType(assets.tile`Coal`)
-    ironLocations = tiles.getTilesByType(assets.tile`Iron`)
-    copperLocations = tiles.getTilesByType(assets.tile`Copper`)
-    dirtLocations = tiles.getTilesByType(assets.tile`myTile3`)
-    stoneLocations = tiles.getTilesByType(assets.tile`Stone`)
-}
-controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
-    if (!(inInventory)) {
-        activateInventory(true)
-    } else {
-        activateInventory(false)
-    }
-})
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (inInventory) {
-        inventory.change_number(InventoryNumberAttribute.SelectedIndex, 1)
-    } else {
-        Mine(4, miningEfficiency)
-    }
-})
-function spawnEnemies () {
-    for (let value of tiles.getTilesByType(assets.tile`myTile27`)) {
-        flyingEnemies = sprites.create(img`
-            d.......................
-            dd..........cc..........
-            dbd.........ccc.........
-            bddd....ccc.ccccccc.....
-            dddbd...ccccc555555cc...
-            ddbddd..ccb5555555555c..
-            dbdddbcc.b55555ff15555c.
-            bdddbdccb5555555ff55555c
-            ....ddcb555555555555d55c
-            d...cdb555555555bb55555c
-            dd..ccb555ddd5555b13bbc.
-            ddb.ccd55ddddd555b3335c.
-            dbdd.cdd5ddddddd55b335c.
-            bddbddddddb555bbbd555c..
-            ddbdddddddbb55555bccc...
-            dbdddbddddddcc555bcc....
-            bdddbdddddddddcccbcccc..
-            dddbdddddddd55dbbbc55c..
-            ddbddddddddd555dccc5c...
-            .cbddddbbbbdd5d555cc....
-            ..cbdddbbbbbdd5555......
-            ...cccbbbbbbd5555c......
-            .....cccccccc555c.......
-            .............ccc........
-            `, SpriteKind.aboveEnemy)
-        flyingEnemiesStatusBar = statusbars.create(20, 4, StatusBarKind.Health)
-        flyingEnemiesStatusBar.attachToSprite(flyingEnemies)
-        tiles.placeOnTile(flyingEnemies, value)
-        animation.runImageAnimation(
-        flyingEnemies,
-        assets.animation`flyingMonsterRight`,
-        500,
-        true
-        )
-        flyingEnemiesArray.push(flyingEnemies)
-        sprites.setDataBoolean(flyingEnemies, "canSeePlayer", false)
-        sprites.setDataImageValue(flyingEnemies, "projectile", assets.image`projectile`)
-        sprites.setDataNumber(flyingEnemies, "maxHealth", 50)
-        sprites.setDataNumber(flyingEnemies, "health", 0)
-        sprites.setDataNumber(flyingEnemies, "statusBarWidth", 20)
-        flyingEnemies.setFlag(SpriteFlag.AutoDestroy, false)
-        if (value.column < 24) {
-            tiles.setTileAt(value, assets.tile`transparency16`)
-        } else {
-            tiles.setTileAt(value, assets.tile`myTile8`)
-        }
-        statusbars.getStatusBarAttachedTo(StatusBarKind.Health, flyingEnemies).value = (sprites.readDataNumber(flyingEnemies, "maxHealth") + sprites.readDataNumber(flyingEnemies, "health")) * sprites.readDataNumber(flyingEnemies, "statusBarWidth")
-        characterAnimations.loopFrames(
-        flyingEnemies,
-        assets.animation`flyingMonsterRight`,
-        500,
-        characterAnimations.rule(Predicate.MovingRight)
-        )
-        characterAnimations.loopFrames(
-        flyingEnemies,
-        assets.animation`flyingMonsterLeft`,
-        500,
-        characterAnimations.rule(Predicate.FacingLeft)
-        )
-    }
-}
-function GROWTrees () {
-    for (let value of tiles.getTilesByType(assets.tile`myTile25`)) {
-        Tree = sprites.create(img`
-            ...........66...........
-            ..........6776..........
-            ..........6776..........
-            .........877778.........
-            ........86777768........
-            .......6777777776.......
-            ......677677776776......
-            ......866777777668......
-            .....86677677677668.....
-            ....8668866766888668....
-            ....8888668886686888....
-            .....86868868868668.....
-            ....866888668888868.....
-            ....8688886888888888....
-            ....8886688888866888....
-            ....8676888868886768....
-            ...87778868678688776....
-            ..8777767767787767778...
-            .877767777777677776778..
-            .8866777777777777776778.
-            .8667776776767776777688.
-            ..887766768668776667668.
-            ..8688668886688686688668
-            .86688688686866888688888
-            8668868866888866888868..
-            88886686688888868688668.
-            .8688888888888888668868.
-            .8878888868868878868788.
-            .87768776788778777667788
-            877677767787776767776778
-            88877787766777777877788.
-            ..88886786777667768888..
-            .....86887786668868.....
-            ......8886888668888.....
-            .........88ee88.........
-            .........feeeef.........
-            .........feeeef.........
-            ........feeefeef........
-            ........fefeffef........
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            ........................
-            `, SpriteKind.Woodythings)
-        Tree_spawn_x = value.column
-        Tree_spawn_y = value.row
-        tiles.placeOnTile(Tree, tiles.getTileLocation(Tree_spawn_x, Tree_spawn_y))
-        tiles.setTileAt(value, assets.tile`transparency16`)
-    }
-}
-function showTiles (col: number, row: number) {
-    tileUtil.coverTile(tiles.getTileLocation(col - 1, row), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col + 1, row), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col, row + 1), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col, row - 1), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col - 1, row - 1), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col - -1, row - 1), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col - -1, row - -1), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col - 1, row - -1), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col - 2, row), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col + 2, row), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col, row + 2), assets.tile`transparency16`)
-    tileUtil.coverTile(tiles.getTileLocation(col, row - 2), assets.tile`transparency16`)
-}
-function hud (add: boolean) {
-    if (add) {
-        if (!(_1stTimeHud)) {
-            healthStatusBar = statusbars.create(50, 6, StatusBarKind.Health)
-            healthStatusBar.setPosition(41, 110)
-            energyStatusBar = statusbars.create(50, 3, StatusBarKind.Energy)
-            energyStatusBar.setColor(9, 8)
-            energyStatusBar.setPosition(41, 105)
-            pumpingHeart = sprites.create(img`
-                . . . . . . . . . . . . . . . . 
-                . . f f f f f f . f f f f f f . 
-                . f f 3 3 3 3 f f f 3 3 3 3 f f 
-                . f 3 3 3 3 3 3 f 3 3 3 3 3 3 f 
-                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
-                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
-                . f 3 3 3 3 3 b b b 1 1 1 3 3 f 
-                . f 3 3 3 3 b b b b b 3 3 3 3 f 
-                . f f 3 3 b b b b b b b 3 3 f f 
-                . . f f 3 b b b b b b b 3 f f . 
-                . . . f f b b b b b b b f f . . 
-                . . . . f f b b b b b f f . . . 
-                . . . . . f f b b b f f . . . . 
-                . . . . . . f f b f f . . . . . 
-                . . . . . . . f f f . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `, SpriteKind.other)
-            pumpingHeart.setPosition(6, 109)
-            animation.runImageAnimation(
-            pumpingHeart,
-            [img`
-                . . . . . . . . . . . . . . . . 
-                . . f f f f f f . f f f f f f . 
-                . f f 3 3 3 3 f f f 3 3 3 3 f f 
-                . f 3 3 3 3 3 3 f 3 3 3 3 3 3 f 
-                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
-                . f 3 3 3 3 3 3 3 3 1 1 1 3 3 f 
-                . f 3 3 3 3 3 b b b 1 1 1 3 3 f 
-                . f 3 3 3 3 b b b b b 3 3 3 3 f 
-                . f f 3 3 b b b b b b b 3 3 f f 
-                . . f f 3 b b b b b b b 3 f f . 
-                . . . f f b b b b b b b f f . . 
-                . . . . f f b b b b b f f . . . 
-                . . . . . f f b b b f f . . . . 
-                . . . . . . f f b f f . . . . . 
-                . . . . . . . f f f . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `,img`
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . f f f f f . f f f f f . . 
-                . . f f 3 3 3 f f f 3 3 3 f . . 
-                . . f 3 3 3 3 3 f 3 3 3 3 3 . . 
-                . . f 3 3 3 3 3 3 3 1 1 3 3 . . 
-                . . f 3 3 3 3 b b b 1 1 3 3 . . 
-                . . f 3 3 3 b b b b 3 3 3 3 . . 
-                . . f f 3 3 b b b b b 3 3 f . . 
-                . . . f f 3 b b b b b 3 f f . . 
-                . . . . . f b b b b f f . . . . 
-                . . . . . . f b b b f . . . . . 
-                . . . . . . f f b f . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `,img`
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . f f f . f f f . . . . 
-                . . . . f 3 3 3 f 3 3 3 f . . . 
-                . . . . f 3 3 3 3 3 1 3 f . . . 
-                . . . . f 3 3 3 3 3 3 3 f . . . 
-                . . . . . f 3 b b b 3 f . . . . 
-                . . . . . f f b b b f f . . . . 
-                . . . . . . f f b f f . . . . . 
-                . . . . . . . f f f . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `],
-            200,
-            true
-            )
-            _1stTimeHud = true
-            pumpingHeart.setFlag(SpriteFlag.RelativeToCamera, true)
-            healthStatusBar.setFlag(SpriteFlag.RelativeToCamera, true)
-            energyStatusBar.setFlag(SpriteFlag.RelativeToCamera, true)
-            healthStatusBar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-            energyStatusBar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-        } else {
-            healthStatusBar.setFlag(SpriteFlag.Invisible, false)
-            pumpingHeart.setFlag(SpriteFlag.Invisible, false)
-            energyStatusBar.setFlag(SpriteFlag.Invisible, false)
-        }
-    } else {
-        healthStatusBar.setFlag(SpriteFlag.Invisible, true)
-        pumpingHeart.setFlag(SpriteFlag.Invisible, true)
-        energyStatusBar.setFlag(SpriteFlag.Invisible, true)
-    }
-}
-function addToInventory (thing: number) {
-    if (thing == 0) {
-        dirtQuantity += 1
-    } else if (thing == 1) {
-        stoneQuantity += 1
-    } else if (thing == 3) {
-        coalQuantity += 1
-    } else if (thing == 4) {
-        ironQuantity += 1
-    } else if (thing == 5) {
-        copperQuantity += 1
-    }
-}
-controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!(inInventory) && Player_character.isHittingTile(CollisionDirection.Bottom)) {
-        Mine(1, miningEfficiency)
-    }
+controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function () {
+    shoot(3)
 })
 function createInventory () {
     inventory = Inventory.create_inventory(list, 999)
@@ -1542,6 +1706,10 @@ function activateInventory (goingIn: boolean) {
         controller.moveSprite(Player_character, 50, 0)
     }
 }
+sprites.onOverlap(SpriteKind.aboveEnemy, SpriteKind.gunBullets, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, sprite).value += randint(-5, -15)
+})
 scene.onHitWall(SpriteKind.explodingProjectile, function (sprite, location) {
     sprite.startEffect(effects.fire)
 })
@@ -1581,18 +1749,32 @@ let startMinedLocations: tiles.Location[] = []
 let shot: Sprite = null
 let damageMarker: TextSprite = null
 let copperQuantity = 0
+let Menu_interaction_sprite_3: Sprite = null
+let Menu_interaction_sprite_2: Sprite = null
+let Menu_interaction_sprite_1: Sprite = null
+let Menu_interaction_sprite_0: Sprite = null
+let Mining_speed_lvl_text: Sprite = null
+let Upgrade_menu_text: Sprite = null
 let pumpingHeart: Sprite = null
 let healthStatusBar: StatusBarSprite = null
-let Tree_spawn_y = 0
-let Tree_spawn_x = 0
-let Tree: Sprite = null
+let missile: Sprite = null
+let nearestSprite: Sprite = null
+let nearestLengthAway = 0
+let gunBullet: Sprite = null
 let flyingEnemiesStatusBar: StatusBarSprite = null
 let flyingEnemies: Sprite = null
+let flamethrowerCooldown: StatusBarSprite = null
+let airstrikeCooldown: StatusBarSprite = null
+let gunAmmo: StatusBarSprite = null
 let inventory: Inventory.Inventory = null
 let Type_of_block_being_mined = 0
 let whereToBreakRow = 0
 let whereToBreakCol = 0
 let tempOreRandomizer = 0
+let Tree_spawn_y = 0
+let Tree_spawn_x = 0
+let Tree: Sprite = null
+let toolbar: Inventory.Toolbar = null
 let stoneLocations: tiles.Location[] = []
 let dirtLocations: tiles.Location[] = []
 let copperLocations: tiles.Location[] = []
@@ -1602,17 +1784,15 @@ let minedLocations: tiles.Location[] = []
 let previousTilemap = 0
 let playerOnFire = false
 let energyStatusBar: StatusBarSprite = null
-let Menu_interaction_sprite_3: Sprite = null
-let Menu_interaction_sprite_2: Sprite = null
-let Menu_interaction_sprite_1: Sprite = null
-let Menu_interaction_sprite_0: Sprite = null
-let Mining_speed_lvl_text: Sprite = null
-let Upgrade_menu_text: Sprite = null
 let isMining = false
 let brokenBlocks: tiles.Location[] = []
+let canShoot = false
 let list: Inventory.Item[] = []
 let flyingEnemiesArray: Sprite[] = []
 let _1stTimeHud = false
+let flamethrower: Inventory.Item = null
+let airstrike: Inventory.Item = null
+let gun: Inventory.Item = null
 let copper: Inventory.Item = null
 let iron: Inventory.Item = null
 let stone: Inventory.Item = null
@@ -1955,6 +2135,26 @@ coal = Inventory.create_item("Coal", img`
 stone = Inventory.create_item("Stone", assets.tile`Stone`, "Dug up from the ground")
 iron = Inventory.create_item("iron", assets.tile`Iron`, "Dug up from the ground")
 copper = Inventory.create_item("copper", assets.tile`Copper`, "Dug up from the ground")
+gun = Inventory.create_item("Gun", assets.image`rocket`, "Goes Kaboom")
+airstrike = Inventory.create_item("Airstrike", assets.image`gun`, "Goes Kaboom")
+flamethrower = Inventory.create_item("Flamethrower", img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 2 
+    . . . . . . . . . . . . . 2 2 2 
+    . . . . . . . . . . . . 4 4 4 2 
+    e e b b b b b b b b b b 5 5 4 2 
+    e e b b b b b b b b b b 5 5 4 2 
+    e e . f . . . . . . . . 4 4 4 2 
+    e e f f . . . . . . . . . 2 2 2 
+    . . . . . . . . . . . . . . . 2 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, "Goes Kaboom")
 _1stTimeHud = false
 flyingEnemiesArray = []
 list = [
@@ -1964,6 +2164,8 @@ coal,
 iron,
 copper
 ]
+canShoot = true
+let usingFlamethrower = false
 brokenBlocks = []
 isMining = false
 scene.cameraFollowSprite(Player_character)
@@ -1973,12 +2175,12 @@ controller.moveSprite(Player_character, 50, 0)
 Ores()
 Keybinds.setSimulatorKeymap(
 Keybinds.PlayerNumber.TWO,
+Keybinds.CustomKey.UP,
+Keybinds.CustomKey.DOWN,
+Keybinds.CustomKey.LEFT,
+Keybinds.CustomKey.RIGHT,
 Keybinds.CustomKey.I,
-Keybinds.CustomKey.UP,
-Keybinds.CustomKey.UP,
-Keybinds.CustomKey.UP,
-Keybinds.CustomKey.UP,
-Keybinds.CustomKey.UP
+Keybinds.CustomKey.SPACE
 )
 activateInventory(true)
 activateInventory(false)
@@ -1986,11 +2188,17 @@ GROWTrees()
 hideTiles()
 spawnEnemies()
 hud(true)
-for (let value of tiles.getTilesByType(assets.tile`myTile8`)) {
-    showTiles(value.column, value.row)
+for (let value14 of tiles.getTilesByType(assets.tile`myTile8`)) {
+    showTiles(value14.column, value14.row)
 }
+makeWeaponToolbar(true)
 game.onUpdate(function () {
     Player_character.vy += Gravity
+})
+game.onUpdate(function () {
+    if (!(In_Base) || !(inInventory)) {
+        toolbar.update()
+    }
 })
 forever(function () {
     if (healthStatusBar.value < 1) {
@@ -2006,7 +2214,7 @@ forever(function () {
 forever(function () {
     if (playerOnFire) {
         Player_character.startEffect(effects.fire)
-        for (let index = 0; index <= 6; index++) {
+        for (let index2 = 0; index2 <= 6; index2++) {
             pause(50)
             healthChange(randint(-1, -4))
         }
@@ -2018,8 +2226,8 @@ forever(function () {
     enemyBehaviour()
 })
 forever(function () {
-    for (let value of sprites.allOfKind(SpriteKind.damageIndicator)) {
-        sprites.changeDataNumberBy(value, "timeAlive", 100)
+    for (let value15 of sprites.allOfKind(SpriteKind.damageIndicator)) {
+        sprites.changeDataNumberBy(value15, "timeAlive", 100)
     }
     pause(100)
 })
@@ -2030,9 +2238,42 @@ forever(function () {
     }
 })
 forever(function () {
-    for (let value of sprites.allOfKind(SpriteKind.damageIndicator)) {
-        if (sprites.readDataNumber(value, "timeAlive") > 500) {
+    for (let value16 of sprites.allOfKind(SpriteKind.damageIndicator)) {
+        if (sprites.readDataNumber(value16, "timeAlive") > 500) {
+            sprites.destroy(value16)
+        }
+    }
+})
+forever(function () {
+    if (toolbar) {
+        if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
+            if (airstrikeCooldown.value < 100) {
+                pause(50)
+                flamethrowerCooldown.value += 1
+            }
+        } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 3) {
+            if (!(usingFlamethrower)) {
+                if (flamethrowerCooldown.value < 100) {
+                    flamethrowerCooldown.value += 2
+                    pause(100)
+                }
+            }
+        }
+    }
+})
+forever(function () {
+    for (let value of sprites.allOfKind(SpriteKind.aboveEnemy)) {
+        if (statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value).value < 1) {
             sprites.destroy(value)
+        }
+    }
+})
+forever(function () {
+    if (!(sprites.allOfKind(SpriteKind.airstrikeMissile).length == 0)) {
+        for (let value of sprites.allOfKind(SpriteKind.airstrikeMissile)) {
+            if (value.y < -50) {
+                spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(value, sprites.readDataSprite(value, "target")), 100)
+            }
         }
     }
 })
