@@ -1,6 +1,6 @@
 {
     "name": "Game Jam Project - this one",
-    "version": "1.8.1",
+    "version": "1.8.0",
     "description": "",
     "dependencies": {
         "device": "*",
