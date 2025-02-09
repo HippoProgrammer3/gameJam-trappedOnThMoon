@@ -1013,22 +1013,37 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
                 whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                Type_of_block_being_mined = 1
                 addToInventory(0)
             }
             if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile1`)) {
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
                 whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
-                Type_of_block_being_mined = 2
                 addToInventory(0)
             }
             if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`myTile3`)) {
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
                 whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
-                Type_of_block_being_mined = 5
                 addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Coal`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(3)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Iron`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(4)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(5)
             }
         } else if (direction_down__1_up__2_left__3_right__4 == 3) {
             if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Stone`)) {
@@ -1066,6 +1081,24 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
                 Type_of_block_being_mined = 5
                 addToInventory(0)
             }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Coal`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(3)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Iron`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(4)
+            }
+            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`Copper`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(5)
+            }
         } else if (direction_down__1_up__2_left__3_right__4 == 4) {
             if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Stone`)) {
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
@@ -1102,6 +1135,24 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
                 Type_of_block_being_mined = 5
                 addToInventory(0)
             }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Coal`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(3)
+            }
+            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`Iron`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(4)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(5)
+            }
         } else if (direction_down__1_up__2_left__3_right__4 == 2) {
             if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Stone`)) {
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
@@ -1120,7 +1171,6 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
                 whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
                 whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
-                inventory.change_number(InventoryNumberAttribute.SelectedIndex, 0)
                 Type_of_block_being_mined = 1
                 addToInventory(0)
             }
@@ -1137,6 +1187,24 @@ function Mine (direction_down__1_up__2_left__3_right__4: number, cooldown: numbe
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 Type_of_block_being_mined = 5
                 addToInventory(0)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Coal`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(3)
+            }
+            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`Iron`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(4)
+            }
+            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`Copper`)) {
+                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
+                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+                BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
+                addToInventory(5)
             }
         } else {
         	
@@ -1412,16 +1480,14 @@ function hud (add: boolean) {
 function addToInventory (thing: number) {
     if (thing == 0) {
         dirtQuantity += 1
-        inventory.change_number(InventoryNumberAttribute.SelectedIndex, 1)
     } else if (thing == 1) {
         stoneQuantity += 1
-        inventory.change_number(InventoryNumberAttribute.SelectedIndex, 1)
     } else if (thing == 3) {
         coalQuantity += 1
-        inventory.change_number(InventoryNumberAttribute.SelectedIndex, 1)
     } else if (thing == 4) {
         ironQuantity += 1
-        inventory.change_number(InventoryNumberAttribute.SelectedIndex, 1)
+    } else if (thing == 5) {
+        copperQuantity += 1
     }
 }
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -1435,6 +1501,7 @@ function createInventory () {
     coal.set_text(ItemTextAttribute.Tooltip, convertToText(coalQuantity))
     iron.set_text(ItemTextAttribute.Tooltip, convertToText(ironQuantity))
     stone.set_text(ItemTextAttribute.Tooltip, convertToText(stoneQuantity))
+    copper.set_text(ItemTextAttribute.Tooltip, convertToText(copperQuantity))
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Structure, function (sprite, otherSprite) {
     if (!(gto_base_said)) {
@@ -1493,6 +1560,7 @@ function respawnAtBase () {
     ironQuantity = 0
     dirtQuantity = 0
     coalQuantity = 0
+    copperQuantity = 0
     Mining_speed = 500
     Energy_capacity = 10
     Energy_recharge_rate = 1000
@@ -1515,6 +1583,7 @@ let startCoalLocations: tiles.Location[] = []
 let startMinedLocations: tiles.Location[] = []
 let shot: Sprite = null
 let damageMarker: TextSprite = null
+let copperQuantity = 0
 let pumpingHeart: Sprite = null
 let healthStatusBar: StatusBarSprite = null
 let Tree_spawn_y = 0
@@ -1547,6 +1616,7 @@ let brokenBlocks: tiles.Location[] = []
 let list: Inventory.Item[] = []
 let flyingEnemiesArray: Sprite[] = []
 let _1stTimeHud = false
+let copper: Inventory.Item = null
 let iron: Inventory.Item = null
 let stone: Inventory.Item = null
 let coal: Inventory.Item = null
@@ -1886,13 +1956,15 @@ coal = Inventory.create_item("Coal", img`
     `, "Dug up from the ground")
 stone = Inventory.create_item("Stone", assets.tile`Stone`, "Dug up from the ground")
 iron = Inventory.create_item("iron", assets.tile`Iron`, "Dug up from the ground")
+copper = Inventory.create_item("copper", assets.tile`Copper`, "Dug up from the ground")
 _1stTimeHud = false
 flyingEnemiesArray = []
 list = [
 dirt,
 stone,
 coal,
-iron
+iron,
+copper
 ]
 brokenBlocks = []
 isMining = false
