@@ -1749,7 +1749,6 @@ controller.player3.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pr
     } else {
         toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, -1)
     }
-    HUDAmmo()
     if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
         weapon = "gun"
     } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
@@ -1757,6 +1756,7 @@ controller.player3.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pr
     } else {
         weapon = "flamethrower"
     }
+    HUDAmmo()
 })
 function hideTiles () {
     tileUtil.coverAllTiles(assets.tile`myTile3`, assets.tile`myTile26`)
