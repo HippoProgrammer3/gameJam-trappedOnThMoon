@@ -18,7 +18,8 @@
         "arcade-text": "github:microsoft/arcade-text#v1.3.0",
         "Stats": "github:UnsignedArduino/Stats#758e35856bd5565e5d0e25c95cccfac79b7fc168",
         "darts": "*",
-        "pxt-arcade-image-transform": "github:robo-technical-group/pxt-arcade-image-transform#v1.0.9"
+        "pxt-arcade-image-transform": "github:robo-technical-group/pxt-arcade-image-transform#v1.0.9",
+        "pxt-scaling": "github:jwunderl/pxt-scaling#v0.1.0"
     },
     "files": [
         "main.blocks",

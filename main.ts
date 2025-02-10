@@ -897,7 +897,7 @@ function HUDAmmo () {
         airstrikeCooldown.setPosition(145, 91)
         airstrikeCooldown.setColor(9, 6)
         airstrikeCooldown.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-    } else {
+    } else if (weapon == "flamethrower") {
         if (flamethrowerCooldown) {
             flamethrowerCooldown.setFlag(SpriteFlag.Invisible, false)
         } else {
@@ -1079,11 +1079,11 @@ function shoot (direction1up2down3left4right: number) {
                 airstrikeFunction()
             }
         } else {
-            if (!(usingFlamethrower) && !(flamethrowerCooldown.value > 1)) {
+            if (!(usingFlamethrower) && !(flamethrowerCooldown.value < 5)) {
                 usingFlamethrower = true
-                flamethrowerCooldown.value += -50
+                flamethrowerCooldown.value += -60
                 nearestEnemy()
-                for (let index = 0; index <= 30; index++) {
+                for (let index = 0; index <= 100; index++) {
                     if (randint(0, 2) == 0) {
                         flame = sprites.createProjectileFromSprite(img`
                             . . . . . . . . . . . . . . . . 
@@ -1127,24 +1127,9 @@ function shoot (direction1up2down3left4right: number) {
                         flame.setKind(SpriteKind.fire)
                         flame.lifespan = 1500
                     }
+                    spriteutils.setVelocityAtAngle(flame, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
                 }
-                if (direction1up2down3left4right == 1) {
-                    for (let value of sprites.allOfKind(SpriteKind.fire)) {
-                        spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
-                    }
-                } else if (direction1up2down3left4right == 2) {
-                    for (let value of sprites.allOfKind(SpriteKind.fire)) {
-                        spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
-                    }
-                } else if (direction1up2down3left4right == 3) {
-                    for (let value of sprites.allOfKind(SpriteKind.fire)) {
-                        spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
-                    }
-                } else if (direction1up2down3left4right == 4) {
-                    for (let value of sprites.allOfKind(SpriteKind.fire)) {
-                        spriteutils.setVelocityAtAngle(value, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
-                    }
-                }
+                usingFlamethrower = false
             }
         }
     }
@@ -1166,12 +1151,12 @@ function showTiles (col: number, row: number) {
 function airstrikeFunction () {
     nearestEnemy()
     missile = sprites.create(assets.image`gun`, SpriteKind.airstrikeMissile)
+    missile.setImage(scaling.rot(assets.image`gun`.clone(), spriteutils.angleFrom(missile, nearestSprite)))
     missile.setFlag(SpriteFlag.AutoDestroy, false)
     missile.lifespan = 5000
     tiles.placeOnTile(missile, Base.tilemapLocation())
     spriteutils.setVelocityAtAngle(missile, spriteutils.angleFrom(missile, nearestSprite), 100)
     airstrikeCooldown.value += -90
-    transformSprites.changeRotation(missile, spriteutils.angleFrom(missile, nearestSprite))
 }
 function hud (add: boolean) {
     if (add) {
@@ -2216,7 +2201,7 @@ let textSprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.textSprites)
-Gravity = 0.8
+Gravity = 0.5
 jump = false
 let gto_base_said = false
 inInventory = false
@@ -2379,7 +2364,7 @@ forever(function () {
             gunAmmo.value += 5
         }
         if (flamethrowerCooldown) {
-            flamethrowerCooldown.value += 5
+            flamethrowerCooldown.value += 4
         }
         pause(500)
     }
