@@ -1,154 +1,101 @@
-class ActionKind {
-    static Walking: number
-    private ___Walking_is_set: boolean
-    private ___Walking: number
-    get Walking(): number {
-        return this.___Walking_is_set ? this.___Walking : ActionKind.Walking
-    }
-    set Walking(value: number) {
-        this.___Walking_is_set = true
-        this.___Walking = value
-    }
-    
-    static Idle: number
-    private ___Idle_is_set: boolean
-    private ___Idle: number
-    get Idle(): number {
-        return this.___Idle_is_set ? this.___Idle : ActionKind.Idle
-    }
-    set Idle(value: number) {
-        this.___Idle_is_set = true
-        this.___Idle = value
-    }
-    
-    static Jumping: number
-    private ___Jumping_is_set: boolean
-    private ___Jumping: number
-    get Jumping(): number {
-        return this.___Jumping_is_set ? this.___Jumping : ActionKind.Jumping
-    }
-    set Jumping(value: number) {
-        this.___Jumping_is_set = true
-        this.___Jumping = value
-    }
-    
-    public static __initActionKind() {
-        ActionKind.Walking = 0
-        ActionKind.Idle = 1
-        ActionKind.Jumping = 2
-    }
-    
-}
-
-ActionKind.__initActionKind()
-
-namespace SpriteKind {
-    export const Structure = SpriteKind.create()
-    export const textSprites = SpriteKind.create()
-    export const Woodythings = SpriteKind.create()
-    export const Upgrade_menu = SpriteKind.create()
-    export const aboveEnemy = SpriteKind.create()
-    export const explodingProjectile = SpriteKind.create()
-    export const Interaction_sprite = SpriteKind.create()
-    export const other = SpriteKind.create()
-    export const damageIndicator = SpriteKind.create()
-    export const gunBullets = SpriteKind.create()
-    export const airstrikeMissile = SpriteKind.create()
-    export const fire = SpriteKind.create()
-}
-
-namespace StatusBarKind {
-    export const ammo = StatusBarKind.create()
-}
-
-function nearestEnemy() {
-    
+class ActionKind(Enum):
+    Walking = 0
+    Idle = 1
+    Jumping = 2
+@namespace
+class SpriteKind:
+    Structure = SpriteKind.create()
+    textSprites = SpriteKind.create()
+    Woodythings = SpriteKind.create()
+    Upgrade_menu = SpriteKind.create()
+    aboveEnemy = SpriteKind.create()
+    explodingProjectile = SpriteKind.create()
+    Interaction_sprite = SpriteKind.create()
+    other = SpriteKind.create()
+    damageIndicator = SpriteKind.create()
+    gunBullets = SpriteKind.create()
+    airstrikeMissile = SpriteKind.create()
+    fire = SpriteKind.create()
+@namespace
+class StatusBarKind:
+    ammo = StatusBarKind.create()
+def nearestEnemy():
+    global nearestLengthAway, nearestSprite
     nearestLengthAway = 9999999
-    for (let value of sprites.allOfKind(SpriteKind.aboveEnemy)) {
-        if (nearestLengthAway > spriteutils.distanceBetween(Player_character, value)) {
-            nearestLengthAway = spriteutils.distanceBetween(Player_character, value)
+    for value in sprites.all_of_kind(SpriteKind.aboveEnemy):
+        if nearestLengthAway > spriteutils.distance_between(Player_character, value):
+            nearestLengthAway = spriteutils.distance_between(Player_character, value)
             nearestSprite = value
-        }
-        
-    }
-}
-
-function enemyBehaviour() {
-    for (let value2 of sprites.allOfKind(SpriteKind.aboveEnemy)) {
-        if (statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value2).value < 1) {
-            sprites.destroy(statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value2))
+def enemyBehaviour():
+    for value2 in sprites.all_of_kind(SpriteKind.aboveEnemy):
+        if statusbars.get_status_bar_attached_to(StatusBarKind.health, value2).value < 1:
+            sprites.destroy(statusbars.get_status_bar_attached_to(StatusBarKind.health, value2))
             sprites.destroy(value2)
-            
-        } else {
-            if (spriteutils.distanceBetween(Player_character, value2) < 100) {
-                sprites.setDataBoolean(value2, "canSeePlayer", true)
-                
-            } else if (spriteutils.distanceBetween(Player_character, value2) > 100) {
-                sprites.setDataBoolean(value2, "canSeePlayer", false)
-                
-            }
-            
-            if (sprites.readDataBoolean(value2, "canSeePlayer")) {
-                enemyShoot(sprites.readDataImage(value2, "projectile"), value2, Player_character, 50)
-                if (spriteutils.distanceBetween(Player_character, value2) < 50) {
-                    value2.setVelocity(0, -10)
-                    
-                } else {
-                    spriteutils.setVelocityAtAngle(value2, spriteutils.angleFrom(value2, Player_character), 15)
-                    
-                }
-                
-            } else {
+            pass
+        else:
+            if spriteutils.distance_between(Player_character, value2) < 100:
+                sprites.set_data_boolean(value2, "canSeePlayer", True)
+                pass
+            elif spriteutils.distance_between(Player_character, value2) > 100:
+                sprites.set_data_boolean(value2, "canSeePlayer", False)
+                pass
+            if sprites.read_data_boolean(value2, "canSeePlayer"):
+                enemyShoot(sprites.read_data_image(value2, "projectile"),value2,Player_character,50)
+                if spriteutils.distance_between(Player_character, value2) < 50:
+                    value2.set_velocity(0, -10)
+                    pass
+                else:
+                    spriteutils.set_velocity_at_angle(value2, spriteutils.angle_from(value2, Player_character), 15)
+                    pass
+            else:
                 value2.vx = 15
-                
-            }
-            
-        }
-        
-    }
-}
-
-controller.up.onEvent(ControllerButtonEvent.Pressed, function on_up_pressed() {
-    
-    if (!inInventory && Player_character.isHittingTile(CollisionDirection.Bottom) && !(energyStatusBar.value < 5)) {
+                pass
+def on_up_pressed():
+    global jump
+    if not (inInventory) and Player_character.is_hitting_tile(CollisionDirection.BOTTOM) and not (energyStatusBar.value < 5):
         Player_character.vy = -50
-        jump = true
+        jump = True
         energyStatusBar.value += 0 - 50 / Energy_capacity
-    } else {
-        
-    }
-    
+    else:
+        pass
     Mine(2, miningEfficiency)
-})
-scene.onHitWall(SpriteKind.Player, function on_hit_wall(sprite: Sprite, location: tiles.Location) {
-    
-    jump = false
-})
-controller.B.onEvent(ControllerButtonEvent.Pressed, function on_b_pressed() {
-    if (Player_character.overlapsWith(Base)) {
-        gotoBase(true)
-    } else if (In_Base) {
-        gotoBase(false)
-    }
-    
-})
-sprites.onOverlap(SpriteKind.airstrikeMissile, SpriteKind.aboveEnemy, function on_on_overlap(sprite2: Sprite, otherSprite: Sprite) {
+controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
+
+def on_hit_wall(sprite, location):
+    global jump
+    jump = False
+scene.on_hit_wall(SpriteKind.player, on_hit_wall)
+
+def on_b_pressed():
+    if Player_character.overlaps_with(Base):
+        gotoBase(True)
+    elif In_Base:
+        gotoBase(False)
+controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
+
+def on_on_overlap(sprite2, otherSprite):
     sprites.destroy(sprite2)
-    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, otherSprite).value += randint(-80, -120)
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.explodingProjectile, function on_on_overlap2(sprite3: Sprite, otherSprite2: Sprite) {
-    
+    statusbars.get_status_bar_attached_to(StatusBarKind.health, otherSprite).value += randint(-80, -120)
+sprites.on_overlap(SpriteKind.airstrikeMissile,
+    SpriteKind.aboveEnemy,
+    on_on_overlap)
+
+def on_on_overlap2(sprite3, otherSprite2):
+    global playerOnFire
     sprites.destroy(otherSprite2)
-    playerOnFire = true
+    playerOnFire = True
     healthChange(-10)
-})
-function BlockBreak(col: number, row: number, block: number, miningSpeed: number) {
-    
-    isMining = true
-    breakingTileSprite.setFlag(SpriteFlag.Invisible, false)
+sprites.on_overlap(SpriteKind.player,
+    SpriteKind.explodingProjectile,
+    on_on_overlap2)
+
+def BlockBreak(col: number, row: number, block: number, miningSpeed: number):
+    global isMining
+    isMining = True
+    breakingTileSprite.set_flag(SpriteFlag.INVISIBLE, False)
     energyStatusBar.value += 0 - 50 / Energy_capacity
-    tiles.placeOnTile(breakingTileSprite, tiles.getTileLocation(col, row))
-    breakingTileSprite.setImage(img`
+    tiles.place_on_tile(breakingTileSprite, tiles.get_tile_location(col, row))
+    breakingTileSprite.set_image(img("""
         . . f . . . . f . . . . f . . . 
                 . . f . . . . f . . . f f . . . 
                 . . f . . . . f . . . f . . . . 
@@ -165,9 +112,9 @@ function BlockBreak(col: number, row: number, block: number, miningSpeed: number
                 . f f . . f . . . f . . . f . . 
                 . f . . . f . . . f f . . f f . 
                 f . . . . f . . . . f . . . f f
-    `)
+    """))
     pause(miningSpeed)
-    breakingTileSprite.setImage(img`
+    breakingTileSprite.set_image(img("""
         . . f . . . . f . . . . f . . . 
                 . . f . . . . f . . . f f . . . 
                 . . f . . . . f . . . f . . . . 
@@ -184,9 +131,9 @@ function BlockBreak(col: number, row: number, block: number, miningSpeed: number
                 . f f . . f . . . f . . . f . . 
                 . f . . . f . . . f f . . f f . 
                 f . . . . f . . . . f . . . f f
-    `)
+    """))
     pause(miningSpeed)
-    breakingTileSprite.setImage(img`
+    breakingTileSprite.set_image(img("""
         . . f . . . . f . . . . f . . . 
                 . . f . . . . f . . . f f . . . 
                 . . f . . . . f . . . f . . . . 
@@ -203,28 +150,27 @@ function BlockBreak(col: number, row: number, block: number, miningSpeed: number
                 . f f . . f . . . f . . . f . . 
                 . f . . . f . . . f f . . f f . 
                 f . . . . f . . . . f . . . f f
-    `)
+    """))
     pause(miningSpeed)
-    tiles.setTileAt(tiles.getTileLocation(col, row), assets.tile`
+    tiles.set_tile_at(tiles.get_tile_location(col, row),
+        assets.tile("""
             myTile8
-        `)
-    breakingTileSprite.setFlag(SpriteFlag.Invisible, true)
-    tiles.setWallAt(tiles.getTileLocation(col, row), false)
+        """))
+    breakingTileSprite.set_flag(SpriteFlag.INVISIBLE, True)
+    tiles.set_wall_at(tiles.get_tile_location(col, row), False)
     showTiles(col, row)
-    isMining = false
-    brokenBlocks.push(tiles.getTileLocation(col, row))
-}
-
-function gotoBase(goto: boolean) {
-    
-    if (goto) {
+    isMining = False
+    brokenBlocks.append(tiles.get_tile_location(col, row))
+def gotoBase(goto: bool):
+    global Gravity, In_Base, previousTilemap, In_upgrade_menu
+    if goto:
         Gravity = 0
         In_Base = goto
         saveTilemap()
-        tiles.setCurrentTilemap(tilemap`
+        tiles.set_current_tilemap(tilemap("""
             Inside Base
-        `)
-        scene.setBackgroundImage(img`
+        """))
+        scene.set_background_image(img("""
             ................................................................................................................................................................
                         ................................................................................................................................................................
                         ................................................................................................................................................................
@@ -345,23 +291,23 @@ function gotoBase(goto: boolean) {
                         ................................................................................................................................................................
                         ................................................................................................................................................................
                         ................................................................................................................................................................
-        `)
-        tiles.placeOnTile(Player_character, tiles.getTileLocation(3, 26))
+        """))
+        tiles.place_on_tile(Player_character, tiles.get_tile_location(3, 26))
         previousTilemap = 0
-        Player_character.setVelocity(0, 0)
-        controller.moveSprite(Player_character, 50, 50)
-        sprites.destroyAllSpritesOfKind(SpriteKind.Woodythings)
-        hud(false)
-    } else {
+        Player_character.set_velocity(0, 0)
+        controller.move_sprite(Player_character, 50, 50)
+        sprites.destroy_all_sprites_of_kind(SpriteKind.Woodythings)
+        hud(False)
+    else:
         Gravity = 0.8
         In_Base = goto
-        tiles.setCurrentTilemap(tilemap`
+        tiles.set_current_tilemap(tilemap("""
             Planet part 1
-        `)
+        """))
         loadTilemap()
         GROWTrees()
         hideTiles()
-        scene.setBackgroundImage(img`
+        scene.set_background_image(img("""
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
                         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
                         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -482,15 +428,14 @@ function gotoBase(goto: boolean) {
                         3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
                         3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
                         3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-        `)
-        tiles.placeOnTile(Player_character, tiles.getTileLocation(52, 13))
-        controller.moveSprite(Player_character, 50, 0)
-        for (let value22 of minedLocations) {
+        """))
+        tiles.place_on_tile(Player_character, tiles.get_tile_location(52, 13))
+        controller.move_sprite(Player_character, 50, 0)
+        for value22 in minedLocations:
             showTiles(value22.column, value22.row)
-        }
         In_upgrade_menu = 0
-        hud(true)
-        Player_character.setImage(img`
+        hud(True)
+        Player_character.set_image(img("""
             ................
                         .......11.......
                         ......1ff1......
@@ -511,63 +456,47 @@ function gotoBase(goto: boolean) {
                         .....11..11.....
                         ....111..111....
                         ....fff..fff....
-        `)
-    }
-    
-}
-
-function loadTilemap() {
-    for (let value3 of minedLocations) {
-        tiles.setTileAt(value3, assets.tile`
+        """))
+def loadTilemap():
+    for value3 in minedLocations:
+        tiles.set_tile_at(value3, assets.tile("""
             myTile8
-        `)
-        tiles.setWallAt(value3, false)
-    }
-    for (let value4 of coalLocations) {
-        tiles.setTileAt(value4, assets.tile`
+        """))
+        tiles.set_wall_at(value3, False)
+    for value4 in coalLocations:
+        tiles.set_tile_at(value4, assets.tile("""
             Coal
-        `)
-    }
-    for (let value5 of ironLocations) {
-        tiles.setTileAt(value5, assets.tile`
+        """))
+    for value5 in ironLocations:
+        tiles.set_tile_at(value5, assets.tile("""
             Iron
-        `)
-    }
-    for (let value6 of copperLocations) {
-        tiles.setTileAt(value6, assets.tile`
+        """))
+    for value6 in copperLocations:
+        tiles.set_tile_at(value6, assets.tile("""
             Copper
-        `)
-    }
-    for (let value7 of dirtLocations) {
-        tiles.setTileAt(value7, assets.tile`
+        """))
+    for value7 in dirtLocations:
+        tiles.set_tile_at(value7, assets.tile("""
             myTile3
-        `)
-    }
-    for (let value8 of stoneLocations) {
-        tiles.setTileAt(value8, assets.tile`
+        """))
+    for value8 in stoneLocations:
+        tiles.set_tile_at(value8, assets.tile("""
             Stone
-        `)
-    }
-}
-
-function makeWeaponToolbar(make: boolean) {
-    
-    if (make) {
+        """))
+def makeWeaponToolbar(make: bool):
+    global toolbar
+    if make:
         toolbar = Inventory.create_toolbar([gun, airstrike, flamethrower], 3)
-        toolbar.setPosition(106, 106)
-        toolbar.setFlag(SpriteFlag.RelativeToCamera, true)
-    } else {
-        
-    }
-    
-}
-
-function GROWTrees() {
-    
-    for (let value13 of tiles.getTilesByType(assets.tile`
+        toolbar.set_position(106, 106)
+        toolbar.set_flag(SpriteFlag.RELATIVE_TO_CAMERA, True)
+    else:
+        pass
+def GROWTrees():
+    global Tree, Tree_spawn_x, Tree_spawn_y
+    for value13 in tiles.get_tiles_by_type(assets.tile("""
         myTile25
-    `)) {
-        Tree = sprites.create(img`
+    """)):
+        Tree = sprites.create(img("""
                 ...........66...........
                             ..........6776..........
                             ..........6776..........
@@ -628,22 +557,22 @@ function GROWTrees() {
                             ........................
                             ........................
                             ........................
-            `, SpriteKind.Woodythings)
+            """),
+            SpriteKind.Woodythings)
         Tree_spawn_x = value13.column
         Tree_spawn_y = value13.row
-        tiles.placeOnTile(Tree, tiles.getTileLocation(Tree_spawn_x, Tree_spawn_y))
-        tiles.setTileAt(value13, assets.tile`
+        tiles.place_on_tile(Tree, tiles.get_tile_location(Tree_spawn_x, Tree_spawn_y))
+        tiles.set_tile_at(value13, assets.tile("""
             transparency16
-        `)
-    }
-}
+        """))
 
-controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
-    
-    if (In_Base && tiles.tileAtLocationEquals(Player_character.tilemapLocation(), assets.tile`
+def on_a_pressed():
+    global Gravity, In_upgrade_menu
+    if In_Base and tiles.tile_at_location_equals(Player_character.tilemap_location(),
+        assets.tile("""
             myTile16
-        `) && In_upgrade_menu == 0) {
-        Player_character.setImage(img`
+        """)) and In_upgrade_menu == 0:
+        Player_character.set_image(img("""
             . . . . . . f f . . . . . . . . 
                         . . . . . f 1 1 f . . . . . . . 
                         . . . . . f 1 1 f . . . . . . . 
@@ -660,538 +589,448 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
                         . . . . . f 1 1 1 1 1 1 1 f . . 
                         . . . . . f 1 1 1 1 1 1 1 f . . 
                         . . . . . . f f f f f f f . . .
-        `)
+        """))
         Gravity = 0
-        tiles.setCurrentTilemap(tilemap`
+        tiles.set_current_tilemap(tilemap("""
             Upgrades
-        `)
-        tiles.placeOnTile(Player_character, tiles.getTileLocation(7, 3))
-        Player_character.setVelocity(0, 0)
-        controller.moveSprite(Player_character, 50, 50)
+        """))
+        tiles.place_on_tile(Player_character, tiles.get_tile_location(7, 3))
+        Player_character.set_velocity(0, 0)
+        controller.move_sprite(Player_character, 50, 50)
         In_upgrade_menu = 1
         Spawn_menu_upgrades_text()
-    } else if (In_Base && In_upgrade_menu == 1) {
+    elif In_Base and In_upgrade_menu == 1:
         I_just_wanted_to_shrink_the_upgrade_menu_section()
-    } else {
-        
-    }
-    
-})
-controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Pressed, function on_player2_button_a_pressed() {
-    if (!inInventory) {
-        activateInventory(true)
-    } else {
-        activateInventory(false)
-    }
-    
-})
-controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function on_player2_button_down_pressed() {
-    shoot(2)
-})
-function Ores() {
-    
-    for (let value9 of tiles.getTilesByType(assets.tile`
-        myTile5
-    `)) {
-        tempOreRandomizer = randint(1, 10)
-        if (tempOreRandomizer > 5) {
-            if (randint(0, 1) == 0) {
-                tiles.setTileAt(value9, assets.tile`
-                    Stone
-                `)
-            } else {
-                tiles.setTileAt(value9, assets.tile`
-                    Stone
-                `)
-            }
-            
-        } else {
-            tiles.setTileAt(value9, assets.tile`
-                myTile3
-            `)
-        }
-        
-    }
-    for (let value10 of tiles.getTilesByType(assets.tile`
-        myTile6
-    `)) {
-        tempOreRandomizer = randint(1, 200)
-        if (tempOreRandomizer < 6) {
-            tiles.setTileAt(value10, assets.tile`
-                Coal
-            `)
-        } else if (tempOreRandomizer < 10) {
-            tiles.setTileAt(value10, assets.tile`
-                Copper
-            `)
-        } else if (tempOreRandomizer < 13) {
-            tiles.setTileAt(value10, assets.tile`
-                Iron
-            `)
-        } else {
-            tiles.setTileAt(value10, assets.tile`
-                Stone
-            `)
-        }
-        
-    }
-    for (let value11 of tiles.getTilesByType(assets.tile`
-        myTile7
-    `)) {
-        tempOreRandomizer = randint(1, 300)
-        if (tempOreRandomizer < 6) {
-            tiles.setTileAt(value11, assets.tile`
-                Coal
-            `)
-        } else if (tempOreRandomizer < 10) {
-            tiles.setTileAt(value11, assets.tile`
-                Copper
-            `)
-        } else if (tempOreRandomizer < 13) {
-            tiles.setTileAt(value11, assets.tile`
-                Iron
-            `)
-        } else if (tempOreRandomizer < 16) {
-            tiles.setTileAt(value11, assets.tile`
-                myTile28
-            `)
-        } else if (tempOreRandomizer < 19) {
-            tiles.setTileAt(value11, assets.tile`
-                myTile13
-            `)
-        } else if (tempOreRandomizer < 21) {
-            tiles.setTileAt(value11, assets.tile`
-                myTile12
-            `)
-        } else {
-            tiles.setTileAt(value11, assets.tile`
-                Stone
-            `)
-        }
-        
-        startingSaveTilemap()
-    }
-}
+    else:
+        pass
+controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
-sprites.onOverlap(SpriteKind.fire, SpriteKind.aboveEnemy, function on_on_overlap3(sprite4: Sprite, otherSprite3: Sprite) {
-    sprites.destroy(sprite4)
-    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, otherSprite3).value += randint(0, -5)
-})
-function Mine(direction_down__1_up__2_left__3_right__4: number, cooldown: number) {
-    
-    if (!isMining && !(energyStatusBar.value < 5)) {
-        if (direction_down__1_up__2_left__3_right__4 == 1) {
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+def on_player2_button_a_pressed():
+    if not (inInventory):
+        activateInventory(True)
+    else:
+        activateInventory(False)
+controller.player2.on_button_event(ControllerButton.A,
+    ControllerButtonEvent.PRESSED,
+    on_player2_button_a_pressed)
+
+def on_player2_button_down_pressed():
+    shoot(2)
+controller.player2.on_button_event(ControllerButton.DOWN,
+    ControllerButtonEvent.PRESSED,
+    on_player2_button_down_pressed)
+
+def Ores():
+    global tempOreRandomizer
+    for value9 in tiles.get_tiles_by_type(assets.tile("""
+        myTile5
+    """)):
+        tempOreRandomizer = randint(1, 10)
+        if tempOreRandomizer > 5:
+            if randint(0, 1) == 0:
+                tiles.set_tile_at(value9, assets.tile("""
+                    Stone
+                """))
+            else:
+                tiles.set_tile_at(value9, assets.tile("""
+                    Stone
+                """))
+        else:
+            tiles.set_tile_at(value9, assets.tile("""
+                myTile3
+            """))
+    for value10 in tiles.get_tiles_by_type(assets.tile("""
+        myTile6
+    """)):
+        tempOreRandomizer = randint(1, 200)
+        if tempOreRandomizer < 6:
+            tiles.set_tile_at(value10, assets.tile("""
+                Coal
+            """))
+        elif tempOreRandomizer < 10:
+            tiles.set_tile_at(value10, assets.tile("""
+                Copper
+            """))
+        elif tempOreRandomizer < 13:
+            tiles.set_tile_at(value10, assets.tile("""
+                Iron
+            """))
+        else:
+            tiles.set_tile_at(value10, assets.tile("""
                 Stone
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            """))
+    for value11 in tiles.get_tiles_by_type(assets.tile("""
+        myTile7
+    """)):
+        tempOreRandomizer = randint(1, 300)
+        if tempOreRandomizer < 6:
+            tiles.set_tile_at(value11, assets.tile("""
+                Coal
+            """))
+        elif tempOreRandomizer < 10:
+            tiles.set_tile_at(value11, assets.tile("""
+                Copper
+            """))
+        elif tempOreRandomizer < 13:
+            tiles.set_tile_at(value11, assets.tile("""
+                Iron
+            """))
+        elif tempOreRandomizer < 16:
+            tiles.set_tile_at(value11, assets.tile("""
+                myTile28
+            """))
+        elif tempOreRandomizer < 19:
+            tiles.set_tile_at(value11, assets.tile("""
+                myTile13
+            """))
+        elif tempOreRandomizer < 21:
+            tiles.set_tile_at(value11, assets.tile("""
+                myTile12
+            """))
+        else:
+            tiles.set_tile_at(value11, assets.tile("""
+                Stone
+            """))
+        startingSaveTilemap()
+
+def on_on_overlap3(sprite4, otherSprite3):
+    sprites.destroy(sprite4)
+    statusbars.get_status_bar_attached_to(StatusBarKind.health, otherSprite3).value += randint(0, -5)
+sprites.on_overlap(SpriteKind.fire, SpriteKind.aboveEnemy, on_on_overlap3)
+
+def Mine(direction_down__1_up__2_left__3_right__4: number, cooldown: number):
+    global whereToBreakCol, whereToBreakRow, Type_of_block_being_mined
+    if not (isMining) and not (energyStatusBar.value < 5):
+        if direction_down__1_up__2_left__3_right__4 == 1:
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
+                Stone
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
                 addToInventory(1)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 myTile
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
                 Type_of_block_being_mined = 0
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 myTile0
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 myTile1
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 myTile3
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 Coal
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(3)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 Iron
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(4)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 Copper
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.BOTTOM).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(5)
-            }
-            
-        } else if (direction_down__1_up__2_left__3_right__4 == 3) {
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`
+        elif direction_down__1_up__2_left__3_right__4 == 3:
+            if Player_character.tile_kind_at(TileDirection.LEFT, assets.tile("""
                 Stone
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 6, cooldown)
                 Type_of_block_being_mined = 6
                 addToInventory(1)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.LEFT, assets.tile("""
                 myTile
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
                 Type_of_block_being_mined = 0
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.LEFT, assets.tile("""
                 myTile0
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
                 Type_of_block_being_mined = 1
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.LEFT, assets.tile("""
                 myTile1
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
                 Type_of_block_being_mined = 2
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.LEFT, assets.tile("""
                 myTile3
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 Type_of_block_being_mined = 5
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.LEFT, assets.tile("""
                 Coal
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(3)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.LEFT, assets.tile("""
                 Iron
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(4)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Left, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.LEFT, assets.tile("""
                 Copper
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Left).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.LEFT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(5)
-            }
-            
-        } else if (direction_down__1_up__2_left__3_right__4 == 4) {
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`
+        elif direction_down__1_up__2_left__3_right__4 == 4:
+            if Player_character.tile_kind_at(TileDirection.RIGHT, assets.tile("""
                 Stone
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
                 Type_of_block_being_mined = 6
                 addToInventory(1)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.RIGHT, assets.tile("""
                 myTile
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
                 Type_of_block_being_mined = 0
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.RIGHT, assets.tile("""
                 myTile0
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
                 Type_of_block_being_mined = 1
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.RIGHT, assets.tile("""
                 myTile1
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
                 Type_of_block_being_mined = 2
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.RIGHT, assets.tile("""
                 myTile3
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
                 Type_of_block_being_mined = 5
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.RIGHT, assets.tile("""
                 Coal
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(3)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Right, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.RIGHT, assets.tile("""
                 Iron
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(4)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 Copper
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Right).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.RIGHT).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(5)
-            }
-            
-        } else if (direction_down__1_up__2_left__3_right__4 == 2) {
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`
+        elif direction_down__1_up__2_left__3_right__4 == 2:
+            if Player_character.tile_kind_at(TileDirection.TOP, assets.tile("""
                 Stone
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
                 addToInventory(1)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.TOP, assets.tile("""
                 myTile
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 0, cooldown)
                 Type_of_block_being_mined = 0
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.TOP, assets.tile("""
                 myTile0
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 1, cooldown)
                 Type_of_block_being_mined = 1
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.TOP, assets.tile("""
                 myTile1
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 2, cooldown)
                 Type_of_block_being_mined = 2
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.TOP, assets.tile("""
                 myTile3
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 Type_of_block_being_mined = 5
                 addToInventory(0)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.TOP, assets.tile("""
                 Coal
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(3)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Top, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.TOP, assets.tile("""
                 Iron
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(4)
-            }
-            
-            if (Player_character.tileKindAt(TileDirection.Bottom, assets.tile`
+            if Player_character.tile_kind_at(TileDirection.BOTTOM, assets.tile("""
                 Copper
-            `)) {
-                whereToBreakCol = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).column
-                whereToBreakRow = Player_character.tilemapLocation().getNeighboringLocation(CollisionDirection.Top).row
+            """)):
+                whereToBreakCol = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).column
+                whereToBreakRow = Player_character.tilemap_location().get_neighboring_location(CollisionDirection.TOP).row
                 BlockBreak(whereToBreakCol, whereToBreakRow, 5, cooldown)
                 addToInventory(5)
-            }
-            
-        } else {
-            
-        }
-        
-    }
-    
-}
+        else:
+            pass
 
-controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed() {
-    if (inInventory) {
-        inventory.change_number(InventoryNumberAttribute.SelectedIndex, -1)
-    } else {
+def on_left_pressed():
+    if inInventory:
+        inventory.change_number(InventoryNumberAttribute.SELECTED_INDEX, -1)
+    else:
         Mine(3, miningEfficiency)
-    }
-    
-})
-function saveTilemap() {
-    
-    minedLocations = tiles.getTilesByType(assets.tile`
+controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
+
+def saveTilemap():
+    global minedLocations, coalLocations, ironLocations, copperLocations, dirtLocations, stoneLocations
+    minedLocations = tiles.get_tiles_by_type(assets.tile("""
         myTile8
-    `)
-    coalLocations = tiles.getTilesByType(assets.tile`
+    """))
+    coalLocations = tiles.get_tiles_by_type(assets.tile("""
         Coal
-    `)
-    ironLocations = tiles.getTilesByType(assets.tile`
+    """))
+    ironLocations = tiles.get_tiles_by_type(assets.tile("""
         Iron
-    `)
-    copperLocations = tiles.getTilesByType(assets.tile`
+    """))
+    copperLocations = tiles.get_tiles_by_type(assets.tile("""
         Copper
-    `)
-    dirtLocations = tiles.getTilesByType(assets.tile`
+    """))
+    dirtLocations = tiles.get_tiles_by_type(assets.tile("""
         myTile3
-    `)
-    stoneLocations = tiles.getTilesByType(assets.tile`
+    """))
+    stoneLocations = tiles.get_tiles_by_type(assets.tile("""
         Stone
-    `)
-}
-
-function HUDAmmo() {
-    
-    if (gunAmmo) {
-        gunAmmo.setFlag(SpriteFlag.Invisible, true)
-    }
-    
-    if (airstrikeCooldown) {
-        airstrikeCooldown.setFlag(SpriteFlag.Invisible, true)
-    }
-    
-    if (flamethrowerCooldown) {
-        flamethrowerCooldown.setFlag(SpriteFlag.Invisible, true)
-    }
-    
-    if (weapon == "gun") {
-        if (gunAmmo) {
-            gunAmmo.setFlag(SpriteFlag.Invisible, false)
-        } else {
+    """))
+def HUDAmmo():
+    global gunAmmo, airstrikeCooldown, flamethrowerCooldown
+    if gunAmmo:
+        gunAmmo.set_flag(SpriteFlag.INVISIBLE, True)
+    if airstrikeCooldown:
+        airstrikeCooldown.set_flag(SpriteFlag.INVISIBLE, True)
+    if flamethrowerCooldown:
+        flamethrowerCooldown.set_flag(SpriteFlag.INVISIBLE, True)
+    if weapon == "gun":
+        if gunAmmo:
+            gunAmmo.set_flag(SpriteFlag.INVISIBLE, False)
+        else:
             gunAmmo = statusbars.create(4, 60, StatusBarKind.ammo)
-        }
-        
-        gunAmmo.setPosition(145, 91)
-        gunAmmo.setColor(4, 2)
-    } else if (weapon == "airstrike") {
-        if (airstrikeCooldown) {
-            airstrikeCooldown.setFlag(SpriteFlag.Invisible, false)
-        } else {
+        gunAmmo.set_position(145, 91)
+        gunAmmo.set_color(4, 2)
+    elif weapon == "airstrike":
+        if airstrikeCooldown:
+            airstrikeCooldown.set_flag(SpriteFlag.INVISIBLE, False)
+        else:
             airstrikeCooldown = statusbars.create(4, 60, StatusBarKind.ammo)
-        }
-        
-        airstrikeCooldown.setPosition(145, 91)
-        airstrikeCooldown.setColor(9, 6)
-        airstrikeCooldown.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-    } else if (weapon == "flamethrower") {
-        if (flamethrowerCooldown) {
-            flamethrowerCooldown.setFlag(SpriteFlag.Invisible, false)
-        } else {
+        airstrikeCooldown.set_position(145, 91)
+        airstrikeCooldown.set_color(9, 6)
+        airstrikeCooldown.set_status_bar_flag(StatusBarFlag.SMOOTH_TRANSITION, True)
+    elif weapon == "flamethrower":
+        if flamethrowerCooldown:
+            flamethrowerCooldown.set_flag(SpriteFlag.INVISIBLE, False)
+        else:
             flamethrowerCooldown = statusbars.create(4, 60, StatusBarKind.ammo)
-        }
-        
-        flamethrowerCooldown.setPosition(145, 91)
-        flamethrowerCooldown.setColor(5, 4)
-        flamethrowerCooldown.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-    }
-    
-}
+        flamethrowerCooldown.set_position(145, 91)
+        flamethrowerCooldown.set_color(5, 4)
+        flamethrowerCooldown.set_status_bar_flag(StatusBarFlag.SMOOTH_TRANSITION, True)
 
-controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function on_player2_button_up_pressed() {
+def on_player2_button_up_pressed():
     shoot(1)
-})
-controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_pressed() {
-    if (inInventory) {
-        inventory.change_number(InventoryNumberAttribute.SelectedIndex, 1)
-    } else {
+controller.player2.on_button_event(ControllerButton.UP,
+    ControllerButtonEvent.PRESSED,
+    on_player2_button_up_pressed)
+
+def on_right_pressed():
+    if inInventory:
+        inventory.change_number(InventoryNumberAttribute.SELECTED_INDEX, 1)
+    else:
         Mine(4, miningEfficiency)
-    }
-    
-})
-controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.Pressed, function on_player2_button_right_pressed() {
+controller.right.on_event(ControllerButtonEvent.PRESSED, on_right_pressed)
+
+def on_player2_button_right_pressed():
     shoot(4)
-})
-function spawnEnemies() {
-    
-    for (let value12 of tiles.getTilesByType(assets.tile`
+controller.player2.on_button_event(ControllerButton.RIGHT,
+    ControllerButtonEvent.PRESSED,
+    on_player2_button_right_pressed)
+
+def spawnEnemies():
+    global flyingEnemies, flyingEnemiesStatusBar
+    for value12 in tiles.get_tiles_by_type(assets.tile("""
         myTile27
-    `)) {
-        flyingEnemies = sprites.create(img`
+    """)):
+        flyingEnemies = sprites.create(img("""
                 d.......................
                             dd..........cc..........
                             dbd.........ccc.........
@@ -1216,51 +1055,58 @@ function spawnEnemies() {
                             ...cccbbbbbbd5555c......
                             .....cccccccc555c.......
                             .............ccc........
-            `, SpriteKind.aboveEnemy)
-        flyingEnemiesStatusBar = statusbars.create(20, 4, StatusBarKind.Health)
-        flyingEnemiesStatusBar.attachToSprite(flyingEnemies)
-        tiles.placeOnTile(flyingEnemies, value12)
-        animation.runImageAnimation(flyingEnemies, assets.animation`
+            """),
+            SpriteKind.aboveEnemy)
+        flyingEnemiesStatusBar = statusbars.create(20, 4, StatusBarKind.health)
+        flyingEnemiesStatusBar.attach_to_sprite(flyingEnemies)
+        tiles.place_on_tile(flyingEnemies, value12)
+        animation.run_image_animation(flyingEnemies,
+            assets.animation("""
                 flyingMonsterRight
-            `, 500, true)
-        sprites.setDataBoolean(flyingEnemies, "canSeePlayer", false)
-        sprites.setDataImageValue(flyingEnemies, "projectile", assets.image`
+            """),
+            500,
+            True)
+        sprites.set_data_boolean(flyingEnemies, "canSeePlayer", False)
+        sprites.set_data_image_value(flyingEnemies,
+            "projectile",
+            assets.image("""
                 projectile
-            `)
-        sprites.setDataNumber(flyingEnemies, "maxHealth", 50)
-        sprites.setDataNumber(flyingEnemies, "health", 0)
-        sprites.setDataNumber(flyingEnemies, "statusBarWidth", 20)
-        sprites.setDataNumber(flyingEnemies, "shotCooldown", 0)
-        flyingEnemies.setFlag(SpriteFlag.AutoDestroy, false)
-        if (value12.row < 24) {
-            tiles.setTileAt(value12, assets.tile`
+            """))
+        sprites.set_data_number(flyingEnemies, "maxHealth", 50)
+        sprites.set_data_number(flyingEnemies, "health", 0)
+        sprites.set_data_number(flyingEnemies, "statusBarWidth", 20)
+        sprites.set_data_number(flyingEnemies, "shotCooldown", 0)
+        flyingEnemies.set_flag(SpriteFlag.AUTO_DESTROY, False)
+        if value12.row < 24:
+            tiles.set_tile_at(value12, assets.tile("""
                 transparency16
-            `)
-        } else {
-            tiles.setTileAt(value12, assets.tile`
+            """))
+        else:
+            tiles.set_tile_at(value12, assets.tile("""
                 myTile8
-            `)
-        }
-        
-        statusbars.getStatusBarAttachedTo(StatusBarKind.Health, flyingEnemies).value = (sprites.readDataNumber(flyingEnemies, "maxHealth") + sprites.readDataNumber(flyingEnemies, "health")) * sprites.readDataNumber(flyingEnemies, "statusBarWidth")
-        characterAnimations.loopFrames(flyingEnemies, assets.animation`
+            """))
+        statusbars.get_status_bar_attached_to(StatusBarKind.health, flyingEnemies).value = (sprites.read_data_number(flyingEnemies, "maxHealth") + sprites.read_data_number(flyingEnemies, "health")) * sprites.read_data_number(flyingEnemies, "statusBarWidth")
+        characterAnimations.loop_frames(flyingEnemies,
+            assets.animation("""
                 flyingMonsterRight
-            `, 500, characterAnimations.rule(Predicate.MovingRight))
-        characterAnimations.loopFrames(flyingEnemies, assets.animation`
+            """),
+            500,
+            characterAnimations.rule(Predicate.MOVING_RIGHT))
+        characterAnimations.loop_frames(flyingEnemies,
+            assets.animation("""
                 flyingMonsterLeft
-            `, 500, characterAnimations.rule(Predicate.FacingLeft))
-    }
-}
-
-function shoot(direction1up2down3left4right: number) {
-    
-    if (!inInventory && !In_Base) {
-        if (weapon == "gun") {
-            if (canShoot && !(gunAmmo.value < 1)) {
-                canShoot = false
+            """),
+            500,
+            characterAnimations.rule(Predicate.FACING_LEFT))
+def shoot(direction1up2down3left4right: number):
+    global canShoot, gunBullet, usingFlamethrower, flame
+    if not (inInventory) and not (In_Base):
+        if weapon == "gun":
+            if canShoot and not (gunAmmo.value < 1):
+                canShoot = False
                 gunAmmo.value += -10
-                if (direction1up2down3left4right == 1) {
-                    gunBullet = sprites.createProjectileFromSprite(img`
+                if direction1up2down3left4right == 1:
+                    gunBullet = sprites.create_projectile_from_sprite(img("""
                             . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
@@ -1277,10 +1123,13 @@ function shoot(direction1up2down3left4right: number) {
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . .
-                        `, Player_character, 0, -100)
-                    gunBullet.setKind(SpriteKind.gunBullets)
-                } else if (direction1up2down3left4right == 2) {
-                    gunBullet = sprites.createProjectileFromSprite(img`
+                        """),
+                        Player_character,
+                        0,
+                        -100)
+                    gunBullet.set_kind(SpriteKind.gunBullets)
+                elif direction1up2down3left4right == 2:
+                    gunBullet = sprites.create_projectile_from_sprite(img("""
                             . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
@@ -1297,10 +1146,13 @@ function shoot(direction1up2down3left4right: number) {
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . .
-                        `, Player_character, 0, 100)
-                    gunBullet.setKind(SpriteKind.gunBullets)
-                } else if (direction1up2down3left4right == 3) {
-                    gunBullet = sprites.createProjectileFromSprite(img`
+                        """),
+                        Player_character,
+                        0,
+                        100)
+                    gunBullet.set_kind(SpriteKind.gunBullets)
+                elif direction1up2down3left4right == 3:
+                    gunBullet = sprites.create_projectile_from_sprite(img("""
                             . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
@@ -1317,10 +1169,13 @@ function shoot(direction1up2down3left4right: number) {
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . .
-                        `, Player_character, -100, 0)
-                    gunBullet.setKind(SpriteKind.gunBullets)
-                } else if (direction1up2down3left4right == 4) {
-                    gunBullet = sprites.createProjectileFromSprite(img`
+                        """),
+                        Player_character,
+                        -100,
+                        0)
+                    gunBullet.set_kind(SpriteKind.gunBullets)
+                elif direction1up2down3left4right == 4:
+                    gunBullet = sprites.create_projectile_from_sprite(img("""
                             . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
@@ -1337,26 +1192,24 @@ function shoot(direction1up2down3left4right: number) {
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . .
-                        `, Player_character, 100, 0)
-                    gunBullet.setKind(SpriteKind.gunBullets)
-                }
-                
+                        """),
+                        Player_character,
+                        100,
+                        0)
+                    gunBullet.set_kind(SpriteKind.gunBullets)
                 pause(500)
-                canShoot = true
-            }
-            
-        } else if (weapon == "airstrike") {
-            if (airstrikeCooldown.value > 99) {
+                canShoot = True
+        elif weapon == "airstrike":
+            if airstrikeCooldown.value > 99:
                 airstrikeFunction()
-            }
-            
-        } else if (!usingFlamethrower && !(flamethrowerCooldown.value < 5)) {
-            usingFlamethrower = true
-            flamethrowerCooldown.value += -60
-            nearestEnemy()
-            for (let index = 0; index < 101; index++) {
-                if (randint(0, 2) == 0) {
-                    flame = sprites.createProjectileFromSprite(img`
+        else:
+            if not (usingFlamethrower) and not (flamethrowerCooldown.value < 5):
+                usingFlamethrower = True
+                flamethrowerCooldown.value += -60
+                nearestEnemy()
+                for index in range(101):
+                    if randint(0, 2) == 0:
+                        flame = sprites.create_projectile_from_sprite(img("""
                                 . . . . . . . . . . . . . . . . 
                                                             . . . . . . . . . . . . . . . . 
                                                             . . . . . . . . . . . . . . . . 
@@ -1373,11 +1226,14 @@ function shoot(direction1up2down3left4right: number) {
                                                             . . . . . . . . . . . . . . . . 
                                                             . . . . . . . . . . . . . . . . 
                                                             . . . . . . . . . . . . . . . .
-                            `, Player_character, 0, 0)
-                    flame.setKind(SpriteKind.fire)
-                    flame.lifespan = 1500
-                } else {
-                    flame = sprites.createProjectileFromSprite(img`
+                            """),
+                            Player_character,
+                            0,
+                            0)
+                        flame.set_kind(SpriteKind.fire)
+                        flame.lifespan = 1500
+                    else:
+                        flame = sprites.create_projectile_from_sprite(img("""
                                 . . . . . . . . . . . . . . . . 
                                                             . . . . . . . . . . . . . . . . 
                                                             . . . . . . . . . . . . . . . . 
@@ -1394,85 +1250,90 @@ function shoot(direction1up2down3left4right: number) {
                                                             . . . . . . . . . . . . . . . . 
                                                             . . . . . . . . . . . . . . . . 
                                                             . . . . . . . . . . . . . . . .
-                            `, Player_character, 0, 0)
-                    flame.setKind(SpriteKind.fire)
-                    flame.lifespan = 1500
-                }
-                
-                spriteutils.setVelocityAtAngle(flame, spriteutils.angleFrom(missile, nearestSprite) + randint(-10, 10), randint(40, 60))
-            }
-            usingFlamethrower = false
-        }
-        
-    }
-    
-}
-
-function showTiles(col2: number, row2: number) {
-    tileUtil.coverTile(tiles.getTileLocation(col2 - 1, row2), assets.tile`
+                            """),
+                            Player_character,
+                            0,
+                            0)
+                        flame.set_kind(SpriteKind.fire)
+                        flame.lifespan = 1500
+                    spriteutils.set_velocity_at_angle(flame,
+                        spriteutils.angle_from(missile, nearestSprite) + randint(-10, 10),
+                        randint(40, 60))
+                usingFlamethrower = False
+def showTiles(col2: number, row2: number):
+    tileUtil.cover_tile(tiles.get_tile_location(col2 - 1, row2),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2 + 1, row2), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2 + 1, row2),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2, row2 + 1), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2, row2 + 1),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2, row2 - 1), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2, row2 - 1),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2 - 1, row2 - 1), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2 - 1, row2 - 1),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2 - -1, row2 - 1), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2 - -1, row2 - 1),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2 - -1, row2 - -1), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2 - -1, row2 - -1),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2 - 1, row2 - -1), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2 - 1, row2 - -1),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2 - 2, row2), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2 - 2, row2),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2 + 2, row2), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2 + 2, row2),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2, row2 + 2), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2, row2 + 2),
+        assets.tile("""
             transparency16
-        `)
-    tileUtil.coverTile(tiles.getTileLocation(col2, row2 - 2), assets.tile`
+        """))
+    tileUtil.cover_tile(tiles.get_tile_location(col2, row2 - 2),
+        assets.tile("""
             transparency16
-        `)
-}
-
-function airstrikeFunction() {
-    
+        """))
+def airstrikeFunction():
+    global missile
     nearestEnemy()
-    missile = sprites.create(assets.image`
+    missile = sprites.create(assets.image("""
         gun
-    `, SpriteKind.airstrikeMissile)
-    missile.setImage(scaling.rot(assets.image`
+    """), SpriteKind.airstrikeMissile)
+    missile.set_image(scaling.rot(assets.image("""
                 gun
-            `.clone(), spriteutils.angleFrom(missile, nearestSprite)))
-    missile.setFlag(SpriteFlag.AutoDestroy, false)
+            """).clone(),
+            spriteutils.angle_from(missile, nearestSprite)))
+    missile.set_flag(SpriteFlag.AUTO_DESTROY, False)
     missile.lifespan = 5000
-    tiles.placeOnTile(missile, Base.tilemapLocation())
-    spriteutils.setVelocityAtAngle(missile, spriteutils.angleFrom(missile, nearestSprite), 100)
+    tiles.place_on_tile(missile, Base.tilemap_location())
+    spriteutils.set_velocity_at_angle(missile, spriteutils.angle_from(missile, nearestSprite), 100)
     airstrikeCooldown.value += -90
-}
-
-function hud(add: boolean) {
-    
-    if (add) {
-        if (!_1stTimeHud) {
-            healthStatusBar = statusbars.create(50, 6, StatusBarKind.Health)
-            healthStatusBar.setPosition(41, 110)
-            energyStatusBar = statusbars.create(50, 3, StatusBarKind.Energy)
-            energyStatusBar.setColor(9, 8)
-            energyStatusBar.setPosition(41, 105)
-            pumpingHeart = sprites.create(img`
+def hud(add: bool):
+    global healthStatusBar, energyStatusBar, pumpingHeart, _1stTimeHud
+    if add:
+        if not (_1stTimeHud):
+            healthStatusBar = statusbars.create(50, 6, StatusBarKind.health)
+            healthStatusBar.set_position(41, 110)
+            energyStatusBar = statusbars.create(50, 3, StatusBarKind.energy)
+            energyStatusBar.set_color(9, 8)
+            energyStatusBar.set_position(41, 105)
+            pumpingHeart = sprites.create(img("""
                     . . . . . . . . . . . . . . . . 
                                     . . f f f f f f . f f f f f f . 
                                     . f f 3 3 3 3 f f f 3 3 3 3 f f 
@@ -1489,9 +1350,11 @@ function hud(add: boolean) {
                                     . . . . . . f f b f f . . . . . 
                                     . . . . . . . f f f . . . . . . 
                                     . . . . . . . . . . . . . . . .
-                `, SpriteKind.other)
-            pumpingHeart.setPosition(6, 109)
-            animation.runImageAnimation(pumpingHeart, [img`
+                """),
+                SpriteKind.other)
+            pumpingHeart.set_position(6, 109)
+            animation.run_image_animation(pumpingHeart,
+                [img("""
                         . . . . . . . . . . . . . . . . 
                                         . . f f f f f f . f f f f f f . 
                                         . f f 3 3 3 3 f f f 3 3 3 3 f f 
@@ -1508,7 +1371,8 @@ function hud(add: boolean) {
                                         . . . . . . f f b f f . . . . . 
                                         . . . . . . . f f f . . . . . . 
                                         . . . . . . . . . . . . . . . .
-                    `, img`
+                    """),
+                    img("""
                         . . . . . . . . . . . . . . . . 
                                         . . . . . . . . . . . . . . . . 
                                         . . . . . . . . . . . . . . . . 
@@ -1525,7 +1389,8 @@ function hud(add: boolean) {
                                         . . . . . . f f b f . . . . . . 
                                         . . . . . . . . . . . . . . . . 
                                         . . . . . . . . . . . . . . . .
-                    `, img`
+                    """),
+                    img("""
                         . . . . . . . . . . . . . . . . 
                                         . . . . . . . . . . . . . . . . 
                                         . . . . . . . . . . . . . . . . 
@@ -1542,30 +1407,26 @@ function hud(add: boolean) {
                                         . . . . . . . . . . . . . . . . 
                                         . . . . . . . . . . . . . . . . 
                                         . . . . . . . . . . . . . . . .
-                    `], 200, true)
-            _1stTimeHud = true
-            pumpingHeart.setFlag(SpriteFlag.RelativeToCamera, true)
-            healthStatusBar.setFlag(SpriteFlag.RelativeToCamera, true)
-            energyStatusBar.setFlag(SpriteFlag.RelativeToCamera, true)
-            healthStatusBar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-            energyStatusBar.setStatusBarFlag(StatusBarFlag.SmoothTransition, true)
-        } else {
-            healthStatusBar.setFlag(SpriteFlag.Invisible, false)
-            pumpingHeart.setFlag(SpriteFlag.Invisible, false)
-            energyStatusBar.setFlag(SpriteFlag.Invisible, false)
-        }
-        
-    } else {
-        healthStatusBar.setFlag(SpriteFlag.Invisible, true)
-        pumpingHeart.setFlag(SpriteFlag.Invisible, true)
-        energyStatusBar.setFlag(SpriteFlag.Invisible, true)
-    }
-    
-}
-
-function Spawn_menu_upgrades_text() {
-    
-    Upgrade_menu_text = sprites.create(img`
+                    """)],
+                200,
+                True)
+            _1stTimeHud = True
+            pumpingHeart.set_flag(SpriteFlag.RELATIVE_TO_CAMERA, True)
+            healthStatusBar.set_flag(SpriteFlag.RELATIVE_TO_CAMERA, True)
+            energyStatusBar.set_flag(SpriteFlag.RELATIVE_TO_CAMERA, True)
+            healthStatusBar.set_status_bar_flag(StatusBarFlag.SMOOTH_TRANSITION, True)
+            energyStatusBar.set_status_bar_flag(StatusBarFlag.SMOOTH_TRANSITION, True)
+        else:
+            healthStatusBar.set_flag(SpriteFlag.INVISIBLE, False)
+            pumpingHeart.set_flag(SpriteFlag.INVISIBLE, False)
+            energyStatusBar.set_flag(SpriteFlag.INVISIBLE, False)
+    else:
+        healthStatusBar.set_flag(SpriteFlag.INVISIBLE, True)
+        pumpingHeart.set_flag(SpriteFlag.INVISIBLE, True)
+        energyStatusBar.set_flag(SpriteFlag.INVISIBLE, True)
+def Spawn_menu_upgrades_text():
+    global Upgrade_menu_text, Mining_speed_lvl_text, Menu_interaction_sprite_0, Menu_interaction_sprite_1, Menu_interaction_sprite_2, Menu_interaction_sprite_3
+    Upgrade_menu_text = sprites.create(img("""
             ................................................................................
                     ...ff.....ff....................................................................
                     ...ff.....ff............f...ff..ff..............................................
@@ -1598,9 +1459,10 @@ function Spawn_menu_upgrades_text() {
                     ........................................ff......f..fff..........................
                     ................................................ffff............................
                     ................................................................................
-        `, SpriteKind.Upgrade_menu)
-    tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 1))
-    Upgrade_menu_text = sprites.create(img`
+        """),
+        SpriteKind.Upgrade_menu)
+    tiles.place_on_tile(Upgrade_menu_text, tiles.get_tile_location(2, 1))
+    Upgrade_menu_text = sprites.create(img("""
             ................................................................................
                     ................................f...fffff.......................................
                     ....f...........f...f......ffffff...f....f.....fffff............................
@@ -1633,9 +1495,10 @@ function Spawn_menu_upgrades_text() {
                     ..........ffff..................................................................
                     ................................................................................
                     ................................................................................
-        `, SpriteKind.Upgrade_menu)
-    tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 5))
-    Upgrade_menu_text = sprites.create(img`
+        """),
+        SpriteKind.Upgrade_menu)
+    tiles.place_on_tile(Upgrade_menu_text, tiles.get_tile_location(2, 5))
+    Upgrade_menu_text = sprites.create(img("""
             ................................................................................
                     ...ffffffffff...................................................................
                     ...f............................................................................
@@ -1668,10 +1531,11 @@ function Spawn_menu_upgrades_text() {
                     .........ff...............ff......f...............f.........f............ff.....
                     ..........f................ffff.................................................
                     ................................................................................
-        `, SpriteKind.Upgrade_menu)
-    tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 9))
-    if (Mining_speed == 500) {
-        Mining_speed_lvl_text = sprites.create(img`
+        """),
+        SpriteKind.Upgrade_menu)
+    tiles.place_on_tile(Upgrade_menu_text, tiles.get_tile_location(2, 9))
+    if Mining_speed == 500:
+        Mining_speed_lvl_text = sprites.create(img("""
                 ................................................
                             ..f.............................................
                             ..f......f.........f.............ffff...........
@@ -1688,10 +1552,11 @@ function Spawn_menu_upgrades_text() {
                             ....ffff...ff.....fffff........ff.....f.........
                             ................................ff...ff.........
                             .................................fffff..........
-            `, SpriteKind.Upgrade_menu)
-        tiles.placeOnTile(Mining_speed_lvl_text, tiles.getTileLocation(4, 3))
-    } else if (Mining_speed == 480) {
-        Mining_speed_lvl_text = sprites.create(img`
+            """),
+            SpriteKind.Upgrade_menu)
+        tiles.place_on_tile(Mining_speed_lvl_text, tiles.get_tile_location(4, 3))
+    elif Mining_speed == 480:
+        Mining_speed_lvl_text = sprites.create(img("""
                 ................................................
                             ..f.............................................
                             ..f......f.........f............................
@@ -1708,10 +1573,11 @@ function Spawn_menu_upgrades_text() {
                             ....ffff...ff.....fffff...........f.............
                             ..............................ffffffff..........
                             ................................................
-            `, SpriteKind.Upgrade_menu)
-        tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 2))
-    } else if (Mining_speed == 460) {
-        Mining_speed_lvl_text = sprites.create(img`
+            """),
+            SpriteKind.Upgrade_menu)
+        tiles.place_on_tile(Upgrade_menu_text, tiles.get_tile_location(2, 2))
+    elif Mining_speed == 460:
+        Mining_speed_lvl_text = sprites.create(img("""
                 ................................................
                             ..f.............................................
                             ..f......f.........f.........fffff..............
@@ -1728,10 +1594,11 @@ function Spawn_menu_upgrades_text() {
                             ....ffff...ff.....fffff...fffffffff.............
                             ................................................
                             ................................................
-            `, SpriteKind.Upgrade_menu)
-        tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 2))
-    } else if (Mining_speed == 440) {
-        Mining_speed_lvl_text = sprites.create(img`
+            """),
+            SpriteKind.Upgrade_menu)
+        tiles.place_on_tile(Upgrade_menu_text, tiles.get_tile_location(2, 2))
+    elif Mining_speed == 440:
+        Mining_speed_lvl_text = sprites.create(img("""
                 ................................................
                             ..f.............................................
                             ..f......f.........f..........ff................
@@ -1748,10 +1615,11 @@ function Spawn_menu_upgrades_text() {
                             ....ffff...ff.....fffff.........................
                             ................................................
                             ................................................
-            `, SpriteKind.Upgrade_menu)
-        tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 2))
-    } else if (Mining_speed == 420) {
-        Mining_speed_lvl_text = sprites.create(img`
+            """),
+            SpriteKind.Upgrade_menu)
+        tiles.place_on_tile(Upgrade_menu_text, tiles.get_tile_location(2, 2))
+    elif Mining_speed == 420:
+        Mining_speed_lvl_text = sprites.create(img("""
                 ................................................
                             ..f.............................................
                             ..f......f.........f.........f..................
@@ -1768,10 +1636,11 @@ function Spawn_menu_upgrades_text() {
                             ....ffff...ff.....fffff..........f..............
                             .................................f..............
                             ................................................
-            `, SpriteKind.Upgrade_menu)
-        tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 2))
-    } else if (Mining_speed == 400) {
-        Mining_speed_lvl_text = sprites.create(img`
+            """),
+            SpriteKind.Upgrade_menu)
+        tiles.place_on_tile(Upgrade_menu_text, tiles.get_tile_location(2, 2))
+    elif Mining_speed == 400:
+        Mining_speed_lvl_text = sprites.create(img("""
                 ................................................
                             ..f.............................................
                             ..f......f.........f............................
@@ -1788,13 +1657,12 @@ function Spawn_menu_upgrades_text() {
                             ....ffff...ff.....fffff.......fffff.............
                             ................................................
                             ................................................
-            `, SpriteKind.Upgrade_menu)
-        tiles.placeOnTile(Upgrade_menu_text, tiles.getTileLocation(2, 2))
-    }
-    
-    for (let index2 = 0; index2 < 4; index2++) {
-        if (index2 == 0) {
-            Menu_interaction_sprite_0 = sprites.create(img`
+            """),
+            SpriteKind.Upgrade_menu)
+        tiles.place_on_tile(Upgrade_menu_text, tiles.get_tile_location(2, 2))
+    for index2 in range(4):
+        if index2 == 0:
+            Menu_interaction_sprite_0 = sprites.create(img("""
                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
@@ -1811,10 +1679,11 @@ function Spawn_menu_upgrades_text() {
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . .
-                `, SpriteKind.Interaction_sprite)
-            tiles.placeOnTile(Menu_interaction_sprite_0, tiles.getTileLocation(2, 3))
-        } else if (index2 == 1) {
-            Menu_interaction_sprite_1 = sprites.create(img`
+                """),
+                SpriteKind.Interaction_sprite)
+            tiles.place_on_tile(Menu_interaction_sprite_0, tiles.get_tile_location(2, 3))
+        elif index2 == 1:
+            Menu_interaction_sprite_1 = sprites.create(img("""
                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
@@ -1831,10 +1700,11 @@ function Spawn_menu_upgrades_text() {
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . .
-                `, SpriteKind.Interaction_sprite)
-            tiles.placeOnTile(Menu_interaction_sprite_1, tiles.getTileLocation(2, 7))
-        } else if (index2 == 2) {
-            Menu_interaction_sprite_2 = sprites.create(img`
+                """),
+                SpriteKind.Interaction_sprite)
+            tiles.place_on_tile(Menu_interaction_sprite_1, tiles.get_tile_location(2, 7))
+        elif index2 == 2:
+            Menu_interaction_sprite_2 = sprites.create(img("""
                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
@@ -1851,10 +1721,11 @@ function Spawn_menu_upgrades_text() {
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . .
-                `, SpriteKind.Interaction_sprite)
-            tiles.placeOnTile(Menu_interaction_sprite_2, tiles.getTileLocation(2, 11))
-        } else if (index2 == 3) {
-            Menu_interaction_sprite_3 = sprites.create(img`
+                """),
+                SpriteKind.Interaction_sprite)
+            tiles.place_on_tile(Menu_interaction_sprite_2, tiles.get_tile_location(2, 11))
+        elif index2 == 3:
+            Menu_interaction_sprite_3 = sprites.create(img("""
                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
@@ -1871,41 +1742,33 @@ function Spawn_menu_upgrades_text() {
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . . 
                                     . . . . . . . . . . . . . . . .
-                `, SpriteKind.Interaction_sprite)
-            tiles.placeOnTile(Menu_interaction_sprite_3, tiles.getTileLocation(2, 15))
-        }
-        
-    }
-}
-
-function addToInventory(thing: number) {
-    
-    if (thing == 0) {
+                """),
+                SpriteKind.Interaction_sprite)
+            tiles.place_on_tile(Menu_interaction_sprite_3, tiles.get_tile_location(2, 15))
+def addToInventory(thing: number):
+    global dirtQuantity, stoneQuantity, coalQuantity, ironQuantity, copperQuantity
+    if thing == 0:
         dirtQuantity += 1
-    } else if (thing == 1) {
+    elif thing == 1:
         stoneQuantity += 1
-    } else if (thing == 3) {
+    elif thing == 3:
         coalQuantity += 1
-    } else if (thing == 4) {
+    elif thing == 4:
         ironQuantity += 1
-    } else if (thing == 5) {
+    elif thing == 5:
         copperQuantity += 1
-    }
-    
-}
 
-controller.down.onEvent(ControllerButtonEvent.Pressed, function on_down_pressed() {
-    if (!inInventory && Player_character.isHittingTile(CollisionDirection.Bottom)) {
+def on_down_pressed():
+    if not (inInventory) and Player_character.is_hitting_tile(CollisionDirection.BOTTOM):
         Mine(1, miningEfficiency)
-    }
-    
-})
-function I_just_wanted_to_shrink_the_upgrade_menu_section() {
-    
-    if (Player_character.overlapsWith(Menu_interaction_sprite_0)) {
-        if (Mining_speed == 500) {
+controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
+
+def I_just_wanted_to_shrink_the_upgrade_menu_section():
+    global Mining_speed, Energy_capacity, Energy_recharge_rate
+    if Player_character.overlaps_with(Menu_interaction_sprite_0):
+        if Mining_speed == 500:
             Mining_speed = 480
-            Mining_speed_lvl_text.setImage(img`
+            Mining_speed_lvl_text.set_image(img("""
                 ................................................
                                 ..f.............................................
                                 ..f......f.........f............................
@@ -1922,10 +1785,10 @@ function I_just_wanted_to_shrink_the_upgrade_menu_section() {
                                 ....ffff...ff.....fffff...........f.............
                                 ..............................ffffffff..........
                                 ................................................
-            `)
-        } else if (Mining_speed == 480) {
+            """))
+        elif Mining_speed == 480:
             Mining_speed = 460
-            Mining_speed_lvl_text.setImage(img`
+            Mining_speed_lvl_text.set_image(img("""
                 ................................................
                                 ..f.............................................
                                 ..f......f.........f.........fffff..............
@@ -1942,10 +1805,10 @@ function I_just_wanted_to_shrink_the_upgrade_menu_section() {
                                 ....ffff...ff.....fffff...fffffffff.............
                                 ................................................
                                 ................................................
-            `)
-        } else if (Mining_speed == 460) {
+            """))
+        elif Mining_speed == 460:
             Mining_speed = 440
-            Mining_speed_lvl_text.setImage(img`
+            Mining_speed_lvl_text.set_image(img("""
                 ................................................
                                 ..f.............................................
                                 ..f......f.........f..........ff................
@@ -1962,10 +1825,10 @@ function I_just_wanted_to_shrink_the_upgrade_menu_section() {
                                 ....ffff...ff.....fffff.........................
                                 ................................................
                                 ................................................
-            `)
-        } else if (Mining_speed == 440) {
+            """))
+        elif Mining_speed == 440:
             Mining_speed = 420
-            Mining_speed_lvl_text.setImage(img`
+            Mining_speed_lvl_text.set_image(img("""
                 ................................................
                                 ..f.............................................
                                 ..f......f.........f.........f..................
@@ -1982,10 +1845,10 @@ function I_just_wanted_to_shrink_the_upgrade_menu_section() {
                                 ....ffff...ff.....fffff..........f..............
                                 .................................f..............
                                 ................................................
-            `)
-        } else if (Mining_speed == 420) {
+            """))
+        elif Mining_speed == 420:
             Mining_speed = 400
-            Mining_speed_lvl_text.setImage(img`
+            Mining_speed_lvl_text.set_image(img("""
                 ................................................
                                 ..f.............................................
                                 ..f......f.........f............................
@@ -2002,166 +1865,150 @@ function I_just_wanted_to_shrink_the_upgrade_menu_section() {
                                 ....ffff...ff.....fffff.......fffff.............
                                 ................................................
                                 ................................................
-            `)
-        }
-        
-    } else if (Player_character.overlapsWith(Menu_interaction_sprite_1)) {
-        if ((0 as any) == (0 as any)) {
+            """))
+    elif Player_character.overlaps_with(Menu_interaction_sprite_1):
+        if 0 == 0:
             Energy_capacity = 0
-        } else if ((0 as any) == (0 as any)) {
-            
-        } else if ((0 as any) == (0 as any)) {
-            
-        } else if ((0 as any) == (0 as any)) {
-            
-        } else if ((0 as any) == (0 as any)) {
-            
-        }
-        
-    } else if (Player_character.overlapsWith(Menu_interaction_sprite_2)) {
-        if ((0 as any) == (0 as any)) {
+        elif 0 == 0:
+            pass
+        elif 0 == 0:
+            pass
+        elif 0 == 0:
+            pass
+        elif 0 == 0:
+            pass
+    elif Player_character.overlaps_with(Menu_interaction_sprite_2):
+        if 0 == 0:
             Energy_recharge_rate = 0
-        } else if ((0 as any) == (0 as any)) {
-            
-        } else if ((0 as any) == (0 as any)) {
-            
-        } else if ((0 as any) == (0 as any)) {
-            
-        } else if ((0 as any) == (0 as any)) {
-            
-        }
-        
-    } else if (Player_character.overlapsWith(Menu_interaction_sprite_3)) {
-        if (true) {
-            
-        } else if (false) {
-            
-        } else if (false) {
-            
-        } else if (false) {
-            
-        } else if (false) {
-            
-        }
-        
-    }
-    
-    sprites.destroyAllSpritesOfKind(SpriteKind.Upgrade_menu)
-    sprites.destroyAllSpritesOfKind(SpriteKind.Interaction_sprite)
+        elif 0 == 0:
+            pass
+        elif 0 == 0:
+            pass
+        elif 0 == 0:
+            pass
+        elif 0 == 0:
+            pass
+    elif Player_character.overlaps_with(Menu_interaction_sprite_3):
+        if True:
+            pass
+        elif False:
+            pass
+        elif False:
+            pass
+        elif False:
+            pass
+        elif False:
+            pass
+    sprites.destroy_all_sprites_of_kind(SpriteKind.Upgrade_menu)
+    sprites.destroy_all_sprites_of_kind(SpriteKind.Interaction_sprite)
     Spawn_menu_upgrades_text()
-}
 
-controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pressed, function on_player2_button_left_pressed() {
+def on_player2_button_left_pressed():
     shoot(3)
-})
-function createInventory() {
-    
+controller.player2.on_button_event(ControllerButton.LEFT,
+    ControllerButtonEvent.PRESSED,
+    on_player2_button_left_pressed)
+
+def createInventory():
+    global inventory
     inventory = Inventory.create_inventory(list2, 999)
-    dirt.set_text(ItemTextAttribute.Tooltip, convertToText(dirtQuantity))
-    coal.set_text(ItemTextAttribute.Tooltip, convertToText(coalQuantity))
-    iron.set_text(ItemTextAttribute.Tooltip, convertToText(ironQuantity))
-    stone.set_text(ItemTextAttribute.Tooltip, convertToText(stoneQuantity))
-    copper.set_text(ItemTextAttribute.Tooltip, convertToText(copperQuantity))
-}
+    dirt.set_text(ItemTextAttribute.TOOLTIP, convert_to_text(dirtQuantity))
+    coal.set_text(ItemTextAttribute.TOOLTIP, convert_to_text(coalQuantity))
+    iron.set_text(ItemTextAttribute.TOOLTIP, convert_to_text(ironQuantity))
+    stone.set_text(ItemTextAttribute.TOOLTIP, convert_to_text(stoneQuantity))
+    copper.set_text(ItemTextAttribute.TOOLTIP, convert_to_text(copperQuantity))
 
-controller.player3.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pressed, function on_player3_button_down_pressed() {
-    
-    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
-        toolbar.set_number(ToolbarNumberAttribute.SelectedIndex, 2)
-    } else {
-        toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, -1)
-    }
-    
-    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
+def on_player3_button_down_pressed():
+    global weapon
+    if toolbar.get_number(ToolbarNumberAttribute.SELECTED_INDEX) == 0:
+        toolbar.set_number(ToolbarNumberAttribute.SELECTED_INDEX, 2)
+    else:
+        toolbar.change_number(ToolbarNumberAttribute.SELECTED_INDEX, -1)
+    if toolbar.get_number(ToolbarNumberAttribute.SELECTED_INDEX) == 0:
         weapon = "gun"
-    } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
+    elif toolbar.get_number(ToolbarNumberAttribute.SELECTED_INDEX) == 1:
         weapon = "airstrike"
-    } else {
+    else:
         weapon = "flamethrower"
-    }
-    
     HUDAmmo()
-})
-function hideTiles() {
-    tileUtil.coverAllTiles(assets.tile`
+controller.player3.on_button_event(ControllerButton.DOWN,
+    ControllerButtonEvent.PRESSED,
+    on_player3_button_down_pressed)
+
+def hideTiles():
+    tileUtil.cover_all_tiles(assets.tile("""
             myTile3
-        `, assets.tile`
+        """),
+        assets.tile("""
             myTile26
-        `)
-    tileUtil.coverAllTiles(assets.tile`
+        """))
+    tileUtil.cover_all_tiles(assets.tile("""
             Stone
-        `, assets.tile`
+        """),
+        assets.tile("""
             myTile26
-        `)
-    tileUtil.coverAllTiles(assets.tile`
+        """))
+    tileUtil.cover_all_tiles(assets.tile("""
             Coal
-        `, assets.tile`
+        """),
+        assets.tile("""
             myTile26
-        `)
-    tileUtil.coverAllTiles(assets.tile`
+        """))
+    tileUtil.cover_all_tiles(assets.tile("""
             Copper
-        `, assets.tile`
+        """),
+        assets.tile("""
             myTile26
-        `)
-    tileUtil.coverAllTiles(assets.tile`
+        """))
+    tileUtil.cover_all_tiles(assets.tile("""
             Iron
-        `, assets.tile`
+        """),
+        assets.tile("""
             myTile26
-        `)
-}
-
-function healthChange(damage: number) {
-    
+        """))
+def healthChange(damage: number):
+    global damageMarker
     healthStatusBar.value += damage
-    if (damage < 0) {
-        damageMarker = textsprite.create(convertToText(damage * -1), 0, 2)
-        damageMarker.setKind(SpriteKind.damageIndicator)
+    if damage < 0:
+        damageMarker = textsprite.create(convert_to_text(damage * -1), 0, 2)
+        damageMarker.set_kind(SpriteKind.damageIndicator)
         damageMarker.lifespan = 500
-        damageMarker.setPosition(randint(11, 51), randint(96, 100))
-        damageMarker.setFlag(SpriteFlag.RelativeToCamera, true)
-    } else {
-        damageMarker = textsprite.create(convertToText(damage), 0, 7)
-        damageMarker.setKind(SpriteKind.damageIndicator)
+        damageMarker.set_position(randint(11, 51), randint(96, 100))
+        damageMarker.set_flag(SpriteFlag.RELATIVE_TO_CAMERA, True)
+    else:
+        damageMarker = textsprite.create(convert_to_text(damage), 0, 7)
+        damageMarker.set_kind(SpriteKind.damageIndicator)
         damageMarker.lifespan = 500
-        damageMarker.setPosition(randint(11, 51), randint(96, 100))
-        damageMarker.setFlag(SpriteFlag.RelativeToCamera, true)
-    }
-    
-}
-
-function activateInventory(goingIn: boolean) {
-    
-    if (goingIn) {
-        controller.moveSprite(Player_character, 0, 0)
+        damageMarker.set_position(randint(11, 51), randint(96, 100))
+        damageMarker.set_flag(SpriteFlag.RELATIVE_TO_CAMERA, True)
+def activateInventory(goingIn: bool):
+    global inInventory
+    if goingIn:
+        controller.move_sprite(Player_character, 0, 0)
         createInventory()
-        inventory.setStayInScreen(true)
-        tiles.placeOnTile(inventory, Player_character.tilemapLocation())
-        inInventory = true
-    } else {
+        inventory.set_stay_in_screen(True)
+        tiles.place_on_tile(inventory, Player_character.tilemap_location())
+        inInventory = True
+    else:
         sprites.destroy(inventory)
-        inInventory = false
-        controller.moveSprite(Player_character, 50, 0)
-    }
-    
-}
+        inInventory = False
+        controller.move_sprite(Player_character, 50, 0)
 
-sprites.onOverlap(SpriteKind.aboveEnemy, SpriteKind.gunBullets, function on_on_overlap4(sprite5: Sprite, otherSprite4: Sprite) {
+def on_on_overlap4(sprite5, otherSprite4):
     sprites.destroy(otherSprite4)
-    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, sprite5).value += randint(-5, -15)
-})
-function enemyShoot(projectile: Image, spriteFrom: Sprite, spriteTo: Sprite, speed: number) {
-    if (sprites.readDataNumber(spriteFrom, "shotCooldown") == 0) {
-        sprites.setDataNumber(spriteFrom, "shotCooldown", 200)
-        
-        shot = sprites.createProjectileFromSprite(projectile, spriteFrom, 0, 0)
-        spriteutils.setVelocityAtAngle(shot, spriteutils.angleFrom(spriteFrom, spriteTo), speed)
-        shot.setKind(SpriteKind.explodingProjectile)
-    }
-    
-}
+    statusbars.get_status_bar_attached_to(StatusBarKind.health, sprite5).value += randint(-5, -15)
+sprites.on_overlap(SpriteKind.aboveEnemy, SpriteKind.gunBullets, on_on_overlap4)
 
-function respawnAtBase() {
-    
+def enemyShoot(projectile: Image, spriteFrom: Sprite, spriteTo: Sprite, speed: number):
+    if sprites.read_data_number(spriteFrom, "shotCooldown")==0:
+        sprites.set_data_number(spriteFrom, "shotCooldown",200)
+        global shot
+        shot = sprites.create_projectile_from_sprite(projectile, spriteFrom, 0, 0)
+        spriteutils.set_velocity_at_angle(shot, spriteutils.angle_from(spriteFrom, spriteTo), speed)
+        shot.set_kind(SpriteKind.explodingProjectile)
+
+def respawnAtBase():
+    global inventoryContents, stoneQuantity, ironQuantity, dirtQuantity, coalQuantity, copperQuantity, Mining_speed, Energy_capacity, Energy_recharge_rate
     game.splash("You Died", "Tut tut tut")
     inventoryContents = 0
     stoneQuantity = 0
@@ -2172,130 +2019,126 @@ function respawnAtBase() {
     Mining_speed = 500
     Energy_capacity = 10
     Energy_recharge_rate = 1000
-    tiles.placeOnTile(Player_character, tiles.getTileLocation(47, 13))
+    tiles.place_on_tile(Player_character, tiles.get_tile_location(47, 13))
     healthStatusBar.value = 100
-}
-
-function startingSaveTilemap() {
-    
-    startMinedLocations = tiles.getTilesByType(assets.tile`
+def startingSaveTilemap():
+    global startMinedLocations, startCoalLocations, startIronLocations, startCopperLocations, startDirtLocations, startStoneLocations
+    startMinedLocations = tiles.get_tiles_by_type(assets.tile("""
         myTile8
-    `)
-    startCoalLocations = tiles.getTilesByType(assets.tile`
+    """))
+    startCoalLocations = tiles.get_tiles_by_type(assets.tile("""
         Coal
-    `)
-    startIronLocations = tiles.getTilesByType(assets.tile`
+    """))
+    startIronLocations = tiles.get_tiles_by_type(assets.tile("""
         Iron
-    `)
-    startCopperLocations = tiles.getTilesByType(assets.tile`
+    """))
+    startCopperLocations = tiles.get_tiles_by_type(assets.tile("""
         Copper
-    `)
-    startDirtLocations = tiles.getTilesByType(assets.tile`
+    """))
+    startDirtLocations = tiles.get_tiles_by_type(assets.tile("""
         myTile3
-    `)
-    startStoneLocations = tiles.getTilesByType(assets.tile`
+    """))
+    startStoneLocations = tiles.get_tiles_by_type(assets.tile("""
         Stone
-    `)
-}
+    """))
 
-controller.player3.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function on_player3_button_up_pressed() {
-    
-    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 2) {
-        toolbar.set_number(ToolbarNumberAttribute.SelectedIndex, 0)
-    } else {
-        toolbar.change_number(ToolbarNumberAttribute.SelectedIndex, 1)
-    }
-    
-    if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 0) {
+def on_player3_button_up_pressed():
+    global weapon
+    if toolbar.get_number(ToolbarNumberAttribute.SELECTED_INDEX) == 2:
+        toolbar.set_number(ToolbarNumberAttribute.SELECTED_INDEX, 0)
+    else:
+        toolbar.change_number(ToolbarNumberAttribute.SELECTED_INDEX, 1)
+    if toolbar.get_number(ToolbarNumberAttribute.SELECTED_INDEX) == 0:
         weapon = "gun"
-    } else if (toolbar.get_number(ToolbarNumberAttribute.SelectedIndex) == 1) {
+    elif toolbar.get_number(ToolbarNumberAttribute.SELECTED_INDEX) == 1:
         weapon = "airstrike"
-    } else {
+    else:
         weapon = "flamethrower"
-    }
-    
     HUDAmmo()
-})
-let enemyShotCooldown = false
-let startStoneLocations : tiles.Location[] = []
-let startDirtLocations : tiles.Location[] = []
-let startCopperLocations : tiles.Location[] = []
-let startIronLocations : tiles.Location[] = []
-let startCoalLocations : tiles.Location[] = []
-let startMinedLocations : tiles.Location[] = []
-let shot : Sprite = null
-let damageMarker : TextSprite = null
-let copperQuantity = 0
-let Menu_interaction_sprite_3 : Sprite = null
-let Menu_interaction_sprite_2 : Sprite = null
-let Menu_interaction_sprite_1 : Sprite = null
-let Menu_interaction_sprite_0 : Sprite = null
-let Mining_speed_lvl_text : Sprite = null
-let Upgrade_menu_text : Sprite = null
-let pumpingHeart : Sprite = null
-let healthStatusBar : StatusBarSprite = null
-let missile : Sprite = null
-let flame : Sprite = null
-let gunBullet : Sprite = null
-let flyingEnemiesStatusBar : StatusBarSprite = null
-let flyingEnemies : Sprite = null
-let flamethrowerCooldown : StatusBarSprite = null
-let airstrikeCooldown : StatusBarSprite = null
-let gunAmmo : StatusBarSprite = null
-let inventory : Inventory.Inventory = null
-let Type_of_block_being_mined = 0
-let whereToBreakRow = 0
-let whereToBreakCol = 0
-let tempOreRandomizer = 0
-let Tree_spawn_y = 0
-let Tree_spawn_x = 0
-let Tree : Sprite = null
-let toolbar : Inventory.Toolbar = null
-let stoneLocations : tiles.Location[] = []
-let dirtLocations : tiles.Location[] = []
-let copperLocations : tiles.Location[] = []
-let ironLocations : tiles.Location[] = []
-let coalLocations : tiles.Location[] = []
-let minedLocations : tiles.Location[] = []
-let previousTilemap = 0
-let playerOnFire = false
-let energyStatusBar : StatusBarSprite = null
-let nearestSprite : Sprite = null
-let nearestLengthAway = 0
-let weapon = ""
-let isMining = false
-let brokenBlocks : tiles.Location[] = []
-let usingFlamethrower = false
-let canShoot = false
-let list2 : Inventory.Item[] = []
-let _1stTimeHud = false
-let flamethrower : Inventory.Item = null
-let airstrike : Inventory.Item = null
-let gun : Inventory.Item = null
-let copper : Inventory.Item = null
-let iron : Inventory.Item = null
-let stone : Inventory.Item = null
-let coal : Inventory.Item = null
-let dirt : Inventory.Item = null
-let Energy_recharge_rate = 0
-let Energy_capacity = 0
-let Mining_speed = 0
-let In_upgrade_menu = 0
-let coalQuantity = 0
-let dirtQuantity = 0
-let ironQuantity = 0
-let stoneQuantity = 0
-let inventoryContents = 0
-let miningEfficiency = 0
-let inInventory = false
-let jump = false
-let Gravity = 0
-let Player_character : Sprite = null
-let Base : Sprite = null
-let breakingTileSprite : Sprite = null
-let In_Base = false
-stats.turnStats(true)
-scene.setBackgroundImage(img`
+controller.player3.on_button_event(ControllerButton.UP,
+    ControllerButtonEvent.PRESSED,
+    on_player3_button_up_pressed)
+
+enemyShotCooldown:bool = False
+startStoneLocations: List[tiles.Location] = []
+startDirtLocations: List[tiles.Location] = []
+startCopperLocations: List[tiles.Location] = []
+startIronLocations: List[tiles.Location] = []
+startCoalLocations: List[tiles.Location] = []
+startMinedLocations: List[tiles.Location] = []
+shot: Sprite = None
+damageMarker: TextSprite = None
+copperQuantity = 0
+Menu_interaction_sprite_3: Sprite = None
+Menu_interaction_sprite_2: Sprite = None
+Menu_interaction_sprite_1: Sprite = None
+Menu_interaction_sprite_0: Sprite = None
+Mining_speed_lvl_text: Sprite = None
+Upgrade_menu_text: Sprite = None
+pumpingHeart: Sprite = None
+healthStatusBar: StatusBarSprite = None
+missile: Sprite = None
+flame: Sprite = None
+gunBullet: Sprite = None
+flyingEnemiesStatusBar: StatusBarSprite = None
+flyingEnemies: Sprite = None
+flamethrowerCooldown: StatusBarSprite = None
+airstrikeCooldown: StatusBarSprite = None
+gunAmmo: StatusBarSprite = None
+inventory: Inventory.Inventory = None
+Type_of_block_being_mined = 0
+whereToBreakRow = 0
+whereToBreakCol = 0
+tempOreRandomizer = 0
+Tree_spawn_y = 0
+Tree_spawn_x = 0
+Tree: Sprite = None
+toolbar: Inventory.Toolbar = None
+stoneLocations: List[tiles.Location] = []
+dirtLocations: List[tiles.Location] = []
+copperLocations: List[tiles.Location] = []
+ironLocations: List[tiles.Location] = []
+coalLocations: List[tiles.Location] = []
+minedLocations: List[tiles.Location] = []
+previousTilemap = 0
+playerOnFire = False
+energyStatusBar: StatusBarSprite = None
+nearestSprite: Sprite = None
+nearestLengthAway = 0
+weapon = ""
+isMining = False
+brokenBlocks: List[tiles.Location] = []
+usingFlamethrower = False
+canShoot = False
+list2: List[Inventory.Item] = []
+_1stTimeHud = False
+flamethrower: Inventory.Item = None
+airstrike: Inventory.Item = None
+gun: Inventory.Item = None
+copper: Inventory.Item = None
+iron: Inventory.Item = None
+stone: Inventory.Item = None
+coal: Inventory.Item = None
+dirt: Inventory.Item = None
+Energy_recharge_rate = 0
+Energy_capacity = 0
+Mining_speed = 0
+In_upgrade_menu = 0
+coalQuantity = 0
+dirtQuantity = 0
+ironQuantity = 0
+stoneQuantity = 0
+inventoryContents = 0
+miningEfficiency = 0
+inInventory = False
+jump = False
+Gravity = 0
+Player_character: Sprite = None
+Base: Sprite = None
+breakingTileSprite: Sprite = None
+In_Base = False
+stats.turn_stats(True)
+scene.set_background_image(img("""
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
         ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -2416,12 +2259,12 @@ scene.setBackgroundImage(img`
         3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
         3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
         3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
-`)
-tiles.setCurrentTilemap(tilemap`
+"""))
+tiles.set_current_tilemap(tilemap("""
     Planet part 1
-`)
-In_Base = false
-breakingTileSprite = sprites.create(img`
+"""))
+In_Base = False
+breakingTileSprite = sprites.create(img("""
         . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -2438,10 +2281,11 @@ breakingTileSprite = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . .
-    `, SpriteKind.other)
-breakingTileSprite.setFlag(SpriteFlag.AutoDestroy, false)
-breakingTileSprite.setFlag(SpriteFlag.Invisible, true)
-Base = sprites.create(img`
+    """),
+    SpriteKind.other)
+breakingTileSprite.set_flag(SpriteFlag.AUTO_DESTROY, False)
+breakingTileSprite.set_flag(SpriteFlag.INVISIBLE, True)
+Base = sprites.create(img("""
         ................................................................................................
             ................................................................................................
             ................................................................................................
@@ -2538,8 +2382,9 @@ Base = sprites.create(img`
             ................................................................................................
             ................................................................................................
             ................................................................................................
-    `, SpriteKind.Structure)
-Player_character = sprites.create(img`
+    """),
+    SpriteKind.Structure)
+Player_character = sprites.create(img("""
         ................
             .......11.......
             ......1ff1......
@@ -2560,8 +2405,9 @@ Player_character = sprites.create(img`
             .....11..11.....
             ....111..111....
             ....fff..fff....
-    `, SpriteKind.Player)
-let textSprite = sprites.create(img`
+    """),
+    SpriteKind.player)
+textSprite = sprites.create(img("""
         . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -2578,11 +2424,12 @@ let textSprite = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . .
-    `, SpriteKind.textSprites)
+    """),
+    SpriteKind.textSprites)
 Gravity = 0.5
-jump = false
-let gto_base_said = false
-inInventory = false
+jump = False
+gto_base_said = False
+inInventory = False
 miningEfficiency = 100
 inventoryContents = 0
 stoneQuantity = 0
@@ -2593,10 +2440,13 @@ In_upgrade_menu = 0
 Mining_speed = 500
 Energy_capacity = 10
 Energy_recharge_rate = 1000
-dirt = Inventory.create_item("Dirt", assets.image`
+dirt = Inventory.create_item("Dirt",
+    assets.image("""
         coal2Art
-    `, "Dug up from the ground")
-coal = Inventory.create_item("Coal", img`
+    """),
+    "Dug up from the ground")
+coal = Inventory.create_item("Coal",
+    img("""
         b b b b b b b b b b b b b b b b 
             b b b b b b b b b b b b b b b b 
             b b b b f f f b b b b b b b b b 
@@ -2613,23 +2463,31 @@ coal = Inventory.create_item("Coal", img`
             b b b b b b b b b b f f f f b b 
             b b b b b b b b b b f f f f b b 
             b b b b b b b b b b b b b b b b
-    `, "Dug up from the ground")
-stone = Inventory.create_item("Stone", assets.tile`
+    """),
+    "Dug up from the ground")
+stone = Inventory.create_item("Stone",
+    assets.tile("""
         Stone
-    `, "Dug up from the ground")
-iron = Inventory.create_item("iron", assets.tile`
+    """),
+    "Dug up from the ground")
+iron = Inventory.create_item("iron",
+    assets.tile("""
         Iron
-    `, "Dug up from the ground")
-copper = Inventory.create_item("copper", assets.tile`
+    """),
+    "Dug up from the ground")
+copper = Inventory.create_item("copper",
+    assets.tile("""
         Copper
-    `, "Dug up from the ground")
-gun = Inventory.create_item("Gun", assets.image`
+    """),
+    "Dug up from the ground")
+gun = Inventory.create_item("Gun", assets.image("""
     rocket
-`, "Goes Kaboom")
-airstrike = Inventory.create_item("Airstrike", assets.image`
+"""), "Goes Kaboom")
+airstrike = Inventory.create_item("Airstrike", assets.image("""
     gun
-`, "Goes Kaboom")
-flamethrower = Inventory.create_item("Flamethrower", img`
+"""), "Goes Kaboom")
+flamethrower = Inventory.create_item("Flamethrower",
+    img("""
         . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -2646,135 +2504,121 @@ flamethrower = Inventory.create_item("Flamethrower", img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . .
-    `, "Goes Kaboom")
-_1stTimeHud = false
+    """),
+    "Goes Kaboom")
+_1stTimeHud = False
 list2 = [dirt, stone, coal, iron, copper]
-canShoot = true
-usingFlamethrower = false
+canShoot = True
+usingFlamethrower = False
 brokenBlocks = []
-isMining = false
-scene.cameraFollowSprite(Player_character)
-tiles.placeOnTile(Base, tiles.getTileLocation(51, 12))
-tiles.placeOnTile(Player_character, tiles.getTileLocation(47, 13))
-controller.moveSprite(Player_character, 50, 0)
+isMining = False
+scene.camera_follow_sprite(Player_character)
+tiles.place_on_tile(Base, tiles.get_tile_location(51, 12))
+tiles.place_on_tile(Player_character, tiles.get_tile_location(47, 13))
+controller.move_sprite(Player_character, 50, 0)
 weapon = "gun"
 Ores()
-Keybinds.setSimulatorKeymap(Keybinds.PlayerNumber.TWO, Keybinds.CustomKey.UP, Keybinds.CustomKey.DOWN, Keybinds.CustomKey.LEFT, Keybinds.CustomKey.RIGHT, Keybinds.CustomKey.I, Keybinds.CustomKey.ZERO)
-Keybinds.setSimulatorKeymap(Keybinds.PlayerNumber.THREE, Keybinds.CustomKey.E, Keybinds.CustomKey.Q, Keybinds.CustomKey.UP, Keybinds.CustomKey.UP, Keybinds.CustomKey.UP, Keybinds.CustomKey.UP)
-activateInventory(true)
-activateInventory(false)
+Keybinds.set_simulator_keymap(Keybinds.PlayerNumber.TWO,
+    Keybinds.CustomKey.UP,
+    Keybinds.CustomKey.DOWN,
+    Keybinds.CustomKey.LEFT,
+    Keybinds.CustomKey.RIGHT,
+    Keybinds.CustomKey.I,
+    Keybinds.CustomKey.ZERO)
+Keybinds.set_simulator_keymap(Keybinds.PlayerNumber.THREE,
+    Keybinds.CustomKey.E,
+    Keybinds.CustomKey.Q,
+    Keybinds.CustomKey.UP,
+    Keybinds.CustomKey.UP,
+    Keybinds.CustomKey.UP,
+    Keybinds.CustomKey.UP)
+activateInventory(True)
+activateInventory(False)
 GROWTrees()
 hideTiles()
 spawnEnemies()
-hud(true)
-for (let value14 of tiles.getTilesByType(assets.tile`
+hud(True)
+for value14 in tiles.get_tiles_by_type(assets.tile("""
     myTile8
-`)) {
+""")):
     showTiles(value14.column, value14.row)
-}
-makeWeaponToolbar(true)
+makeWeaponToolbar(True)
 HUDAmmo()
-game.onUpdate(function on_on_update() {
-    if (toolbar) {
-        if (!In_Base || !inInventory) {
+
+def on_on_update():
+    if toolbar:
+        if not (In_Base) or not (inInventory):
             toolbar.update()
-        }
-        
-    }
-    
-})
-game.onUpdate(function on_on_update2() {
-    if (Player_character) {
+game.on_update(on_on_update)
+
+def on_on_update2():
+    if Player_character:
         Player_character.vy += Gravity
-    }
-    
-})
-forever(function on_forever() {
-    if (healthStatusBar) {
-        if (healthStatusBar.value < 1) {
+game.on_update(on_on_update2)
+
+def on_forever():
+    if healthStatusBar:
+        if healthStatusBar.value < 1:
             respawnAtBase()
-        }
-        
-    }
-    
-})
-forever(function on_forever2() {
-    if (energyStatusBar && Energy_recharge_rate) {
-        if (energyStatusBar.value < 100) {
+forever(on_forever)
+
+def on_forever2():
+    if energyStatusBar and Energy_recharge_rate:
+        if energyStatusBar.value < 100:
             energyStatusBar.value += 50 / Energy_capacity / 1.75
             pause(Energy_recharge_rate)
-        }
-        
-    }
-    
-})
-forever(function on_forever3() {
-    
-    if (Player_character) {
-        if (playerOnFire) {
-            Player_character.startEffect(effects.fire)
-            for (let index22 = 0; index22 < 7; index22++) {
+forever(on_forever2)
+
+def on_forever3():
+    global playerOnFire
+    if Player_character:
+        if playerOnFire:
+            Player_character.start_effect(effects.fire)
+            for index22 in range(7):
                 pause(50)
                 healthChange(randint(-1, -4))
-            }
-            playerOnFire = false
-            effects.clearParticles(Player_character)
-        }
-        
-    }
-    
-})
-forever(function on_forever4() {
+            playerOnFire = False
+            effects.clear_particles(Player_character)
+forever(on_forever3)
+
+def on_forever4():
     enemyBehaviour()
-})
-forever(function on_forever5() {
-    if (healthStatusBar) {
-        if (healthStatusBar.value < 100) {
+forever(on_forever4)
+
+def on_forever5():
+    if healthStatusBar:
+        if healthStatusBar.value < 100:
             healthChange(randint(4, 10))
             pause(1000)
-        }
-        
-    }
-    
-})
-forever(function on_forever6() {
-    if (toolbar) {
-        if (airstrikeCooldown) {
+forever(on_forever5)
+
+def on_forever6():
+    if toolbar:
+        if airstrikeCooldown:
             airstrikeCooldown.value += 5
-        }
-        
-        if (gunAmmo) {
+        if gunAmmo:
             gunAmmo.value += 5
-        }
-        
-        if (flamethrowerCooldown) {
+        if flamethrowerCooldown:
             flamethrowerCooldown.value += 4
-        }
-        
         pause(500)
-    }
-    
-})
-forever(function on_forever7() {
-    for (let value15 of sprites.allOfKind(SpriteKind.aboveEnemy)) {
-        if (statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value15).value < 1) {
-            sprites.destroy(statusbars.getStatusBarAttachedTo(StatusBarKind.Health, value15))
+forever(on_forever6)
+
+def on_forever7():
+    for value15 in sprites.all_of_kind(SpriteKind.aboveEnemy):
+        if statusbars.get_status_bar_attached_to(StatusBarKind.health, value15).value < 1:
+            sprites.destroy(statusbars.get_status_bar_attached_to(StatusBarKind.health, value15))
             sprites.destroy(value15)
-        }
-        
-    }
-})
-forever(function on_forever8() {
-    // healthChange(-1)
-    //  a forever loop for testing death errors
-    
-})
-forever(function on_forever9() {
-    for (let value16 of sprites.allOfKind(SpriteKind.aboveEnemy)) {
-        if (sprites.readDataNumber(value16, "shotCooldown") > 0) {
-            sprites.setDataNumber(value16, "shotCooldown", sprites.readDataNumber(value16, "shotCooldown") - 1)
-        }
-        
-    }
+forever(on_forever7)
+
+def on_forever8():
+    #healthChange(-1)
+    # a forever loop for testing death errors
+    pass
+forever(on_forever8)
+
+def on_forever9():
+    for value16 in sprites.all_of_kind(SpriteKind.aboveEnemy):
+        if sprites.read_data_number(value16,"shotCooldown") > 0:
+            sprites.set_data_number(value16,"shotCooldown",sprites.read_data_number(value16,"shotCooldown")-1)
     pause(1)
-})
+forever(on_forever9)
