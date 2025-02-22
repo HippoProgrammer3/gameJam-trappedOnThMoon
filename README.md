@@ -1,5 +1,3 @@
-## About
-This project is based on @SuitablyMysterious 's repo of the same name. Includes various bugfixes (see issues).
 
 ## Edit this project
 
@@ -7,7 +5,7 @@ To edit this repository in MakeCode.
 
 * open [https://arcade.makecode.com/](https://arcade.makecode.com/)
 * click on **Import** then click on **Import URL**
-* paste **https://github.com/HippoProgrammer/gamejam-trappedonthmoon** and click import
+* paste **https://github.com/SuitablyMysterious/gamejam-trappedonthmoon** and click import
 
 ## Blocks preview
 
