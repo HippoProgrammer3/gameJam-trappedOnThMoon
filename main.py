@@ -1105,7 +1105,7 @@ def shoot(direction1up2down3left4right: number):
             if canShoot and not (gunAmmo.value < 1):
                 canShoot = False
                 gunAmmo.value += -10
-                if direction1up2down3left4right == 1:
+                if direction1up2down3left4right == 1: # this is the broken part of #24
                     gunBullet = sprites.create_projectile_from_sprite(img("""
                             . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
@@ -1312,13 +1312,10 @@ def showTiles(col2: number, row2: number):
 def airstrikeFunction():
     global missile
     nearestEnemy()
-    missile = sprites.create(assets.image("""
-        gun
-    """), SpriteKind.airstrikeMissile)
-    missile.set_image(scaling.rot(assets.image("""
-                gun
-            """).clone(),
-            spriteutils.angle_from(missile, nearestSprite)))
+    missile = sprites.create(scaling.rot(assets.image("""
+                    gun
+                """),
+                spriteutils.radians_to_degrees(spriteutils.angle_from(missile, nearestSprite))), SpriteKind.airstrikeMissile)
     missile.set_flag(SpriteFlag.AUTO_DESTROY, False)
     missile.lifespan = 5000
     tiles.place_on_tile(missile, Base.tilemap_location())
@@ -2528,10 +2525,10 @@ Keybinds.set_simulator_keymap(Keybinds.PlayerNumber.TWO,
 Keybinds.set_simulator_keymap(Keybinds.PlayerNumber.THREE,
     Keybinds.CustomKey.E,
     Keybinds.CustomKey.Q,
-    Keybinds.CustomKey.UP,
-    Keybinds.CustomKey.UP,
-    Keybinds.CustomKey.UP,
-    Keybinds.CustomKey.UP)
+    Keybinds.CustomKey.K,
+    Keybinds.CustomKey.K,
+    Keybinds.CustomKey.K,
+    Keybinds.CustomKey.K)
 activateInventory(True)
 activateInventory(False)
 GROWTrees()
