@@ -695,7 +695,7 @@ def Ores():
 
 def on_on_overlap3(sprite4, otherSprite3):
     sprites.destroy(sprite4)
-    statusbars.get_status_bar_attached_to(StatusBarKind.health, otherSprite3).value += randint(0, -5)
+    statusbars.get_status_bar_attached_to(StatusBarKind.health, otherSprite3).value += randint(-5, -15)
 sprites.on_overlap(SpriteKind.fire, SpriteKind.aboveEnemy, on_on_overlap3)
 
 def Mine(direction_down__1_up__2_left__3_right__4: number, cooldown: number):
@@ -1207,7 +1207,7 @@ def shoot(direction1up2down3left4right: number):
                 usingFlamethrower = True
                 flamethrowerCooldown.value += -60
                 nearestEnemy()
-                for index in range(101):
+                for index in range(60):
                     if randint(0, 2) == 0:
                         flame = sprites.create_projectile_from_sprite(img("""
                                 . . . . . . . . . . . . . . . . 

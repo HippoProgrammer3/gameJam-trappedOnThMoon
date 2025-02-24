@@ -775,7 +775,7 @@ function Ores() {
 
 sprites.onOverlap(SpriteKind.fire, SpriteKind.aboveEnemy, function on_on_overlap3(sprite4: Sprite, otherSprite3: Sprite) {
     sprites.destroy(sprite4)
-    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, otherSprite3).value += randint(0, -5)
+    statusbars.getStatusBarAttachedTo(StatusBarKind.Health, otherSprite3).value += randint(-5, -15)
 })
 function Mine(direction_down__1_up__2_left__3_right__4: number, cooldown: number) {
     
@@ -1354,7 +1354,7 @@ function shoot(direction1up2down3left4right: number) {
             usingFlamethrower = true
             flamethrowerCooldown.value += -60
             nearestEnemy()
-            for (let index = 0; index < 101; index++) {
+            for (let index = 0; index < 60; index++) {
                 if (randint(0, 2) == 0) {
                     flame = sprites.createProjectileFromSprite(img`
                                 . . . . . . . . . . . . . . . . 
