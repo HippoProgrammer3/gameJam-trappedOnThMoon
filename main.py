@@ -1312,13 +1312,10 @@ def showTiles(col2: number, row2: number):
 def airstrikeFunction():
     global missile
     nearestEnemy()
-    missile = sprites.create(assets.image("""
-        gun
-    """), SpriteKind.airstrikeMissile)
-    missile.set_image(scaling.rot(assets.image("""
-                gun
-            """).clone(),
-            spriteutils.angle_from(missile, nearestSprite)))
+    missile = sprites.create(scaling.rot(assets.image("""
+                    gun
+                """),
+                spriteutils.radians_to_degrees(spriteutils.angle_from(missile, nearestSprite))), SpriteKind.airstrikeMissile)
     missile.set_flag(SpriteFlag.AUTO_DESTROY, False)
     missile.lifespan = 5000
     tiles.place_on_tile(missile, Base.tilemap_location())

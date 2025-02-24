@@ -1451,12 +1451,9 @@ function showTiles(col2: number, row2: number) {
 function airstrikeFunction() {
     
     nearestEnemy()
-    missile = sprites.create(assets.image`
-        gun
-    `, SpriteKind.airstrikeMissile)
-    missile.setImage(scaling.rot(assets.image`
-                gun
-            `.clone(), spriteutils.angleFrom(missile, nearestSprite)))
+    missile = sprites.create(scaling.rot(assets.image`
+                    gun
+                `, spriteutils.radiansToDegrees(spriteutils.angleFrom(missile, nearestSprite))), SpriteKind.airstrikeMissile)
     missile.setFlag(SpriteFlag.AutoDestroy, false)
     missile.lifespan = 5000
     tiles.placeOnTile(missile, Base.tilemapLocation())
