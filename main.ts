@@ -1260,6 +1260,7 @@ function shoot(direction1up2down3left4right: number) {
                 canShoot = false
                 gunAmmo.value += -10
                 if (direction1up2down3left4right == 1) {
+                    //  this is the broken part of #24
                     gunBullet = sprites.createProjectileFromSprite(img`
                             . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
@@ -2660,7 +2661,7 @@ controller.moveSprite(Player_character, 50, 0)
 weapon = "gun"
 Ores()
 Keybinds.setSimulatorKeymap(Keybinds.PlayerNumber.TWO, Keybinds.CustomKey.UP, Keybinds.CustomKey.DOWN, Keybinds.CustomKey.LEFT, Keybinds.CustomKey.RIGHT, Keybinds.CustomKey.I, Keybinds.CustomKey.ZERO)
-Keybinds.setSimulatorKeymap(Keybinds.PlayerNumber.THREE, Keybinds.CustomKey.E, Keybinds.CustomKey.Q, Keybinds.CustomKey.UP, Keybinds.CustomKey.UP, Keybinds.CustomKey.UP, Keybinds.CustomKey.UP)
+Keybinds.setSimulatorKeymap(Keybinds.PlayerNumber.THREE, Keybinds.CustomKey.E, Keybinds.CustomKey.Q, Keybinds.CustomKey.K, Keybinds.CustomKey.K, Keybinds.CustomKey.K, Keybinds.CustomKey.K)
 activateInventory(true)
 activateInventory(false)
 GROWTrees()

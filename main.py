@@ -1105,7 +1105,7 @@ def shoot(direction1up2down3left4right: number):
             if canShoot and not (gunAmmo.value < 1):
                 canShoot = False
                 gunAmmo.value += -10
-                if direction1up2down3left4right == 1:
+                if direction1up2down3left4right == 1: # this is the broken part of #24
                     gunBullet = sprites.create_projectile_from_sprite(img("""
                             . . . . . . . . . . . . . . . . 
                                                     . . . . . . . . . . . . . . . . 
@@ -2528,10 +2528,10 @@ Keybinds.set_simulator_keymap(Keybinds.PlayerNumber.TWO,
 Keybinds.set_simulator_keymap(Keybinds.PlayerNumber.THREE,
     Keybinds.CustomKey.E,
     Keybinds.CustomKey.Q,
-    Keybinds.CustomKey.UP,
-    Keybinds.CustomKey.UP,
-    Keybinds.CustomKey.UP,
-    Keybinds.CustomKey.UP)
+    Keybinds.CustomKey.K,
+    Keybinds.CustomKey.K,
+    Keybinds.CustomKey.K,
+    Keybinds.CustomKey.K)
 activateInventory(True)
 activateInventory(False)
 GROWTrees()
